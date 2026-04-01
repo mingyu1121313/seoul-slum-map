@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEOUL SLUM MAP</title>
+
+  <!-- !! 아래 YOUR_NAVER_CLIENT_ID 를 본인의 ncpClientId 로 교체하세요 !! -->
+  <script type="text/javascript"
+    src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ohcwq9v21c">
+  </script>
+
+  <style>
+    /* ── 리셋 ────────────────────────────────── */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: #f4f5f7;
+    }
+
+    /* ── 헤더 ────────────────────────────────── */
+    #header {
+      height: 56px;
+      background: #fff;
+      border-bottom: 1px solid #dde1e9;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      flex-shrink: 0;
+      z-index: 300;
+    }
+    #site-title {
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #111827;
+      line-height: 1;
+    }
+    #site-subtitle {
+      font-size: 10px;
+      color: #9ca3af;
+      margin-top: 3px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── 본체 ────────────────────────────────── */
+    #main {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* ── 왼쪽 사이드바 ───────────────────────── */
+    #sidebar {
+      width: 220px;
+      background: #fff;
+      border-right: 1px solid #dde1e9;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      overflow: hidden;
+      z-index: 200;
+    }
+    .sidebar-section-label {
+      padding: 13px 16px 9px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #9ca3af;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid #f0f0f0;
+      flex-shrink: 0;
+    }
+    #village-list {
+      overflow-y: auto;
+      flex: 1;
+    }
+    #village-list::-webkit-scrollbar { width: 4px; }
+    #village-list::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 2px; }
+
+    .v-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 16px;
+      cursor: pointer;
+      border-bottom: 1px solid #f5f5f5;
+      transition: background 0.12s;
+    }
+    .v-item:hover  { background: #f9fafb; }
+    .v-item.active { background: #eff6ff; }
+    .v-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(255,255,255,0.8);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    .v-info    { flex: 1; min-width: 0; }
+    .v-name    { font-size: 12.5px; font-weight: 600; color: #1a1a2e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .v-gu      { font-size: 10.5px; color: #9ca3af; margin-top: 1px; }
+
+    /* ── 지도 래퍼 ───────────────────────────── */
+    #map-wrapper {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    #map { width: 100%; height: 100%; }
+
+    /* 지도 타입 토글 */
+    #map-type-ctrl {
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      border-radius: 9999px;
+      padding: 5px 6px;
+      display: flex;
+      gap: 2px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+    .mtype-btn {
+      border: none;
+      background: transparent;
+      padding: 6px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #6b7280;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .mtype-btn.active { background: #111827; color: #fff; }
+    .mtype-btn:hover:not(.active) { background: #f3f4f6; }
+
+    /* 지도 범례 */
+    #legend {
+      position: absolute;
+      bottom: 52px;
+      left: 14px;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      border-radius: 8px;
+      padding: 9px 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+      font-size: 11px;
+    }
+    .legend-row   { display: flex; align-items: center; gap: 7px; color: #444; font-weight: 500; }
+    .legend-dot   { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── 하단 바 ─────────────────────────────── */
+    #bottom-bar {
+      height: 40px;
+      background: #0f0f14;
+      border-top: 1px solid #2a2a3a;
+      flex-shrink: 0;
+      z-index: 200;
+    }
+
+    /* ── 오른쪽 패널 ─────────────────────────── */
+    #panel {
+      position: fixed;
+      top: 56px;
+      right: 0;
+      width: 296px;
+      height: calc(100vh - 56px - 40px);
+      background: #fff;
+      border-left: 1px solid #dde1e9;
+      transform: translateX(105%);
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 500;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    #panel.open { transform: translateX(0); }
+    #panel::-webkit-scrollbar { width: 4px; }
+    #panel::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 2px; }
+
+    /* 닫기 버튼 */
+    #btn-close {
+      position: absolute;
+      top: 12px; right: 12px;
+      width: 26px; height: 26px;
+      background: #f3f4f6;
+      border: none;
+      border-radius: 50%;
+      font-size: 16px;
+      line-height: 1;
+      cursor: pointer;
+      color: #555;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+      z-index: 10;
+    }
+    #btn-close:hover { background: #e5e7eb; color: #111; }
+
+    /* 패널 헤더 */
+    .p-header {
+      padding: 20px 14px 14px 18px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    #p-name {
+      font-size: 22px;
+      font-weight: 900;
+      color: #111827;
+      padding-right: 28px;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+    #p-location {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 10px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 11px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .badge-illegal { background: #E53935; }
+    .badge-legal   { background: #43A047; }
+
+    /* 사진 */
+    #p-photo { width: 100%; height: 200px; overflow: hidden; background: #f3f4f6; }
+    #p-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-placeholder {
+      width: 100%; height: 200px;
+      background: #f3f4f6;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: #bbb; gap: 8px; font-size: 12px;
+    }
+    .photo-placeholder .ph-icon { font-size: 30px; }
+
+    /* 정보 섹션 */
+    .p-body { padding: 16px 18px 32px; }
+    .p-desc {
+      font-size: 13px;
+      line-height: 1.85;
+      color: #333;
+      margin-bottom: 14px;
+    }
+    .p-table { width: 100%; border-collapse: collapse; }
+    .p-table td {
+      padding: 7px 0;
+      font-size: 12px;
+      color: #555;
+      border-bottom: 1px solid #f5f5f5;
+      vertical-align: top;
+    }
+    .p-table td:first-child { font-weight: 700; color: #222; width: 72px; }
+
+    /* 네이버 지도 기본 컨트롤 위치 조정 */
+    .naver-zoomcontrol { right: 14px !important; }
+  </style>
+</head>
+<body>
+
+<!-- ── 헤더 ──────────────────────────────────── -->
+<div id="header">
+  <div>
+    <div id="site-title">Seoul Slum Map</div>
+    <div id="site-subtitle">서울시 달동네 · 판자촌 위치 현황 지도</div>
+  </div>
+</div>
+
+<!-- ── 본체 ──────────────────────────────────── -->
+<div id="main">
+
+  <!-- 왼쪽 사이드바 -->
+  <div id="sidebar">
+    <div class="sidebar-section-label">마을 선택</div>
+    <div id="village-list"></div>
+  </div>
+
+  <!-- 지도 -->
+  <div id="map-wrapper">
+    <!-- 지도 타입 토글 -->
+    <div id="map-type-ctrl">
+      <button class="mtype-btn active" onclick="setMapType('normal', this)">지형지도</button>
+      <button class="mtype-btn"        onclick="setMapType('satellite', this)">위성지도</button>
+    </div>
+
+    <!-- 지도 범례 -->
+    <div id="legend">
+      <div class="legend-row"><span class="legend-dot" style="background:#E53935;"></span>불법건축물</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#43A047;"></span>합법건축물</div>
+    </div>
+
+    <div id="map"></div>
+  </div>
+</div>
+
+<!-- ── 하단 바 ────────────────────────────────── -->
+<div id="bottom-bar"></div>
+
+<!-- ── 오른쪽 패널 ───────────────────────────── -->
+<div id="panel">
+  <button id="btn-close" onclick="closePanel()">×</button>
+
+  <div class="p-header">
+    <h2 id="p-name"></h2>
+    <p  id="p-location"></p>
+    <span id="p-badge" class="badge"></span>
+  </div>
+
+  <div id="p-photo"></div>
+
+  <div class="p-body">
+    <p class="p-desc" id="p-desc"></p>
+    <table class="p-table">
+      <tr><td>주소</td>    <td id="p-address"></td></tr>
+      <tr><td>형성 시기</td><td id="p-formed"></td></tr>
+      <tr><td>규모</td>    <td id="p-households"></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ── JavaScript ────────────────────────────── -->
+<script>
+
+/* ━━━━━━━━━━━━━━━━ 데이터 ━━━━━━━━━━━━━━━━ */
+var DATA = [
+  {
+    name:"구룡마을", gu:"강남구", dong:"개포동",
+    address:"양재대로 478",
+    lat:37.4768, lng:127.0460,
+    type:"불법건축물", formed:"1980년대", households:"약 1,200가구",
+    desc:"서울 최대 규모 무허가 판자촌(약 26만㎡). 1980년대 도심 개발로 강제 철거된 철거민들이 모여들어 형성됐다. 강남구라는 아이러니한 입지 속에 오랫동안 재개발이 지연되며 서울의 마지막 거대 판자촌으로 불렸다."
+  },
+  {
+    name:"백사마을", gu:"노원구", dong:"중계동",
+    address:"중계동 산104번지",
+    lat:37.6500, lng:127.0822,
+    type:"불법건축물", formed:"1967년", households:"약 1,200가구",
+    desc:"1967년 청계천·용산 일대 판자촌 주민들을 불암산 자락으로 강제 이주시켜 형성됐다. 정부가 제공한 것은 건물이 아닌 천막뿐이었다. 서울의 마지막 달동네로 불렸으며 현재 재개발이 진행 중이다."
+  },
+  {
+    name:"재건마을", gu:"강남구", dong:"개포동",
+    address:"개포로25길 32",
+    lat:37.4725, lng:127.0422,
+    type:"불법건축물", formed:"1980년대", households:"약 300가구",
+    desc:"원래 포이동 266번지로 불렸다. 1980년대 영동대교 주변 빈민들의 강제 이주로 형성됐으며, 2011년 대형 화재 이후 재건마을로 개칭됐다. 아시안게임·올림픽 당시 출입 통제 등 인권유린 역사를 갖고 있다."
+  },
+  {
+    name:"정릉골", gu:"성북구", dong:"정릉동",
+    address:"보국문로29길 98-1",
+    lat:37.6098, lng:127.0062,
+    type:"합법건축물", formed:"1960년대", households:"수백 가구",
+    desc:"1960년대 청계천·북아현동 판자촌 정리 과정에서 산기슭으로 밀려난 주민들이 형성한 달동네. 백사마을, 개미마을과 함께 서울 마지막 달동네 3곳으로 꼽혔다. 2020년 재개발 건축심의를 통과했다."
+  },
+  {
+    name:"상계동 희망촌", gu:"노원구", dong:"상계동",
+    address:"상계동 산161-12",
+    lat:37.6712, lng:127.0652,
+    type:"불법건축물", formed:"1980년대", households:"소규모",
+    desc:"상계동 산자락 북쪽 사면에 형성된 소규모 무허가 주거지. 1986~88년 올림픽 재개발 열풍 속에서도 살아남은 잔여 달동네 중 하나다."
+  },
+  {
+    name:"상계동 양지마을", gu:"노원구", dong:"상계동",
+    address:"상계동 1361-5",
+    lat:37.6555, lng:127.0658,
+    type:"합법건축물", formed:"1970~80년대", households:"소규모",
+    desc:"노원구 상계동 남향 사면에 위치한 소규모 마을. 양지바른 입지에서 이름이 붙었으며, 저층 노후 주택이 밀집해 있다."
+  },
+  {
+    name:"상계동 합동마을", gu:"노원구", dong:"상계동",
+    address:"상계로35길 71",
+    lat:37.6578, lng:127.0712,
+    type:"합법건축물", formed:"1980년대", households:"소규모",
+    desc:"1986~88년 아시안게임·올림픽 전후 대규모 상계동 재개발에서 살아남은 소규모 달동네. 지금도 노후 주택이 밀집한 채로 재개발 대기 상태에 있다."
+  },
+  {
+    name:"상계동 별빛마을", gu:"노원구", dong:"상계동",
+    address:"상계로 37라길 16-16",
+    lat:37.6592, lng:127.0725,
+    type:"합법건축물", formed:"1980년대", households:"소규모",
+    desc:"노원구 상계동 산사면에 위치한 소규모 마을. 야간에 불빛이 별처럼 빛난다 하여 별빛마을이라는 이름이 붙었다. 계단식 골목과 노후 단독주택이 특징이다."
+  },
+  {
+    name:"현저동", gu:"서대문구", dong:"현저동",
+    address:"현저동 1-87",
+    lat:37.5750, lng:126.9595,
+    type:"불법건축물", formed:"1960~70년대", households:"소규모",
+    desc:"서대문구 현저동 안산 자락에 위치한 노후 주거지. 서대문형무소역사관 인근으로, 좁은 골목과 오래된 단독주택이 밀집해 있다."
+  },
+  {
+    name:"꽃담벽화마을", gu:"성동구", dong:"마장동",
+    address:"살곶이2나길",
+    lat:37.5618, lng:127.0448,
+    type:"합법건축물", formed:"1960~70년대", households:"소규모",
+    desc:"성동구 마장동 살곶이 일대에 위치한 벽화마을. 낡은 담장에 주민들이 벽화를 그려 마을 재생을 시도했다. 노후 저층 주거지가 잔존하고 있다."
+  },
+  {
+    name:"복정마을", gu:"성북구", dong:"성북동",
+    address:"성북로23길 132-3",
+    lat:37.5932, lng:127.0168,
+    type:"합법건축물", formed:"1960~70년대", households:"소규모",
+    desc:"성북구 성북로 인근 경사지에 형성된 소규모 주거지. 달동네 특유의 좁은 골목과 낡은 주택들이 잔존하고 있다."
+  },
+  {
+    name:"수색동 수일시장", gu:"은평구", dong:"수색동",
+    address:"수색로16길 5-1",
+    lat:37.5788, lng:126.8872,
+    type:"합법건축물", formed:"1960~70년대", households:"소규모",
+    desc:"은평구 수색동 수일시장 주변에 형성된 노후 주거지. 수색역 인근에 위치하며 오래된 시장과 함께 저층 주거 밀집지가 형성되어 있다."
+  },
+  {
+    name:"수정마을", gu:"강남구", dong:"개포동",
+    address:"개포동 1197-1",
+    lat:37.4748, lng:127.0545,
+    type:"불법건축물", formed:"1980년대", households:"소규모",
+    desc:"강남구 개포동 산기슭에 형성된 소규모 무허가 주거지. 구룡마을과 인접한 위치에 형성됐으며 비교적 소규모로 남아 있다."
+  },
+  {
+    name:"달터마을", gu:"강남구", dong:"개포동",
+    address:"개포동 156번지",
+    lat:37.4755, lng:127.0492,
+    type:"불법건축물", formed:"1980년대", households:"소규모 분산",
+    desc:"달터근린공원 내에 들어선 불법 건축물 밀집지. '여기는 달터근린공원이므로 임의 건축물은 불법'이라는 팻말이 곳곳에 붙어 있을 정도로 무허가 건물이 공원 내부까지 들어서 있다."
+  },
+  {
+    name:"성뒤마을", gu:"서초구", dong:"우면동",
+    address:"남부순환로292길 27",
+    lat:37.4762, lng:127.0285,
+    type:"불법건축물", formed:"1950년대", households:"소규모",
+    desc:"서초구 한켠에 자리한 소규모 달동네. 한국전쟁 이후 피난민이 정착하며 형성됐다. 서초구라는 고급 주거지 속에 반세기 넘게 남아 있는 이례적인 존재다."
+  },
+  {
+    name:"두레마을", gu:"서초구", dong:"방배동",
+    address:"방배동 998",
+    lat:37.4840, lng:126.9930,
+    type:"불법건축물", formed:"1970~80년대", households:"소규모",
+    desc:"서초구 방배동 산사면에 형성된 소규모 달동네. 두레 공동체 정신으로 이웃이 함께 형성한 마을로 알려져 있으며, 좁은 골목과 오래된 주택들이 잔존한다."
+  },
+  {
+    name:"응봉마을", gu:"서초구", dong:"방배동",
+    address:"방배동 981-33",
+    lat:37.4842, lng:126.9942,
+    type:"불법건축물", formed:"1970~80년대", households:"소규모",
+    desc:"서초구 방배동에 위치한 소규모 노후 주거지. 노후 단독주택과 빌라가 혼재하며 달동네 형태를 일부 유지하고 있다."
+  },
+  {
+    name:"화훼마을", gu:"송파구", dong:"거여동",
+    address:"성남대로 1565",
+    lat:37.4850, lng:127.1280,
+    type:"불법건축물", formed:"1970~80년대", households:"소규모",
+    desc:"송파구 성남대로 인근에 위치한 소규모 노후 주거지. 과거 화훼 재배 농가에서 시작된 독특한 역사를 가진 마을로, 주변 개발 압력 속에서도 특유의 모습을 일부 유지하고 있다."
+  },
+  {
+    name:"신금호동", gu:"성동구", dong:"금호동2가",
+    address:"금호동2가 500-9",
+    lat:37.5572, lng:127.0238,
+    type:"합법건축물", formed:"1960~70년대", households:"소규모",
+    desc:"성동구 금호동 2가 일대 경사지에 형성된 달동네. 금호산 사면을 따라 오래된 저층주택들이 밀집해 있으며, 도심 인근에서 보기 드문 노후 주거지로 남아 있다."
+  }
+];
+
+/* ━━━━━━━━━━━━━━━━ 지도 초기화 ━━━━━━━━━━━━━━━━ */
+var map = new naver.maps.Map('map', {
+  center: new naver.maps.LatLng(37.555, 127.000),
+  zoom: 12,
+  mapTypeId: naver.maps.MapTypeId.NORMAL,
+  zoomControl: true,
+  zoomControlOptions: {
+    style: naver.maps.ZoomControlStyle.SMALL,
+    position: naver.maps.Position.RIGHT_CENTER
+  },
+  logoControlOptions: { position: naver.maps.Position.BOTTOM_RIGHT },
+  scaleControlOptions: { position: naver.maps.Position.BOTTOM_LEFT }
+});
+
+/* ━━━━━━━━━━━━━━━━ 상태 ━━━━━━━━━━━━━━━━ */
+var activeVillage  = null;
+var tooltipWindow  = new naver.maps.InfoWindow({
+  borderWidth: 0,
+  disableAnchor: true,
+  backgroundColor: 'transparent',
+  pixelOffset: new naver.maps.Point(0, -6)
+});
+
+/* ━━━━━━━━━━━━━━━━ 마커 아이콘 생성 ━━━━━━━━━━━━━━━━ */
+function makeIcon(color, active) {
+  var s = active ? 20 : 14;
+  var a = active ? 10 : 7;
+  return {
+    content: '<div style="'
+      + 'width:'  + s + 'px;'
+      + 'height:' + s + 'px;'
+      + 'border-radius:50%;'
+      + 'background:' + color + ';'
+      + 'border:2.5px solid #fff;'
+      + 'box-shadow:0 2px 6px rgba(0,0,0,0.35);'
+      + 'cursor:pointer;'
+      + '"></div>',
+    anchor: new naver.maps.Point(a, a)
+  };
+}
+
+/* ━━━━━━━━━━━━━━━━ 마커 + 사이드바 아이템 생성 ━━━━━━━━━━━━━━━━ */
+var listEl = document.getElementById('village-list');
+
+DATA.forEach(function(v) {
+  var color = v.type === '불법건축물' ? '#E53935' : '#43A047';
+
+  /* 마커 */
+  var marker = new naver.maps.Marker({
+    map: map,
+    position: new naver.maps.LatLng(v.lat, v.lng),
+    icon: makeIcon(color, false),
+    zIndex: 100
+  });
+  v._marker = marker;
+  v._color  = color;
+
+  /* 마커 이벤트 */
+  naver.maps.Event.addListener(marker, 'mouseover', function() {
+    if (activeVillage !== v) marker.setIcon(makeIcon(color, true));
+    tooltipWindow.setContent(
+      '<div style="'
+      + 'background:#1a1a2e;color:#fff;'
+      + 'padding:5px 10px;border-radius:6px;'
+      + 'font-size:12px;font-weight:600;white-space:nowrap;'
+      + 'font-family:-apple-system,BlinkMacSystemFont,sans-serif;'
+      + '">' + v.name + '</div>'
+    );
+    tooltipWindow.open(map, marker);
+  });
+
+  naver.maps.Event.addListener(marker, 'mouseout', function() {
+    if (activeVillage !== v) marker.setIcon(makeIcon(color, false));
+    tooltipWindow.close();
+  });
+
+  naver.maps.Event.addListener(marker, 'click', function() {
+    tooltipWindow.close();
+    selectVillage(v);
+  });
+
+  /* 사이드바 아이템 */
+  var item = document.createElement('div');
+  item.className = 'v-item';
+  item.innerHTML =
+    '<span class="v-dot" style="background:' + color + ';"></span>'
+    + '<div class="v-info">'
+    +   '<div class="v-name">' + v.name + '</div>'
+    +   '<div class="v-gu">'  + v.gu   + '</div>'
+    + '</div>';
+
+  item.addEventListener('click', function() {
+    map.panTo(new naver.maps.LatLng(v.lat, v.lng));
+    if (map.getZoom() < 14) map.setZoom(15);
+    selectVillage(v);
+  });
+
+  v._listItem = item;
+  listEl.appendChild(item);
+});
+
+/* ━━━━━━━━━━━━━━━━ 마을 선택 ━━━━━━━━━━━━━━━━ */
+function selectVillage(v) {
+  /* 이전 선택 해제 */
+  if (activeVillage) {
+    activeVillage._marker.setIcon(makeIcon(activeVillage._color, false));
+    activeVillage._listItem.classList.remove('active');
+  }
+
+  activeVillage = v;
+  v._marker.setIcon(makeIcon(v._color, true));
+  v._listItem.classList.add('active');
+
+  /* 사이드바 스크롤 */
+  v._listItem.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+
+  openPanel(v);
+}
+
+/* ━━━━━━━━━━━━━━━━ 패널 열기 ━━━━━━━━━━━━━━━━ */
+function openPanel(v) {
+  document.getElementById('p-name').textContent       = v.name;
+  document.getElementById('p-location').textContent   = v.gu + ' · ' + v.dong;
+  document.getElementById('p-desc').textContent       = v.desc;
+  document.getElementById('p-address').textContent    = v.address;
+  document.getElementById('p-formed').textContent     = v.formed;
+  document.getElementById('p-households').textContent = v.households;
+
+  var badge = document.getElementById('p-badge');
+  badge.textContent = v.type;
+  badge.className   = 'badge ' + (v.type === '불법건축물' ? 'badge-illegal' : 'badge-legal');
+
+  loadPhoto(v);
+
+  document.getElementById('panel').classList.add('open');
+}
+
+/* ━━━━━━━━━━━━━━━━ 사진 로드 ━━━━━━━━━━━━━━━━ */
+function loadPhoto(v) {
+  var div  = document.getElementById('p-photo');
+  var exts = ['jpg', 'jpeg', 'png', 'webp'];
+  var idx  = 0;
+
+  div.innerHTML = '';   /* 초기화 */
+
+  (function tryNext() {
+    if (idx >= exts.length) {
+      div.innerHTML =
+        '<div class="photo-placeholder">'
+        + '<span class="ph-icon">📷</span>'
+        + '<span>사진 준비 중</span>'
+        + '</div>';
+      return;
+    }
+    var img = new Image();
+    var src = 'images/' + encodeURIComponent(v.name) + '.' + exts[idx];
+    img.onload  = function() {
+      div.innerHTML = '<img src="' + src + '" alt="' + v.name + '" />';
+    };
+    img.onerror = function() { idx++; tryNext(); };
+    img.src = src;
+  })();
+}
+
+/* ━━━━━━━━━━━━━━━━ 패널 닫기 ━━━━━━━━━━━━━━━━ */
+function closePanel() {
+  document.getElementById('panel').classList.remove('open');
+  if (activeVillage) {
+    activeVillage._marker.setIcon(makeIcon(activeVillage._color, false));
+    activeVillage._listItem.classList.remove('active');
+    activeVillage = null;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━ 지도 타입 전환 ━━━━━━━━━━━━━━━━ */
+function setMapType(type, btn) {
+  map.setMapTypeId(
+    type === 'satellite'
+      ? naver.maps.MapTypeId.HYBRID
+      : naver.maps.MapTypeId.NORMAL
+  );
+  document.querySelectorAll('.mtype-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  btn.classList.add('active');
+}
+
+/* 지도 빈 곳 클릭 → 패널 닫기 */
+naver.maps.Event.addListener(map, 'click', function() {
+  closePanel();
+});
+
+</script>
+</body>
+</html>
