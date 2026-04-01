@@ -1,14 +1,16 @@
 # SEOUL SLUM MAP — 바이브코딩 플랜
 
 ## 현재 상태
-- 19개 마을 핀 좌표 Google Maps 주소 기반으로 정확히 수정 완료
-- 네이버 지도 API 정상 작동 (`oapi.map.naver.com`, `ncpKeyId`)
-- GitHub → Netlify 자동 배포 / URL: https://seoul-slum-mappp.netlify.app
+- 19개 마을 핀 좌표 수정 완료 (정릉골·합동마을 재수정 포함)
+- 서울 25개 구 경계선 흰 실선 폴리라인 추가 (GeoJSON)
+- 위성지도 전환 시 "정보 표시" 체크박스 → HYBRID ↔ SATELLITE 전환
+- 네이버 지도 API (`oapi.map.naver.com`, `ncpKeyId: ohcwq9v21c`)
+- GitHub → Netlify 자동 배포
 
 ## 스택
 - 정적 HTML/CSS/JS (빌드 도구 없음)
-- 네이버 지도 API v3 (Maps Application, ncpKeyId: ohcwq9v21c)
-- Netlify 호스팅, GitHub 소스 (main 브랜치 push → 자동 배포)
+- 네이버 지도 API v3
+- Netlify 호스팅, GitHub main 브랜치 push → 자동 배포
 
 ---
 
@@ -16,26 +18,23 @@
 
 ### P1 — 마을 사진 추가
 - `images/{마을명}.jpg` 추가 시 패널에 자동 표시 (코드 이미 대응)
-- 사진 없으면 placeholder div 유지
 
 ### P2 — 마을 정보 보강
 - desc 심화: 현재 거주 현황, 철거/보존 일정
 - 형성 연도·가구수 실데이터로 교체
 
 ### P3 — 필터 기능
-- 불법/합법 건축물 토글
-- 구별 필터 (선택)
+- 불법/합법 건축물 토글, 구별 필터
 
 ### P4 — 모바일 반응형
-- 768px 미만: 사이드바 하단 이동, 패널 풀스크린
+- 768px 미만: 사이드바 하단, 패널 풀스크린
 
 ### P5 — 아카이브 심화
-- 마을별 역사 타임라인 슬라이더
-- 관련 기사·자료 외부 링크
+- 마을별 역사 타임라인, 관련 기사 외부 링크
 
 ---
 
-## 미결 항목 (답변 대기)
+## 미결 항목
 - 영어 병기 여부
 - 공개 범위 (개인 / 학술 / 대중)
 - 철거 현황 색상 구분 추가 여부

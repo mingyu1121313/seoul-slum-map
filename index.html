@@ -142,6 +142,28 @@
     .mtype-btn.active { background: #111827; color: #fff; }
     .mtype-btn:hover:not(.active) { background: #f3f4f6; }
 
+    /* 정보 표시 토글 */
+    #info-toggle {
+      display: none;
+      position: absolute;
+      top: 58px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: rgba(0,0,0,0.6);
+      border-radius: 9999px;
+      padding: 5px 14px;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+      align-items: center;
+      gap: 5px;
+    }
+    #info-toggle input { cursor: pointer; margin: 0; }
+
     /* 지도 범례 */
     #legend {
       position: absolute;
@@ -296,6 +318,11 @@
       <button class="mtype-btn"        onclick="setMapType('satellite', this)">위성지도</button>
     </div>
 
+    <!-- 정보 표시 토글 (위성지도 전용) -->
+    <label id="info-toggle">
+      <input type="checkbox" id="info-check" checked onchange="toggleInfoLayer(this.checked)">정보 표시
+    </label>
+
     <!-- 지도 범례 -->
     <div id="legend">
       <div class="legend-row"><span class="legend-dot" style="background:#E53935;"></span>불법건축물</div>
@@ -360,7 +387,7 @@ var DATA = [
   {
     name:"정릉골", gu:"성북구", dong:"정릉동",
     address:"보국문로29길 98-1",
-    lat:37.6031486, lng:127.0137709,
+    lat:37.6148318, lng:126.9994221,
     type:"합법건축물", formed:"1960년대", households:"수백 가구",
     desc:"1960년대 청계천·북아현동 판자촌 정리 과정에서 산기슭으로 밀려난 주민들이 형성한 달동네. 백사마을, 개미마을과 함께 서울 마지막 달동네 3곳으로 꼽혔다. 2020년 재개발 건축심의를 통과했다."
   },
@@ -381,7 +408,7 @@ var DATA = [
   {
     name:"상계동 합동마을", gu:"노원구", dong:"상계동",
     address:"상계로35길 71",
-    lat:37.6728207, lng:127.0754552,
+    lat:37.6736837, lng:127.0786440,
     type:"합법건축물", formed:"1980년대", households:"소규모",
     desc:"1986~88년 아시안게임·올림픽 전후 대규모 상계동 재개발에서 살아남은 소규모 달동네. 지금도 노후 주택이 밀집한 채로 재개발 대기 상태에 있다."
   },
@@ -647,16 +674,46 @@ function closePanel() {
 
 /* ━━━━━━━━━━━━━━━━ 지도 타입 전환 ━━━━━━━━━━━━━━━━ */
 function setMapType(type, btn) {
-  map.setMapTypeId(
-    type === 'satellite'
-      ? naver.maps.MapTypeId.HYBRID
-      : naver.maps.MapTypeId.NORMAL
-  );
-  document.querySelectorAll('.mtype-btn').forEach(function(b) {
-    b.classList.remove('active');
-  });
+  var isSat = type === 'satellite';
+  var infoToggle = document.getElementById('info-toggle');
+  var infoCheck  = document.getElementById('info-check');
+  if (isSat) {
+    infoToggle.style.display = 'flex';
+    map.setMapTypeId(infoCheck.checked ? naver.maps.MapTypeId.HYBRID : naver.maps.MapTypeId.SATELLITE);
+  } else {
+    infoToggle.style.display = 'none';
+    map.setMapTypeId(naver.maps.MapTypeId.NORMAL);
+  }
+  document.querySelectorAll('.mtype-btn').forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
 }
+
+function toggleInfoLayer(checked) {
+  map.setMapTypeId(checked ? naver.maps.MapTypeId.HYBRID : naver.maps.MapTypeId.SATELLITE);
+}
+
+/* ━━━━━━━━━━━━━━━━ 서울 구 경계선 ━━━━━━━━━━━━━━━━ */
+fetch('https://raw.githubusercontent.com/southkorea/seoul-maps/master/kostat/2013/json/seoul_municipalities_geo_simple.json')
+  .then(function(r) { return r.json(); })
+  .then(function(geojson) {
+    geojson.features.forEach(function(feature) {
+      var geom = feature.geometry;
+      var polys = geom.type === 'MultiPolygon' ? geom.coordinates : [geom.coordinates];
+      polys.forEach(function(poly) {
+        poly.forEach(function(ring) {
+          new naver.maps.Polyline({
+            map: map,
+            path: ring.map(function(c) { return new naver.maps.LatLng(c[1], c[0]); }),
+            strokeColor: '#ffffff',
+            strokeOpacity: 0.85,
+            strokeWeight: 1.5,
+            strokeStyle: 'solid',
+            clickable: false
+          });
+        });
+      });
+    });
+  });
 
 /* 지도 빈 곳 클릭 → 패널 닫기 */
 naver.maps.Event.addListener(map, 'click', function() {
