@@ -1,54 +1,41 @@
-# SEOUL SLUM MAP — 재구현 계획
+# SEOUL SLUM MAP — 바이브코딩 플랜
 
-## 레퍼런스 측정값 (seoul-population.netlify.app)
-- 헤더: 56px / 타이틀 font-size 16px, weight 300, letter-spacing 0.14em, uppercase
-- 우 패널: 296px / transition 0.28s cubic-bezier(0.4,0,0.2,1)
-- 패널 마을명: 22px, weight 900
-- 지도 타입 토글: 상단 중앙 고정, pill 형태
-- 하단 바: 40px, background #0f0f14
+## 현재 상태
+- 19개 마을 핀 좌표 Google Maps 주소 기반으로 정확히 수정 완료
+- 네이버 지도 API 정상 작동 (`oapi.map.naver.com`, `ncpKeyId`)
+- GitHub → Netlify 자동 배포 / URL: https://seoul-slum-mappp.netlify.app
 
-## 레이아웃 구조
-```
-[헤더 56px — SEOUL SLUM MAP + 부제]
-[사이드바 220px | 네이버 지도 (나머지 전체)]
-[하단 바 40px — 비움]
-[우 패널 296px — 마커 클릭 시 오버레이]
-```
+## 스택
+- 정적 HTML/CSS/JS (빌드 도구 없음)
+- 네이버 지도 API v3 (Maps Application, ncpKeyId: ohcwq9v21c)
+- Netlify 호스팅, GitHub 소스 (main 브랜치 push → 자동 배포)
 
-## 헤더
-- 좌: `SEOUL SLUM MAP` (weight 300, letter-spacing 0.14em, uppercase, #111827)
-- 부제: `서울시 달동네 · 판자촌 위치 현황 지도` (10px, #9ca3af)
+---
 
-## 왼쪽 사이드바 (항상 표시)
-- 레이블: "마을 선택" (10px, #9ca3af, uppercase)
-- 19개 마을 리스트 아이템: 컬러 dot + 마을명 + 자치구
-- 클릭 → 지도 해당 위치 이동 + 우 패널 오픈 + 해당 마커 강조
+## 다음 작업 우선순위
 
-## 네이버 지도
-- API: `ncpClientId` 입력 필요 (index.html 1번째 줄 교체)
-- 기본 타입: 지형지도(NORMAL) / 위성지도(HYBRID) 토글
-- 마커: 커스텀 HTML 원형 (14px 기본 → hover 20px)
-  - 🔴 `#E53935` 불법건축물 / 🟢 `#43A047` 합법건축물
-- 마커 hover → tooltip + 마커 확대
-- 마커 click → selectVillage() 호출
+### P1 — 마을 사진 추가
+- `images/{마을명}.jpg` 추가 시 패널에 자동 표시 (코드 이미 대응)
+- 사진 없으면 placeholder div 유지
 
-## 우 패널 (클릭 전 숨김, 클릭 후 슬라이드인)
-1. 마을명 22px / 자치구·동 11px #9ca3af / 분류 배지
-2. 사진 200px (`images/{마을명}.jpg` → 없으면 placeholder)
-3. 설명 13px, line-height 1.85
-4. 정보 테이블: 주소 / 형성 시기 / 규모
+### P2 — 마을 정보 보강
+- desc 심화: 현재 거주 현황, 철거/보존 일정
+- 형성 연도·가구수 실데이터로 교체
 
-## API Key 교체 위치
-```
-index.html 상단:
-ncpClientId=YOUR_NAVER_CLIENT_ID  ← 본인 키로 교체
-```
+### P3 — 필터 기능
+- 불법/합법 건축물 토글
+- 구별 필터 (선택)
 
-## 파일 구조
-```
-seoul-slum-map/
-├── index.html
-└── images/
-    ├── 구룡마을.jpg
-    └── ...
-```
+### P4 — 모바일 반응형
+- 768px 미만: 사이드바 하단 이동, 패널 풀스크린
+
+### P5 — 아카이브 심화
+- 마을별 역사 타임라인 슬라이더
+- 관련 기사·자료 외부 링크
+
+---
+
+## 미결 항목 (답변 대기)
+- 영어 병기 여부
+- 공개 범위 (개인 / 학술 / 대중)
+- 철거 현황 색상 구분 추가 여부
