@@ -6,7 +6,7 @@
   <title>SEOUL SLUM MAP</title>
 
   <script type="text/javascript"
-    src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=ohcwq9v21c">
+    src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=ohcwq9v21c&submodules=panorama">
   </script>
 
   <style>
@@ -106,50 +106,72 @@
     .v-gu      { font-size: 10.5px; color: #9ca3af; margin-top: 1px; }
 
     /* ── 지도 래퍼 ───────────────────────────── */
-    #map-wrapper {
-      flex: 1;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    #map { flex: 1; width: 100%; min-height: 0; }
-    #map-wrapper.roadview-on #map { flex: 0 0 50%; }
+    #map-wrapper { flex: 1; position: relative; overflow: hidden; }
+    #map { width: 100%; height: 100%; }
 
-    /* 로드뷰 패널 */
-    #pano-wrap {
+    /* 로드뷰 — 위치 선택 모드 */
+    #map-wrapper.rv-select { cursor: crosshair; }
+    #road-hint {
       display: none;
-      flex: 0 0 50%;
-      position: relative;
+      position: absolute;
+      bottom: 24px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 200;
+      background: rgba(0,0,0,0.68);
+      color: #fff;
+      padding: 9px 22px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    #map-wrapper.rv-select #road-hint { display: block; }
+
+    /* 로드뷰 — 전체화면 파노라마 */
+    #pano-full {
+      display: none;
+      position: absolute;
+      inset: 0;
+      z-index: 10;
       background: #111;
     }
-    #map-wrapper.roadview-on #pano-wrap { display: block; }
+    #map-wrapper.rv-pano #pano-full { display: block; }
     #pano { width: 100%; height: 100%; }
+
+    /* 로드뷰 — 미니맵 (map 엘리먼트를 좌하단 소형으로) */
+    #map-wrapper.rv-pano #map {
+      position: absolute !important;
+      width: 210px !important;
+      height: 158px !important;
+      top: auto !important; right: auto !important;
+      bottom: 20px; left: 20px;
+      z-index: 20;
+      border: 2.5px solid rgba(255,255,255,0.85);
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.55);
+      cursor: pointer;
+    }
+
+    /* 닫기 버튼 */
     #pano-close {
+      display: none;
       position: absolute;
-      top: 10px; right: 10px;
-      z-index: 200;
+      top: 14px; right: 14px;
+      z-index: 30;
       background: rgba(0,0,0,0.6);
       color: #fff;
       border: none;
       border-radius: 20px;
-      padding: 5px 12px;
+      padding: 6px 14px;
       font-size: 11px;
       font-weight: 700;
       cursor: pointer;
       white-space: nowrap;
+      align-items: center; gap: 5px;
     }
     #pano-close:hover { background: rgba(0,0,0,0.85); }
-    #pano-hint {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      color: #aaa;
-      font-size: 13px;
-      text-align: center;
-      pointer-events: none;
-      line-height: 1.6;
-    }
+    #map-wrapper.rv-pano #pano-close { display: flex; }
 
     /* 지도 타입 토글 */
     #map-type-ctrl {
@@ -373,12 +395,16 @@
 
     <div id="map"></div>
 
-    <!-- 로드뷰 패널 -->
-    <div id="pano-wrap">
+    <!-- 로드뷰: 위치선택 힌트 -->
+    <div id="road-hint">🚶 보고 싶은 위치를 클릭하세요</div>
+
+    <!-- 로드뷰: 전체화면 파노라마 -->
+    <div id="pano-full">
       <div id="pano"></div>
-      <button id="pano-close" onclick="exitRoadView()">✕ 닫기</button>
-      <div id="pano-hint">지도에서 위치를 클릭하세요</div>
     </div>
+
+    <!-- 로드뷰: 닫기 (map-wrapper 위에 절대 포지션) -->
+    <button id="pano-close" onclick="exitRoadView()">✕ 지도로 돌아가기</button>
   </div>
 </div>
 
@@ -742,38 +768,72 @@ function toggleInfoLayer(checked) {
 }
 
 /* ━━━━━━━━━━━━━━━━ 로드뷰 ━━━━━━━━━━━━━━━━ */
-var roadViewOn   = false;
-var panorama     = null;
-var streetLayer  = new naver.maps.StreetLayer();
+var rvState     = 'off';   /* 'off' | 'select' | 'pano' */
+var panorama    = null;
+var rvMarker    = null;
+var streetLayer = new naver.maps.StreetLayer();
+var savedZoom, savedCenter;
 
 function toggleRoadView(btn) {
-  roadViewOn ? exitRoadView() : enterRoadView(btn);
+  rvState === 'off' ? enterSelectMode(btn) : exitRoadView();
 }
 
-function enterRoadView(btn) {
-  roadViewOn = true;
+/* 1단계: 위치 선택 모드 */
+function enterSelectMode(btn) {
+  rvState = 'select';
   btn.classList.add('active');
-  document.getElementById('map-wrapper').classList.add('roadview-on');
+  savedZoom   = map.getZoom();
+  savedCenter = map.getCenter();
   streetLayer.setMap(map);
+  document.getElementById('map-wrapper').classList.add('rv-select');
+}
 
+/* 2단계: 파노라마 전체화면 */
+function enterPanoMode(coord) {
+  rvState = 'pano';
+  var w = document.getElementById('map-wrapper');
+  w.classList.remove('rv-select');
+  w.classList.add('rv-pano');
+
+  /* 미니맵 마커 */
+  if (rvMarker) {
+    rvMarker.setPosition(coord);
+    rvMarker.setMap(map);
+  } else {
+    rvMarker = new naver.maps.Marker({ map: map, position: coord, zIndex: 200 });
+  }
+  map.setCenter(coord);
+  map.setZoom(16);
+  setTimeout(function() { naver.maps.Event.trigger(map, 'resize'); }, 80);
+
+  /* 파노라마 */
   if (!panorama) {
     panorama = new naver.maps.Panorama('pano', {
-      position: map.getCenter(),
+      position: coord,
       pov: { pan: 0, tilt: 0, fov: 100 }
     });
-    naver.maps.Event.addListener(panorama, 'pano_changed', function() {
-      document.getElementById('pano-hint').style.display = 'none';
+    /* 파노라마 내 이동 → 미니맵 마커/중심 갱신 */
+    naver.maps.Event.addListener(panorama, 'position_changed', function() {
+      var pos = panorama.getPosition();
+      if (rvMarker) rvMarker.setPosition(pos);
+      map.setCenter(pos);
     });
   } else {
-    panorama.setPosition(map.getCenter());
+    panorama.setPosition(coord);
   }
 }
 
+/* 종료: 지도 복원 */
 function exitRoadView() {
-  roadViewOn = false;
+  rvState = 'off';
   document.querySelector('.rv-btn').classList.remove('active');
-  document.getElementById('map-wrapper').classList.remove('roadview-on');
+  var w = document.getElementById('map-wrapper');
+  w.classList.remove('rv-select', 'rv-pano');
   streetLayer.setMap(null);
+  if (rvMarker) { rvMarker.setMap(null); rvMarker = null; }
+  if (savedCenter) map.setCenter(savedCenter);
+  if (savedZoom)   map.setZoom(savedZoom);
+  setTimeout(function() { naver.maps.Event.trigger(map, 'resize'); }, 80);
 }
 
 /* ━━━━━━━━━━━━━━━━ 서울 구 경계선 ━━━━━━━━━━━━━━━━ */
@@ -801,9 +861,13 @@ fetch('https://raw.githubusercontent.com/southkorea/seoul-maps/master/kostat/201
 
 /* 지도 클릭 */
 naver.maps.Event.addListener(map, 'click', function(e) {
-  if (roadViewOn) {
-    panorama.setPosition(e.coord);
-    document.getElementById('pano-hint').style.display = 'none';
+  if (rvState === 'select') {
+    enterPanoMode(e.coord);
+  } else if (rvState === 'pano') {
+    /* 미니맵 클릭 → 파노라마 이동 */
+    if (panorama) panorama.setPosition(e.coord);
+    if (rvMarker) rvMarker.setPosition(e.coord);
+    map.setCenter(e.coord);
   } else {
     closePanel();
   }
