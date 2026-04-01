@@ -110,8 +110,46 @@
       flex: 1;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
-    #map { width: 100%; height: 100%; }
+    #map { flex: 1; width: 100%; min-height: 0; }
+    #map-wrapper.roadview-on #map { flex: 0 0 50%; }
+
+    /* 로드뷰 패널 */
+    #pano-wrap {
+      display: none;
+      flex: 0 0 50%;
+      position: relative;
+      background: #111;
+    }
+    #map-wrapper.roadview-on #pano-wrap { display: block; }
+    #pano { width: 100%; height: 100%; }
+    #pano-close {
+      position: absolute;
+      top: 10px; right: 10px;
+      z-index: 200;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    #pano-close:hover { background: rgba(0,0,0,0.85); }
+    #pano-hint {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      color: #aaa;
+      font-size: 13px;
+      text-align: center;
+      pointer-events: none;
+      line-height: 1.6;
+    }
 
     /* 지도 타입 토글 */
     #map-type-ctrl {
@@ -141,6 +179,8 @@
     }
     .mtype-btn.active { background: #111827; color: #fff; }
     .mtype-btn:hover:not(.active) { background: #f3f4f6; }
+    .mtype-sep { width: 1px; background: #e5e7eb; margin: 4px 3px; }
+    .mtype-btn.rv-btn.active { background: #1d4ed8; color: #fff; }
 
     /* 정보 표시 토글 */
     #info-toggle {
@@ -316,6 +356,8 @@
     <div id="map-type-ctrl">
       <button class="mtype-btn active" onclick="setMapType('normal', this)">지형지도</button>
       <button class="mtype-btn"        onclick="setMapType('satellite', this)">위성지도</button>
+      <span class="mtype-sep"></span>
+      <button class="mtype-btn rv-btn" onclick="toggleRoadView(this)">로드뷰</button>
     </div>
 
     <!-- 정보 표시 토글 (위성지도 전용) -->
@@ -330,6 +372,13 @@
     </div>
 
     <div id="map"></div>
+
+    <!-- 로드뷰 패널 -->
+    <div id="pano-wrap">
+      <div id="pano"></div>
+      <button id="pano-close" onclick="exitRoadView()">✕ 닫기</button>
+      <div id="pano-hint">지도에서 위치를 클릭하세요</div>
+    </div>
   </div>
 </div>
 
@@ -684,12 +733,47 @@ function setMapType(type, btn) {
     infoToggle.style.display = 'none';
     map.setMapTypeId(naver.maps.MapTypeId.NORMAL);
   }
-  document.querySelectorAll('.mtype-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.querySelectorAll('.mtype-btn:not(.rv-btn)').forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
 }
 
 function toggleInfoLayer(checked) {
   map.setMapTypeId(checked ? naver.maps.MapTypeId.HYBRID : naver.maps.MapTypeId.SATELLITE);
+}
+
+/* ━━━━━━━━━━━━━━━━ 로드뷰 ━━━━━━━━━━━━━━━━ */
+var roadViewOn   = false;
+var panorama     = null;
+var streetLayer  = new naver.maps.StreetLayer();
+
+function toggleRoadView(btn) {
+  roadViewOn ? exitRoadView() : enterRoadView(btn);
+}
+
+function enterRoadView(btn) {
+  roadViewOn = true;
+  btn.classList.add('active');
+  document.getElementById('map-wrapper').classList.add('roadview-on');
+  streetLayer.setMap(map);
+
+  if (!panorama) {
+    panorama = new naver.maps.Panorama('pano', {
+      position: map.getCenter(),
+      pov: { pan: 0, tilt: 0, fov: 100 }
+    });
+    naver.maps.Event.addListener(panorama, 'pano_changed', function() {
+      document.getElementById('pano-hint').style.display = 'none';
+    });
+  } else {
+    panorama.setPosition(map.getCenter());
+  }
+}
+
+function exitRoadView() {
+  roadViewOn = false;
+  document.querySelector('.rv-btn').classList.remove('active');
+  document.getElementById('map-wrapper').classList.remove('roadview-on');
+  streetLayer.setMap(null);
 }
 
 /* ━━━━━━━━━━━━━━━━ 서울 구 경계선 ━━━━━━━━━━━━━━━━ */
@@ -715,9 +799,14 @@ fetch('https://raw.githubusercontent.com/southkorea/seoul-maps/master/kostat/201
     });
   });
 
-/* 지도 빈 곳 클릭 → 패널 닫기 */
-naver.maps.Event.addListener(map, 'click', function() {
-  closePanel();
+/* 지도 클릭 */
+naver.maps.Event.addListener(map, 'click', function(e) {
+  if (roadViewOn) {
+    panorama.setPosition(e.coord);
+    document.getElementById('pano-hint').style.display = 'none';
+  } else {
+    closePanel();
+  }
 });
 
 </script>
