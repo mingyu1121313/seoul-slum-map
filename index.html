@@ -1057,11 +1057,19 @@ function toggleSection(id) {
   try { cached = JSON.parse(localStorage.getItem(CACHE_KEY)); } catch(e) {}
 
   function createMoatownMarkers(coords) {
+    document.getElementById('s3-list').innerHTML = '';
     MOATOWN_DATA.forEach(function(m) {
       var c = coords[m.id];
-      if (!c || !c.lat) return;
-      createMarker(m, 'type3', c.lat, c.lng);
+      if (c && c.lat) {
+        m._lat = c.lat; m._lng = c.lng;
+        if (!m.name) m.name = m.addr;
+        createMarker(m, 'type3', c.lat, c.lng);
+        addSidebarItem(m, 'type3', 's3-list', true);
+      } else {
+        addSidebarItem(m, 'type3', 's3-list', false);
+      }
     });
+    document.getElementById('s3-count').textContent = layerMarkers.type3.length + '/' + MOATOWN_DATA.length + '개';
   }
 
   if (cached) { createMoatownMarkers(cached); return; }
