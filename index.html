@@ -996,7 +996,6 @@ function toggleSection(id) {
         addSidebarItem(item, 'type1', 's1-list', false);
       }
     });
-    document.getElementById('s1-count').textContent = layerMarkers.type1.length + '/' + TYPE1_GEOCODE_TARGETS.length + '개';
 
     TYPE2_GEOCODE_TARGETS.forEach(function(item) {
       var c = coords.type2 && coords.type2[item.id];
