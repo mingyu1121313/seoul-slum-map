@@ -541,7 +541,7 @@ var TYPE1_GEOCODE_TARGETS = [
 ];
 
 var TYPE2_GEOCODE_TARGETS = [
-  {id:"jb01",name:"상계4-1(희망촌)",gu:"노원구",dong:"상계4동",subtype:"정비형",query:"서울특별시 노원구 상계동 산61-12"},
+  {id:"jb01",name:"상계4-1(희망촌)",gu:"노원구",dong:"상계4동",subtype:"정비형",query:"서울특별시 노원구 상계동 산161-13"},
   {id:"jb02",name:"창천",gu:"서대문구",dong:"창천동",subtype:"정비형",query:"서울특별시 서대문구 창천동 240"},
   {id:"jb03",name:"현저2",gu:"서대문구",dong:"현저동",subtype:"정비형",query:"서울특별시 서대문구 현저동 1-10"},
   {id:"jb04",name:"중곡4-1",gu:"광진구",dong:"중곡동",subtype:"정비형",query:"서울특별시 광진구 중곡동 72-17"},
@@ -981,7 +981,7 @@ function toggleSection(id) {
 
 /* ━━━━━━━━━━━━━━━━ type1+type2 초기화 ━━━━━━━━━━━━━━━━ */
 (function initType1Type2() {
-  var CACHE_KEY = 'slum_coords_v3';
+  var CACHE_KEY = 'slum_coords_v4';
   var cached = null;
   try { cached = JSON.parse(localStorage.getItem(CACHE_KEY)); } catch(e) {}
 
