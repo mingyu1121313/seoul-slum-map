@@ -529,7 +529,7 @@
 /* ━━━━━━━━━━━━━━━━ 데이터 ━━━━━━━━━━━━━━━━ */
 
 var TYPE1_GEOCODE_TARGETS = [
-  {id:"mh01",name:"구룡마을",gu:"강남구",dong:"개포동",address:"개포동 양재대로 478일대",area_m2:266502,formed:"1980년대",households:"약 1,200가구",status:"개발진행중",note:"SH공사 공영개발. 2025년 소유권 이전 완료. 2026년 하반기 철거 착수, 2029년 완공 목표. 최고 25층 3887가구.",query:"서울특별시 강남구 개포동 양재대로 478"},
+  {id:"mh01",name:"구룡마을",gu:"강남구",dong:"개포동",address:"개포동 양재대로 478일대",area_m2:266502,formed:"1980년대",households:"약 1,200가구",status:"개발진행중",note:"SH공사 공영개발. 2025년 소유권 이전 완료. 2026년 하반기 철거 착수, 2029년 완공 목표. 최고 25층 3887가구.",query:"서울특별시 강남구 개포동 573-2"},
   {id:"mh02",name:"백사마을",gu:"노원구",dong:"중계동",address:"중계동 산104번지 일대",area_m2:186965,formed:"1967년",households:"약 1,200가구",status:"개발진행중",note:"1967년 청계천·용산 철거민 강제이주로 형성. 2025년 정비계획 확정·철거 착수. GS건설(네이처시티 자이), 2029년 준공 목표.",query:"서울특별시 노원구 중계동 산104"},
   {id:"mh03",name:"재건마을",gu:"강남구",dong:"개포동",address:"개포로25길 32일대",area_m2:null,formed:"1980년대",households:"약 300가구",status:"개발확정_주민협의중",note:"원래 포이동 266번지. 1980년대 영동대교 주변 빈민 강제이주. 2011년 대형 화재 후 재건마을 개칭.",query:"서울특별시 강남구 개포로25길 32"},
   {id:"mh04",name:"헌인마을",gu:"서초구",dong:"내곡동",address:"내곡동 우면산 일대",area_m2:null,formed:"1961년",households:"소규모",status:"개발검토중",note:"한센병 완치자 사회복귀 정착촌으로 1961년 출발. 서초구 내 이례적 존재.",query:"서울특별시 서초구 내곡동"},
@@ -978,7 +978,7 @@ function toggleSection(id) {
 
 /* ━━━━━━━━━━━━━━━━ type1+type2 초기화 ━━━━━━━━━━━━━━━━ */
 (function initType1Type2() {
-  var CACHE_KEY = 'slum_coords_v1';
+  var CACHE_KEY = 'slum_coords_v2';
   var cached = null;
   try { cached = JSON.parse(localStorage.getItem(CACHE_KEY)); } catch(e) {}
 
