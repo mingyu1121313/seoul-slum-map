@@ -1104,10 +1104,10 @@ function toggleSection(id) {
   function createMoatownMarkers(coords) {
     document.getElementById('s3-list').innerHTML = '';
     MOATOWN_DATA.forEach(function(m) {
+      if (!m.name) m.name = m.addr;
       var c = coords[m.id];
       if (c && c.lat) {
         m._lat = c.lat; m._lng = c.lng;
-        if (!m.name) m.name = m.addr;
         createMarker(m, 'type3', c.lat, c.lng);
         addSidebarItem(m, 'type3', 's3-list', true);
       } else {
