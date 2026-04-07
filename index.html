@@ -151,6 +151,17 @@
 
     /* ── 지도 래퍼 ───────────────────────────── */
     #map-wrapper { flex: 1; position: relative; overflow: hidden; }
+    #site-footer {
+      background: #111;
+      color: #aaa;
+      font-size: 11px;
+      line-height: 1.7;
+      padding: 10px 20px;
+      flex-shrink: 0;
+      border-top: 1px solid #333;
+    }
+    #site-footer strong { color: #ddd; }
+    #site-footer .footer-conclusion { color: #e5e7eb; margin-top: 4px; }
     #map { width: 100%; height: 100%; }
 
     /* 로드뷰 — 위치 선택 모드 */
@@ -1300,6 +1311,13 @@ naver.maps.Event.addListener(map, 'click', function(e) {
 });
 
 </script>
+
+<div id="site-footer">
+  <strong>「도시 및 주거환경정비법」 제2조 제2호</strong> &nbsp;
+  "정비사업"이란 이 법에서 정한 절차에 따라 도시기능을 회복하기 위하여 정비구역에서 정비기반시설을 정비하거나 주택 등 건축물을 개량 또는 건설하는 다음 각 목의 사업을 말한다.
+  <strong>가. 주거환경개선사업:</strong> 도시저소득 주민이 집단거주하는 지역으로서 정비기반시설이 극히 열악하고 노후ㆍ불량건축물이 과도하게 밀집한 지역의 주거환경을 개선하거나 단독주택 및 다세대주택이 밀집한 지역에서 정비기반시설과 공동이용시설 확충을 통하여 주거환경을 보전ㆍ정비ㆍ개량하기 위한 사업
+  <div class="footer-conclusion">→ 주거환경개선사업에 지정된 구역은 노후불량주거지다.</div>
+</div>
 
 <!-- 지오코딩 진행 토스트 -->
 <div id="geocode-toast" style="display:none;position:fixed;bottom:52px;left:50%;transform:translateX(-50%);background:rgba(30,30,50,0.92);color:#fff;padding:8px 20px;border-radius:20px;font-size:12px;font-weight:600;z-index:999;white-space:nowrap;">⏳ 좌표 로딩 중... <span id="geocode-prog"></span></div>
