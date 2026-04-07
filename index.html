@@ -445,7 +445,7 @@
       <div style="padding:10px 16px;font-size:11px;color:#6b7280;">지도에서 마커를 클릭하세요</div>
     </div>
     <div class="sidebar-section-label" onclick="toggleSection('s4')" style="cursor:pointer;user-select:none;">
-      🟣 임의 지정 <span id="s4-count"></span>
+      🟣 미분류 <span id="s4-count"></span>
     </div>
     <div id="s4-list"></div>
   </div>
@@ -487,9 +487,9 @@
       <hr class="legend-sep">
       <label class="legend-row legend-toggle">
         <input type="checkbox" id="chk-type4" checked onchange="toggleLayer('type4', this.checked)">
-        <span style="font-size:11px;font-weight:700;color:#222;">임의 지정</span>
+        <span style="font-size:11px;font-weight:700;color:#222;">미분류</span>
       </label>
-      <div class="legend-row" style="padding-left:4px;"><span class="legend-dot" style="background:#8B5CF6;"></span>10개소</div>
+      <div class="legend-row" style="padding-left:4px;"><span class="legend-dot" style="background:#8B5CF6;"></span>2개소</div>
     </div>
 
     <div id="map"></div>
@@ -555,7 +555,15 @@ var TYPE1_GEOCODE_TARGETS = [
   {id:"mh06",name:"달터마을",gu:"강남구",dong:"개포동",address:"개포동 156번지 달터근린공원 내",area_m2:null,formed:"1980년대",households:"소규모",status:"미정",note:"달터근린공원 내부까지 무허가 건물 점유.",photo:"images/달터마을.jpg",query:"서울특별시 강남구 개포동 156"},
   {id:"mh07",name:"현저동 무허가주거지",gu:"서대문구",dong:"현저동",address:"현저동 1-5번지일대",area_m2:15142,formed:"1960~70년대",households:"절반 이상 빈집",status:"모아타운지정완료",note:"일제강점기 도시빈민 무허가 정착. 2024년 모아타운 지정. 노후건물 100%, 무허가 85%.",photo:"images/현저동.jpg",query:"서울특별시 서대문구 현저동 1-5"},
   {id:"mh08",name:"사근동 꽃담벽화마을",gu:"성동구",dong:"사근동",address:"사근동 293번지일대 살곶이2나길",area_m2:null,formed:"1960~70년대",households:"소규모",status:"신속통합기획확정",note:"청계천변 판자촌 기원. 구릉지 고립 필지. 신속통합기획(35층 526세대) 확정.",photo:"images/꽃담벽화마을.jpg",query:"서울특별시 성동구 사근동 293"},
-  {id:"mh09",name:"정릉골",gu:"성북구",dong:"정릉동",address:"보국문로29길 98-1일대",area_m2:null,formed:"1960년대",households:"수백가구",status:"재개발추진중",note:"1960년대 청계천·북아현동 판자촌 정리 과정에서 산기슭으로 밀려난 주민 형성.",photo:"images/정릉골.jpg",query:"서울특별시 성북구 보국문로29길 98-1"}
+  {id:"mh09",name:"정릉골",gu:"성북구",dong:"정릉동",address:"보국문로29길 98-1일대",area_m2:null,formed:"1960년대",households:"수백가구",status:"재개발추진중",note:"1960년대 청계천·북아현동 판자촌 정리 과정에서 산기슭으로 밀려난 주민 형성.",photo:"images/정릉골.jpg",query:"서울특별시 성북구 보국문로29길 98-1"},
+  {id:"lg02",name:"양지마을",gu:"노원구",dong:"상계동",subtype:"무허가밀집형",photo:"images/양지마을.jpg",query:"서울특별시 노원구 상계동 1361-5"},
+  {id:"lg03",name:"합동마을",gu:"노원구",dong:"상계동",subtype:"무허가밀집형",photo:"images/합동마을.jpg",query:"서울특별시 노원구 상계로35길 71"},
+  {id:"lg04",name:"별빛마을",gu:"노원구",dong:"상계동",subtype:"무허가밀집형",photo:"images/별빛마을.jpg",query:"서울특별시 노원구 상계로37라길 16-16"},
+  {id:"lg05",name:"북정마을",gu:"성북구",dong:"성북동",subtype:"무허가밀집형",photo:"images/북정마을.jpg",query:"서울특별시 성북구 성북로23길 132-3"},
+  {id:"lg07",name:"성뒤마을",gu:"서초구",dong:"우면동",subtype:"무허가밀집형",photo:"images/성뒤마을.jpg",query:"서울특별시 서초구 남부순환로292길 27"},
+  {id:"lg08",name:"두레마을",gu:"서초구",dong:"방배동",subtype:"무허가밀집형",photo:"images/두레마을.jpg",query:"서울특별시 서초구 방배동 998"},
+  {id:"lg09",name:"응봉마을",gu:"서초구",dong:"방배동",subtype:"무허가밀집형",photo:"images/응봉마을.jpg",query:"서울특별시 서초구 방배동 981-33"},
+  {id:"lg10",name:"화훼마을",gu:"송파구",dong:"거여동",subtype:"무허가밀집형",photo:"images/화훼마을.jpg",query:"서울특별시 송파구 성남대로 1565"}
 ];
 
 var TYPE2_GEOCODE_TARGETS = [
@@ -580,16 +588,8 @@ var TYPE2_GEOCODE_TARGETS = [
 ];
 
 var TYPE4_GEOCODE_TARGETS = [
-  {id:"lg02",name:"양지마을",gu:"노원구",dong:"상계동",subtype:"임의지정",photo:"images/양지마을.jpg",query:"서울특별시 노원구 상계동 1361-5"},
-  {id:"lg03",name:"합동마을",gu:"노원구",dong:"상계동",subtype:"임의지정",photo:"images/합동마을.jpg",query:"서울특별시 노원구 상계로35길 71"},
-  {id:"lg04",name:"별빛마을",gu:"노원구",dong:"상계동",subtype:"임의지정",photo:"images/별빛마을.jpg",query:"서울특별시 노원구 상계로37라길 16-16"},
-  {id:"lg05",name:"북정마을",gu:"성북구",dong:"성북동",subtype:"임의지정",photo:"images/북정마을.jpg",query:"서울특별시 성북구 성북로23길 132-3"},
-  {id:"lg06",name:"수일시장",gu:"은평구",dong:"수색동",subtype:"임의지정",photo:"images/수일시장.jpg",query:"서울특별시 은평구 수색로16길 5-1"},
-  {id:"lg07",name:"성뒤마을",gu:"서초구",dong:"우면동",subtype:"임의지정",photo:"images/성뒤마을.jpg",query:"서울특별시 서초구 남부순환로292길 27"},
-  {id:"lg08",name:"두레마을",gu:"서초구",dong:"방배동",subtype:"임의지정",photo:"images/두레마을.jpg",query:"서울특별시 서초구 방배동 998"},
-  {id:"lg09",name:"응봉마을",gu:"서초구",dong:"방배동",subtype:"임의지정",photo:"images/응봉마을.jpg",query:"서울특별시 서초구 방배동 981-33"},
-  {id:"lg10",name:"화훼마을",gu:"송파구",dong:"거여동",subtype:"임의지정",photo:"images/화훼마을.jpg",query:"서울특별시 송파구 성남대로 1565"},
-  {id:"lg11",name:"신금호동",gu:"성동구",dong:"금호동2가",subtype:"임의지정",photo:"images/신금호동.jpg",query:"서울특별시 성동구 금호동2가 500-9"}
+  {id:"lg06",name:"수일시장",gu:"은평구",dong:"수색동",subtype:"미분류",photo:"images/수일시장.jpg",query:"서울특별시 은평구 수색로16길 5-1"},
+  {id:"lg11",name:"신금호동",gu:"성동구",dong:"금호동2가",subtype:"미분류",photo:"images/신금호동.jpg",query:"서울특별시 성동구 금호동2가 500-9"}
 ];
 
 var TYPE2_NO_COORDS = [
@@ -975,7 +975,7 @@ function openPanel(item, type) {
   } else if (type === 'type4') {
     document.getElementById('p-name').textContent     = item.name;
     document.getElementById('p-location').textContent = item.gu + ' · ' + item.dong;
-    badge.textContent = '임의 지정'; badge.className = 'badge badge-type4';
+    badge.textContent = '미분류'; badge.className = 'badge badge-type4';
     if (item.photo) {
       document.getElementById('p-photo').innerHTML = '<img src="' + item.photo + '" alt="' + item.name + '" onerror="this.parentNode.innerHTML=\'\'"/>';
     }
@@ -1016,7 +1016,7 @@ function toggleSection(id) {
 
 /* ━━━━━━━━━━━━━━━━ type1+type2 초기화 ━━━━━━━━━━━━━━━━ */
 (function initType1Type2() {
-  var CACHE_KEY = 'slum_coords_v5';
+  var CACHE_KEY = 'slum_coords_v6';
   var cached = null;
   try { cached = JSON.parse(localStorage.getItem(CACHE_KEY)); } catch(e) {}
 
@@ -1055,7 +1055,7 @@ function toggleSection(id) {
     });
 
     // ── 무허가 밀집형 9 ──
-    makeSubsection('s2b-items', '무허가 밀집형 9', function(wrId) {
+    makeSubsection('s2b-items', '무허가 밀집형 ' + TYPE1_GEOCODE_TARGETS.length, function(wrId) {
       TYPE1_GEOCODE_TARGETS.forEach(function(item) {
         var c = coords.type1 && coords.type1[item.id];
         if (c && c.lat && c.lng) {
