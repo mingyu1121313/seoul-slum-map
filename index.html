@@ -970,7 +970,7 @@ function openPanel(item, type) {
     document.getElementById('p-location').textContent = item.gu + ' · ' + item.dong;
     badge.textContent = '임의 지정'; badge.className = 'badge badge-type4';
     if (item.photo) {
-      document.getElementById('p-photo').innerHTML = '<img src="' + item.photo + '" alt="' + item.name + '" onerror="this.parentNode.innerHTML=''"/>';
+      document.getElementById('p-photo').innerHTML = '<img src="' + item.photo + '" alt="' + item.name + '" onerror="this.parentNode.innerHTML=\'\'"/>';
     }
     document.getElementById('village-body').style.display = 'block';
     document.getElementById('p-desc').textContent       = item.note || '';
