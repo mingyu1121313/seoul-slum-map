@@ -1022,45 +1022,56 @@ function toggleSection(id) {
   function buildMarkers(coords) {
     document.getElementById('s2-list').innerHTML = '';
 
+    function makeSubsection(wrId, title, fillFn) {
+      var hd = document.createElement('div');
+      hd.className = 'sidebar-subsection-label';
+      hd.style.cssText += 'cursor:pointer;user-select:none;';
+      hd.innerHTML = title + ' <span class="sub-arrow">▾</span>';
+      document.getElementById('s2-list').appendChild(hd);
+      var wrap = document.createElement('div');
+      wrap.id = wrId;
+      document.getElementById('s2-list').appendChild(wrap);
+      hd.onclick = function() {
+        var open = wrap.style.display !== 'none';
+        wrap.style.display = open ? 'none' : '';
+        hd.querySelector('.sub-arrow').textContent = open ? '▸' : '▾';
+      };
+      fillFn(wrId);
+    }
+
     // ── 주거환경개선사업 정비구역 (정비형 18) ──
-    var hd1 = document.createElement('div');
-    hd1.className = 'sidebar-subsection-label';
-    hd1.textContent = '주거환경개선사업 정비구역 (정비형 18)';
-    document.getElementById('s2-list').appendChild(hd1);
-    TYPE2_GEOCODE_TARGETS.forEach(function(item) {
-      var c = coords.type2 && coords.type2[item.id];
-      if (c && c.lat && c.lng) {
-        item._lat = c.lat; item._lng = c.lng;
-        createMarker(item, 'type2', c.lat, c.lng);
-        addSidebarItem(item, 'type2', 's2-list', true);
-      } else {
-        addSidebarItem(item, 'type2', 's2-list', false);
-      }
+    makeSubsection('s2a-items', '주거환경개선사업 정비구역 (정비형 18)', function(wrId) {
+      TYPE2_GEOCODE_TARGETS.forEach(function(item) {
+        var c = coords.type2 && coords.type2[item.id];
+        if (c && c.lat && c.lng) {
+          item._lat = c.lat; item._lng = c.lng;
+          createMarker(item, 'type2', c.lat, c.lng);
+          addSidebarItem(item, 'type2', wrId, true);
+        } else {
+          addSidebarItem(item, 'type2', wrId, false);
+        }
+      });
     });
 
     // ── 무허가 밀집형 9 ──
-    var hd2 = document.createElement('div');
-    hd2.className = 'sidebar-subsection-label';
-    hd2.textContent = '무허가 밀집형 9';
-    document.getElementById('s2-list').appendChild(hd2);
-    TYPE1_GEOCODE_TARGETS.forEach(function(item) {
-      var c = coords.type1 && coords.type1[item.id];
-      if (c && c.lat && c.lng) {
-        item._lat = c.lat; item._lng = c.lng;
-        createMarker(item, 'type1', c.lat, c.lng);
-        addSidebarItem(item, 'type1', 's2-list', true);
-      } else {
-        addSidebarItem(item, 'type1', 's2-list', false);
-      }
+    makeSubsection('s2b-items', '무허가 밀집형 9', function(wrId) {
+      TYPE1_GEOCODE_TARGETS.forEach(function(item) {
+        var c = coords.type1 && coords.type1[item.id];
+        if (c && c.lat && c.lng) {
+          item._lat = c.lat; item._lng = c.lng;
+          createMarker(item, 'type1', c.lat, c.lng);
+          addSidebarItem(item, 'type1', wrId, true);
+        } else {
+          addSidebarItem(item, 'type1', wrId, false);
+        }
+      });
     });
 
     // ── 관리형 (좌표 미확정) ──
-    var hd3 = document.createElement('div');
-    hd3.className = 'sidebar-subsection-label';
-    hd3.textContent = '관리형 (좌표 미확정)';
-    document.getElementById('s2-list').appendChild(hd3);
-    TYPE2_NO_COORDS.forEach(function(item) {
-      addSidebarItem(item, 'type2', 's2-list', false);
+    makeSubsection('s2c-items', '관리형 (좌표 미확정)', function(wrId) {
+      TYPE2_NO_COORDS.forEach(function(item) {
+        addSidebarItem(item, 'type2', wrId, false);
+      });
     });
 
     // ── 임의 지정 ──
