@@ -353,6 +353,7 @@
     .badge-type1  { background: #E53935; }
     .badge-type2  { background: #F97316; }
     .badge-type3  { background: #3B82F6; }
+    .badge-type4  { background: #8B5CF6; }
 
     /* 사진 */
     #p-photo { width: 100%; height: 200px; overflow: hidden; background: #f3f4f6; }
@@ -435,6 +436,10 @@
     <div id="s3-list">
       <div style="padding:10px 16px;font-size:11px;color:#6b7280;">지도에서 마커를 클릭하세요</div>
     </div>
+    <div class="sidebar-section-label" onclick="toggleSection('s4')" style="cursor:pointer;user-select:none;">
+      🟣 임의 지정 <span id="s4-count"></span>
+    </div>
+    <div id="s4-list"></div>
   </div>
 
   <!-- 지도 -->
@@ -471,6 +476,12 @@
         <span style="font-size:11px;font-weight:700;color:#222;">모아타운</span>
       </label>
       <div class="legend-row" style="padding-left:4px;"><span class="legend-diamond"></span>지정구역 122개</div>
+      <hr class="legend-sep">
+      <label class="legend-row legend-toggle">
+        <input type="checkbox" id="chk-type4" checked onchange="toggleLayer('type4', this.checked)">
+        <span style="font-size:11px;font-weight:700;color:#222;">임의 지정</span>
+      </label>
+      <div class="legend-row" style="padding-left:4px;"><span class="legend-dot" style="background:#8B5CF6;"></span>10개소</div>
     </div>
 
     <div id="map"></div>
@@ -559,17 +570,19 @@ var TYPE2_GEOCODE_TARGETS = [
   {id:"jb16",name:"공덕1-1",gu:"마포구",dong:"공덕동",subtype:"정비형",query:"서울특별시 마포구 공덕동 1"},
   {id:"jb17",name:"상암2-1",gu:"마포구",dong:"상암동",subtype:"정비형",query:"서울특별시 마포구 상암동 1610"},
   {id:"jb18",name:"상암2-2",gu:"마포구",dong:"상암동",subtype:"정비형",query:"서울특별시 마포구 상암동 17-2"},
-  {id:"lg01",name:"희망촌",gu:"노원구",dong:"상계동",subtype:"legacy",query:"서울특별시 노원구 상계동 산161-12"},
-  {id:"lg02",name:"양지마을",gu:"노원구",dong:"상계동",subtype:"legacy",query:"서울특별시 노원구 상계동 1361-5"},
-  {id:"lg03",name:"합동마을",gu:"노원구",dong:"상계동",subtype:"legacy",query:"서울특별시 노원구 상계로35길 71"},
-  {id:"lg04",name:"별빛마을",gu:"노원구",dong:"상계동",subtype:"legacy",query:"서울특별시 노원구 상계로37라길 16-16"},
-  {id:"lg05",name:"북정마을",gu:"성북구",dong:"성북동",subtype:"legacy",query:"서울특별시 성북구 성북로23길 132-3"},
-  {id:"lg06",name:"수일시장",gu:"은평구",dong:"수색동",subtype:"legacy",query:"서울특별시 은평구 수색로16길 5-1"},
-  {id:"lg07",name:"성뒤마을",gu:"서초구",dong:"우면동",subtype:"legacy",query:"서울특별시 서초구 남부순환로292길 27"},
-  {id:"lg08",name:"두레마을",gu:"서초구",dong:"방배동",subtype:"legacy",query:"서울특별시 서초구 방배동 998"},
-  {id:"lg09",name:"응봉마을",gu:"서초구",dong:"방배동",subtype:"legacy",query:"서울특별시 서초구 방배동 981-33"},
-  {id:"lg10",name:"화훼마을",gu:"송파구",dong:"거여동",subtype:"legacy",query:"서울특별시 송파구 성남대로 1565"},
-  {id:"lg11",name:"신금호동",gu:"성동구",dong:"금호동2가",subtype:"legacy",query:"서울특별시 성동구 금호동2가 500-9"}
+];
+
+var TYPE4_GEOCODE_TARGETS = [
+  {id:"lg02",name:"양지마을",gu:"노원구",dong:"상계동",subtype:"임의지정",photo:"images/양지마을.jpg",query:"서울특별시 노원구 상계동 1361-5"},
+  {id:"lg03",name:"합동마을",gu:"노원구",dong:"상계동",subtype:"임의지정",photo:"images/합동마을.jpg",query:"서울특별시 노원구 상계로35길 71"},
+  {id:"lg04",name:"별빛마을",gu:"노원구",dong:"상계동",subtype:"임의지정",photo:"images/별빛마을.jpg",query:"서울특별시 노원구 상계로37라길 16-16"},
+  {id:"lg05",name:"북정마을",gu:"성북구",dong:"성북동",subtype:"임의지정",photo:"images/북정마을.jpg",query:"서울특별시 성북구 성북로23길 132-3"},
+  {id:"lg06",name:"수일시장",gu:"은평구",dong:"수색동",subtype:"임의지정",photo:"images/수일시장.jpg",query:"서울특별시 은평구 수색로16길 5-1"},
+  {id:"lg07",name:"성뒤마을",gu:"서초구",dong:"우면동",subtype:"임의지정",photo:"images/성뒤마을.jpg",query:"서울특별시 서초구 남부순환로292길 27"},
+  {id:"lg08",name:"두레마을",gu:"서초구",dong:"방배동",subtype:"임의지정",photo:"images/두레마을.jpg",query:"서울특별시 서초구 방배동 998"},
+  {id:"lg09",name:"응봉마을",gu:"서초구",dong:"방배동",subtype:"임의지정",photo:"images/응봉마을.jpg",query:"서울특별시 서초구 방배동 981-33"},
+  {id:"lg10",name:"화훼마을",gu:"송파구",dong:"거여동",subtype:"임의지정",photo:"images/화훼마을.jpg",query:"서울특별시 송파구 성남대로 1565"},
+  {id:"lg11",name:"신금호동",gu:"성동구",dong:"금호동2가",subtype:"임의지정",photo:"images/신금호동.jpg",query:"서울특별시 성동구 금호동2가 500-9"}
 ];
 
 var TYPE2_NO_COORDS = [
@@ -807,7 +820,7 @@ var tooltipWindow  = new naver.maps.InfoWindow({
 });
 
 /* ━━━━━━━━━━━━━━━━ 마커 아이콘 ━━━━━━━━━━━━━━━━ */
-var TYPE_COLORS = {type1: '#E53935', type2: '#F97316', type3: '#3B82F6'};
+var TYPE_COLORS = {type1: '#E53935', type2: '#F97316', type3: '#3B82F6', type4: '#8B5CF6'};
 
 function makeIcon(type, active) {
   var color = TYPE_COLORS[type] || '#888';
@@ -826,7 +839,7 @@ function makeIcon(type, active) {
 
 /* ━━━━━━━━━━━━━━━━ 상태 ━━━━━━━━━━━━━━━━ */
 var activeItem   = null;
-var layerMarkers = {type1: [], type2: [], type3: []};
+var layerMarkers = {type1: [], type2: [], type3: [], type4: []};
 var tooltipWindow = new naver.maps.InfoWindow({
   borderWidth: 0, disableAnchor: true,
   backgroundColor: 'transparent',
@@ -952,6 +965,21 @@ function openPanel(item, type) {
     document.getElementById('mt-area').textContent = item.area;
     document.getElementById('mt-date').textContent = '20' + item.date;
     document.getElementById('moatown-body').style.display = 'block';
+  } else if (type === 'type4') {
+    document.getElementById('p-name').textContent     = item.name;
+    document.getElementById('p-location').textContent = item.gu + ' · ' + item.dong;
+    badge.textContent = '임의 지정'; badge.className = 'badge badge-type4';
+    if (item.photo) {
+      document.getElementById('p-photo').innerHTML = '<img src="' + item.photo + '" alt="' + item.name + '" onerror="this.parentNode.innerHTML=''"/>';
+    }
+    document.getElementById('village-body').style.display = 'block';
+    document.getElementById('p-desc').textContent       = item.note || '';
+    document.getElementById('p-address').textContent    = item.query || '';
+    document.getElementById('p-formed').textContent     = '임의 지정';
+    document.getElementById('p-households').textContent = '';
+    document.querySelector('#village-body .p-table tr:nth-child(1) td:first-child').textContent = '주소';
+    document.querySelector('#village-body .p-table tr:nth-child(2) td:first-child').textContent = '유형';
+    document.querySelector('#village-body .p-table tr:nth-child(3) td:first-child').textContent = '';
   }
   document.getElementById('panel').classList.add('open');
 }
@@ -981,7 +1009,7 @@ function toggleSection(id) {
 
 /* ━━━━━━━━━━━━━━━━ type1+type2 초기화 ━━━━━━━━━━━━━━━━ */
 (function initType1Type2() {
-  var CACHE_KEY = 'slum_coords_v4';
+  var CACHE_KEY = 'slum_coords_v5';
   var cached = null;
   try { cached = JSON.parse(localStorage.getItem(CACHE_KEY)); } catch(e) {}
 
@@ -1008,6 +1036,19 @@ function toggleSection(id) {
       }
     });
 
+    document.getElementById('s4-list').innerHTML = '';
+    TYPE4_GEOCODE_TARGETS.forEach(function(item) {
+      var c = coords.type4 && coords.type4[item.id];
+      if (c && c.lat && c.lng) {
+        item._lat = c.lat; item._lng = c.lng;
+        createMarker(item, 'type4', c.lat, c.lng);
+        addSidebarItem(item, 'type4', 's4-list', true);
+      } else {
+        addSidebarItem(item, 'type4', 's4-list', false);
+      }
+    });
+    document.getElementById('s4-count').textContent = layerMarkers.type4.length + '개';
+
     var sep = document.createElement('div');
     sep.style.cssText = 'padding:6px 16px;font-size:10px;font-weight:700;color:#9ca3af;letter-spacing:0.08em;background:#fafafa;border-top:1px solid #f0f0f0;border-bottom:1px solid #f0f0f0;';
     sep.textContent = '관리형 (좌표 미확정)';
@@ -1025,8 +1066,8 @@ function toggleSection(id) {
 
   var toast  = document.getElementById('geocode-toast');
   var progEl = document.getElementById('geocode-prog');
-  var coords = {type1: {}, type2: {}};
-  var allT   = TYPE1_GEOCODE_TARGETS.concat(TYPE2_GEOCODE_TARGETS);
+  var coords = {type1: {}, type2: {}, type4: {}};
+  var allT   = TYPE1_GEOCODE_TARGETS.concat(TYPE2_GEOCODE_TARGETS).concat(TYPE4_GEOCODE_TARGETS);
   var idx    = 0;
   if (toast) toast.style.display = 'block';
 
@@ -1038,7 +1079,8 @@ function toggleSection(id) {
       return;
     }
     var item = allT[idx];
-    var t = idx < TYPE1_GEOCODE_TARGETS.length ? 'type1' : 'type2';
+    var _t1=TYPE1_GEOCODE_TARGETS.length, _t2=_t1+TYPE2_GEOCODE_TARGETS.length;
+    var t = idx < _t1 ? 'type1' : idx < _t2 ? 'type2' : 'type4';
     if (progEl) progEl.textContent = (idx+1) + '/' + allT.length + ' ' + item.name;
     naver.maps.Service.geocode({query: item.query}, function(status, response) {
       if (status === naver.maps.Service.Status.OK && response.v2.addresses.length > 0) {
