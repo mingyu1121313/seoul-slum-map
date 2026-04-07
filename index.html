@@ -66,6 +66,16 @@
       overflow-x: hidden;
       z-index: 200;
     }
+    .sidebar-subsection-label {
+      padding: 6px 16px 5px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #6b7280;
+      letter-spacing: 0.06em;
+      background: #fafafa;
+      border-top: 1px solid #f0f0f0;
+      border-bottom: 1px solid #f0f0f0;
+    }
     .sidebar-section-label {
       padding: 13px 16px 9px;
       font-size: 10px;
@@ -422,12 +432,8 @@
 
   <!-- 왼쪽 사이드바 -->
   <div id="sidebar">
-    <div class="sidebar-section-label" onclick="toggleSection('s1')" style="cursor:pointer;user-select:none;">
-      🔴 무허가정착지 <span id="s1-count"></span>
-    </div>
-    <div id="s1-list"></div>
     <div class="sidebar-section-label" onclick="toggleSection('s2')" style="cursor:pointer;user-select:none;">
-      🟠 노후불량주거지 <span id="s2-count"></span>
+      노후불량주거지
     </div>
     <div id="s2-list"></div>
     <div class="sidebar-section-label" onclick="toggleSection('s3')" style="cursor:pointer;user-select:none;">
@@ -461,7 +467,7 @@
     <div id="legend">
       <label class="legend-row legend-toggle">
         <input type="checkbox" id="chk-type1" checked onchange="toggleLayer('type1', this.checked)">
-        <span style="font-size:11px;font-weight:700;color:#222;">무허가정착지</span>
+        <span style="font-size:11px;font-weight:700;color:#222;">무허가 밀집형</span>
       </label>
       <div class="legend-row" style="padding-left:4px;"><span class="legend-dot" style="background:#E53935;"></span>9개소</div>
       <hr class="legend-sep">
@@ -931,7 +937,7 @@ function openPanel(item, type) {
   if (type === 'type1') {
     document.getElementById('p-name').textContent     = item.name;
     document.getElementById('p-location').textContent = item.gu + ' · ' + item.dong;
-    badge.textContent = '무허가정착지'; badge.className = 'badge badge-type1';
+    badge.textContent = '무허가 밀집형'; badge.className = 'badge badge-type1';
     if (item.photo) {
       document.getElementById('p-photo').innerHTML = '<img src="' + item.photo + '" alt="' + item.name + '" onerror="this.parentNode.innerHTML=\'\'"/>';
     }
@@ -1014,17 +1020,13 @@ function toggleSection(id) {
   try { cached = JSON.parse(localStorage.getItem(CACHE_KEY)); } catch(e) {}
 
   function buildMarkers(coords) {
-    TYPE1_GEOCODE_TARGETS.forEach(function(item) {
-      var c = coords.type1 && coords.type1[item.id];
-      if (c && c.lat && c.lng) {
-        item._lat = c.lat; item._lng = c.lng;
-        createMarker(item, 'type1', c.lat, c.lng);
-        addSidebarItem(item, 'type1', 's1-list', true);
-      } else {
-        addSidebarItem(item, 'type1', 's1-list', false);
-      }
-    });
+    document.getElementById('s2-list').innerHTML = '';
 
+    // ── 주거환경개선사업 정비구역 (정비형 18) ──
+    var hd1 = document.createElement('div');
+    hd1.className = 'sidebar-subsection-label';
+    hd1.textContent = '주거환경개선사업 정비구역 (정비형 18)';
+    document.getElementById('s2-list').appendChild(hd1);
     TYPE2_GEOCODE_TARGETS.forEach(function(item) {
       var c = coords.type2 && coords.type2[item.id];
       if (c && c.lat && c.lng) {
@@ -1036,6 +1038,32 @@ function toggleSection(id) {
       }
     });
 
+    // ── 무허가 밀집형 9 ──
+    var hd2 = document.createElement('div');
+    hd2.className = 'sidebar-subsection-label';
+    hd2.textContent = '무허가 밀집형 9';
+    document.getElementById('s2-list').appendChild(hd2);
+    TYPE1_GEOCODE_TARGETS.forEach(function(item) {
+      var c = coords.type1 && coords.type1[item.id];
+      if (c && c.lat && c.lng) {
+        item._lat = c.lat; item._lng = c.lng;
+        createMarker(item, 'type1', c.lat, c.lng);
+        addSidebarItem(item, 'type1', 's2-list', true);
+      } else {
+        addSidebarItem(item, 'type1', 's2-list', false);
+      }
+    });
+
+    // ── 관리형 (좌표 미확정) ──
+    var hd3 = document.createElement('div');
+    hd3.className = 'sidebar-subsection-label';
+    hd3.textContent = '관리형 (좌표 미확정)';
+    document.getElementById('s2-list').appendChild(hd3);
+    TYPE2_NO_COORDS.forEach(function(item) {
+      addSidebarItem(item, 'type2', 's2-list', false);
+    });
+
+    // ── 임의 지정 ──
     document.getElementById('s4-list').innerHTML = '';
     TYPE4_GEOCODE_TARGETS.forEach(function(item) {
       var c = coords.type4 && coords.type4[item.id];
@@ -1048,18 +1076,6 @@ function toggleSection(id) {
       }
     });
     document.getElementById('s4-count').textContent = layerMarkers.type4.length + '개';
-
-    var sep = document.createElement('div');
-    sep.style.cssText = 'padding:6px 16px;font-size:10px;font-weight:700;color:#9ca3af;letter-spacing:0.08em;background:#fafafa;border-top:1px solid #f0f0f0;border-bottom:1px solid #f0f0f0;';
-    sep.textContent = '관리형 (좌표 미확정)';
-    document.getElementById('s2-list').appendChild(sep);
-
-    TYPE2_NO_COORDS.forEach(function(item) {
-      addSidebarItem(item, 'type2', 's2-list', false);
-    });
-
-    var t2total = TYPE2_GEOCODE_TARGETS.length + TYPE2_NO_COORDS.length;
-    document.getElementById('s2-count').textContent = layerMarkers.type2.length + '개 마커/' + t2total + '개 등록';
   }
 
   if (cached) { buildMarkers(cached); return; }
