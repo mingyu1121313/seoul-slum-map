@@ -77,7 +77,7 @@
     .acc-header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 8px;
       padding: 11px 14px 10px;
       font-size: 10px;
       font-weight: 700;
@@ -86,11 +86,25 @@
       text-transform: uppercase;
       background: #fafafa;
       border-bottom: 1px solid #eeeff2;
-      cursor: pointer;
       user-select: none;
       flex-shrink: 0;
     }
     .acc-header:hover { background: #f3f4f6; }
+    .acc-title { flex: 1; cursor: pointer; }
+    .group-chk {
+      width: 13px; height: 13px;
+      cursor: pointer;
+      flex-shrink: 0;
+      accent-color: #374151;
+      margin: 0;
+    }
+    .cat-chk {
+      width: 12px; height: 12px;
+      cursor: pointer;
+      flex-shrink: 0;
+      accent-color: #374151;
+      margin: 0;
+    }
     .acc-arrow {
       font-size: 9px;
       color: #9ca3af;
@@ -339,18 +353,22 @@
   <div id="sidebar">
 
     <!-- 레이어 A 아코디언 -->
-    <div class="acc-header" id="acc-a-header" onclick="toggleAcc('a')">
-      <span>개발 방식</span>
-      <span class="acc-arrow open" id="acc-a-arrow">&#9654;</span>
+    <div class="acc-header" id="acc-a-header">
+      <input type="checkbox" class="group-chk" id="chk-group-a" checked
+             onchange="toggleGroup('a', this.checked)" onclick="event.stopPropagation()">
+      <span class="acc-title" onclick="toggleAcc('a')">개발 방식</span>
+      <span class="acc-arrow open" id="acc-a-arrow" onclick="toggleAcc('a')">&#9654;</span>
     </div>
     <div class="acc-body" id="acc-a-body">
       <!-- populated by buildSidebar() -->
     </div>
 
     <!-- 레이어 B 아코디언 -->
-    <div class="acc-header" id="acc-b-header" onclick="toggleAcc('b')">
-      <span>형성 경위</span>
-      <span class="acc-arrow open" id="acc-b-arrow">&#9654;</span>
+    <div class="acc-header" id="acc-b-header">
+      <input type="checkbox" class="group-chk" id="chk-group-b" checked
+             onchange="toggleGroup('b', this.checked)" onclick="event.stopPropagation()">
+      <span class="acc-title" onclick="toggleAcc('b')">형성 경위</span>
+      <span class="acc-arrow open" id="acc-b-arrow" onclick="toggleAcc('b')">&#9654;</span>
     </div>
     <div class="acc-body" id="acc-b-body">
       <!-- populated by buildSidebar() -->
@@ -602,7 +620,12 @@ function makeCatRow(cat, count) {
   row.className = 'cat-row';
   row.id = 'cat-row-' + sanitizeId(cat);
   row.setAttribute('data-cat', cat);
-  row.onclick = function () { toggleCategory(cat); };
+  const sid = sanitizeId(cat);
+  // clicking anywhere on the row (except checkbox itself) also toggles
+  row.onclick = function (e) {
+    if (e.target.type === 'checkbox') return;
+    toggleCategory(cat);
+  };
 
   // marker indicator
   let iconHtml;
@@ -621,6 +644,8 @@ function makeCatRow(cat, count) {
   }
 
   row.innerHTML = `
+    <input type="checkbox" class="cat-chk" id="chk-cat-${sid}" checked
+           onchange="toggleCategory('${cat}')">
     ${iconHtml}
     <span class="cat-label">${cat}</span>
     <span class="cat-count">${count}</span>
@@ -644,15 +669,51 @@ function toggleCategory(cat) {
     (markersByCategory[cat] || []).forEach(m => m.setMap(null));
   }
   updateCategoryUI(cat);
+  const groupId = LAYER_A_ORDER.includes(cat) ? 'a' : 'b';
+  updateGroupCheckbox(groupId);
 }
 
 function updateCategoryUI(cat) {
-  const row = document.getElementById('cat-row-' + sanitizeId(cat));
+  const sid = sanitizeId(cat);
+  const row = document.getElementById('cat-row-' + sid);
   if (!row) return;
-  if (hiddenCategories.has(cat)) {
-    row.classList.add('dimmed');
+  const hidden = hiddenCategories.has(cat);
+  row.classList.toggle('dimmed', hidden);
+  const chk = document.getElementById('chk-cat-' + sid);
+  if (chk) chk.checked = !hidden;
+}
+
+/* ────────────────────────────────────────────────
+   대분류 토글
+──────────────────────────────────────────────── */
+function toggleGroup(groupId, checked) {
+  const cats = groupId === 'a' ? LAYER_A_ORDER : LAYER_B_ORDER;
+  cats.forEach(cat => {
+    if (checked) {
+      hiddenCategories.delete(cat);
+      (markersByCategory[cat] || []).forEach(m => m.setMap(map));
+    } else {
+      hiddenCategories.add(cat);
+      (markersByCategory[cat] || []).forEach(m => m.setMap(null));
+    }
+    updateCategoryUI(cat);
+  });
+}
+
+function updateGroupCheckbox(groupId) {
+  const chk = document.getElementById('chk-group-' + groupId);
+  if (!chk) return;
+  const cats = groupId === 'a' ? LAYER_A_ORDER : LAYER_B_ORDER;
+  const hiddenCount = cats.filter(c => hiddenCategories.has(c)).length;
+  if (hiddenCount === 0) {
+    chk.checked = true;
+    chk.indeterminate = false;
+  } else if (hiddenCount === cats.length) {
+    chk.checked = false;
+    chk.indeterminate = false;
   } else {
-    row.classList.remove('dimmed');
+    chk.indeterminate = true;
+    chk.checked = false;
   }
 }
 
