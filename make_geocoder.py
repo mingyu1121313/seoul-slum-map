@@ -149,7 +149,7 @@ html = f"""<!DOCTYPE html>
   <span id="prog-nb" style="color:#aaa">대기</span>
 </div>
 <div class="section">
-  <b style="color:#fff">레이어B — 무허가정착지 (9건)</b>
+  <b style="color:#fff">레이어B — 무허가정착지 (31건)</b>
   <div class="bar"><div class="bar-inner" id="bar-b" style="width:0%"></div></div>
   <span id="prog-b" style="color:#aaa">대기</span>
 </div>
@@ -162,6 +162,17 @@ const LAYER_A_MAIN = {jdump(layer_a_main)};
 const LAYER_A_JB   = {jdump(layer_a_jb)};
 const LAYER_A_NB   = {jdump(layer_a_nb)};
 const LAYER_B      = {jdump(layer_b)};
+
+// 지오코딩 실패 항목 수동 좌표 (Naver Maps 직접 조회)
+const MANUAL_COORDS = {{
+  'mh01': {{ lat: 37.4756413, lng: 127.0648603 }},  // 구룡마을
+  'mh03': {{ lat: 37.4820257, lng: 127.0484294 }},  // 재건마을
+  'mh04': {{ lat: 37.4522593, lng: 127.0676012 }},  // 헌인마을
+  'mh06': {{ lat: 37.4797030, lng: 127.0472213 }},  // 달터마을
+  'mh10': {{ lat: 37.6199200, lng: 127.0630160 }},  // 녹천마을
+  'mh21': {{ lat: 37.4853090, lng: 126.9424280 }},  // 은천동4-1-2구역
+  'mh23': {{ lat: 37.6760661, lng: 127.0632206 }},  // 희망촌
+}};
 
 function log(msg, cls='') {{
   const d = document.getElementById('log');
@@ -190,9 +201,12 @@ async function geocodeBatch(items, barId, progId) {{
   const total = items.length;
   for (let i = 0; i < total; i++) {{
     const item = items[i];
-    const r = await geocodeOne(item.query);
+    // 수동 좌표 우선 적용
+    const manual = MANUAL_COORDS[item.id];
+    let r = manual ? manual : await geocodeOne(item.query);
     if (r) {{
-      item.lat = r.lat; item.lng = r.lng; item.geocode_status = 'ok';
+      item.lat = r.lat; item.lng = r.lng;
+      item.geocode_status = manual ? 'manual' : 'ok';
       ok++;
     }} else {{
       item.lat = null; item.lng = null; item.geocode_status = 'fail';
