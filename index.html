@@ -157,6 +157,50 @@
       padding: 2px 7px;
       flex-shrink: 0;
     }
+    .group-count {
+      font-size: 9px;
+      font-weight: 700;
+      background: #e5e7eb;
+      color: #6b7280;
+      border-radius: 10px;
+      padding: 1px 7px;
+      flex-shrink: 0;
+    }
+    .cat-expand {
+      font-size: 8px;
+      color: #b0b5be;
+      flex-shrink: 0;
+      cursor: pointer;
+      padding: 2px 3px;
+      border-radius: 3px;
+      transition: transform 0.18s;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+    .cat-expand:hover { background: #ebebeb; }
+    .cat-expand.open { transform: rotate(90deg); }
+    .cat-list {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.22s ease;
+      background: #f9fafb;
+      border-bottom: 1px solid #eeeff2;
+    }
+    .cat-list-item {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 5px 12px 5px 36px;
+      font-size: 10.5px;
+      color: #374151;
+      border-bottom: 1px solid #f0f1f3;
+      cursor: pointer;
+      line-height: 1.35;
+    }
+    .cat-list-item:hover { background: #eff3ff; color: #1d4ed8; }
+    .cat-list-name { font-weight: 600; flex-shrink: 0; }
+    .cat-list-addr { font-size: 9.5px; color: #9ca3af; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
 
     /* ── 지도 래퍼 ───────────────────────────── */
     #map-wrapper { flex: 1; position: relative; overflow: hidden; }
@@ -357,6 +401,7 @@
       <input type="checkbox" class="group-chk" id="chk-group-a" checked
              onchange="toggleGroup('a', this.checked)" onclick="event.stopPropagation()">
       <span class="acc-title" onclick="toggleAcc('a')">개발 방식</span>
+      <span class="group-count" id="group-count-a"></span>
       <span class="acc-arrow open" id="acc-a-arrow" onclick="toggleAcc('a')">&#9654;</span>
     </div>
     <div class="acc-body" id="acc-a-body">
@@ -368,6 +413,7 @@
       <input type="checkbox" class="group-chk" id="chk-group-b" checked
              onchange="toggleGroup('b', this.checked)" onclick="event.stopPropagation()">
       <span class="acc-title" onclick="toggleAcc('b')">형성 경위</span>
+      <span class="group-count" id="group-count-b"></span>
       <span class="acc-arrow open" id="acc-b-arrow" onclick="toggleAcc('b')">&#9654;</span>
     </div>
     <div class="acc-body" id="acc-b-body">
@@ -575,37 +621,45 @@ function initMarkers(data) {
    사이드바 빌드
 ──────────────────────────────────────────────── */
 function buildSidebar(data) {
-  // count per category
   const counts = {};
-  Object.keys(CAT_CONFIG).forEach(c => { counts[c] = 0; });
+  const catItems = {};
+  Object.keys(CAT_CONFIG).forEach(c => { counts[c] = 0; catItems[c] = []; });
 
   (data.layerA.items || []).forEach(item => {
     const c = getCategoryA(item);
-    if (counts[c] !== undefined) counts[c]++;
+    if (counts[c] !== undefined) { counts[c]++; catItems[c].push(item); }
   });
-  (data.layerA.items_관리형 || []).forEach(() => {
+  (data.layerA.items_관리형 || []).forEach(item => {
     counts['주거환경개선(관리형)']++;
+    catItems['주거환경개선(관리형)'].push(item);
   });
   (data.layerB.items || []).forEach(item => {
     const c = getCategoryB(item);
-    if (counts[c] !== undefined) counts[c]++;
+    if (counts[c] !== undefined) { counts[c]++; catItems[c].push(item); }
   });
+
+  // 대분류 총계 표시
+  const totalA = LAYER_A_ORDER.reduce((s, c) => s + (counts[c] || 0), 0);
+  const totalB = LAYER_B_ORDER.reduce((s, c) => s + (counts[c] || 0), 0);
+  const gcA = document.getElementById('group-count-a');
+  const gcB = document.getElementById('group-count-b');
+  if (gcA) gcA.textContent = totalA;
+  if (gcB) gcB.textContent = totalB;
 
   // Layer A body
   const bodyA = document.getElementById('acc-a-body');
   bodyA.innerHTML = '';
   LAYER_A_ORDER.forEach(cat => {
-    bodyA.appendChild(makeCatRow(cat, counts[cat] || 0));
+    bodyA.appendChild(makeCatSection(cat, counts[cat] || 0, catItems[cat] || []));
   });
 
   // Layer B body
   const bodyB = document.getElementById('acc-b-body');
   bodyB.innerHTML = '';
   LAYER_B_ORDER.forEach(cat => {
-    bodyB.appendChild(makeCatRow(cat, counts[cat] || 0));
+    bodyB.appendChild(makeCatSection(cat, counts[cat] || 0, catItems[cat] || []));
   });
 
-  // set initial max-height after DOM inserted
   requestAnimationFrame(() => {
     ['acc-a-body', 'acc-b-body'].forEach(id => {
       const el = document.getElementById(id);
@@ -614,33 +668,29 @@ function buildSidebar(data) {
   });
 }
 
-function makeCatRow(cat, count) {
+function makeCatSection(cat, count, items) {
+  const sid = sanitizeId(cat);
   const cfg = CAT_CONFIG[cat];
+
+  const section = document.createElement('div');
+  section.className = 'cat-section';
+
+  // ── row ──
   const row = document.createElement('div');
   row.className = 'cat-row';
-  row.id = 'cat-row-' + sanitizeId(cat);
+  row.id = 'cat-row-' + sid;
   row.setAttribute('data-cat', cat);
-  const sid = sanitizeId(cat);
-  // clicking anywhere on the row (except checkbox itself) also toggles
-  row.onclick = function (e) {
+  row.onclick = function(e) {
     if (e.target.type === 'checkbox') return;
+    if (e.target.closest && e.target.closest('.cat-expand')) return;
     toggleCategory(cat);
   };
 
-  // marker indicator
   let iconHtml;
   if (cfg.shape === 'diamond') {
-    iconHtml = `<div class="cat-diamond" style="
-      width:${cfg.size}px;height:${cfg.size}px;
-      background:${cfg.color};
-      opacity:${cfg.opacity};
-    "></div>`;
+    iconHtml = `<div class="cat-diamond" style="width:${cfg.size}px;height:${cfg.size}px;background:${cfg.color};opacity:${cfg.opacity};"></div>`;
   } else {
-    iconHtml = `<div class="cat-dot" style="
-      width:${cfg.size}px;height:${cfg.size}px;
-      background:${cfg.color};
-      opacity:${cfg.opacity};
-    "></div>`;
+    iconHtml = `<div class="cat-dot" style="width:${cfg.size}px;height:${cfg.size}px;background:${cfg.color};opacity:${cfg.opacity};"></div>`;
   }
 
   row.innerHTML = `
@@ -649,8 +699,29 @@ function makeCatRow(cat, count) {
     ${iconHtml}
     <span class="cat-label">${cat}</span>
     <span class="cat-count">${count}</span>
+    <span class="cat-expand" id="cat-exp-${sid}" onclick="toggleCatList('${sid}', event)">&#9654;</span>
   `;
-  return row;
+
+  // ── list ──
+  const list = document.createElement('div');
+  list.className = 'cat-list';
+  list.id = 'cat-list-' + sid;
+
+  items.forEach(item => {
+    const li = document.createElement('div');
+    li.className = 'cat-list-item';
+    const addr = item.address || (item.gu ? item.gu + (item.dong ? ' ' + item.dong : '') : '');
+    li.innerHTML = `<span class="cat-list-name">${item.name || ''}</span><span class="cat-list-addr">${addr}</span>`;
+    li.onclick = () => {
+      showPanel(item, cat);
+      if (item.lat && item.lng) map.panTo(new naver.maps.LatLng(item.lat, item.lng));
+    };
+    list.appendChild(li);
+  });
+
+  section.appendChild(row);
+  section.appendChild(list);
+  return section;
 }
 
 function sanitizeId(str) {
@@ -729,11 +800,36 @@ function toggleAcc(id) {
     arrow.classList.add('open');
   } else {
     body.style.maxHeight = body.scrollHeight + 'px';
-    // force reflow
     body.getBoundingClientRect();
     body.style.maxHeight = '0px';
     body.classList.add('collapsed');
     arrow.classList.remove('open');
+  }
+}
+
+function toggleCatList(sid, e) {
+  e.stopPropagation();
+  const list = document.getElementById('cat-list-' + sid);
+  const arrow = document.getElementById('cat-exp-' + sid);
+  if (!list) return;
+  const isOpen = list.style.maxHeight && list.style.maxHeight !== '0px';
+  const accBody = list.parentElement && list.parentElement.parentElement;
+
+  if (isOpen) {
+    const h = list.scrollHeight;
+    list.style.maxHeight = '0px';
+    arrow.classList.remove('open');
+    if (accBody && !accBody.classList.contains('collapsed')) {
+      accBody.style.maxHeight = (parseFloat(accBody.style.maxHeight) - h) + 'px';
+    }
+  } else {
+    const h = list.scrollHeight;
+    list.style.maxHeight = h + 'px';
+    arrow.classList.add('open');
+    if (accBody && !accBody.classList.contains('collapsed')) {
+      const cur = parseFloat(accBody.style.maxHeight) || accBody.scrollHeight;
+      accBody.style.maxHeight = (cur + h) + 'px';
+    }
   }
 }
 
