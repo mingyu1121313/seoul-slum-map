@@ -61,6 +61,8 @@
     /* ── 왼쪽 사이드바 ───────────────────────── */
     #sidebar {
       width: 240px;
+      min-width: 160px;
+      max-width: 520px;
       background: #fff;
       border-right: 1px solid #dde1e9;
       display: flex;
@@ -69,9 +71,34 @@
       overflow-y: auto;
       overflow-x: hidden;
       z-index: 200;
+      position: relative;
     }
     #sidebar::-webkit-scrollbar { width: 4px; }
     #sidebar::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 2px; }
+    #sidebar-handle {
+      position: absolute;
+      top: 0; right: 0;
+      width: 5px;
+      height: 100%;
+      cursor: col-resize;
+      z-index: 300;
+      background: transparent;
+      transition: background 0.15s;
+    }
+    #sidebar-handle:hover, #sidebar-handle.dragging { background: #c7d2fe; }
+    #sidebar-handle::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 2px;
+      height: 32px;
+      background: #d1d5db;
+      border-radius: 2px;
+      transition: background 0.15s;
+    }
+    #sidebar-handle:hover::after, #sidebar-handle.dragging::after { background: #818cf8; }
 
     /* accordion section header */
     .acc-header {
@@ -395,6 +422,7 @@
 
   <!-- 왼쪽 사이드바 -->
   <div id="sidebar">
+    <div id="sidebar-handle" title="드래그해서 너비 조절"></div>
 
     <!-- 레이어 A 아코디언 -->
     <div class="acc-header" id="acc-a-header">
@@ -933,6 +961,42 @@ if (window.naver && window.naver.maps) {
 } else {
   window.addEventListener('load', main);
 }
+
+/* ────────────────────────────────────────────────
+   사이드바 리사이즈
+──────────────────────────────────────────────── */
+(function() {
+  const handle = document.getElementById('sidebar-handle');
+  const sidebar = document.getElementById('sidebar');
+  let dragging = false;
+  let startX = 0;
+  let startW = 0;
+
+  handle.addEventListener('mousedown', function(e) {
+    dragging = true;
+    startX = e.clientX;
+    startW = sidebar.offsetWidth;
+    handle.classList.add('dragging');
+    document.body.style.cursor = 'col-resize';
+    document.body.style.userSelect = 'none';
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', function(e) {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    const newW = Math.min(520, Math.max(160, startW + dx));
+    sidebar.style.width = newW + 'px';
+  });
+
+  document.addEventListener('mouseup', function() {
+    if (!dragging) return;
+    dragging = false;
+    handle.classList.remove('dragging');
+    document.body.style.cursor = '';
+    document.body.style.userSelect = '';
+  });
+})();
 </script>
 </body>
 </html>
