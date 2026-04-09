@@ -10,7 +10,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
 
   <script type="text/javascript"
-    src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=sg8elx2o2n">
+    src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=sg8elx2o2n&submodules=panorama">
   </script>
 
   <style>
@@ -255,8 +255,10 @@
       border-radius: 9999px;
       padding: 5px 6px;
       display: flex;
+      align-items: center;
       gap: 2px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      white-space: nowrap;
     }
     .mtype-btn {
       border: none;
@@ -272,6 +274,72 @@
     }
     .mtype-btn.active { background: #111827; color: #fff; }
     .mtype-btn:hover:not(.active) { background: #f3f4f6; }
+    /* 정보 보기 */
+    #info-toggle {
+      display: none;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 12px 4px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #374151;
+      cursor: pointer;
+      border-left: 1px solid #e5e7eb;
+      margin-left: 2px;
+      user-select: none;
+    }
+    #info-toggle input[type=checkbox] {
+      width: 13px; height: 13px;
+      accent-color: #059669;
+      cursor: pointer;
+      margin: 0;
+    }
+    /* 거리뷰 */
+    #btn-pano {
+      margin-left: 4px;
+      border-left: 1px solid #e5e7eb;
+      padding-left: 14px;
+      border-radius: 0 9999px 9999px 0;
+    }
+    #btn-pano.active { background: #4f46e5; color: #fff; }
+    /* 파노라마 패널 */
+    #pano-panel {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 0;
+      overflow: hidden;
+      transition: height 0.3s cubic-bezier(0.4,0,0.2,1);
+      z-index: 50;
+      background: #111;
+    }
+    #pano-panel.open { height: 46%; }
+    #pano-view { width: 100%; height: 100%; }
+    #pano-close {
+      position: absolute;
+      top: 10px; right: 12px;
+      z-index: 60;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 28px; height: 28px;
+      cursor: pointer;
+      font-size: 17px;
+      line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #pano-close:hover { background: rgba(0,0,0,0.85); }
+    #pano-hint {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.5);
+      color: #ccc;
+      font-size: 11px;
+      text-align: center;
+      padding: 5px;
+      pointer-events: none;
+      z-index: 55;
+    }
 
     /* ── 범례 ────────────────────────────────── */
     #legend {
@@ -455,8 +523,14 @@
 
     <!-- 지도 타입 토글 -->
     <div id="map-type-ctrl">
-      <button class="mtype-btn active" id="btn-normal" onclick="setMapType('normal')">지형지도</button>
+      <button class="mtype-btn active" id="btn-normal" onclick="setMapType('normal')">일반지도</button>
       <button class="mtype-btn" id="btn-satellite" onclick="setMapType('satellite')">위성지도</button>
+      <button class="mtype-btn" id="btn-terrain" onclick="setMapType('terrain')">지형지도</button>
+      <label id="info-toggle">
+        <input type="checkbox" id="chk-info" checked onchange="toggleSatelliteInfo(this.checked)">
+        정보 보기
+      </label>
+      <button class="mtype-btn" id="btn-pano" onclick="togglePano()">🚶 거리뷰</button>
     </div>
 
     <!-- 범례 -->
@@ -475,6 +549,13 @@
     </div>
 
     <div id="map"></div>
+
+    <!-- 거리뷰 패널 -->
+    <div id="pano-panel">
+      <button id="pano-close" onclick="closePano()">×</button>
+      <div id="pano-view"></div>
+      <div id="pano-hint">지도를 클릭하면 해당 위치의 거리뷰를 불러옵니다</div>
+    </div>
   </div>
 </div>
 
@@ -865,14 +946,112 @@ function toggleCatList(sid, e) {
    지도 타입
 ──────────────────────────────────────────────── */
 function setMapType(type) {
+  ['btn-normal','btn-satellite','btn-terrain'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+  });
+  const infoToggle = document.getElementById('info-toggle');
+
   if (type === 'satellite') {
-    map.setMapTypeId(naver.maps.MapTypeId.HYBRID);
+    const infoOn = document.getElementById('chk-info').checked;
+    map.setMapTypeId(infoOn ? naver.maps.MapTypeId.HYBRID : naver.maps.MapTypeId.SATELLITE);
     document.getElementById('btn-satellite').classList.add('active');
-    document.getElementById('btn-normal').classList.remove('active');
+    infoToggle.style.display = 'flex';
+  } else if (type === 'terrain') {
+    map.setMapTypeId(naver.maps.MapTypeId.TERRAIN);
+    document.getElementById('btn-terrain').classList.add('active');
+    infoToggle.style.display = 'none';
   } else {
     map.setMapTypeId(naver.maps.MapTypeId.NORMAL);
     document.getElementById('btn-normal').classList.add('active');
-    document.getElementById('btn-satellite').classList.remove('active');
+    infoToggle.style.display = 'none';
+  }
+}
+
+function toggleSatelliteInfo(checked) {
+  map.setMapTypeId(checked ? naver.maps.MapTypeId.HYBRID : naver.maps.MapTypeId.SATELLITE);
+}
+
+/* ────────────────────────────────────────────────
+   거리뷰 (파노라마)
+──────────────────────────────────────────────── */
+let pano = null;
+let panoMarker = null;
+let panoClickListener = null;
+
+function togglePano() {
+  const panel = document.getElementById('pano-panel');
+  if (panel.classList.contains('open')) {
+    closePano();
+  } else {
+    openPano();
+  }
+}
+
+function openPano() {
+  const panel = document.getElementById('pano-panel');
+  panel.classList.add('open');
+  document.getElementById('btn-pano').classList.add('active');
+
+  const center = map.getCenter();
+
+  if (!pano) {
+    pano = new naver.maps.Panorama('pano-view', {
+      position: center,
+      pov: { pan: 0, tilt: 0, fov: 100 },
+    });
+    naver.maps.Event.addListener(pano, 'pano_changed', function() {
+      const hint = document.getElementById('pano-hint');
+      if (hint) hint.style.display = 'none';
+    });
+  } else {
+    pano.setPosition(center);
+  }
+
+  updatePanoMarker(center);
+
+  panoClickListener = naver.maps.Event.addListener(map, 'click', function(e) {
+    pano.setPosition(e.coord);
+    updatePanoMarker(e.coord);
+    const hint = document.getElementById('pano-hint');
+    if (hint) hint.style.display = 'none';
+  });
+}
+
+function closePano() {
+  const panel = document.getElementById('pano-panel');
+  panel.classList.remove('open');
+  document.getElementById('btn-pano').classList.remove('active');
+
+  if (panoClickListener) {
+    naver.maps.Event.removeListener(panoClickListener);
+    panoClickListener = null;
+  }
+  if (panoMarker) {
+    panoMarker.setMap(null);
+    panoMarker = null;
+  }
+}
+
+function updatePanoMarker(latLng) {
+  if (panoMarker) {
+    panoMarker.setPosition(latLng);
+  } else {
+    panoMarker = new naver.maps.Marker({
+      position: latLng,
+      map: map,
+      icon: {
+        content: `<div style="
+          width:22px;height:22px;
+          background:#4f46e5;
+          border-radius:50%;
+          border:3px solid #fff;
+          box-shadow:0 2px 6px rgba(0,0,0,0.4);
+        "></div>`,
+        anchor: new naver.maps.Point(11, 11),
+      },
+      zIndex: 200,
+    });
   }
 }
 
