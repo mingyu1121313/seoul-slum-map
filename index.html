@@ -10,7 +10,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
 
   <script type="text/javascript"
-    src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=sg8elx2o2n&submodules=panorama,geocoder">
+    src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=sg8elx2o2n">
   </script>
 
   <style>
@@ -60,7 +60,7 @@
 
     /* ── 왼쪽 사이드바 ───────────────────────── */
     #sidebar {
-      width: 220px;
+      width: 240px;
       background: #fff;
       border-right: 1px solid #dde1e9;
       display: flex;
@@ -70,91 +70,85 @@
       overflow-x: hidden;
       z-index: 200;
     }
-    .sidebar-subsection-label {
-      padding: 6px 16px 5px;
+    #sidebar::-webkit-scrollbar { width: 4px; }
+    #sidebar::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 2px; }
+
+    /* accordion section header */
+    .acc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 14px 10px;
       font-size: 10px;
       font-weight: 700;
       color: #6b7280;
-      letter-spacing: 0.06em;
-      background: #fafafa;
-      border-top: 1px solid #f0f0f0;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    .sidebar-section-label {
-      padding: 13px 16px 9px;
-      font-size: 10px;
-      font-weight: 600;
-      color: #9ca3af;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      border-bottom: 1px solid #f0f0f0;
-      flex-shrink: 0;
-    }
-    #tab-bar {
-      display: flex;
-      border-bottom: 1px solid #dde1e9;
-      flex-shrink: 0;
-    }
-    .tab-btn {
-      flex: 1;
-      padding: 9px 0;
-      border: none;
-      background: none;
-      font-size: 12px;
-      font-weight: 600;
-      color: #9ca3af;
+      background: #fafafa;
+      border-bottom: 1px solid #eeeff2;
       cursor: pointer;
-      border-bottom: 2px solid transparent;
-      transition: color .15s, border-color .15s;
+      user-select: none;
+      flex-shrink: 0;
     }
-    .tab-btn.active { color: #111; border-bottom-color: #111; }
-    .tab-btn:hover:not(.active) { color: #374151; }
-    #village-list {
-      overflow-y: auto;
-      flex: 1;
+    .acc-header:hover { background: #f3f4f6; }
+    .acc-arrow {
+      font-size: 9px;
+      color: #9ca3af;
+      transition: transform 0.2s;
     }
-    #village-list::-webkit-scrollbar { width: 4px; }
-    #village-list::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 2px; }
-    #moatown-list::-webkit-scrollbar { width: 4px; }
-    #moatown-list::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 2px; }
-    .mt-item {
+    .acc-arrow.open { transform: rotate(90deg); }
+
+    .acc-body {
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+    .acc-body.collapsed { max-height: 0 !important; }
+
+    /* category row */
+    .cat-row {
       display: flex;
       align-items: center;
+      gap: 9px;
       padding: 8px 14px;
       cursor: pointer;
       border-bottom: 1px solid #f5f5f5;
-      font-size: 12px;
-      gap: 8px;
+      transition: background 0.12s, opacity 0.15s;
     }
-    .mt-item:hover { background: #f9fafb; }
-    .mt-item-addr { flex: 1; font-weight: 500; color: #111; }
-    .mt-item-gu { font-size: 10px; color: #9ca3af; }
+    .cat-row:hover { background: #f9fafb; }
+    .cat-row.dimmed { opacity: 0.38; }
 
-    .v-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 16px;
-      cursor: pointer;
-      border-bottom: 1px solid #f5f5f5;
-      transition: background 0.12s;
-    }
-    .v-item:hover  { background: #f9fafb; }
-    .v-item.active { background: #eff6ff; }
-    .v-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
+    .cat-dot {
       flex-shrink: 0;
-      border: 1.5px solid rgba(255,255,255,0.8);
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.85);
       box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     }
-    .v-info    { flex: 1; min-width: 0; }
-    .v-name    { font-size: 12.5px; font-weight: 600; color: #1a1a2e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .v-gu      { font-size: 10.5px; color: #9ca3af; margin-top: 1px; }
+    .cat-diamond {
+      flex-shrink: 0;
+      transform: rotate(45deg);
+    }
+    .cat-label {
+      flex: 1;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #222;
+      min-width: 0;
+    }
+    .cat-count {
+      font-size: 10px;
+      font-weight: 700;
+      background: #f3f4f6;
+      color: #6b7280;
+      border-radius: 10px;
+      padding: 2px 7px;
+      flex-shrink: 0;
+    }
 
     /* ── 지도 래퍼 ───────────────────────────── */
     #map-wrapper { flex: 1; position: relative; overflow: hidden; }
+    #map { width: 100%; height: 100%; }
+
+    /* ── 하단 푸터 ───────────────────────────── */
     #site-footer {
       background: #111;
       color: #aaa;
@@ -164,74 +158,8 @@
       flex-shrink: 0;
     }
     #site-footer strong { color: #ddd; }
-    #site-footer .footer-conclusion { color: #e5e7eb; margin-top: 4px; }
-    #map { width: 100%; height: 100%; }
 
-    /* 로드뷰 — 위치 선택 모드 */
-    #map-wrapper.rv-select { cursor: crosshair; }
-    #road-hint {
-      display: none;
-      position: absolute;
-      bottom: 24px; left: 50%;
-      transform: translateX(-50%);
-      z-index: 200;
-      background: rgba(0,0,0,0.68);
-      color: #fff;
-      padding: 9px 22px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 600;
-      pointer-events: none;
-      white-space: nowrap;
-    }
-    #map-wrapper.rv-select #road-hint { display: block; }
-
-    /* 로드뷰 — 전체화면 파노라마 */
-    #pano-full {
-      display: none;
-      position: absolute;
-      inset: 0;
-      z-index: 10;
-      background: #111;
-    }
-    #map-wrapper.rv-pano #pano-full { display: block; }
-    #pano { width: 100%; height: 100%; }
-
-    /* 로드뷰 — 미니맵 (map 엘리먼트를 좌하단 소형으로) */
-    #map-wrapper.rv-pano #map {
-      position: absolute !important;
-      width: 210px !important;
-      height: 158px !important;
-      top: auto !important; right: auto !important;
-      bottom: 20px; left: 20px;
-      z-index: 20;
-      border: 2.5px solid rgba(255,255,255,0.85);
-      border-radius: 8px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.55);
-      cursor: pointer;
-    }
-
-    /* 닫기 버튼 */
-    #pano-close {
-      display: none;
-      position: absolute;
-      top: 14px; right: 14px;
-      z-index: 30;
-      background: rgba(0,0,0,0.6);
-      color: #fff;
-      border: none;
-      border-radius: 20px;
-      padding: 6px 14px;
-      font-size: 11px;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-      align-items: center; gap: 5px;
-    }
-    #pano-close:hover { background: rgba(0,0,0,0.85); }
-    #map-wrapper.rv-pano #pano-close { display: flex; }
-
-    /* 지도 타입 토글 */
+    /* ── 지도 타입 토글 ──────────────────────── */
     #map-type-ctrl {
       position: absolute;
       top: 14px;
@@ -248,7 +176,7 @@
     .mtype-btn {
       border: none;
       background: transparent;
-      padding: 6px 16px;
+      padding: 6px 18px;
       font-size: 11px;
       font-weight: 700;
       color: #6b7280;
@@ -259,49 +187,57 @@
     }
     .mtype-btn.active { background: #111827; color: #fff; }
     .mtype-btn:hover:not(.active) { background: #f3f4f6; }
-    .mtype-sep { width: 1px; background: #e5e7eb; margin: 4px 3px; }
-    .mtype-btn.rv-btn.active { background: #1d4ed8; color: #fff; }
 
-    /* 정보 표시 토글 */
-    #info-toggle {
-      display: none;
-      position: absolute;
-      top: 58px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 100;
-      background: rgba(0,0,0,0.6);
-      border-radius: 9999px;
-      padding: 5px 14px;
-      color: #fff;
-      font-size: 11px;
-      font-weight: 600;
-      cursor: pointer;
-      user-select: none;
-      white-space: nowrap;
-      align-items: center;
-      gap: 5px;
-    }
-    #info-toggle input { cursor: pointer; margin: 0; }
-
-    /* 지도 범례 */
+    /* ── 범례 ────────────────────────────────── */
     #legend {
       position: absolute;
-      bottom: 52px;
+      bottom: 16px;
       left: 14px;
       z-index: 100;
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.95);
       border-radius: 8px;
-      padding: 9px 13px;
+      padding: 10px 14px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
       box-shadow: 0 1px 6px rgba(0,0,0,0.12);
       font-size: 11px;
     }
-    .legend-row   { display: flex; align-items: center; gap: 7px; color: #444; font-weight: 500; }
-    .legend-dot   { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #444;
+      font-weight: 500;
+    }
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(255,255,255,0.85);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.18);
+    }
+    .legend-dot-sm {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.7);
+      opacity: 0.75;
+    }
+    .legend-diamond {
+      width: 9px; height: 9px;
+      flex-shrink: 0;
+      transform: rotate(45deg);
+    }
+    .legend-sep { border: none; border-top: 1px solid #e5e7eb; margin: 2px 0; }
+    .legend-group-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      color: #9ca3af;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1px;
+    }
 
     /* ── 오른쪽 패널 ─────────────────────────── */
     #panel {
@@ -322,7 +258,6 @@
     #panel::-webkit-scrollbar { width: 4px; }
     #panel::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 2px; }
 
-    /* 닫기 버튼 */
     #btn-close {
       position: absolute;
       top: 12px; right: 12px;
@@ -340,18 +275,17 @@
     }
     #btn-close:hover { background: #e5e7eb; color: #111; }
 
-    /* 패널 헤더 */
     .p-header {
       padding: 20px 14px 14px 18px;
       border-bottom: 1px solid #f0f0f0;
     }
     #p-name {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 900;
       color: #111827;
       padding-right: 28px;
       margin-bottom: 4px;
-      line-height: 1.2;
+      line-height: 1.25;
     }
     #p-location {
       font-size: 11px;
@@ -366,31 +300,7 @@
       font-weight: 700;
       color: #fff;
     }
-    .badge-type1  { background: #E53935; }
-    .badge-type2  { background: #F97316; }
-    .badge-type3  { background: #3B82F6; }
-    .badge-type4  { background: #8B5CF6; }
-
-    /* 사진 */
-    #p-photo { width: 100%; height: 200px; overflow: hidden; background: #f3f4f6; }
-    #p-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .photo-placeholder {
-      width: 100%; height: 200px;
-      background: #f3f4f6;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      color: #bbb; gap: 8px; font-size: 12px;
-    }
-    .photo-placeholder .ph-icon { font-size: 30px; }
-
-    /* 정보 섹션 */
     .p-body { padding: 16px 18px 32px; }
-    .p-desc {
-      font-size: 13px;
-      line-height: 1.85;
-      color: #333;
-      margin-bottom: 14px;
-    }
     .p-table { width: 100%; border-collapse: collapse; }
     .p-table td {
       padding: 7px 0;
@@ -400,27 +310,16 @@
       vertical-align: top;
     }
     .p-table td:first-child { font-weight: 700; color: #222; width: 72px; }
-
-    /* 네이버 지도 기본 컨트롤 위치 조정 */
-    .naver-zoomcontrol { right: 14px !important; }
-
-    /* ── 모아타운 ────────────────────────────── */
-    .legend-diamond {
-      width: 9px; height: 9px;
-      background: #3B82F6;
-      transform: rotate(45deg);
-      flex-shrink: 0;
-      border: 1.5px solid rgba(255,255,255,0.85);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.22);
+    .p-note {
+      margin-top: 12px;
+      font-size: 11.5px;
+      line-height: 1.75;
+      color: #555;
+      background: #fafafa;
+      border-left: 3px solid #e5e7eb;
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
     }
-    .legend-toggle { display: flex; align-items: center; gap: 6px; cursor: pointer; }
-    .legend-toggle input { cursor: pointer; width: 13px; height: 13px; accent-color: #3B82F6; }
-    .legend-sep { border: none; border-top: 1px solid #e5e7eb; margin: 4px 0; }
-    .badge-moatown { background: #3B82F6; }
-
-
-    /* 모아타운 패널 body */
-    #moatown-body { padding: 16px 18px 32px; display: none; }
   </style>
 </head>
 <body>
@@ -429,7 +328,7 @@
 <div id="header">
   <div>
     <div id="site-title">Seoul Slum Map</div>
-    <div id="site-subtitle">서울시 불량주거지 · 노후주거지 · 모아타운 위치 현황</div>
+    <div id="site-subtitle">서울 저층 주거지 현황</div>
   </div>
 </div>
 
@@ -438,882 +337,444 @@
 
   <!-- 왼쪽 사이드바 -->
   <div id="sidebar">
-    <div class="sidebar-section-label" onclick="toggleSection('s2')" style="cursor:pointer;user-select:none;">
-      <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#F97316;margin-right:3px;vertical-align:middle;"></span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#E53935;margin-right:4px;vertical-align:middle;"></span>노후불량주거지
+
+    <!-- 레이어 A 아코디언 -->
+    <div class="acc-header" id="acc-a-header" onclick="toggleAcc('a')">
+      <span>레이어A — 개발방식</span>
+      <span class="acc-arrow open" id="acc-a-arrow">&#9654;</span>
     </div>
-    <div id="s2-list"></div>
-    <div class="sidebar-section-label" onclick="toggleSection('s3')" style="cursor:pointer;user-select:none;">
-      🔵 모아타운 <span id="s3-count">122개</span>
+    <div class="acc-body" id="acc-a-body">
+      <!-- populated by buildSidebar() -->
     </div>
-    <div id="s3-list">
-      <div style="padding:10px 16px;font-size:11px;color:#6b7280;">지도에서 마커를 클릭하세요</div>
+
+    <!-- 레이어 B 아코디언 -->
+    <div class="acc-header" id="acc-b-header" onclick="toggleAcc('b')">
+      <span>레이어B — 형성경위</span>
+      <span class="acc-arrow open" id="acc-b-arrow">&#9654;</span>
     </div>
-    <div class="sidebar-section-label" onclick="toggleSection('s4')" style="cursor:pointer;user-select:none;">
-      🟣 미분류 <span id="s4-count"></span>
+    <div class="acc-body" id="acc-b-body">
+      <!-- populated by buildSidebar() -->
     </div>
-    <div id="s4-list"></div>
+
   </div>
 
   <!-- 지도 -->
   <div id="map-wrapper">
+
     <!-- 지도 타입 토글 -->
     <div id="map-type-ctrl">
-      <button class="mtype-btn active" onclick="setMapType('normal', this)">지형지도</button>
-      <button class="mtype-btn"        onclick="setMapType('satellite', this)">위성지도</button>
-      <span class="mtype-sep"></span>
-      <button class="mtype-btn rv-btn" onclick="toggleRoadView(this)">로드뷰</button>
+      <button class="mtype-btn active" id="btn-normal" onclick="setMapType('normal')">지형지도</button>
+      <button class="mtype-btn" id="btn-satellite" onclick="setMapType('satellite')">위성지도</button>
     </div>
 
-    <!-- 정보 표시 토글 (위성지도 전용) -->
-    <label id="info-toggle">
-      <input type="checkbox" id="info-check" checked onchange="toggleInfoLayer(this.checked)">정보 표시
-    </label>
-
-    <!-- 지도 범례 + 레이어 토글 -->
+    <!-- 범례 -->
     <div id="legend">
-      <label class="legend-row legend-toggle">
-        <input type="checkbox" id="chk-type1" checked onchange="toggleLayer('type1', this.checked)">
-        <span style="font-size:11px;font-weight:700;color:#222;">무허가 밀집형</span>
-      </label>
-      <div class="legend-row" style="padding-left:4px;"><span class="legend-dot" style="background:#E53935;"></span>17개소</div>
+      <div class="legend-group-label">레이어A</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#1D4ED8;"></span>재개발(주택정비형)</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#0891B2;"></span>가로주택정비</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#7C3AED;"></span>지역주택</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#059669;"></span>주거환경개선(정비형)</div>
+      <div class="legend-row"><span class="legend-dot-sm" style="background:#34D399;"></span>주거환경개선(관리형)</div>
       <hr class="legend-sep">
-      <label class="legend-row legend-toggle">
-        <input type="checkbox" id="chk-type2" checked onchange="toggleLayer('type2', this.checked)">
-        <span style="font-size:11px;font-weight:700;color:#222;">노후불량주거지</span>
-      </label>
-      <div class="legend-row" style="padding-left:4px;"><span class="legend-dot" style="background:#F97316;"></span>정비형 18개</div>
-      <hr class="legend-sep">
-      <label class="legend-row legend-toggle">
-        <input type="checkbox" id="chk-type3" checked onchange="toggleLayer('type3', this.checked)">
-        <span style="font-size:11px;font-weight:700;color:#222;">모아타운</span>
-      </label>
-      <div class="legend-row" style="padding-left:4px;"><span class="legend-diamond"></span>지정구역 122개</div>
-      <hr class="legend-sep">
-      <label class="legend-row legend-toggle">
-        <input type="checkbox" id="chk-type4" checked onchange="toggleLayer('type4', this.checked)">
-        <span style="font-size:11px;font-weight:700;color:#222;">미분류</span>
-      </label>
-      <div class="legend-row" style="padding-left:4px;"><span class="legend-dot" style="background:#8B5CF6;"></span>2개소</div>
+      <div class="legend-group-label">레이어B</div>
+      <div class="legend-row"><span class="legend-diamond" style="background:#DC2626;"></span>자연발생</div>
+      <div class="legend-row"><span class="legend-diamond" style="background:#EA580C;"></span>집단이주</div>
+      <div class="legend-row"><span class="legend-diamond" style="background:#D97706;"></span>신발생</div>
     </div>
 
     <div id="map"></div>
-
-    <!-- 로드뷰: 위치선택 힌트 -->
-    <div id="road-hint">🚶 보고 싶은 위치를 클릭하세요</div>
-
-    <!-- 로드뷰: 전체화면 파노라마 -->
-    <div id="pano-full">
-      <div id="pano"></div>
-    </div>
-
-    <!-- 로드뷰: 닫기 (map-wrapper 위에 절대 포지션) -->
-    <button id="pano-close" onclick="exitRoadView()">✕ 지도로 돌아가기</button>
   </div>
 </div>
 
-
-<!-- ── 하단 바 ────────────────────────────────── -->
+<!-- ── 하단 푸터 ──────────────────────────────── -->
+<div id="site-footer">
+  서울 저층 주거지 현황 지도 &nbsp;·&nbsp; <strong>레이어A</strong>: 정비사업(정보몽땅 2025.12) &nbsp;·&nbsp; <strong>레이어B</strong>: 무허가정착지(논문, 2014)
+</div>
 
 <!-- ── 오른쪽 패널 ───────────────────────────── -->
 <div id="panel">
   <button id="btn-close" onclick="closePanel()">×</button>
-
   <div class="p-header">
     <h2 id="p-name"></h2>
-    <p  id="p-location"></p>
+    <p id="p-location"></p>
     <span id="p-badge" class="badge"></span>
   </div>
-
-  <div id="p-photo"></div>
-
-  <div class="p-body" id="village-body">
-    <p class="p-desc" id="p-desc"></p>
-    <table class="p-table">
-      <tr><td>주소</td>    <td id="p-address"></td></tr>
-      <tr><td>형성 시기</td><td id="p-formed"></td></tr>
-      <tr><td>규모</td>    <td id="p-households"></td></tr>
-    </table>
-  </div>
-
-  <div id="moatown-body">
-    <table class="p-table">
-      <tr><td>자치구</td><td id="mt-gu"></td></tr>
-      <tr><td>대표주소</td><td id="mt-addr"></td></tr>
-      <tr><td>면적</td>   <td id="mt-area"></td></tr>
-      <tr><td>지정일</td> <td id="mt-date"></td></tr>
-    </table>
-  </div>
+  <div class="p-body" id="p-body-content"></div>
 </div>
 
-<!-- ── JavaScript ────────────────────────────── -->
 <script>
+/* ────────────────────────────────────────────────
+   색상 / 카테고리 설정
+──────────────────────────────────────────────── */
+const CAT_CONFIG = {
+  '재개발(주택정비형)':   { color: '#1D4ED8', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
+  '가로주택정비':        { color: '#0891B2', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
+  '지역주택':           { color: '#7C3AED', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
+  '주거환경개선(정비형)': { color: '#059669', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
+  '주거환경개선(관리형)': { color: '#34D399', layer: 'A', shape: 'circle', size: 8,  opacity: 0.7 },
+  '자연발생':           { color: '#DC2626', layer: 'B', shape: 'diamond', size: 11, opacity: 1 },
+  '집단이주':           { color: '#EA580C', layer: 'B', shape: 'diamond', size: 11, opacity: 1 },
+  '신발생':             { color: '#D97706', layer: 'B', shape: 'diamond', size: 11, opacity: 1 },
+};
 
-/* ━━━━━━━━━━━━━━━━ 데이터 ━━━━━━━━━━━━━━━━ */
-
-var TYPE1_GEOCODE_TARGETS = [
-  {id:"mh01",name:"구룡마을",gu:"강남구",dong:"개포동",address:"개포동 573-2",area_m2:266502,formed:"1980년대",households:"약 1,200가구",status:"개발진행중",note:"SH공사 공영개발. 2025년 소유권 이전 완료. 2026년 하반기 철거 착수, 2029년 완공 목표. 최고 25층 3887가구.",photo:"images/구룡마을.jpg",query:"서울특별시 강남구 개포동 573-2"},
-  {id:"mh02",name:"백사마을",gu:"노원구",dong:"중계동",address:"중계동 27-55",area_m2:186965,formed:"1967년",households:"약 1,200가구",status:"개발진행중",note:"1967년 청계천·용산 철거민 강제이주로 형성. 2025년 정비계획 확정·철거 착수. GS건설(네이처시티 자이), 2029년 준공 목표.",photo:"images/백사마을.jpg",query:"서울특별시 노원구 중계동 27-55"},
-  {id:"mh03",name:"재건마을",gu:"강남구",dong:"개포동",address:"개포로25길 32일대",area_m2:null,formed:"1980년대",households:"약 300가구",status:"개발확정_주민협의중",note:"원래 포이동 266번지. 1980년대 영동대교 주변 빈민 강제이주. 2011년 대형 화재 후 재건마을 개칭.",photo:"images/재건마을.jpg",query:"서울특별시 강남구 개포로25길 32"},
-  {id:"mh04",name:"헌인마을",gu:"서초구",dong:"내곡동",address:"내곡동 374-67",area_m2:null,formed:"1961년",households:"소규모",status:"개발검토중",note:"한센병 완치자 사회복귀 정착촌으로 1961년 출발. 서초구 내 이례적 존재.",query:"서울특별시 서초구 내곡동 374-67"},
-  {id:"mh05",name:"수정마을",gu:"강남구",dong:"개포동",address:"개포동 1197-1일대",area_m2:null,formed:"1980년대",households:"소규모",status:"미정",note:"구룡마을 인근 소규모 무허가 주거지.",photo:"images/수정마을.jpg",query:"서울특별시 강남구 개포동 1197-1"},
-  {id:"mh06",name:"달터마을",gu:"강남구",dong:"개포동",address:"개포동 156번지 달터근린공원 내",area_m2:null,formed:"1980년대",households:"소규모",status:"미정",note:"달터근린공원 내부까지 무허가 건물 점유.",photo:"images/달터마을.jpg",query:"서울특별시 강남구 개포동 156"},
-  {id:"mh07",name:"현저동 무허가주거지",gu:"서대문구",dong:"현저동",address:"현저동 1-5번지일대",area_m2:15142,formed:"1960~70년대",households:"절반 이상 빈집",status:"모아타운지정완료",note:"일제강점기 도시빈민 무허가 정착. 2024년 모아타운 지정. 노후건물 100%, 무허가 85%.",photo:"images/현저동.jpg",query:"서울특별시 서대문구 현저동 1-5"},
-  {id:"mh08",name:"사근동 꽃담벽화마을",gu:"성동구",dong:"사근동",address:"사근동 293번지일대 살곶이2나길",area_m2:null,formed:"1960~70년대",households:"소규모",status:"신속통합기획확정",note:"청계천변 판자촌 기원. 구릉지 고립 필지. 신속통합기획(35층 526세대) 확정.",photo:"images/꽃담벽화마을.jpg",query:"서울특별시 성동구 사근동 293"},
-  {id:"mh09",name:"정릉골",gu:"성북구",dong:"정릉동",address:"보국문로29길 98-1일대",area_m2:null,formed:"1960년대",households:"수백가구",status:"재개발추진중",note:"1960년대 청계천·북아현동 판자촌 정리 과정에서 산기슭으로 밀려난 주민 형성.",photo:"images/정릉골.jpg",query:"서울특별시 성북구 보국문로29길 98-1"},
-  {id:"lg02",name:"양지마을",gu:"노원구",dong:"상계동",subtype:"무허가밀집형",photo:"images/양지마을.jpg",query:"서울특별시 노원구 상계동 1361-5"},
-  {id:"lg03",name:"합동마을",gu:"노원구",dong:"상계동",subtype:"무허가밀집형",photo:"images/합동마을.jpg",query:"서울특별시 노원구 상계로35길 71"},
-  {id:"lg04",name:"별빛마을",gu:"노원구",dong:"상계동",subtype:"무허가밀집형",photo:"images/별빛마을.jpg",query:"서울특별시 노원구 상계로37라길 16-16"},
-  {id:"lg05",name:"북정마을",gu:"성북구",dong:"성북동",subtype:"무허가밀집형",photo:"images/북정마을.jpg",query:"서울특별시 성북구 성북로23길 132-3"},
-  {id:"lg07",name:"성뒤마을",gu:"서초구",dong:"우면동",subtype:"무허가밀집형",photo:"images/성뒤마을.jpg",query:"서울특별시 서초구 남부순환로292길 27"},
-  {id:"lg08",name:"두레마을",gu:"서초구",dong:"방배동",subtype:"무허가밀집형",photo:"images/두레마을.jpg",query:"서울특별시 서초구 방배동 998"},
-  {id:"lg09",name:"응봉마을",gu:"서초구",dong:"방배동",subtype:"무허가밀집형",photo:"images/응봉마을.jpg",query:"서울특별시 서초구 방배동 981-33"},
-  {id:"lg10",name:"화훼마을",gu:"송파구",dong:"거여동",subtype:"무허가밀집형",photo:"images/화훼마을.jpg",query:"서울특별시 송파구 성남대로 1565"}
+const LAYER_A_ORDER = [
+  '재개발(주택정비형)',
+  '가로주택정비',
+  '지역주택',
+  '주거환경개선(정비형)',
+  '주거환경개선(관리형)',
 ];
+const LAYER_B_ORDER = ['자연발생', '집단이주', '신발생'];
 
-var TYPE2_GEOCODE_TARGETS = [
-  {id:"jb01",name:"상계4-1(희망촌)",gu:"노원구",dong:"상계4동",subtype:"정비형",query:"서울특별시 노원구 상계동 산161-13"},
-  {id:"jb02",name:"창천",gu:"서대문구",dong:"창천동",subtype:"정비형",query:"서울특별시 서대문구 창천동 240"},
-  {id:"jb03",name:"현저2",gu:"서대문구",dong:"현저동",subtype:"정비형",query:"서울특별시 서대문구 현저동 1-87"},
-  {id:"jb04",name:"중곡4-1",gu:"광진구",dong:"중곡동",subtype:"정비형",query:"서울특별시 광진구 중곡동 72-17"},
-  {id:"jb05",name:"무수골",gu:"도봉구",dong:"도봉동",subtype:"정비형",query:"서울특별시 도봉구 도봉동 427"},
-  {id:"jb06",name:"연희1",gu:"서대문구",dong:"연희동",subtype:"정비형",query:"서울특별시 서대문구 홍제천로2길 53"},
-  {id:"jb07",name:"홍은2-1",gu:"서대문구",dong:"홍은2동",subtype:"정비형",query:"서울특별시 서대문구 홍은동 6-1"},
-  {id:"jb08",name:"홍은2-2",gu:"서대문구",dong:"홍은2동",subtype:"정비형",query:"서울특별시 서대문구 홍은동 8-368"},
-  {id:"jb09",name:"가리봉2-1",gu:"구로구",dong:"가리봉동",subtype:"정비형",query:"서울특별시 구로구 가리봉동 25"},
-  {id:"jb10",name:"구로2-1",gu:"구로구",dong:"구로동",subtype:"정비형",query:"서울특별시 구로구 구로동 717"},
-  {id:"jb11",name:"구로3-1",gu:"구로구",dong:"구로동",subtype:"정비형",query:"서울특별시 구로구 구로동 780"},
-  {id:"jb12",name:"구로3-2",gu:"구로구",dong:"구로동",subtype:"정비형",query:"서울특별시 구로구 구로동 252"},
-  {id:"jb13",name:"구로3-3",gu:"구로구",dong:"구로동",subtype:"정비형",query:"서울특별시 구로구 구로동 155"},
-  {id:"jb14",name:"구로3-4",gu:"구로구",dong:"구로동",subtype:"정비형",query:"서울특별시 구로구 구로동 171"},
-  {id:"jb15",name:"구로6-1",gu:"구로구",dong:"구로동",subtype:"정비형",query:"서울특별시 구로구 구로동 313-33"},
-  {id:"jb16",name:"공덕1-1",gu:"마포구",dong:"공덕동",subtype:"정비형",query:"서울특별시 마포구 공덕동 1"},
-  {id:"jb17",name:"상암2-1",gu:"마포구",dong:"상암동",subtype:"정비형",query:"서울특별시 마포구 상암동 1630"},
-  {id:"jb18",name:"상암2-2",gu:"마포구",dong:"상암동",subtype:"정비형",query:"서울특별시 마포구 상암동 17-2"},
-];
+/* ────────────────────────────────────────────────
+   상태
+──────────────────────────────────────────────── */
+const markersByCategory = {};   // category → [naver.maps.Marker]
+const hiddenCategories = new Set();
+const itemsByMarker = new WeakMap(); // marker → item data
 
-var TYPE4_GEOCODE_TARGETS = [
-  {id:"lg06",name:"수일시장",gu:"은평구",dong:"수색동",subtype:"미분류",photo:"images/수일시장.jpg",query:"서울특별시 은평구 수색로16길 5-1"},
-  {id:"lg11",name:"신금호동",gu:"성동구",dong:"금호동2가",subtype:"미분류",photo:"images/신금호동.jpg",query:"서울특별시 성동구 금호동2가 500-9"}
-];
+let map;
 
-var TYPE2_NO_COORDS = [
-  {id:"nb001",name:"햇빛마을",gu:"강북구",dong:"미아동",subtype:"관리형"},
-  {id:"nb002",name:"양지마을",gu:"강북구",dong:"미아동",subtype:"관리형"},
-  {id:"nb003",name:"인수봉숲길마을",gu:"강북구",dong:"수유동",subtype:"관리형"},
-  {id:"nb004",name:"소나무협동마을",gu:"강북구",dong:"미아동",subtype:"관리형"},
-  {id:"nb005",name:"소리마을",gu:"성북구",dong:"길음동",subtype:"관리형"},
-  {id:"nb006",name:"정든마을",gu:"성북구",dong:"정릉동",subtype:"관리형"},
-  {id:"nb007",name:"삼덕마을",gu:"성북구",dong:"정릉동",subtype:"관리형"},
-  {id:"nb008",name:"삼태기마을",gu:"성북구",dong:"상월곡동",subtype:"관리형"},
-  {id:"nb009",name:"한천마을",gu:"성북구",dong:"석관동",subtype:"관리형"},
-  {id:"nb010",name:"정릉3",gu:"성북구",dong:"정릉동",subtype:"관리형"},
-  {id:"nb011",name:"정릉8",gu:"성북구",dong:"정릉동",subtype:"관리형"},
-  {id:"nb012",name:"성북4",gu:"성북구",dong:"성북동",subtype:"관리형"},
-  {id:"nb013",name:"석관1",gu:"성북구",dong:"석관동",subtype:"관리형"},
-  {id:"nb014",name:"방아골마을",gu:"도봉구",dong:"방학동",subtype:"관리형"},
-  {id:"nb015",name:"새동네마을",gu:"도봉구",dong:"도봉동",subtype:"관리형"},
-  {id:"nb016",name:"안골마을",gu:"도봉구",dong:"도봉동",subtype:"관리형"},
-  {id:"nb017",name:"숲속마을",gu:"도봉구",dong:"방학동",subtype:"관리형"},
-  {id:"nb018",name:"돗가비마을",gu:"노원구",dong:"공릉동",subtype:"관리형"},
-  {id:"nb019",name:"또바기마을",gu:"노원구",dong:"월계동",subtype:"관리형"},
-  {id:"nb020",name:"안마을",gu:"노원구",dong:"공릉동",subtype:"관리형"},
-  {id:"nb021",name:"산새마을",gu:"은평구",dong:"신사동",subtype:"관리형"},
-  {id:"nb022",name:"응암산골마을",gu:"은평구",dong:"응암동",subtype:"관리형"},
-  {id:"nb023",name:"녹번산골마을",gu:"은평구",dong:"녹번동",subtype:"관리형"},
-  {id:"nb024",name:"토정마을",gu:"은평구",dong:"역촌동",subtype:"관리형"},
-  {id:"nb025",name:"수리마을",gu:"은평구",dong:"불광동",subtype:"관리형"},
-  {id:"nb026",name:"편백마을",gu:"은평구",dong:"신사동",subtype:"관리형"},
-  {id:"nb027",name:"구름다리햇빛마을",gu:"은평구",dong:"수색동",subtype:"관리형"},
-  {id:"nb028",name:"팥배숲마을",gu:"은평구",dong:"신사동",subtype:"관리형"},
-  {id:"nb029",name:"응암행복마을",gu:"은평구",dong:"응암동",subtype:"관리형"},
-  {id:"nb030",name:"우리마을",gu:"서대문구",dong:"북가좌동",subtype:"관리형"},
-  {id:"nb031",name:"햇빛마을",gu:"서대문구",dong:"홍은동",subtype:"관리형"},
-  {id:"nb032",name:"은마루마을",gu:"서대문구",dong:"홍은동",subtype:"관리형"},
-  {id:"nb033",name:"홍제문화마을",gu:"서대문구",dong:"홍제동",subtype:"관리형"},
-  {id:"nb034",name:"연남동마을",gu:"마포구",dong:"연남동",subtype:"관리형"},
-  {id:"nb035",name:"곰달래꿈마을",gu:"양천구",dong:"신월동",subtype:"관리형"},
-  {id:"nb036",name:"해오름마을",gu:"양천구",dong:"신월동",subtype:"관리형"},
-  {id:"nb037",name:"엄지마을",gu:"양천구",dong:"목동",subtype:"관리형"},
-  {id:"nb038",name:"온수골사랑터마을",gu:"구로구",dong:"온수동",subtype:"관리형"},
-  {id:"nb039",name:"살구마을",gu:"구로구",dong:"구로동",subtype:"관리형"},
-  {id:"nb040",name:"너른뜰마을",gu:"구로구",dong:"개봉동",subtype:"관리형"},
-  {id:"nb041",name:"오류동 20-1",gu:"구로구",dong:"오류동",subtype:"관리형"},
-  {id:"nb042",name:"박미사랑마을1",gu:"금천구",dong:"시흥동",subtype:"관리형"},
-  {id:"nb043",name:"박미사랑마을2",gu:"금천구",dong:"시흥동",subtype:"관리형"},
-  {id:"nb044",name:"금하마을",gu:"금천구",dong:"독산동",subtype:"관리형"},
-  {id:"nb045",name:"복숭아마을",gu:"금천구",dong:"독산동",subtype:"관리형"},
-  {id:"nb046",name:"한민족공동체가꽃피는마을",gu:"영등포구",dong:"대림동",subtype:"관리형"},
-  {id:"nb047",name:"조롱박마을",gu:"영등포구",dong:"대림동",subtype:"관리형"},
-  {id:"nb048",name:"장미마을",gu:"영등포구",dong:"도림동",subtype:"관리형"},
-  {id:"nb049",name:"흑석숲마을",gu:"동작구",dong:"흑석동",subtype:"관리형"},
-  {id:"nb050",name:"성대골마을",gu:"동작구",dong:"상도동",subtype:"관리형"},
-  {id:"nb051",name:"빙수골마을",gu:"동작구",dong:"상도동",subtype:"관리형"},
-  {id:"nb052",name:"장미골마을",gu:"동작구",dong:"상도동",subtype:"관리형"},
-  {id:"nb053",name:"돌샘행복마을",gu:"관악구",dong:"신림동",subtype:"관리형"},
-  {id:"nb054",name:"굴참마을",gu:"관악구",dong:"신림동",subtype:"관리형"},
-  {id:"nb055",name:"새싹마을",gu:"관악구",dong:"봉천동",subtype:"관리형"},
-  {id:"nb056",name:"난초마을",gu:"관악구",dong:"신림동",subtype:"관리형"},
-  {id:"nb057",name:"청림마을",gu:"관악구",dong:"봉천동",subtype:"관리형"},
-  {id:"nb058",name:"청룡동마을",gu:"관악구",dong:"봉천동",subtype:"관리형"},
-  {id:"nb059",name:"신림동마을",gu:"관악구",dong:"신림동",subtype:"관리형"},
-  {id:"nb060",name:"휘경마을",gu:"동대문구",dong:"휘경동",subtype:"관리형"},
-  {id:"nb061",name:"전농동마을",gu:"동대문구",dong:"전농동",subtype:"관리형"},
-  {id:"nb062",name:"너와나우리마을",gu:"종로구",dong:"신영동",subtype:"관리형"},
-  {id:"nb063",name:"옥인동마을",gu:"종로구",dong:"옥인동",subtype:"관리형"},
-  {id:"nb064",name:"배꽃마을",gu:"중랑구",dong:"면목동",subtype:"관리형"},
-  {id:"nb065",name:"장수마을",gu:"성북구",dong:"삼선동",subtype:"관리형"},
-  {id:"nb066",name:"삼선369마을",gu:"성북구",dong:"삼선동",subtype:"관리형"},
-  {id:"nb067",name:"삼선3마을",gu:"성북구",dong:"삼선동",subtype:"관리형"},
-  {id:"nb068",name:"성북A",gu:"성북구",dong:"성북동",subtype:"관리형"},
-  {id:"nb069",name:"성북B",gu:"성북구",dong:"성북동",subtype:"관리형"},
-  {id:"nb070",name:"다산A",gu:"중구",dong:"신당동",subtype:"관리형"},
-  {id:"nb071",name:"다산B",gu:"중구",dong:"신당동",subtype:"관리형"},
-  {id:"nb072",name:"광희마을",gu:"중구",dong:"광희동",subtype:"관리형"},
-  {id:"nb073",name:"신당A",gu:"중구",dong:"신당동",subtype:"관리형"},
-  {id:"nb074",name:"장충마을",gu:"중구",dong:"장충동",subtype:"관리형"},
-  {id:"nb075",name:"신당10마을",gu:"중구",dong:"신당동",subtype:"관리형"},
-  {id:"nb076",name:"이화마을",gu:"종로구",dong:"이화동",subtype:"관리형"},
-  {id:"nb077",name:"충신윗마을",gu:"종로구",dong:"충신동",subtype:"관리형"},
-  {id:"nb078",name:"충신아랫마을",gu:"종로구",dong:"충신동",subtype:"관리형"},
-  {id:"nb079",name:"행촌마을",gu:"종로구",dong:"행촌동",subtype:"관리형"},
-  {id:"nb080",name:"창의문인왕마을",gu:"종로구",dong:"부암동",subtype:"관리형"},
-  {id:"nb081",name:"창의문백악마을",gu:"종로구",dong:"부암동",subtype:"관리형"},
-  {id:"nb082",name:"명륜마을",gu:"종로구",dong:"명륜3가",subtype:"관리형"},
-  {id:"nb083",name:"혜화마을",gu:"종로구",dong:"혜화동",subtype:"관리형"}
-];
-
-var MOATOWN_DATA = [
-  {id:1,gu:"강서구",addr:"화곡동 1087",area:"60,616.1㎡",date:"22.01.20.",query:"서울특별시 강서구 화곡동 1087"},
-  {id:2,gu:"강서구",addr:"화곡동 354",area:"85,462.6㎡",date:"22.01.20.",query:"서울특별시 강서구 화곡동 354"},
-  {id:3,gu:"강서구",addr:"화곡동 359",area:"58,477.4㎡",date:"22.01.20.",query:"서울특별시 강서구 화곡동 359"},
-  {id:4,gu:"강서구",addr:"화곡동 424",area:"54,767㎡",date:"22.01.20.",query:"서울특별시 강서구 화곡동 424"},
-  {id:5,gu:"강서구",addr:"등촌2동 515-44",area:"65,498㎡",date:"22.06.23.",query:"서울특별시 강서구 등촌2동 515-44"},
-  {id:6,gu:"강서구",addr:"화곡6동 1130-7",area:"67,957.1㎡",date:"22.06.23.",query:"서울특별시 강서구 화곡6동 1130-7"},
-  {id:7,gu:"강서구",addr:"방화동 592-1",area:"66,975㎡",date:"22.06.23.",query:"서울특별시 강서구 방화동 592-1"},
-  {id:8,gu:"강서구",addr:"공항동 55-327",area:"96,637㎡",date:"22.10.27.",query:"서울특별시 강서구 공항동 55-327"},
-  {id:9,gu:"강서구",addr:"화곡6동 957",area:"94,080㎡",date:"22.01.20./23.11.2.",query:"서울특별시 강서구 화곡6동 957"},
-  {id:10,gu:"중랑구",addr:"면목동 86-3",area:"96,993㎡",date:"22.01.20.",query:"서울특별시 중랑구 면목동 86-3"},
-  {id:11,gu:"중랑구",addr:"면목3·8동 44-6",area:"76,525㎡",date:"22.06.23.",query:"서울특별시 중랑구 면목동 44-6"},
-  {id:12,gu:"중랑구",addr:"면목본동 297-28",area:"53,120㎡",date:"22.06.23.",query:"서울특별시 중랑구 면목본동 297-28"},
-  {id:13,gu:"중랑구",addr:"중화1동 4-30",area:"73,625㎡",date:"22.06.23.",query:"서울특별시 중랑구 중화1동 4-30"},
-  {id:14,gu:"중랑구",addr:"망우3동 427-5",area:"98,171㎡",date:"22.06.23.",query:"서울특별시 중랑구 망우3동 427-5"},
-  {id:15,gu:"중랑구",addr:"면목동 152-1",area:"88,040㎡",date:"22.10.27.",query:"서울특별시 중랑구 면목동 152-1"},
-  {id:16,gu:"중랑구",addr:"면목동 63-1",area:"90,102㎡",date:"22.10.27.",query:"서울특별시 중랑구 면목동 63-1"},
-  {id:17,gu:"중랑구",addr:"망우본동 354-2",area:"66,389㎡",date:"23.08.31.",query:"서울특별시 중랑구 망우본동 354-2"},
-  {id:18,gu:"중랑구",addr:"중화동 329-38",area:"99,931㎡",date:"23.08.31.",query:"서울특별시 중랑구 중화동 329-38"},
-  {id:19,gu:"중랑구",addr:"망우3동 474-29",area:"81,648㎡",date:"23.11.30.",query:"서울특별시 중랑구 망우3동 474-29"},
-  {id:20,gu:"중랑구",addr:"묵2동 243-7",area:"62,681㎡",date:"23.11.30.",query:"서울특별시 중랑구 묵2동 243-7"},
-  {id:21,gu:"중랑구",addr:"중화2동 299-8",area:"75,254㎡",date:"24.02.29.",query:"서울특별시 중랑구 중화2동 299-8"},
-  {id:22,gu:"중랑구",addr:"면목2동 139-52",area:"70,868㎡",date:"24.02.22.",query:"서울특별시 중랑구 면목2동 139-52"},
-  {id:23,gu:"중랑구",addr:"면목3·8동 453-1",area:"83,057㎡",date:"24.02.29.",query:"서울특별시 중랑구 면목동 453-1"},
-  {id:24,gu:"금천구",addr:"시흥3동 1005",area:"86,705㎡",date:"22.06.23.",query:"서울특별시 금천구 시흥3동 1005"},
-  {id:25,gu:"금천구",addr:"시흥4동 817",area:"30,430㎡",date:"22.06.23.",query:"서울특별시 금천구 시흥4동 817"},
-  {id:26,gu:"금천구",addr:"시흥5동 922-61",area:"89,944㎡",date:"22.06.23.",query:"서울특별시 금천구 시흥5동 922-61"},
-  {id:27,gu:"금천구",addr:"시흥1동 864",area:"81,648.78㎡",date:"22.10.27.",query:"서울특별시 금천구 시흥1동 864"},
-  {id:28,gu:"금천구",addr:"시흥3동 950",area:"99,715.35㎡",date:"22.10.27.",query:"서울특별시 금천구 시흥3동 950"},
-  {id:29,gu:"마포구",addr:"대흥동 535-2",area:"19,602㎡",date:"22.06.23.",query:"서울특별시 마포구 대흥동 535-2"},
-  {id:30,gu:"마포구",addr:"성산동 160-4",area:"84,876㎡",date:"22.06.23.",query:"서울특별시 마포구 성산동 160-4"},
-  {id:31,gu:"마포구",addr:"망원동 456-6",area:"77,449㎡",date:"22.06.23.",query:"서울특별시 마포구 망원동 456-6"},
-  {id:32,gu:"마포구",addr:"합정동 369",area:"97,717㎡",date:"22.10.27.",query:"서울특별시 마포구 합정동 369"},
-  {id:33,gu:"마포구",addr:"중동 78",area:"18,612㎡",date:"22.10.27.",query:"서울특별시 마포구 중동 78"},
-  {id:34,gu:"강북구",addr:"번동 429-114",area:"55,572㎡",date:"개별조합설립인가일",query:"서울특별시 강북구 번동 429-114"},
-  {id:35,gu:"강북구",addr:"번동 454-61",area:"70,897㎡",date:"22.6.23.",query:"서울특별시 강북구 번동 454-61"},
-  {id:36,gu:"강북구",addr:"번동 411",area:"79,517㎡",date:"22.10.27.",query:"서울특별시 강북구 번동 411"},
-  {id:37,gu:"강북구",addr:"수유동 52-1",area:"72,754.7㎡",date:"22.10.27.",query:"서울특별시 강북구 수유동 52-1"},
-  {id:38,gu:"강북구",addr:"수유동392-9",area:"86,363㎡",date:"24.02.22.",query:"서울특별시 강북구 수유동392-9"},
-  {id:39,gu:"강북구",addr:"수유동 141",area:"73,865㎡",date:"23.11.30.",query:"서울특별시 강북구 수유동 141"},
-  {id:40,gu:"강북구",addr:"번동 469",area:"85,801㎡",date:"24.09.30.",query:"서울특별시 강북구 번동 469"},
-  {id:41,gu:"강북구",addr:"수유동 31-10",area:"65,961㎡",date:"24.09.30.",query:"서울특별시 강북구 수유동 31-10"},
-  {id:42,gu:"성동구",addr:"마장동 457",area:"75,382㎡",date:"22.06.23.",query:"서울특별시 성동구 마장동 457"},
-  {id:43,gu:"성동구",addr:"응봉동 265",area:"37,287㎡",date:"22.10.27.",query:"서울특별시 성동구 응봉동 265"},
-  {id:44,gu:"구로구",addr:"고척동 241",area:"98,735.6㎡",date:"22.06.23./22.09.22./23.11.30.",query:"서울특별시 구로구 고척동 241"},
-  {id:45,gu:"구로구",addr:"구로동 728",area:"64,151㎡",date:"22.06.23.",query:"서울특별시 구로구 구로동 728"},
-  {id:46,gu:"구로구",addr:"개봉동 270-38",area:"41,145㎡",date:"22.10.27.",query:"서울특별시 구로구 개봉동 270-38"},
-  {id:47,gu:"구로구",addr:"구로동 511",area:"57,000㎡",date:"23.11.30.",query:"서울특별시 구로구 구로동 511"},
-  {id:48,gu:"구로구",addr:"개봉동 20",area:"61,717㎡",date:"24.09.19.",query:"서울특별시 구로구 개봉동 20"},
-  {id:49,gu:"노원구",addr:"상계2동 177-66",area:"96,468.5㎡",date:"22.06.23.",query:"서울특별시 노원구 상계2동 177-66"},
-  {id:50,gu:"노원구",addr:"월계동 534",area:"51,049㎡",date:"22.10.27.",query:"서울특별시 노원구 월계동 534"},
-  {id:51,gu:"도봉구",addr:"쌍문동 524-87",area:"82,630㎡",date:"22.06.23.",query:"서울특별시 도봉구 쌍문동 524-87"},
-  {id:52,gu:"도봉구",addr:"쌍문동 494-22",area:"31,303㎡",date:"22.06.23.",query:"서울특별시 도봉구 쌍문동 494-22"},
-  {id:53,gu:"도봉구",addr:"방학동 618",area:"98,115㎡",date:"23.09.27.",query:"서울특별시 도봉구 방학동 618"},
-  {id:54,gu:"도봉구",addr:"쌍문1동 460",area:"87,774㎡",date:"23.09.27./24.10.04.",query:"서울특별시 도봉구 쌍문1동 460"},
-  {id:55,gu:"도봉구",addr:"창3동 501-13",area:"44,916.15㎡",date:"24.01.18.",query:"서울특별시 도봉구 창3동 501-13"},
-  {id:56,gu:"강동구",addr:"둔촌동 77-41",area:"65,326.84㎡",date:"22.01.20./22.11.02.",query:"서울특별시 강동구 둔촌동 77-41"},
-  {id:57,gu:"강동구",addr:"천호동 113-2",area:"55,570㎡",date:"22.10.27.",query:"서울특별시 강동구 천호동 113-2"},
-  {id:58,gu:"동작구",addr:"노량진동 221-24",area:"31,783㎡",date:"22.10.27.",query:"서울특별시 동작구 노량진동 221-24"},
-  {id:59,gu:"동작구",addr:"사당동 202-29",area:"84,311㎡",date:"22.10.27.",query:"서울특별시 동작구 사당동 202-29"},
-  {id:60,gu:"동작구",addr:"상도동 242",area:"69,120㎡",date:"23.09.27.",query:"서울특별시 동작구 상도동 242"},
-  {id:61,gu:"동작구",addr:"상도동 279",area:"49,155㎡",date:"24.02.22.",query:"서울특별시 동작구 상도동 279"},
-  {id:62,gu:"송파구",addr:"풍납동 483-10",area:"46,870㎡",date:"22.06.23.",query:"서울특별시 송파구 풍납동 483-10"},
-  {id:63,gu:"송파구",addr:"거여동 555",area:"12,615.7㎡",date:"22.06.23.",query:"서울특별시 송파구 거여동 555"},
-  {id:64,gu:"성북구",addr:"석관동 334-69",area:"76,336㎡",date:"22.10.27.",query:"서울특별시 성북구 석관동 334-69"},
-  {id:65,gu:"성북구",addr:"석관동 261-22",area:"52,019㎡",date:"22.10.27.",query:"서울특별시 성북구 석관동 261-22"},
-  {id:66,gu:"양천구",addr:"신월동 173",area:"80,030.5㎡",date:"22.06.23.",query:"서울특별시 양천구 신월동 173"},
-  {id:67,gu:"양천구",addr:"신월동 102-33",area:"74,094㎡",date:"22.06.23.",query:"서울특별시 양천구 신월동 102-33"},
-  {id:68,gu:"양천구",addr:"목4동 724-1",area:"52,785㎡",date:"23.07.06.",query:"서울특별시 양천구 목4동 724-1"},
-  {id:69,gu:"양천구",addr:"목2동 231-27",area:"64,474㎡",date:"23.03.13/23.07.05.",query:"서울특별시 양천구 목2동 231-27"},
-  {id:70,gu:"영등포구",addr:"대림3동 786",area:"24,064㎡",date:"22.10.27.",query:"서울특별시 영등포구 대림3동 786"},
-  {id:71,gu:"은평구",addr:"불광동 170",area:"53,915㎡",date:"22.10.27.",query:"서울특별시 은평구 불광동 170"},
-  {id:72,gu:"은평구",addr:"대조동 89",area:"42,685㎡",date:"22.10.27.",query:"서울특별시 은평구 대조동 89"},
-  {id:73,gu:"관악구",addr:"청룡동 1535",area:"92,871㎡",date:"22.10.27.",query:"서울특별시 관악구 청룡동 1535"},
-  {id:74,gu:"관악구",addr:"성현동 1021",area:"81,623㎡",date:"23.07.06.",query:"서울특별시 관악구 성현동 1021"},
-  {id:75,gu:"관악구",addr:"은천동 635-540",area:"65,070㎡",date:"23.09.27.",query:"서울특별시 관악구 은천동 635-540"},
-  {id:76,gu:"관악구",addr:"은천동 938-5",area:"74,515㎡",date:"23.09.27.",query:"서울특별시 관악구 은천동 938-5"},
-  {id:77,gu:"관악구",addr:"난곡동 697-20",area:"41,935㎡",date:"24.07.12.",query:"서울특별시 관악구 난곡동 697-20"},
-  {id:78,gu:"광진구",addr:"자양1동 799",area:"73,362㎡",date:"24.05.01.",query:"서울특별시 광진구 자양1동 799"},
-  {id:79,gu:"광진구",addr:"자양2동 649",area:"88,762㎡",date:"24.05.03.",query:"서울특별시 광진구 자양2동 649"},
-  {id:80,gu:"서초구",addr:"방배동 977",area:"7,190㎡",date:"22.01.20./22.12.29.",query:"서울특별시 서초구 방배동 977"},
-  {id:81,gu:"서초구",addr:"양재2동 374",area:"61,289㎡",date:"23.08.31.",query:"서울특별시 서초구 양재2동 374"},
-  {id:82,gu:"서초구",addr:"양재2동 382",area:"68,804㎡",date:"23.08.31.",query:"서울특별시 서초구 양재2동 382"},
-  {id:83,gu:"서대문구",addr:"천연동 89-16",area:"18,654.0㎡",date:"22.06.23.",query:"서울특별시 서대문구 천연동 89-16"},
-  {id:84,gu:"서대문구",addr:"홍제동 322",area:"34,343㎡",date:"23.12.07",query:"서울특별시 서대문구 홍제동 322"},
-  {id:85,gu:"용산구",addr:"원효로4가 71",area:"26,192㎡",date:"22.10.27.",query:"서울특별시 용산구 원효로4가 71"},
-  {id:86,gu:"종로구",addr:"구기동 100-48",area:"64,231㎡",date:"22.06.23.",query:"서울특별시 종로구 구기동 100-48"},
-  {id:87,gu:"강남구",addr:"일원동 619-641",area:"90,992㎡",date:"22.10.27.",query:"서울특별시 강남구 일원동 619"},
-  {id:88,gu:"동대문구",addr:"답십리동 489",area:"55,045㎡",date:"23.12.07.",query:"서울특별시 동대문구 답십리동 489"},
-  {id:89,gu:"종로구",addr:"숭인동 61",area:"17,334㎡",date:"24.06.27.",query:"서울특별시 종로구 숭인동 61"},
-  {id:90,gu:"용산구",addr:"서계동 116",area:"11,490㎡",date:"21.6.25.",query:"서울특별시 용산구 서계동 116"},
-  {id:91,gu:"성동구",addr:"금호동1가 129",area:"15,724㎡",date:"22.10.27.",query:"서울특별시 성동구 금호동1가 129"},
-  {id:92,gu:"광진구",addr:"자양2동 681",area:"42,046㎡",date:"24.2.22.",query:"서울특별시 광진구 자양2동 681"},
-  {id:93,gu:"광진구",addr:"자양1동 772-1",area:"42,315㎡",date:"24.8.28.",query:"서울특별시 광진구 자양1동 772-1"},
-  {id:94,gu:"광진구",addr:"자양1동 226-1",area:"19,836㎡",date:"25.1.15.",query:"서울특별시 광진구 자양1동 226-1"},
-  {id:95,gu:"광진구",addr:"광장동 264-1",area:"34,123㎡",date:"24.10.2.",query:"서울특별시 광진구 광장동 264-1"},
-  {id:96,gu:"광진구",addr:"구의3동 587-58",area:"20,358㎡",date:"25.02.28.",query:"서울특별시 광진구 구의3동 587-58"},
-  {id:97,gu:"중랑구",addr:"신내동 493-13",area:"33,876㎡",date:"24.9.12.",query:"서울특별시 중랑구 신내동 493-13"},
-  {id:98,gu:"중랑구",addr:"망우동 509",area:"14,541㎡",date:"25.7.3.",query:"서울특별시 중랑구 망우동 509"},
-  {id:99,gu:"성북구",addr:"종암동 125-1",area:"11,755㎡",date:"22.11.8.",query:"서울특별시 성북구 종암동 125-1"},
-  {id:100,gu:"성북구",addr:"정릉동 559-43",area:"13,825㎡",date:"22.11.8.",query:"서울특별시 성북구 정릉동 559-43"},
-  {id:101,gu:"성북구",addr:"정릉동 226-1",area:"27,024㎡",date:"24.10.4.",query:"서울특별시 성북구 정릉동 226-1"},
-  {id:102,gu:"성북구",addr:"정릉동 199-1",area:"34,564㎡",date:"25.02.4.",query:"서울특별시 성북구 정릉동 199-1"},
-  {id:103,gu:"강북구",addr:"미아동 791-1134",area:"14,175㎡",date:"25.05.1.",query:"서울특별시 강북구 미아동 791-1134"},
-  {id:104,gu:"서대문구",addr:"현저동 1-5",area:"15,143㎡",date:"24.5.9.",query:"서울특별시 서대문구 현저동 1-5"},
-  {id:105,gu:"서대문구",addr:"홍은동 10-18",area:"17,668㎡",date:"24.10.10.",query:"서울특별시 서대문구 홍은동 10-18"},
-  {id:106,gu:"서대문구",addr:"홍은동 11-360",area:"11,665㎡",date:"22.11.10.",query:"서울특별시 서대문구 홍은동 11-360"},
-  {id:107,gu:"서대문구",addr:"연희동 520",area:"19,199㎡",date:"25.2.10.",query:"서울특별시 서대문구 연희동 520"},
-  {id:108,gu:"마포구",addr:"창전동 46-1",area:"11,551㎡",date:"25.2.18.",query:"서울특별시 마포구 창전동 46-1"},
-  {id:109,gu:"마포구",addr:"망원동 464-1",area:"14,783㎡",date:"25.9.19.",query:"서울특별시 마포구 망원동 464-1"},
-  {id:110,gu:"양천구",addr:"목동 644-1",area:"22,516㎡",date:"24.07.30.",query:"서울특별시 양천구 목동 644-1"},
-  {id:111,gu:"금천구",addr:"시흥3동 972",area:"24,030㎡",date:"25. 2. 27.",query:"서울특별시 금천구 시흥3동 972"},
-  {id:112,gu:"동작구",addr:"동작동 102-8",area:"21,211㎡",date:"25.3.20.",query:"서울특별시 동작구 동작동 102-8"},
-  {id:113,gu:"관악구",addr:"신림동 655-78",area:"16,137㎡",date:"24.4.25.",query:"서울특별시 관악구 신림동 655-78"},
-  {id:114,gu:"서초구",addr:"우면동 2",area:"40,708㎡",date:"24.3.27.",query:"서울특별시 서초구 우면동 2"},
-  {id:115,gu:"강동구",addr:"천호동 338번지",area:"20,492㎡",date:"24.5.23.",query:"서울특별시 강동구 천호동 338번지"},
-  {id:116,gu:"성북구",addr:"하월곡동 40-107",area:"17,450㎡",date:"25.10.17.",query:"서울특별시 성북구 하월곡동 40-107"},
-  {id:117,gu:"성북구",addr:"장위동 219-15",area:"23,025㎡",date:"25.09.08.",query:"서울특별시 성북구 장위동 219-15"},
-  {id:118,gu:"성북구",addr:"삼선동3가 42-7",area:"16,815㎡",date:"25.11.17.",query:"서울특별시 성북구 삼선동3가 42-7"},
-  {id:119,gu:"중랑구",addr:"면목동 127-26",area:"21,829㎡",date:"25.10.31.",query:"서울특별시 중랑구 면목동 127-26"},
-  {id:120,gu:"은평구",addr:"응암동 227",area:"19,940㎡",date:"25.10.27.",query:"서울특별시 은평구 응암동 227"},
-  {id:121,gu:"중랑구",addr:"면목동 377-4",area:"22,041㎡",date:"25.11.10.",query:"서울특별시 중랑구 면목동 377-4"},
-  {id:122,gu:"서초구",addr:"서초동 1506-6",area:"46,697㎡",date:"25.06.18.",query:"서울특별시 서초구 서초동 1506-6"},
-];
-
-/* ━━━━━━━━━━━━━━━━ 지도 초기화 ━━━━━━━━━━━━━━━━ */
-var map = new naver.maps.Map('map', {
-  center: new naver.maps.LatLng(37.555, 127.000),
-  zoom: 12,
-  mapTypeId: naver.maps.MapTypeId.NORMAL,
-  zoomControl: true,
-  zoomControlOptions: {
-    style: naver.maps.ZoomControlStyle.SMALL,
-    position: naver.maps.Position.RIGHT_CENTER
-  },
-  logoControlOptions: { position: naver.maps.Position.BOTTOM_RIGHT },
-  scaleControlOptions: { position: naver.maps.Position.BOTTOM_LEFT }
-});
-
-/* ━━━━━━━━━━━━━━━━ 상태 ━━━━━━━━━━━━━━━━ */
-var activeVillage  = null;
-var tooltipWindow  = new naver.maps.InfoWindow({
-  borderWidth: 0,
-  disableAnchor: true,
-  backgroundColor: 'transparent',
-  pixelOffset: new naver.maps.Point(0, -6)
-});
-
-/* ━━━━━━━━━━━━━━━━ 마커 아이콘 ━━━━━━━━━━━━━━━━ */
-var TYPE_COLORS = {type1: '#E53935', type2: '#F97316', type3: '#3B82F6', type4: '#8B5CF6'};
-
-function makeIcon(type, active) {
-  var color = TYPE_COLORS[type] || '#888';
-  var s = active ? 20 : 14, a = active ? 10 : 7;
-  if (type === 'type3') {
-    return {
-      content: '<div style="width:'+s+'px;height:'+s+'px;background:'+color+';border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.35);transform:rotate(45deg);cursor:pointer;"></div>',
-      anchor: new naver.maps.Point(a, a)
-    };
-  }
-  return {
-    content: '<div style="width:'+s+'px;height:'+s+'px;border-radius:50%;background:'+color+';border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.35);cursor:pointer;"></div>',
-    anchor: new naver.maps.Point(a, a)
-  };
+/* ────────────────────────────────────────────────
+   지도 초기화
+──────────────────────────────────────────────── */
+function initMap() {
+  map = new naver.maps.Map('map', {
+    center: new naver.maps.LatLng(37.5665, 126.9780),
+    zoom: 11,
+    mapTypeId: naver.maps.MapTypeId.NORMAL,
+    zoomControl: true,
+    zoomControlOptions: {
+      position: naver.maps.Position.RIGHT_CENTER,
+    },
+  });
 }
 
-/* ━━━━━━━━━━━━━━━━ 상태 ━━━━━━━━━━━━━━━━ */
-var activeItem   = null;
-var layerMarkers = {type1: [], type2: [], type3: [], type4: []};
-var tooltipWindow = new naver.maps.InfoWindow({
-  borderWidth: 0, disableAnchor: true,
-  backgroundColor: 'transparent',
-  pixelOffset: new naver.maps.Point(0, -6)
-});
+/* ────────────────────────────────────────────────
+   마커 아이콘 생성
+──────────────────────────────────────────────── */
+function makeIcon(color, shape, size, opacity) {
+  opacity = (opacity === undefined) ? 1 : opacity;
+  if (shape === 'diamond') {
+    const half = Math.round(size / 2);
+    const full = size;
+    const content = `<div style="
+      width:${full}px;height:${full}px;
+      background:${color};
+      transform:rotate(45deg);
+      opacity:${opacity};
+    "></div>`;
+    return {
+      content: content,
+      anchor: new naver.maps.Point(half, half),
+    };
+  } else {
+    // circle
+    const content = `<div style="
+      width:${size}px;height:${size}px;
+      border-radius:50%;
+      background:${color};
+      border:1.5px solid rgba(255,255,255,0.9);
+      box-shadow:0 1px 3px rgba(0,0,0,0.25);
+      opacity:${opacity};
+    "></div>`;
+    return {
+      content: content,
+      anchor: new naver.maps.Point(Math.round(size / 2), Math.round(size / 2)),
+    };
+  }
+}
 
-/* ━━━━━━━━━━━━━━━━ 마커 생성 공통 ━━━━━━━━━━━━━━━━ */
-function createMarker(item, type, lat, lng) {
-  var marker = new naver.maps.Marker({
+/* ────────────────────────────────────────────────
+   카테고리 판별
+──────────────────────────────────────────────── */
+function getCategoryA(item) {
+  if (item.subcategory === '관리형') return '주거환경개선(관리형)';
+  if (item.category === '주거환경개선사업') return '주거환경개선(정비형)';
+  // 재개발(주택정비형), 가로주택정비, 지역주택
+  return item.category;
+}
+
+function getCategoryB(item) {
+  return item.formation_type || '신발생';
+}
+
+/* ────────────────────────────────────────────────
+   마커 생성
+──────────────────────────────────────────────── */
+function createMarker(item, cat) {
+  const cfg = CAT_CONFIG[cat];
+  if (!cfg) return null;
+  if (!item.lat || !item.lng) return null;
+
+  const icon = makeIcon(cfg.color, cfg.shape || 'circle', cfg.size, cfg.opacity);
+  const marker = new naver.maps.Marker({
+    position: new naver.maps.LatLng(item.lat, item.lng),
     map: map,
-    position: new naver.maps.LatLng(lat, lng),
-    icon: makeIcon(type, false),
-    zIndex: type === 'type1' ? 110 : type === 'type2' ? 100 : 90
+    icon: icon,
+    title: item.name || '',
   });
-  item._marker = marker;
-  layerMarkers[type].push(marker);
 
-  naver.maps.Event.addListener(marker, 'mouseover', function() {
-    if (!activeItem || activeItem.item !== item) marker.setIcon(makeIcon(type, true));
-    tooltipWindow.setContent(
-      '<div style="background:#1a1a2e;color:#fff;padding:5px 10px;border-radius:6px;font-size:12px;font-weight:600;white-space:nowrap;font-family:-apple-system,sans-serif;">'
-      + (item.name || (item.gu + ' #' + item.id)) + '</div>'
-    );
-    tooltipWindow.open(map, marker);
+  itemsByMarker.set(marker, { item, cat });
+
+  naver.maps.Event.addListener(marker, 'click', function () {
+    showPanel(item, cat);
   });
-  naver.maps.Event.addListener(marker, 'mouseout', function() {
-    if (!activeItem || activeItem.item !== item) marker.setIcon(makeIcon(type, false));
-    tooltipWindow.close();
-  });
-  naver.maps.Event.addListener(marker, 'click', function() {
-    tooltipWindow.close();
-    selectItem(item, type);
-  });
+
   return marker;
 }
 
-/* ━━━━━━━━━━━━━━━━ 사이드바 아이템 ━━━━━━━━━━━━━━━━ */
-function addSidebarItem(item, type, listId, hasCoords) {
-  var color = TYPE_COLORS[type];
-  var dotStyle = type === 'type3'
-    ? 'border-radius:2px;transform:rotate(45deg);'
-    : 'border-radius:50%;';
-  var el = document.createElement('div');
-  el.className = 'v-item';
-  el.innerHTML =
-    '<span class="v-dot" style="background:' + color + ';' + dotStyle + '"></span>'
-    + '<div class="v-info">'
-    +   '<div class="v-name">' + (item.name || item.id) + '</div>'
-    +   '<div class="v-gu">' + item.gu
-    +     (hasCoords ? '' : ' <span style="color:#f97316;font-size:9px;">📍미확정</span>')
-    +   '</div>'
-    + '</div>';
-  if (hasCoords) {
-    el.addEventListener('click', function() {
-      map.panTo(new naver.maps.LatLng(item._lat, item._lng));
-      if (map.getZoom() < 14) map.setZoom(15);
-      selectItem(item, type);
+/* ────────────────────────────────────────────────
+   마커 초기화
+──────────────────────────────────────────────── */
+function initMarkers(data) {
+  // Layer A — items (정비형)
+  (data.layerA.items || []).forEach(item => {
+    const cat = getCategoryA(item);
+    if (!markersByCategory[cat]) markersByCategory[cat] = [];
+    const m = createMarker(item, cat);
+    if (m) markersByCategory[cat].push(m);
+  });
+
+  // Layer A — items_관리형
+  (data.layerA.items_관리형 || []).forEach(item => {
+    const cat = '주거환경개선(관리형)';
+    if (!markersByCategory[cat]) markersByCategory[cat] = [];
+    const m = createMarker(item, cat);
+    if (m) markersByCategory[cat].push(m);
+  });
+
+  // Layer B
+  (data.layerB.items || []).forEach(item => {
+    const cat = getCategoryB(item);
+    if (!markersByCategory[cat]) markersByCategory[cat] = [];
+    const m = createMarker(item, cat);
+    if (m) markersByCategory[cat].push(m);
+  });
+}
+
+/* ────────────────────────────────────────────────
+   사이드바 빌드
+──────────────────────────────────────────────── */
+function buildSidebar(data) {
+  // count per category
+  const counts = {};
+  Object.keys(CAT_CONFIG).forEach(c => { counts[c] = 0; });
+
+  (data.layerA.items || []).forEach(item => {
+    const c = getCategoryA(item);
+    if (counts[c] !== undefined) counts[c]++;
+  });
+  (data.layerA.items_관리형 || []).forEach(() => {
+    counts['주거환경개선(관리형)']++;
+  });
+  (data.layerB.items || []).forEach(item => {
+    const c = getCategoryB(item);
+    if (counts[c] !== undefined) counts[c]++;
+  });
+
+  // Layer A body
+  const bodyA = document.getElementById('acc-a-body');
+  bodyA.innerHTML = '';
+  LAYER_A_ORDER.forEach(cat => {
+    bodyA.appendChild(makeCatRow(cat, counts[cat] || 0));
+  });
+
+  // Layer B body
+  const bodyB = document.getElementById('acc-b-body');
+  bodyB.innerHTML = '';
+  LAYER_B_ORDER.forEach(cat => {
+    bodyB.appendChild(makeCatRow(cat, counts[cat] || 0));
+  });
+
+  // set initial max-height after DOM inserted
+  requestAnimationFrame(() => {
+    ['acc-a-body', 'acc-b-body'].forEach(id => {
+      const el = document.getElementById(id);
+      el.style.maxHeight = el.scrollHeight + 'px';
     });
+  });
+}
+
+function makeCatRow(cat, count) {
+  const cfg = CAT_CONFIG[cat];
+  const row = document.createElement('div');
+  row.className = 'cat-row';
+  row.id = 'cat-row-' + sanitizeId(cat);
+  row.setAttribute('data-cat', cat);
+  row.onclick = function () { toggleCategory(cat); };
+
+  // marker indicator
+  let iconHtml;
+  if (cfg.shape === 'diamond') {
+    iconHtml = `<div class="cat-diamond" style="
+      width:${cfg.size}px;height:${cfg.size}px;
+      background:${cfg.color};
+      opacity:${cfg.opacity};
+    "></div>`;
   } else {
-    el.style.opacity = '0.55';
-    el.style.cursor  = 'default';
+    iconHtml = `<div class="cat-dot" style="
+      width:${cfg.size}px;height:${cfg.size}px;
+      background:${cfg.color};
+      opacity:${cfg.opacity};
+    "></div>`;
   }
-  item._listItem = el;
-  document.getElementById(listId).appendChild(el);
+
+  row.innerHTML = `
+    ${iconHtml}
+    <span class="cat-label">${cat}</span>
+    <span class="cat-count">${count}</span>
+  `;
+  return row;
 }
 
-/* ━━━━━━━━━━━━━━━━ 아이템 선택 ━━━━━━━━━━━━━━━━ */
-function selectItem(item, type) {
-  if (activeItem) {
-    if (activeItem.item._marker) activeItem.item._marker.setIcon(makeIcon(activeItem.type, false));
-    if (activeItem.item._listItem) activeItem.item._listItem.classList.remove('active');
-  }
-  activeItem = {item: item, type: type};
-  if (item._marker) item._marker.setIcon(makeIcon(type, true));
-  if (item._listItem) {
-    item._listItem.classList.add('active');
-    item._listItem.scrollIntoView({block: 'nearest', behavior: 'smooth'});
-  }
-  openPanel(item, type);
+function sanitizeId(str) {
+  return str.replace(/[()\/\s]/g, '_');
 }
 
-/* ━━━━━━━━━━━━━━━━ 패널 열기 ━━━━━━━━━━━━━━━━ */
-function openPanel(item, type) {
-  document.getElementById('village-body').style.display = 'none';
-  document.getElementById('moatown-body').style.display = 'none';
-  document.getElementById('p-photo').innerHTML = '';
-  var badge = document.getElementById('p-badge');
-
-  if (type === 'type1') {
-    document.getElementById('p-name').textContent     = item.name;
-    document.getElementById('p-location').textContent = item.gu + ' · ' + item.dong;
-    badge.textContent = '무허가 밀집형'; badge.className = 'badge badge-type1';
-    if (item.photo) {
-      document.getElementById('p-photo').innerHTML = '<img src="' + item.photo + '" alt="' + item.name + '" onerror="this.parentNode.innerHTML=\'\'"/>';
-    }
-    document.getElementById('village-body').style.display = 'block';
-    document.getElementById('p-desc').textContent       = item.note || '';
-    document.getElementById('p-address').textContent    = item.address || '';
-    document.getElementById('p-formed').textContent     = item.formed || '';
-    document.getElementById('p-households').textContent = item.households || '';
-    document.querySelector('#village-body .p-table tr:nth-child(1) td:first-child').textContent = '주소';
-    document.querySelector('#village-body .p-table tr:nth-child(2) td:first-child').textContent = '형성 시기';
-    document.querySelector('#village-body .p-table tr:nth-child(3) td:first-child').textContent = '규모';
-  } else if (type === 'type2') {
-    document.getElementById('p-name').textContent     = item.name;
-    document.getElementById('p-location').textContent = item.gu + ' · ' + item.dong;
-    var sl = item.subtype === '정비형' ? '노후불량 · 정비형' : item.subtype === '관리형' ? '노후불량 · 관리형' : '노후불량주거지';
-    badge.textContent = sl; badge.className = 'badge badge-type2';
-    document.getElementById('village-body').style.display = 'block';
-    document.getElementById('p-desc').textContent       = '';
-    document.getElementById('p-address').textContent    = item.query || '';
-    document.getElementById('p-formed').textContent     = item.subtype || '';
-    document.getElementById('p-households').textContent = item._lat ? '좌표 확정' : '좌표 미확정';
-    document.querySelector('#village-body .p-table tr:nth-child(1) td:first-child').textContent = '주소';
-    document.querySelector('#village-body .p-table tr:nth-child(2) td:first-child').textContent = '유형';
-    document.querySelector('#village-body .p-table tr:nth-child(3) td:first-child').textContent = '좌표';
-  } else if (type === 'type3') {
-    document.getElementById('p-name').textContent     = '모아타운 ' + item.gu + ' #' + item.id;
-    document.getElementById('p-location').textContent = '서울특별시 ' + item.gu;
-    badge.textContent = '모아타운 지정구역'; badge.className = 'badge badge-type3';
-    document.getElementById('mt-gu').textContent   = item.gu;
-    document.getElementById('mt-addr').textContent = item.addr;
-    document.getElementById('mt-area').textContent = item.area;
-    document.getElementById('mt-date').textContent = '20' + item.date;
-    document.getElementById('moatown-body').style.display = 'block';
-  } else if (type === 'type4') {
-    document.getElementById('p-name').textContent     = item.name;
-    document.getElementById('p-location').textContent = item.gu + ' · ' + item.dong;
-    badge.textContent = '미분류'; badge.className = 'badge badge-type4';
-    if (item.photo) {
-      document.getElementById('p-photo').innerHTML = '<img src="' + item.photo + '" alt="' + item.name + '" onerror="this.parentNode.innerHTML=\'\'"/>';
-    }
-    document.getElementById('village-body').style.display = 'block';
-    document.getElementById('p-desc').textContent       = item.note || '';
-    document.getElementById('p-address').textContent    = item.query || '';
-    document.getElementById('p-formed').textContent     = '임의 지정';
-    document.getElementById('p-households').textContent = '';
-    document.querySelector('#village-body .p-table tr:nth-child(1) td:first-child').textContent = '주소';
-    document.querySelector('#village-body .p-table tr:nth-child(2) td:first-child').textContent = '유형';
-    document.querySelector('#village-body .p-table tr:nth-child(3) td:first-child').textContent = '';
+/* ────────────────────────────────────────────────
+   카테고리 토글
+──────────────────────────────────────────────── */
+function toggleCategory(cat) {
+  if (hiddenCategories.has(cat)) {
+    hiddenCategories.delete(cat);
+    (markersByCategory[cat] || []).forEach(m => m.setMap(map));
+  } else {
+    hiddenCategories.add(cat);
+    (markersByCategory[cat] || []).forEach(m => m.setMap(null));
   }
+  updateCategoryUI(cat);
+}
+
+function updateCategoryUI(cat) {
+  const row = document.getElementById('cat-row-' + sanitizeId(cat));
+  if (!row) return;
+  if (hiddenCategories.has(cat)) {
+    row.classList.add('dimmed');
+  } else {
+    row.classList.remove('dimmed');
+  }
+}
+
+/* ────────────────────────────────────────────────
+   아코디언
+──────────────────────────────────────────────── */
+function toggleAcc(id) {
+  const body = document.getElementById('acc-' + id + '-body');
+  const arrow = document.getElementById('acc-' + id + '-arrow');
+  if (body.classList.contains('collapsed')) {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    body.classList.remove('collapsed');
+    arrow.classList.add('open');
+  } else {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    // force reflow
+    body.getBoundingClientRect();
+    body.style.maxHeight = '0px';
+    body.classList.add('collapsed');
+    arrow.classList.remove('open');
+  }
+}
+
+/* ────────────────────────────────────────────────
+   지도 타입
+──────────────────────────────────────────────── */
+function setMapType(type) {
+  if (type === 'satellite') {
+    map.setMapTypeId(naver.maps.MapTypeId.HYBRID);
+    document.getElementById('btn-satellite').classList.add('active');
+    document.getElementById('btn-normal').classList.remove('active');
+  } else {
+    map.setMapTypeId(naver.maps.MapTypeId.NORMAL);
+    document.getElementById('btn-normal').classList.add('active');
+    document.getElementById('btn-satellite').classList.remove('active');
+  }
+}
+
+/* ────────────────────────────────────────────────
+   패널
+──────────────────────────────────────────────── */
+function showPanel(item, cat) {
+  const cfg = CAT_CONFIG[cat] || { color: '#888' };
+
+  document.getElementById('p-name').textContent = item.name || '(이름 없음)';
+
+  const loc = [item.gu, item.dong].filter(Boolean).join(' ');
+  document.getElementById('p-location').textContent = loc;
+
+  const badge = document.getElementById('p-badge');
+  badge.textContent = cat;
+  badge.style.background = cfg.color;
+
+  const body = document.getElementById('p-body-content');
+
+  if (cfg.layer === 'A') {
+    // Layer A
+    let rows = '';
+    if (item.stage)    rows += `<tr><td>단계</td><td>${item.stage}</td></tr>`;
+    if (item.status)   rows += `<tr><td>상태</td><td>${item.status}</td></tr>`;
+    if (item.address)  rows += `<tr><td>주소</td><td>${item.address}</td></tr>`;
+    if (item.gu)       rows += `<tr><td>자치구</td><td>${item.gu}</td></tr>`;
+    if (item.geocode_status && item.geocode_status !== 'ok') {
+      rows += `<tr><td>좌표</td><td><span style="color:#f59e0b;font-size:10px;">근사값(동 중심)</span></td></tr>`;
+    }
+    body.innerHTML = rows ? `<table class="p-table"><tbody>${rows}</tbody></table>` : '<p style="color:#aaa;font-size:12px;">상세정보 없음</p>';
+  } else {
+    // Layer B
+    let rows = '';
+    if (item.formation_type) rows += `<tr><td>형성유형</td><td>${item.formation_type}</td></tr>`;
+    if (item.formed)         rows += `<tr><td>형성시기</td><td>${item.formed}</td></tr>`;
+    if (item.households)     rows += `<tr><td>가구수</td><td>${item.households}</td></tr>`;
+    if (item.status)         rows += `<tr><td>현황</td><td>${item.status}</td></tr>`;
+    if (item.gu)             rows += `<tr><td>자치구</td><td>${item.gu}</td></tr>`;
+    if (item.dong)           rows += `<tr><td>동</td><td>${item.dong}</td></tr>`;
+
+    let extra = '';
+    if (item.note) {
+      extra += `<div class="p-note">${item.note}</div>`;
+    }
+    if (item.source) {
+      extra += `<p style="margin-top:10px;font-size:10px;color:#9ca3af;">출처: ${item.source}</p>`;
+    }
+
+    body.innerHTML = (rows ? `<table class="p-table"><tbody>${rows}</tbody></table>` : '') + extra;
+  }
+
   document.getElementById('panel').classList.add('open');
 }
 
-/* ━━━━━━━━━━━━━━━━ 패널 닫기 ━━━━━━━━━━━━━━━━ */
 function closePanel() {
   document.getElementById('panel').classList.remove('open');
-  document.getElementById('village-body').style.display = 'block';
-  document.getElementById('moatown-body').style.display = 'none';
-  if (activeItem) {
-    if (activeItem.item._marker) activeItem.item._marker.setIcon(makeIcon(activeItem.type, false));
-    if (activeItem.item._listItem) activeItem.item._listItem.classList.remove('active');
-    activeItem = null;
+}
+
+/* ────────────────────────────────────────────────
+   데이터 로드 및 시작
+──────────────────────────────────────────────── */
+async function loadData() {
+  const [a, b] = await Promise.all([
+    fetch('data/layerA.json').then(r => r.json()),
+    fetch('data/layerB.json').then(r => r.json()),
+  ]);
+  return { layerA: a, layerB: b };
+}
+
+async function main() {
+  initMap();
+  try {
+    const data = await loadData();
+    initMarkers(data);
+    buildSidebar(data);
+  } catch (err) {
+    console.error('데이터 로드 실패:', err);
   }
 }
 
-/* ━━━━━━━━━━━━━━━━ 레이어 토글 ━━━━━━━━━━━━━━━━ */
-function toggleLayer(type, show) {
-  layerMarkers[type].forEach(function(mk) { mk.setMap(show ? map : null); });
+// Naver Maps가 로드된 후 실행
+if (window.naver && window.naver.maps) {
+  main();
+} else {
+  window.addEventListener('load', main);
 }
-
-/* ━━━━━━━━━━━━━━━━ 섹션 접기/펼치기 ━━━━━━━━━━━━━━━━ */
-function toggleSection(id) {
-  var el = document.getElementById(id + '-list');
-  el.style.display = el.style.display === 'none' ? '' : 'none';
-}
-
-/* ━━━━━━━━━━━━━━━━ type1+type2 초기화 ━━━━━━━━━━━━━━━━ */
-(function initType1Type2() {
-  var CACHE_KEY = 'slum_coords_v7';
-  var cached = null;
-  try { cached = JSON.parse(localStorage.getItem(CACHE_KEY)); } catch(e) {}
-
-  function buildMarkers(coords) {
-    document.getElementById('s2-list').innerHTML = '';
-
-    function makeSubsection(wrId, title, fillFn) {
-      var hd = document.createElement('div');
-      hd.className = 'sidebar-subsection-label';
-      hd.style.cssText += 'cursor:pointer;user-select:none;';
-      hd.innerHTML = title + ' <span class="sub-arrow">▾</span>';
-      document.getElementById('s2-list').appendChild(hd);
-      var wrap = document.createElement('div');
-      wrap.id = wrId;
-      document.getElementById('s2-list').appendChild(wrap);
-      hd.onclick = function() {
-        var open = wrap.style.display !== 'none';
-        wrap.style.display = open ? 'none' : '';
-        hd.querySelector('.sub-arrow').textContent = open ? '▸' : '▾';
-      };
-      fillFn(wrId);
-    }
-
-    // ── 주거환경개선사업 정비구역 (정비형 18) ──
-    makeSubsection('s2a-items', '주거환경개선사업 정비구역 (정비형 18)', function(wrId) {
-      TYPE2_GEOCODE_TARGETS.forEach(function(item) {
-        var c = coords.type2 && coords.type2[item.id];
-        if (c && c.lat && c.lng) {
-          item._lat = c.lat; item._lng = c.lng;
-          createMarker(item, 'type2', c.lat, c.lng);
-          addSidebarItem(item, 'type2', wrId, true);
-        } else {
-          addSidebarItem(item, 'type2', wrId, false);
-        }
-      });
-    });
-
-    // ── 무허가 밀집형 9 ──
-    makeSubsection('s2b-items', '무허가 밀집형 ' + TYPE1_GEOCODE_TARGETS.length, function(wrId) {
-      TYPE1_GEOCODE_TARGETS.forEach(function(item) {
-        var c = coords.type1 && coords.type1[item.id];
-        if (c && c.lat && c.lng) {
-          item._lat = c.lat; item._lng = c.lng;
-          createMarker(item, 'type1', c.lat, c.lng);
-          addSidebarItem(item, 'type1', wrId, true);
-        } else {
-          addSidebarItem(item, 'type1', wrId, false);
-        }
-      });
-    });
-
-    // ── 관리형 (좌표 미확정) ──
-    makeSubsection('s2c-items', '관리형 (좌표 미확정)', function(wrId) {
-      TYPE2_NO_COORDS.forEach(function(item) {
-        addSidebarItem(item, 'type2', wrId, false);
-      });
-    });
-
-    // ── 임의 지정 ──
-    document.getElementById('s4-list').innerHTML = '';
-    TYPE4_GEOCODE_TARGETS.forEach(function(item) {
-      var c = coords.type4 && coords.type4[item.id];
-      if (c && c.lat && c.lng) {
-        item._lat = c.lat; item._lng = c.lng;
-        createMarker(item, 'type4', c.lat, c.lng);
-        addSidebarItem(item, 'type4', 's4-list', true);
-      } else {
-        addSidebarItem(item, 'type4', 's4-list', false);
-      }
-    });
-    document.getElementById('s4-count').textContent = layerMarkers.type4.length + '개';
-  }
-
-  if (cached) { buildMarkers(cached); return; }
-
-  var toast  = document.getElementById('geocode-toast');
-  var progEl = document.getElementById('geocode-prog');
-  var coords = {type1: {}, type2: {}, type4: {}};
-  var allT   = TYPE1_GEOCODE_TARGETS.concat(TYPE2_GEOCODE_TARGETS).concat(TYPE4_GEOCODE_TARGETS);
-  var idx    = 0;
-  if (toast) toast.style.display = 'block';
-
-  function next() {
-    if (idx >= allT.length) {
-      try { localStorage.setItem(CACHE_KEY, JSON.stringify(coords)); } catch(e) {}
-      if (toast) toast.style.display = 'none';
-      buildMarkers(coords);
-      return;
-    }
-    var item = allT[idx];
-    var _t1=TYPE1_GEOCODE_TARGETS.length, _t2=_t1+TYPE2_GEOCODE_TARGETS.length;
-    var t = idx < _t1 ? 'type1' : idx < _t2 ? 'type2' : 'type4';
-    if (progEl) progEl.textContent = (idx+1) + '/' + allT.length + ' ' + item.name;
-    naver.maps.Service.geocode({query: item.query}, function(status, response) {
-      if (status === naver.maps.Service.Status.OK && response.v2.addresses.length > 0) {
-        var loc = response.v2.addresses[0];
-        coords[t][item.id] = {lat: parseFloat(loc.y), lng: parseFloat(loc.x)};
-      } else {
-        coords[t][item.id] = {lat: null, lng: null};
-      }
-      idx++; setTimeout(next, 130);
-    });
-  }
-  next();
-})();
-
-/* ━━━━━━━━━━━━━━━━ 모아타운(type3) 초기화 ━━━━━━━━━━━━━━━━ */
-(function initMoatown() {
-  var CACHE_KEY = 'moatown_coords_v2';
-  var cached = null;
-  try { cached = JSON.parse(localStorage.getItem(CACHE_KEY)); } catch(e) {}
-
-  function createMoatownMarkers(coords) {
-    document.getElementById('s3-list').innerHTML = '';
-    MOATOWN_DATA.forEach(function(m) {
-      if (!m.name) m.name = m.addr;
-      var c = coords[m.id];
-      if (c && c.lat) {
-        m._lat = c.lat; m._lng = c.lng;
-        createMarker(m, 'type3', c.lat, c.lng);
-        addSidebarItem(m, 'type3', 's3-list', true);
-      } else {
-        addSidebarItem(m, 'type3', 's3-list', false);
-      }
-    });
-    document.getElementById('s3-count').textContent = layerMarkers.type3.length + '/' + MOATOWN_DATA.length + '개';
-  }
-
-  if (cached) { createMoatownMarkers(cached); return; }
-
-  var toast  = document.getElementById('geocode-toast');
-  var progEl = document.getElementById('geocode-prog');
-  var coords = {};
-  var idx    = 0;
-  if (toast) toast.style.display = 'block';
-
-  function next() {
-    if (idx >= MOATOWN_DATA.length) {
-      try { localStorage.setItem(CACHE_KEY, JSON.stringify(coords)); } catch(e) {}
-      if (toast) toast.style.display = 'none';
-      createMoatownMarkers(coords);
-      return;
-    }
-    var m = MOATOWN_DATA[idx];
-    if (progEl) progEl.textContent = '모아타운 ' + (idx+1) + '/' + MOATOWN_DATA.length;
-    naver.maps.Service.geocode({query: m.query}, function(status, response) {
-      if (status === naver.maps.Service.Status.OK && response.v2.addresses.length > 0) {
-        var loc = response.v2.addresses[0];
-        coords[m.id] = {lat: parseFloat(loc.y), lng: parseFloat(loc.x)};
-      } else { coords[m.id] = null; }
-      idx++; setTimeout(next, 120);
-    });
-  }
-  next();
-})();
-
-
-/* ━━━━━━━━━━━━━━━━ 지도 타입 전환 ━━━━━━━━━━━━━━━━ */
-function setMapType(type, btn) {
-  var isSat = type === 'satellite';
-  var infoToggle = document.getElementById('info-toggle');
-  var infoCheck  = document.getElementById('info-check');
-  if (isSat) {
-    infoToggle.style.display = 'flex';
-    map.setMapTypeId(infoCheck.checked ? naver.maps.MapTypeId.HYBRID : naver.maps.MapTypeId.SATELLITE);
-  } else {
-    infoToggle.style.display = 'none';
-    map.setMapTypeId(naver.maps.MapTypeId.NORMAL);
-  }
-  document.querySelectorAll('.mtype-btn:not(.rv-btn)').forEach(function(b) { b.classList.remove('active'); });
-  btn.classList.add('active');
-}
-
-function toggleInfoLayer(checked) {
-  map.setMapTypeId(checked ? naver.maps.MapTypeId.HYBRID : naver.maps.MapTypeId.SATELLITE);
-}
-
-/* ━━━━━━━━━━━━━━━━ 로드뷰 ━━━━━━━━━━━━━━━━ */
-var rvState     = 'off';   /* 'off' | 'select' | 'pano' */
-var panorama    = null;
-var rvMarker    = null;
-var streetLayer = new naver.maps.StreetLayer();
-var savedZoom, savedCenter;
-
-function toggleRoadView(btn) {
-  rvState === 'off' ? enterSelectMode(btn) : exitRoadView();
-}
-
-/* 1단계: 위치 선택 모드 */
-function enterSelectMode(btn) {
-  rvState = 'select';
-  btn.classList.add('active');
-  savedZoom   = map.getZoom();
-  savedCenter = map.getCenter();
-  streetLayer.setMap(map);
-  document.getElementById('map-wrapper').classList.add('rv-select');
-}
-
-/* 2단계: 파노라마 전체화면 */
-function enterPanoMode(coord) {
-  rvState = 'pano';
-  var w = document.getElementById('map-wrapper');
-  w.classList.remove('rv-select');
-  w.classList.add('rv-pano');
-
-  /* 미니맵 마커 */
-  if (rvMarker) {
-    rvMarker.setPosition(coord);
-    rvMarker.setMap(map);
-  } else {
-    rvMarker = new naver.maps.Marker({ map: map, position: coord, zIndex: 200 });
-  }
-  map.setCenter(coord);
-  map.setZoom(16);
-  setTimeout(function() { naver.maps.Event.trigger(map, 'resize'); }, 80);
-
-  /* 파노라마 */
-  if (!panorama) {
-    panorama = new naver.maps.Panorama('pano', {
-      position: coord,
-      pov: { pan: 0, tilt: 0, fov: 100 }
-    });
-    /* 파노라마 내 이동 → 미니맵 마커/중심 갱신 */
-    naver.maps.Event.addListener(panorama, 'position_changed', function() {
-      var pos = panorama.getPosition();
-      if (rvMarker) rvMarker.setPosition(pos);
-      map.setCenter(pos);
-    });
-  } else {
-    panorama.setPosition(coord);
-  }
-}
-
-/* 종료: 지도 복원 */
-function exitRoadView() {
-  rvState = 'off';
-  document.querySelector('.rv-btn').classList.remove('active');
-  var w = document.getElementById('map-wrapper');
-  w.classList.remove('rv-select', 'rv-pano');
-  streetLayer.setMap(null);
-  if (rvMarker) { rvMarker.setMap(null); rvMarker = null; }
-  if (savedCenter) map.setCenter(savedCenter);
-  if (savedZoom)   map.setZoom(savedZoom);
-  setTimeout(function() { naver.maps.Event.trigger(map, 'resize'); }, 80);
-}
-
-/* ━━━━━━━━━━━━━━━━ 서울 구 경계선 ━━━━━━━━━━━━━━━━ */
-fetch('https://raw.githubusercontent.com/southkorea/seoul-maps/master/kostat/2013/json/seoul_municipalities_geo_simple.json')
-  .then(function(r) { return r.json(); })
-  .then(function(geojson) {
-    geojson.features.forEach(function(feature) {
-      var geom = feature.geometry;
-      var polys = geom.type === 'MultiPolygon' ? geom.coordinates : [geom.coordinates];
-      polys.forEach(function(poly) {
-        poly.forEach(function(ring) {
-          new naver.maps.Polyline({
-            map: map,
-            path: ring.map(function(c) { return new naver.maps.LatLng(c[1], c[0]); }),
-            strokeColor: '#ffffff',
-            strokeOpacity: 0.85,
-            strokeWeight: 1.5,
-            strokeStyle: 'solid',
-            clickable: false
-          });
-        });
-      });
-    });
-  });
-
-/* 지도 클릭 */
-naver.maps.Event.addListener(map, 'click', function(e) {
-  if (rvState === 'select') {
-    enterPanoMode(e.coord);
-  } else if (rvState === 'pano') {
-    /* 미니맵 클릭 → 파노라마 이동 */
-    if (panorama) panorama.setPosition(e.coord);
-    if (rvMarker) rvMarker.setPosition(e.coord);
-    map.setCenter(e.coord);
-  } else {
-    closePanel();
-  }
-});
-
 </script>
-
-<div id="site-footer">
-  <strong>「도시 및 주거환경정비법」 제2조 제2호</strong> &nbsp;
-  "정비사업"이란 이 법에서 정한 절차에 따라 도시기능을 회복하기 위하여 정비구역에서 정비기반시설을 정비하거나 주택 등 건축물을 개량 또는 건설하는 다음 각 목의 사업을 말한다.
-  <strong>가. 주거환경개선사업:</strong> 도시저소득 주민이 집단거주하는 지역으로서 정비기반시설이 극히 열악하고 노후ㆍ불량건축물이 과도하게 밀집한 지역의 주거환경을 개선하거나 단독주택 및 다세대주택이 밀집한 지역에서 정비기반시설과 공동이용시설 확충을 통하여 주거환경을 보전ㆍ정비ㆍ개량하기 위한 사업
-  <div class="footer-conclusion">→ 주거환경개선사업에 지정된 구역은 노후불량주거지다.</div>
-</div>
-
-<!-- 지오코딩 진행 토스트 -->
-<div id="geocode-toast" style="display:none;position:fixed;bottom:52px;left:50%;transform:translateX(-50%);background:rgba(30,30,50,0.92);color:#fff;padding:8px 20px;border-radius:20px;font-size:12px;font-weight:600;z-index:999;white-space:nowrap;">⏳ 좌표 로딩 중... <span id="geocode-prog"></span></div>
 </body>
 </html>
