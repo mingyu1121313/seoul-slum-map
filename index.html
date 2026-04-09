@@ -302,44 +302,89 @@
       border-radius: 0 9999px 9999px 0;
     }
     #btn-pano.active { background: #4f46e5; color: #fff; }
-    /* 파노라마 패널 */
-    #pano-panel {
+
+    /* 거리뷰 선택 모드 — 지도 위 오버레이 */
+    #pano-overlay {
       position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 0;
-      overflow: hidden;
-      transition: height 0.3s cubic-bezier(0.4,0,0.2,1);
-      z-index: 50;
-      background: #111;
-    }
-    #pano-panel.open { height: 46%; }
-    #pano-view { width: 100%; height: 100%; }
-    #pano-close {
-      position: absolute;
-      top: 10px; right: 12px;
-      z-index: 60;
-      background: rgba(0,0,0,0.55);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 28px; height: 28px;
-      cursor: pointer;
-      font-size: 17px;
-      line-height: 1;
-      display: flex; align-items: center; justify-content: center;
-    }
-    #pano-close:hover { background: rgba(0,0,0,0.85); }
-    #pano-hint {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      background: rgba(0,0,0,0.5);
-      color: #ccc;
-      font-size: 11px;
-      text-align: center;
-      padding: 5px;
+      inset: 0;
+      background: rgba(20, 40, 120, 0.13);
+      z-index: 85;
       pointer-events: none;
-      z-index: 55;
+      display: none;
     }
+    #pano-overlay.active { display: block; }
+    /* 거리뷰 선택 힌트 바 */
+    #pano-selection-hint {
+      position: absolute;
+      top: 62px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 110;
+      background: rgba(10, 18, 55, 0.88);
+      backdrop-filter: blur(6px);
+      color: #fff;
+      padding: 8px 14px 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      display: none;
+      align-items: center;
+      gap: 9px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+      white-space: nowrap;
+    }
+    #pano-selection-hint.active { display: flex; }
+    #pano-selection-hint .hint-icon { font-size: 17px; }
+    #pano-selection-hint .hint-cancel {
+      background: rgba(255,255,255,0.18);
+      border: none; color: #fff;
+      padding: 3px 11px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 700;
+      transition: background 0.12s;
+    }
+    #pano-selection-hint .hint-cancel:hover { background: rgba(255,255,255,0.32); }
+
+    /* 거리뷰 전체화면 */
+    #pano-fullscreen {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      background: #000;
+    }
+    #pano-fullscreen.open { display: block; }
+    #pano-view-full { width: 100%; height: 100%; }
+    #pano-exit-btn {
+      position: absolute;
+      top: 16px; right: 16px;
+      z-index: 2010;
+      width: 38px; height: 38px;
+      background: rgba(0,0,0,0.58);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+    }
+    #pano-exit-btn:hover { background: rgba(0,0,0,0.88); }
+    /* 미니맵 */
+    #pano-minimap-wrap {
+      position: absolute;
+      bottom: 22px; left: 18px;
+      width: 210px; height: 155px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.55);
+      z-index: 2010;
+      border: 2px solid rgba(255,255,255,0.28);
+    }
+    #pano-minimap-view { width: 100%; height: 100%; }
 
     /* ── 범례 ────────────────────────────────── */
     #legend {
@@ -550,12 +595,22 @@
 
     <div id="map"></div>
 
-    <!-- 거리뷰 패널 -->
-    <div id="pano-panel">
-      <button id="pano-close" onclick="closePano()">×</button>
-      <div id="pano-view"></div>
-      <div id="pano-hint">지도를 클릭하면 해당 위치의 거리뷰를 불러옵니다</div>
+    <!-- 거리뷰 선택 모드 오버레이 & 힌트 -->
+    <div id="pano-overlay"></div>
+    <div id="pano-selection-hint">
+      <span class="hint-icon">🚶</span>
+      <span>거리뷰를 보고 싶은 곳을 클릭하세요</span>
+      <button class="hint-cancel" onclick="exitPanoSelectMode()">취소 ×</button>
     </div>
+  </div>
+</div>
+
+<!-- 거리뷰 전체화면 -->
+<div id="pano-fullscreen">
+  <div id="pano-view-full"></div>
+  <button id="pano-exit-btn" onclick="closeFullPano()" title="닫기">×</button>
+  <div id="pano-minimap-wrap">
+    <div id="pano-minimap-view"></div>
   </div>
 </div>
 
@@ -976,82 +1031,111 @@ function toggleSatelliteInfo(checked) {
    거리뷰 (파노라마)
 ──────────────────────────────────────────────── */
 let pano = null;
-let panoMarker = null;
+let miniMap = null;
+let miniMapMarker = null;
 let panoClickListener = null;
+let panoPositionListener = null;
+let isPanoSelectMode = false;
 
 function togglePano() {
-  const panel = document.getElementById('pano-panel');
-  if (panel.classList.contains('open')) {
-    closePano();
+  if (isPanoSelectMode) {
+    exitPanoSelectMode();
   } else {
-    openPano();
+    enterPanoSelectMode();
   }
 }
 
-function openPano() {
-  const panel = document.getElementById('pano-panel');
-  panel.classList.add('open');
+/* 선택 모드: 지도에 오버레이 표시, 클릭 대기 */
+function enterPanoSelectMode() {
+  isPanoSelectMode = true;
   document.getElementById('btn-pano').classList.add('active');
+  document.getElementById('pano-overlay').classList.add('active');
+  document.getElementById('pano-selection-hint').classList.add('active');
 
-  const center = map.getCenter();
-
-  if (!pano) {
-    pano = new naver.maps.Panorama('pano-view', {
-      position: center,
-      pov: { pan: 0, tilt: 0, fov: 100 },
-    });
-    naver.maps.Event.addListener(pano, 'pano_changed', function() {
-      const hint = document.getElementById('pano-hint');
-      if (hint) hint.style.display = 'none';
-    });
-  } else {
-    pano.setPosition(center);
-  }
-
-  updatePanoMarker(center);
+  // 커서 변경
+  document.getElementById('map').style.cursor = 'crosshair';
 
   panoClickListener = naver.maps.Event.addListener(map, 'click', function(e) {
-    pano.setPosition(e.coord);
-    updatePanoMarker(e.coord);
-    const hint = document.getElementById('pano-hint');
-    if (hint) hint.style.display = 'none';
+    exitPanoSelectMode();
+    openFullPano(e.coord);
   });
 }
 
-function closePano() {
-  const panel = document.getElementById('pano-panel');
-  panel.classList.remove('open');
+function exitPanoSelectMode() {
+  isPanoSelectMode = false;
   document.getElementById('btn-pano').classList.remove('active');
+  document.getElementById('pano-overlay').classList.remove('active');
+  document.getElementById('pano-selection-hint').classList.remove('active');
+  document.getElementById('map').style.cursor = '';
 
   if (panoClickListener) {
     naver.maps.Event.removeListener(panoClickListener);
     panoClickListener = null;
   }
-  if (panoMarker) {
-    panoMarker.setMap(null);
-    panoMarker = null;
-  }
 }
 
-function updatePanoMarker(latLng) {
-  if (panoMarker) {
-    panoMarker.setPosition(latLng);
-  } else {
-    panoMarker = new naver.maps.Marker({
-      position: latLng,
-      map: map,
-      icon: {
-        content: `<div style="
-          width:22px;height:22px;
-          background:#4f46e5;
-          border-radius:50%;
-          border:3px solid #fff;
-          box-shadow:0 2px 6px rgba(0,0,0,0.4);
-        "></div>`,
-        anchor: new naver.maps.Point(11, 11),
-      },
-      zIndex: 200,
+/* 전체화면 파노라마 열기 */
+function openFullPano(coord) {
+  const fs = document.getElementById('pano-fullscreen');
+  fs.classList.add('open');
+
+  if (panoPositionListener) {
+    naver.maps.Event.removeListener(panoPositionListener);
+    panoPositionListener = null;
+  }
+
+  if (!pano) {
+    pano = new naver.maps.Panorama('pano-view-full', {
+      position: coord,
+      pov: { pan: 0, tilt: 0, fov: 100 },
     });
+  } else {
+    pano.setPosition(coord);
+  }
+
+  // 미니맵: DOM이 표시된 뒤 초기화
+  setTimeout(() => {
+    if (!miniMap) {
+      miniMap = new naver.maps.Map('pano-minimap-view', {
+        center: coord,
+        zoom: 16,
+        mapTypeId: naver.maps.MapTypeId.NORMAL,
+        zoomControl: false,
+        scaleControl: false,
+        mapDataControl: false,
+        logoControl: false,
+      });
+      miniMapMarker = new naver.maps.Marker({
+        position: coord,
+        map: miniMap,
+        icon: {
+          content: `<div style="width:14px;height:14px;background:#4f46e5;border-radius:50%;border:2.5px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,0.5);"></div>`,
+          anchor: new naver.maps.Point(7, 7),
+        },
+        zIndex: 10,
+      });
+    } else {
+      miniMap.setCenter(coord);
+      miniMapMarker.setPosition(coord);
+    }
+
+    // 파노라마 이동 시 미니맵 마커 갱신
+    panoPositionListener = naver.maps.Event.addListener(pano, 'position_changed', function() {
+      const pos = pano.getPosition();
+      if (pos && miniMap && miniMapMarker) {
+        miniMapMarker.setPosition(pos);
+        miniMap.setCenter(pos);
+      }
+    });
+  }, 80);
+}
+
+/* 전체화면 파노라마 닫기 */
+function closeFullPano() {
+  document.getElementById('pano-fullscreen').classList.remove('open');
+  if (panoPositionListener) {
+    naver.maps.Event.removeListener(panoPositionListener);
+    panoPositionListener = null;
   }
 }
 
