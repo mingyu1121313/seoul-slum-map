@@ -385,6 +385,21 @@
       border: 2px solid rgba(255,255,255,0.28);
     }
     #pano-minimap-view { width: 100%; height: 100%; }
+    #minimap-resize-handle {
+      position: absolute;
+      top: 0; right: 0;
+      width: 20px; height: 20px;
+      cursor: nwse-resize;
+      background: rgba(0,0,0,0.45);
+      border-radius: 0 8px 0 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.75);
+      z-index: 2012;
+      user-select: none;
+      transition: background 0.12s;
+    }
+    #minimap-resize-handle:hover { background: rgba(79,70,229,0.8); color: #fff; }
 
     /* ── 범례 ────────────────────────────────── */
     #legend {
@@ -605,12 +620,16 @@
   </div>
 </div>
 
+<!-- 거리뷰 커버리지용 숨겨진 파노라마 컨테이너 -->
+<div id="pano-linked" style="position:fixed;top:-600px;left:-600px;width:200px;height:200px;z-index:-1;pointer-events:none;"></div>
+
 <!-- 거리뷰 전체화면 -->
 <div id="pano-fullscreen">
   <div id="pano-view-full"></div>
   <button id="pano-exit-btn" onclick="closeFullPano()" title="닫기">×</button>
   <div id="pano-minimap-wrap">
     <div id="pano-minimap-view"></div>
+    <div id="minimap-resize-handle" title="드래그로 크기 조절">⤡</div>
   </div>
 </div>
 
@@ -1030,12 +1049,13 @@ function toggleSatelliteInfo(checked) {
 /* ────────────────────────────────────────────────
    거리뷰 (파노라마)
 ──────────────────────────────────────────────── */
-let pano = null;
-let miniMap = null;
+let panoLinked = null;          // 커버리지 표시용 (숨겨진 컨테이너)
+let panoFull   = null;          // 전체화면 뷰어
+let miniMap    = null;
 let miniMapMarker = null;
-let panoClickListener = null;
 let panoPositionListener = null;
-let isPanoSelectMode = false;
+let isPanoSelectMode     = false;
+let panoLinkedInitializing = false;
 
 function togglePano() {
   if (isPanoSelectMode) {
@@ -1045,20 +1065,39 @@ function togglePano() {
   }
 }
 
-/* 선택 모드: 지도에 오버레이 표시, 클릭 대기 */
+/* ── 선택 모드: 커버리지 라인 표시, 클릭 대기 ── */
 function enterPanoSelectMode() {
   isPanoSelectMode = true;
   document.getElementById('btn-pano').classList.add('active');
   document.getElementById('pano-overlay').classList.add('active');
   document.getElementById('pano-selection-hint').classList.add('active');
-
-  // 커서 변경
   document.getElementById('map').style.cursor = 'crosshair';
 
-  panoClickListener = naver.maps.Event.addListener(map, 'click', function(e) {
-    exitPanoSelectMode();
-    openFullPano(e.coord);
-  });
+  // 초기화 플래그: 1초간 pano_changed 이벤트 무시 (초기 로드 구분)
+  panoLinkedInitializing = true;
+  setTimeout(() => { panoLinkedInitializing = false; }, 1000);
+
+  if (!panoLinked) {
+    // linkedMap 옵션 → 지도에 거리뷰 커버리지 파란 선 자동 표시
+    panoLinked = new naver.maps.Panorama('pano-linked', {
+      position: map.getCenter(),
+      linkedMap: map,
+    });
+    naver.maps.Event.addListener(panoLinked, 'pano_changed', function() {
+      if (panoLinkedInitializing) {
+        panoLinkedInitializing = false; // 초기 로드 완료
+        return;
+      }
+      if (isPanoSelectMode) {
+        const pos = panoLinked.getPosition();
+        exitPanoSelectMode();
+        openFullPano(pos);
+      }
+    });
+  } else {
+    panoLinked.setLinkedMap(map);
+    panoLinked.setPosition(map.getCenter());
+  }
 }
 
 function exitPanoSelectMode() {
@@ -1067,70 +1106,76 @@ function exitPanoSelectMode() {
   document.getElementById('pano-overlay').classList.remove('active');
   document.getElementById('pano-selection-hint').classList.remove('active');
   document.getElementById('map').style.cursor = '';
-
-  if (panoClickListener) {
-    naver.maps.Event.removeListener(panoClickListener);
-    panoClickListener = null;
-  }
+  if (panoLinked) panoLinked.setLinkedMap(null); // 커버리지 라인 제거
 }
 
-/* 전체화면 파노라마 열기 */
+/* ── 전체화면 파노라마 열기 ── */
 function openFullPano(coord) {
-  const fs = document.getElementById('pano-fullscreen');
-  fs.classList.add('open');
-
   if (panoPositionListener) {
     naver.maps.Event.removeListener(panoPositionListener);
     panoPositionListener = null;
   }
 
-  if (!pano) {
-    pano = new naver.maps.Panorama('pano-view-full', {
+  // 전체화면 표시
+  document.getElementById('pano-fullscreen').classList.add('open');
+
+  // 파노라마 초기화 / 이동
+  if (!panoFull) {
+    panoFull = new naver.maps.Panorama('pano-view-full', {
       position: coord,
       pov: { pan: 0, tilt: 0, fov: 100 },
     });
   } else {
-    pano.setPosition(coord);
+    panoFull.setPosition(coord);
   }
 
-  // 미니맵: DOM이 표시된 뒤 초기화
-  setTimeout(() => {
-    if (!miniMap) {
-      miniMap = new naver.maps.Map('pano-minimap-view', {
-        center: coord,
-        zoom: 16,
-        mapTypeId: naver.maps.MapTypeId.NORMAL,
-        zoomControl: false,
-        scaleControl: false,
-        mapDataControl: false,
-        logoControl: false,
-      });
-      miniMapMarker = new naver.maps.Marker({
-        position: coord,
-        map: miniMap,
-        icon: {
-          content: `<div style="width:14px;height:14px;background:#4f46e5;border-radius:50%;border:2.5px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,0.5);"></div>`,
-          anchor: new naver.maps.Point(7, 7),
-        },
-        zIndex: 10,
-      });
-    } else {
-      miniMap.setCenter(coord);
-      miniMapMarker.setPosition(coord);
-    }
+  // 미니맵: RAF 루프로 컨테이너 렌더링 확인 후 초기화 (항상 표시 보장)
+  initMiniMap(coord);
 
-    // 파노라마 이동 시 미니맵 마커 갱신
-    panoPositionListener = naver.maps.Event.addListener(pano, 'position_changed', function() {
-      const pos = pano.getPosition();
-      if (pos && miniMap && miniMapMarker) {
-        miniMapMarker.setPosition(pos);
-        miniMap.setCenter(pos);
-      }
-    });
-  }, 80);
+  // 이동 시 미니맵 동기화
+  panoPositionListener = naver.maps.Event.addListener(panoFull, 'position_changed', function() {
+    const pos = panoFull.getPosition();
+    if (pos && miniMap && miniMapMarker) {
+      miniMapMarker.setPosition(pos);
+      miniMap.setCenter(pos);
+    }
+  });
 }
 
-/* 전체화면 파노라마 닫기 */
+function initMiniMap(coord) {
+  const container = document.getElementById('pano-minimap-view');
+  // 컨테이너가 아직 렌더링되지 않았으면 다음 프레임에 재시도
+  if (!container || container.offsetWidth === 0) {
+    requestAnimationFrame(() => initMiniMap(coord));
+    return;
+  }
+  if (!miniMap) {
+    miniMap = new naver.maps.Map('pano-minimap-view', {
+      center: coord,
+      zoom: 16,
+      mapTypeId: naver.maps.MapTypeId.NORMAL,
+      zoomControl: false,
+      scaleControl: false,
+      mapDataControl: false,
+      logoControl: false,
+    });
+    miniMapMarker = new naver.maps.Marker({
+      position: coord,
+      map: miniMap,
+      icon: {
+        content: `<div style="width:14px;height:14px;background:#4f46e5;border-radius:50%;border:2.5px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,0.5);"></div>`,
+        anchor: new naver.maps.Point(7, 7),
+      },
+      zIndex: 10,
+    });
+  } else {
+    naver.maps.Event.trigger(miniMap, 'resize');
+    miniMap.setCenter(coord);
+    miniMapMarker.setPosition(coord);
+  }
+}
+
+/* ── 전체화면 닫기 ── */
 function closeFullPano() {
   document.getElementById('pano-fullscreen').classList.remove('open');
   if (panoPositionListener) {
@@ -1138,6 +1183,34 @@ function closeFullPano() {
     panoPositionListener = null;
   }
 }
+
+/* ── 미니맵 리사이즈 ── */
+(function() {
+  const wrap   = document.getElementById('pano-minimap-wrap');
+  const handle = document.getElementById('minimap-resize-handle');
+  let resizing = false, startX, startY, startW, startH;
+
+  handle.addEventListener('mousedown', function(e) {
+    resizing = true;
+    startX = e.clientX; startY = e.clientY;
+    startW = wrap.offsetWidth; startH = wrap.offsetHeight;
+    e.preventDefault(); e.stopPropagation();
+  });
+  document.addEventListener('mousemove', function(e) {
+    if (!resizing) return;
+    const newW = Math.max(140, Math.min(480, startW + (e.clientX - startX)));
+    const newH = Math.max(100, Math.min(360, startH - (e.clientY - startY)));
+    wrap.style.width  = newW + 'px';
+    wrap.style.height = newH + 'px';
+    if (miniMap) naver.maps.Event.trigger(miniMap, 'resize');
+  });
+  document.addEventListener('mouseup', function() {
+    if (resizing) {
+      resizing = false;
+      if (miniMap) naver.maps.Event.trigger(miniMap, 'resize');
+    }
+  });
+})();
 
 /* ────────────────────────────────────────────────
    패널
