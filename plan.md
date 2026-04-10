@@ -5,38 +5,27 @@
 
 ---
 
-# 소분류 행 클릭 동작 분리
+# 조합 해산·청산 항목 제거
 
-## 현재 동작
-- `row.onclick` → 이름·아이콘·카운트 클릭 → `toggleCategory(cat)` (마커 숨김/표시)
-- `.cat-expand` 화살표 클릭 → `toggleCatList(sid, e)` (목록 접기/펼치기)
+## 배경
+정보몽땅 엑셀 원본(layerA.json)의 `stage` 필드가 **`조합해산`** 또는 **`조합청산`**인 항목은
+사업이 공식 종료된 곳이므로 지도에서 제거.
 
-## 변경 목표
-| 클릭 대상 | 변경 전 | 변경 후 |
-|-----------|--------|--------|
-| 체크박스 | 마커 토글 | 마커 토글 (유지) |
-| 이름·아이콘·카운트 | 마커 토글 | 목록 접기/펼치기 |
-| 화살표 ▶ | 목록 접기/펼치기 | 목록 접기/펼치기 (유지) |
+## 삭제 대상
+| 카테고리 | 건수 |
+|----------|------|
+| 재개발(주택정비형) | 81건 |
+| 가로주택정비 | 5건 |
+| **합계** | **86건** |
 
-초기 상태: `.cat-list { max-height: 0 }` CSS 이미 적용 → 추가 작업 없음
+삭제 후 잔여: 556 - 86 = **470건**
 
-## 변경 위치 (index.html, `makeCatSection` 함수 ~1310행)
+## 변경 파일
+- `data/layerA.json` — `stage`가 `조합해산` 또는 `조합청산`인 item 86개 제거
+- `meta.total` 수정 불필요 (런타임에 JS가 동적 계산)
 
-```js
-// 변경 전
-row.onclick = function(e) {
-  if (e.target.type === 'checkbox') return;
-  if (e.target.closest && e.target.closest('.cat-expand')) return;
-  toggleCategory(cat);
-};
-
-// 변경 후
-row.onclick = function(e) {
-  if (e.target.type === 'checkbox') return;
-  toggleCatList(sid, e);
-};
+## 구현 방법
+Python 스크립트로 필터링 후 덮어쓰기:
+```python
+items = [i for i in data['items'] if i.get('stage') not in ('조합해산', '조합청산')]
 ```
-
-- 화살표 `.cat-expand`는 자체 `onclick`에서 `stopPropagation` 호출 → 이중 토글 없음
-- 체크박스 `onchange="toggleCategory('${cat}')"` 유지
-- 파일 수정: `index.html` 1310–1314행
