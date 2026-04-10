@@ -4,7 +4,7 @@
     {
       "name": "static-server",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8080", "--directory", "C:\\Users\\min\\Desktop\\seoul-slum-map"],
+      "runtimeArgs": ["-m", "http.server", "8080"],
       "port": 8080
     }
   ]
