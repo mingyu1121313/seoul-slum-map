@@ -1309,8 +1309,7 @@ function makeCatSection(cat, count, items) {
   row.setAttribute('data-cat', cat);
   row.onclick = function(e) {
     if (e.target.type === 'checkbox') return;
-    if (e.target.closest && e.target.closest('.cat-expand')) return;
-    toggleCategory(cat);
+    toggleCatList(sid, e);
   };
 
   let iconHtml;

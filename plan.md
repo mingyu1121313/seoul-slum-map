@@ -5,39 +5,38 @@
 
 ---
 
-## 데이터 현황
+# 소분류 행 클릭 동작 분리
 
-| 파일 | 건수 | 레이어 |
-|---|---|---|
-| data/layerA.json → items | 556건 | 레이어A (재개발/가로주택/지역주택/주거환경개선정비형) |
-| data/layerA.json → items_관리형 | 83건 | 레이어A 주거환경개선(관리형), 동단위 근사좌표 |
-| data/layerB.json → items | 31건 | 레이어B 무허가정착지(자연발생/집단이주/신발생) |
+## 현재 동작
+- `row.onclick` → 이름·아이콘·카운트 클릭 → `toggleCategory(cat)` (마커 숨김/표시)
+- `.cat-expand` 화살표 클릭 → `toggleCatList(sid, e)` (목록 접기/펼치기)
 
----
+## 변경 목표
+| 클릭 대상 | 변경 전 | 변경 후 |
+|-----------|--------|--------|
+| 체크박스 | 마커 토글 | 마커 토글 (유지) |
+| 이름·아이콘·카운트 | 마커 토글 | 목록 접기/펼치기 |
+| 화살표 ▶ | 목록 접기/펼치기 | 목록 접기/펼치기 (유지) |
 
-## 분류 체계 (확정)
+초기 상태: `.cat-list { max-height: 0 }` CSS 이미 적용 → 추가 작업 없음
 
-**레이어A — 개발방식** (정보몽땅 2025.12)
-- 재개발(주택정비형) #1D4ED8
-- 가로주택정비 #0891B2
-- 지역주택 #7C3AED
-- 주거환경개선(정비형) #059669
-- 주거환경개선(관리형) #34D399 (8px, 70% opacity, 근사좌표)
+## 변경 위치 (index.html, `makeCatSection` 함수 ~1310행)
 
-**레이어B — 형성경위** (논문, 2014)
-- 자연발생 #DC2626 (다이아몬드)
-- 집단이주 #EA580C (다이아몬드)
-- 신발생 #D97706 (다이아몬드)
+```js
+// 변경 전
+row.onclick = function(e) {
+  if (e.target.type === 'checkbox') return;
+  if (e.target.closest && e.target.closest('.cat-expand')) return;
+  toggleCategory(cat);
+};
 
----
+// 변경 후
+row.onclick = function(e) {
+  if (e.target.type === 'checkbox') return;
+  toggleCatList(sid, e);
+};
+```
 
-## 완료 단계
-
-- [x] STEP 1: 데이터 정제 — layerA.json (556+83건), layerB.json (31건) 완성
-- [x] STEP 2: 지오코딩 — layerA 정비형 556건 lat/lng 완성, 관리형 83건 동단위 근사좌표
-- [x] STEP 3: index.html 재작성 — 레이어A/B 아코디언, 카테고리 토글, 슬라이드 패널, 범례
-
-## 남은 작업
-
-- [ ] STEP 4: 검증 — slum-seoul.xyz 접속 오류 확인, 좌표 이상치 필터링
-- [ ] 소규모재개발 데이터 수집 (정보몽땅 미등록, 추후)
+- 화살표 `.cat-expand`는 자체 `onclick`에서 `stopPropagation` 호출 → 이중 토글 없음
+- 체크박스 `onchange="toggleCategory('${cat}')"` 유지
+- 파일 수정: `index.html` 1310–1314행
