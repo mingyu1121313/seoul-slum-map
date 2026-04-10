@@ -1576,7 +1576,13 @@ async function loadData() {
 
 async function main() {
   initMap();
-  loadDongBoundary();
+
+  // 지도 타일이 완전히 로드된 후 경계선 그리기
+  naver.maps.Event.addListener(map, 'tilesloaded', function onReady() {
+    naver.maps.Event.removeListener(onReady);
+    loadDongBoundary();
+  });
+
   try {
     const data = await loadData();
     initMarkers(data);
