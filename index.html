@@ -1534,15 +1534,29 @@ function closePanel() {
 ──────────────────────────────────────────────── */
 async function loadDongBoundary() {
   try {
-    const res  = await fetch('data/seoul_dong.geojson');
+    const res    = await fetch('data/seoul_dong.geojson');
     const geojson = await res.json();
-    const dataLayer = new naver.maps.Data({ map: map });
-    dataLayer.addGeoJson(geojson);
-    dataLayer.setStyle({
-      strokeColor:   '#ffffff',
-      strokeOpacity: 0.55,
-      strokeWeight:  1,
-      fillOpacity:   0,
+
+    geojson.features.forEach(feature => {
+      const geo  = feature.geometry;
+      // Polygon: coords = [ring, ...]  /  MultiPolygon: coords = [[ring,...],...]
+      const polygons = geo.type === 'MultiPolygon'
+        ? geo.coordinates
+        : [geo.coordinates];
+
+      polygons.forEach(rings => {
+        rings.forEach(ring => {
+          new naver.maps.Polyline({
+            map:           map,
+            path:          ring.map(pt => new naver.maps.LatLng(pt[1], pt[0])),
+            strokeColor:   '#ffffff',
+            strokeOpacity: 0.6,
+            strokeWeight:  1,
+            strokeLineCap: 'round',
+            clickable:     false,
+          });
+        });
+      });
     });
   } catch (err) {
     console.warn('행정동 경계 로드 실패:', err);
