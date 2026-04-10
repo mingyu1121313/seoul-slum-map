@@ -1008,6 +1008,7 @@ function createMarker(item, cat) {
     map: map,
     icon: icon,
     title: item.name || '',
+    zIndex: 10,
   });
 
   itemsByMarker.set(marker, { item, cat });
@@ -1530,16 +1531,15 @@ function closePanel() {
 }
 
 /* ────────────────────────────────────────────────
-   행정동 경계선
+   행정구 경계선 (서울 25개 자치구)
 ──────────────────────────────────────────────── */
-async function loadDongBoundary() {
+async function loadGuBoundary() {
   try {
-    const res    = await fetch('data/seoul_dong.geojson');
+    const res     = await fetch('data/seoul_gu.geojson');
     const geojson = await res.json();
 
     geojson.features.forEach(feature => {
-      const geo  = feature.geometry;
-      // Polygon: coords = [ring, ...]  /  MultiPolygon: coords = [[ring,...],...]
+      const geo      = feature.geometry;
       const polygons = geo.type === 'MultiPolygon'
         ? geo.coordinates
         : [geo.coordinates];
@@ -1550,16 +1550,18 @@ async function loadDongBoundary() {
             map:           map,
             path:          ring.map(pt => new naver.maps.LatLng(pt[1], pt[0])),
             strokeColor:   '#ffffff',
-            strokeOpacity: 0.6,
-            strokeWeight:  1,
+            strokeOpacity: 0.7,
+            strokeWeight:  1.5,
             strokeLineCap: 'round',
             clickable:     false,
+            zIndex:        1,
           });
         });
       });
     });
+    console.log('행정구 경계선 로드 완료:', geojson.features.length, '개 구');
   } catch (err) {
-    console.warn('행정동 경계 로드 실패:', err);
+    console.warn('행정구 경계 로드 실패:', err);
   }
 }
 
@@ -1567,9 +1569,10 @@ async function loadDongBoundary() {
    데이터 로드 및 시작
 ──────────────────────────────────────────────── */
 async function loadData() {
+  const v = Date.now();
   const [a, b] = await Promise.all([
-    fetch('data/layerA.json').then(r => r.json()),
-    fetch('data/layerB.json').then(r => r.json()),
+    fetch('data/layerA.json?v=' + v).then(r => r.json()),
+    fetch('data/layerB.json?v=' + v).then(r => r.json()),
   ]);
   return { layerA: a, layerB: b };
 }
@@ -1580,7 +1583,7 @@ async function main() {
   // 지도 타일이 완전히 로드된 후 경계선 그리기
   naver.maps.Event.addListener(map, 'tilesloaded', function onReady() {
     naver.maps.Event.removeListener(onReady);
-    loadDongBoundary();
+    loadGuBoundary();
   });
 
   try {
