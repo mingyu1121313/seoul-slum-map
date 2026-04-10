@@ -1580,9 +1580,9 @@ async function loadData() {
 async function main() {
   initMap();
 
-  // 지도 타일이 완전히 로드된 후 경계선 그리기
-  naver.maps.Event.addListener(map, 'tilesloaded', function onReady() {
-    naver.maps.Event.removeListener(onReady);
+  // 지도 타일이 완전히 로드된 후 경계선 그리기 (1회만 실행)
+  const tileReadyListener = naver.maps.Event.addListener(map, 'tilesloaded', function() {
+    naver.maps.Event.removeListener(tileReadyListener);
     loadGuBoundary();
   });
 
