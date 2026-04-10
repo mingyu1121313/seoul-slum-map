@@ -452,6 +452,160 @@
       margin-bottom: 1px;
     }
 
+    /* ── 명칭 버튼 ──────────────────────────────── */
+    #btn-glossary {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      border: none;
+      border-radius: 9999px;
+      padding: 7px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #374151;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    #btn-glossary:hover { background: #f3f4f6; }
+    #btn-glossary.active { background: #111827; color: #fff; }
+
+    /* ── 명칭 패널 ──────────────────────────────── */
+    #glossary-panel {
+      position: absolute;
+      top: 0; right: 0;
+      width: 340px;
+      min-width: 200px;
+      max-width: 560px;
+      height: 100%;
+      background: #fff;
+      border-left: 1px solid #dde1e9;
+      z-index: 600;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(105%);
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+    #glossary-panel.open { transform: translateX(0); }
+    #glossary-panel-body {
+      overflow-y: auto;
+      flex: 1;
+      padding: 0 0 24px;
+    }
+    #glossary-panel-body::-webkit-scrollbar { width: 4px; }
+    #glossary-panel-body::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 2px; }
+
+    /* 패널 헤더 */
+    #glossary-panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px 12px;
+      border-bottom: 1px solid #eeeff2;
+      flex-shrink: 0;
+    }
+    #glossary-panel-head h3 {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #111827;
+    }
+    #btn-glossary-close {
+      width: 24px; height: 24px;
+      border: none;
+      background: #f3f4f6;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 15px;
+      color: #6b7280;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.12s;
+    }
+    #btn-glossary-close:hover { background: #e5e7eb; color: #111; }
+
+    /* 리사이즈 핸들 (왼쪽) */
+    #glossary-handle {
+      position: absolute;
+      top: 0; left: 0;
+      width: 5px;
+      height: 100%;
+      cursor: col-resize;
+      z-index: 10;
+      background: transparent;
+      transition: background 0.15s;
+    }
+    #glossary-handle:hover, #glossary-handle.dragging { background: #c7d2fe; }
+
+    /* 용어 카드 */
+    .gls-card {
+      margin: 12px 14px 0;
+      border: 1px solid #eeeff2;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .gls-card-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      background: #fafafa;
+      border-bottom: 1px solid #eeeff2;
+    }
+    .gls-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(255,255,255,0.85);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+    }
+    .gls-title {
+      flex: 1;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #111827;
+    }
+    .gls-link {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #4f46e5;
+      text-decoration: none;
+      background: #eff3ff;
+      border-radius: 6px;
+      padding: 3px 8px;
+      flex-shrink: 0;
+      transition: background 0.12s;
+    }
+    .gls-link:hover { background: #e0e7ff; }
+    .gls-body {
+      padding: 11px 13px 12px;
+    }
+    .gls-def {
+      font-size: 11px;
+      line-height: 1.75;
+      color: #374151;
+    }
+    .gls-basis {
+      margin-top: 8px;
+      font-size: 10px;
+      color: #9ca3af;
+      font-style: italic;
+      border-top: 1px solid #f3f4f6;
+      padding-top: 7px;
+      line-height: 1.6;
+    }
+
     /* ── 오른쪽 패널 ─────────────────────────── */
     #panel {
       position: fixed;
@@ -591,6 +745,84 @@
         정보 보기
       </label>
       <button class="mtype-btn" id="btn-pano" onclick="togglePano()">🚶 거리뷰</button>
+    </div>
+
+    <!-- 명칭 버튼 -->
+    <button id="btn-glossary" onclick="toggleGlossary()">📋 명칭</button>
+
+    <!-- 명칭 패널 -->
+    <div id="glossary-panel">
+      <div id="glossary-handle"></div>
+      <div id="glossary-panel-head">
+        <h3>사업 유형 정의</h3>
+        <button id="btn-glossary-close" onclick="closeGlossary()">×</button>
+      </div>
+      <div id="glossary-panel-body">
+
+        <!-- 재개발(주택정비형) -->
+        <div class="gls-card">
+          <div class="gls-card-head">
+            <span class="gls-dot" style="background:#1D4ED8;"></span>
+            <span class="gls-title">재개발(주택정비형)</span>
+            <a class="gls-link" href="https://cleanup.seoul.go.kr/cleanup/view/redevelop.do" target="_blank">정보몽땅 ↗</a>
+          </div>
+          <div class="gls-body">
+            <div class="gls-def">노후·불량건축물이 해당 지역 건축물 수의 <strong>60% 이상</strong>이고, 면적 <strong>1만㎡ 이상</strong>인 지역 중 다음 중 하나에 해당하는 지역에서 주거환경을 개선하기 위해 시행하는 사업.<br><br>① 과소필지 40% 이상<br>② 주택접도율 40% 이하<br>③ 호수밀도 60 이상<br>④ 노후건축물 연면적 합계가 전체 연면적의 60% 이상</div>
+            <div class="gls-basis">근거: 도시정비법 제2조제2호나목 · 영 별표1 제2호 · 서울시 조례 제6조제1항제2·3호</div>
+          </div>
+        </div>
+
+        <!-- 가로주택정비 -->
+        <div class="gls-card">
+          <div class="gls-card-head">
+            <span class="gls-dot" style="background:#0891B2;"></span>
+            <span class="gls-title">가로주택정비</span>
+            <a class="gls-link" href="https://cleanup.seoul.go.kr/cleanup/view/garoHouse.do" target="_blank">정보몽땅 ↗</a>
+          </div>
+          <div class="gls-body">
+            <div class="gls-def">노후·불량건축물이 밀집한 가로구역에서 <strong>종전의 가로를 유지</strong>하면서 소규모로 정비하여 주거환경을 개선하는 사업.<br><br>① 6m 이상 도로로 둘러싸인 <strong>1만3천㎡ 미만</strong> 가로구역<br>② 노후·불량건축물 수가 전체의 <strong>2/3 이상</strong><br>③ 기존주택 10호(단독) · 20세대(공동) 이상</div>
+            <div class="gls-basis">근거: 빈집 및 소규모주택 정비에 관한 특례법 · 동법 시행령 제3·17~19·23·32·33·40·48조</div>
+          </div>
+        </div>
+
+        <!-- 지역주택 -->
+        <div class="gls-card">
+          <div class="gls-card-head">
+            <span class="gls-dot" style="background:#7C3AED;"></span>
+            <span class="gls-title">지역주택</span>
+            <a class="gls-link" href="https://cleanup.seoul.go.kr/cleanup/view/localHouse.do" target="_blank">정보몽땅 ↗</a>
+          </div>
+          <div class="gls-body">
+            <div class="gls-def">무주택자 또는 85㎡ 이하 1채 소유자가 <strong>조합을 설립</strong>하여 사업대상지 토지를 확보하고, 등록사업자와 공동으로 주택(아파트)을 건설하는 사업.<br><br>조합원 자격: 서울·인천·경기 <strong>6개월 이상 거주</strong>, 조합설립인가 신청일~입주가능일까지 무주택 또는 85㎡ 이하 1채 소유 세대주</div>
+            <div class="gls-basis">근거: 주택법</div>
+          </div>
+        </div>
+
+        <!-- 주거환경개선(정비형) -->
+        <div class="gls-card">
+          <div class="gls-card-head">
+            <span class="gls-dot" style="background:#059669;"></span>
+            <span class="gls-title">주거환경개선(정비형)</span>
+          </div>
+          <div class="gls-body">
+            <div class="gls-def">도시저소득 주민이 집단거주하는 지역으로서 정비기반시설이 극히 열악하고 노후·불량건축물이 과도하게 밀집한 지역에서 다음 방법으로 시행하는 주거환경개선사업.<br><br>① <strong>수용방식</strong>: 정비구역 전부·일부를 수용하여 주택 건설 후 공급<br>② <strong>환지방식</strong>: 환지로 공급<br>③ <strong>관리처분방식</strong>: 관리처분계획에 따라 주택·부대시설 건설·공급</div>
+            <div class="gls-basis">근거: 도시 및 주거환경정비법 제2조제2호가목 · 제23조제1항 제2·3·4호</div>
+          </div>
+        </div>
+
+        <!-- 주거환경개선(관리형) -->
+        <div class="gls-card">
+          <div class="gls-card-head">
+            <span class="gls-dot" style="background:#059669; opacity:0.55;"></span>
+            <span class="gls-title">주거환경개선(관리형)</span>
+          </div>
+          <div class="gls-body">
+            <div class="gls-def">사업시행자가 정비기반시설·공동이용시설을 설치·확대하고, <strong>토지등소유자가 스스로 주택을 보전·정비·개량</strong>하는 방법으로 시행하는 주거환경개선사업.<br><br>전면철거 없이 기존 주거지를 보전하면서 공공이 기반시설을 정비하는 방식. "관리형"은 서울시 조례에서 부여한 명칭.</div>
+            <div class="gls-basis">근거: 도시 및 주거환경정비법 제23조제1항 제1호 · 서울특별시 도시 및 주거환경정비 조례 제6조 [시행 2018.7.19.]</div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
     <!-- 범례 -->
@@ -1289,6 +1521,63 @@ if (window.naver && window.naver.maps) {
 } else {
   window.addEventListener('load', main);
 }
+
+/* ────────────────────────────────────────────────
+   명칭 패널
+──────────────────────────────────────────────── */
+function toggleGlossary() {
+  const panel = document.getElementById('glossary-panel');
+  if (panel.classList.contains('open')) {
+    closeGlossary();
+  } else {
+    panel.classList.add('open');
+    document.getElementById('btn-glossary').classList.add('active');
+  }
+}
+
+function closeGlossary() {
+  document.getElementById('glossary-panel').classList.remove('open');
+  document.getElementById('btn-glossary').classList.remove('active');
+}
+
+// 바깥 클릭 시 닫기
+document.getElementById('map-wrapper').addEventListener('mousedown', function(e) {
+  const panel = document.getElementById('glossary-panel');
+  if (!panel.classList.contains('open')) return;
+  if (!panel.contains(e.target) && e.target.id !== 'btn-glossary') {
+    closeGlossary();
+  }
+});
+
+// 명칭 패널 리사이즈 (왼쪽 핸들)
+(function() {
+  const handle = document.getElementById('glossary-handle');
+  const panel  = document.getElementById('glossary-panel');
+  let dragging = false, startX = 0, startW = 0;
+
+  handle.addEventListener('mousedown', function(e) {
+    dragging = true;
+    startX = e.clientX;
+    startW = panel.offsetWidth;
+    handle.classList.add('dragging');
+    document.body.style.cursor = 'col-resize';
+    document.body.style.userSelect = 'none';
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', function(e) {
+    if (!dragging) return;
+    const dx = startX - e.clientX;
+    const newW = Math.min(560, Math.max(200, startW + dx));
+    panel.style.width = newW + 'px';
+  });
+  document.addEventListener('mouseup', function() {
+    if (!dragging) return;
+    dragging = false;
+    handle.classList.remove('dragging');
+    document.body.style.cursor = '';
+    document.body.style.userSelect = '';
+  });
+})();
 
 /* ────────────────────────────────────────────────
    사이드바 리사이즈
