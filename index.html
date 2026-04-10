@@ -233,6 +233,24 @@
     #map-wrapper { flex: 1; position: relative; overflow: hidden; }
     #map { width: 100%; height: 100%; }
 
+    /* ── 마커 툴팁 ──────────────────────────────── */
+    #marker-tooltip {
+      position: fixed;
+      z-index: 900;
+      background: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 9px;
+      border-radius: 6px;
+      pointer-events: none;
+      white-space: nowrap;
+      transform: translateX(-50%);
+      display: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
     /* ── 하단 푸터 ───────────────────────────── */
     #site-footer {
       background: #111;
@@ -841,6 +859,7 @@
     </div>
 
     <div id="map"></div>
+    <div id="marker-tooltip"></div>
 
     <!-- 거리뷰 선택 모드 오버레이 & 힌트 -->
     <div id="pano-overlay"></div>
@@ -995,6 +1014,23 @@ function createMarker(item, cat) {
 
   naver.maps.Event.addListener(marker, 'click', function () {
     showPanel(item, cat);
+  });
+
+  // 마커 툴팁
+  const tooltip = document.getElementById('marker-tooltip');
+  naver.maps.Event.addListener(marker, 'mouseover', function(e) {
+    const name = item.name || '';
+    if (!name) return;
+    const proj = map.getProjection();
+    const pos  = proj.fromCoordToOffset(marker.getPosition());
+    const rect = document.getElementById('map').getBoundingClientRect();
+    tooltip.textContent = name;
+    tooltip.style.left  = (rect.left + pos.x) + 'px';
+    tooltip.style.top   = (rect.top  + pos.y - marker.getIcon().anchor.y - 14) + 'px';
+    tooltip.style.display = 'block';
+  });
+  naver.maps.Event.addListener(marker, 'mouseout', function() {
+    tooltip.style.display = 'none';
   });
 
   return marker;
@@ -1494,6 +1530,26 @@ function closePanel() {
 }
 
 /* ────────────────────────────────────────────────
+   행정동 경계선
+──────────────────────────────────────────────── */
+async function loadDongBoundary() {
+  try {
+    const res  = await fetch('data/seoul_dong.geojson');
+    const geojson = await res.json();
+    const dataLayer = new naver.maps.Data({ map: map });
+    dataLayer.addGeoJson(geojson);
+    dataLayer.setStyle({
+      strokeColor:   '#ffffff',
+      strokeOpacity: 0.55,
+      strokeWeight:  1,
+      fillOpacity:   0,
+    });
+  } catch (err) {
+    console.warn('행정동 경계 로드 실패:', err);
+  }
+}
+
+/* ────────────────────────────────────────────────
    데이터 로드 및 시작
 ──────────────────────────────────────────────── */
 async function loadData() {
@@ -1506,6 +1562,7 @@ async function loadData() {
 
 async function main() {
   initMap();
+  loadDongBoundary();
   try {
     const data = await loadData();
     initMarkers(data);
