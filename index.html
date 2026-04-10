@@ -1022,12 +1022,13 @@ function createMarker(item, cat) {
   naver.maps.Event.addListener(marker, 'mouseover', function(e) {
     const name = item.name || '';
     if (!name) return;
-    const proj = map.getProjection();
-    const pos  = proj.fromCoordToOffset(marker.getPosition());
-    const rect = document.getElementById('map').getBoundingClientRect();
+    // 마우스 실제 좌표 사용 (fromCoordToOffset은 pan 애니메이션 중 오차 발생)
+    const pe = e.pointerEvent || e;
+    const cx = (pe.clientX !== undefined) ? pe.clientX : (pe.pageX || 0);
+    const cy = (pe.clientY !== undefined) ? pe.clientY : (pe.pageY || 0);
     tooltip.textContent = name;
-    tooltip.style.left  = (rect.left + pos.x) + 'px';
-    tooltip.style.top   = (rect.top  + pos.y - marker.getIcon().anchor.y - 14) + 'px';
+    tooltip.style.left  = cx + 'px';
+    tooltip.style.top   = (cy - 38) + 'px';
     tooltip.style.display = 'block';
   });
   naver.maps.Event.addListener(marker, 'mouseout', function() {
@@ -1549,9 +1550,9 @@ async function loadGuBoundary() {
           new naver.maps.Polyline({
             map:           map,
             path:          ring.map(pt => new naver.maps.LatLng(pt[1], pt[0])),
-            strokeColor:   '#4a6fa5',
-            strokeOpacity: 0.55,
-            strokeWeight:  2,
+            strokeColor:   '#ffffff',
+            strokeOpacity: 0.85,
+            strokeWeight:  4,
             strokeLineCap: 'round',
             clickable:     false,
             zIndex:        1,
