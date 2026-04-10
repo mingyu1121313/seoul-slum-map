@@ -624,6 +624,85 @@
       line-height: 1.6;
     }
 
+    /* 명칭 패널 아코디언 섹션 */
+    .gls-section { margin-top: 8px; }
+    .gls-acc-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 16px 9px 14px;
+      background: #f3f4f6;
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+      cursor: pointer;
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #6b7280;
+      transition: background 0.12s;
+    }
+    .gls-acc-btn:hover { background: #e9eaec; }
+    .gls-acc-arrow {
+      font-size: 11px;
+      color: #9ca3af;
+      transition: transform 0.22s ease;
+      display: inline-block;
+    }
+    .gls-acc-btn.open .gls-acc-arrow { transform: rotate(180deg); }
+    .gls-acc-body {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+      padding-bottom: 0;
+    }
+    .gls-acc-body.open {
+      max-height: 2400px;
+      padding-bottom: 4px;
+    }
+
+    /* 형성 유형 카드 — 다이아몬드 도트 */
+    .gls-diamond {
+      width: 10px; height: 10px;
+      flex-shrink: 0;
+      transform: rotate(45deg);
+      border: 1.5px solid rgba(255,255,255,0.85);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+    }
+    .gls-tag {
+      display: inline-block;
+      font-size: 9.5px;
+      font-weight: 700;
+      color: #6b7280;
+      background: #f3f4f6;
+      border-radius: 4px;
+      padding: 2px 7px;
+      margin-bottom: 5px;
+    }
+    .gls-meta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid #f3f4f6;
+    }
+    .gls-meta-item {
+      display: flex;
+      gap: 6px;
+      font-size: 10.5px;
+      line-height: 1.55;
+    }
+    .gls-meta-label {
+      font-weight: 700;
+      color: #374151;
+      flex-shrink: 0;
+      width: 60px;
+    }
+    .gls-meta-val { color: #6b7280; }
+
     /* ── 오른쪽 패널 ─────────────────────────── */
     #panel {
       position: fixed;
@@ -772,73 +851,171 @@
     <div id="glossary-panel">
       <div id="glossary-handle"></div>
       <div id="glossary-panel-head">
-        <h3>사업 유형 정의</h3>
+        <h3>용어 정의</h3>
         <button id="btn-glossary-close" onclick="closeGlossary()">×</button>
       </div>
       <div id="glossary-panel-body">
 
-        <!-- 재개발(주택정비형) -->
-        <div class="gls-card">
-          <div class="gls-card-head">
-            <span class="gls-dot" style="background:#1D4ED8;"></span>
-            <span class="gls-title">재개발(주택정비형)</span>
-            <a class="gls-link" href="https://cleanup.seoul.go.kr/cleanup/view/redevelop.do" target="_blank">정보몽땅 ↗</a>
-          </div>
-          <div class="gls-body">
-            <div class="gls-def">노후·불량건축물이 해당 지역 건축물 수의 <strong>60% 이상</strong>이고, 면적 <strong>1만㎡ 이상</strong>인 지역 중 다음 중 하나에 해당하는 지역에서 주거환경을 개선하기 위해 시행하는 사업.<br><br>① 과소필지 40% 이상<br>② 주택접도율 40% 이하<br>③ 호수밀도 60 이상<br>④ 노후건축물 연면적 합계가 전체 연면적의 60% 이상</div>
-            <div class="gls-basis">근거: 도시정비법 제2조제2호나목 · 영 별표1 제2호 · 서울시 조례 제6조제1항제2·3호</div>
-          </div>
-        </div>
+        <!-- ── 섹션 1: 개발 방식 ─────────────────── -->
+        <div class="gls-section">
+          <button class="gls-acc-btn open" onclick="toggleGlsSection(this)">
+            개발 방식<span class="gls-acc-arrow">▾</span>
+          </button>
+          <div class="gls-acc-body open">
 
-        <!-- 가로주택정비 -->
-        <div class="gls-card">
-          <div class="gls-card-head">
-            <span class="gls-dot" style="background:#0891B2;"></span>
-            <span class="gls-title">가로주택정비</span>
-            <a class="gls-link" href="https://cleanup.seoul.go.kr/cleanup/view/garoHouse.do" target="_blank">정보몽땅 ↗</a>
-          </div>
-          <div class="gls-body">
-            <div class="gls-def">노후·불량건축물이 밀집한 가로구역에서 <strong>종전의 가로를 유지</strong>하면서 소규모로 정비하여 주거환경을 개선하는 사업.<br><br>① 6m 이상 도로로 둘러싸인 <strong>1만3천㎡ 미만</strong> 가로구역<br>② 노후·불량건축물 수가 전체의 <strong>2/3 이상</strong><br>③ 기존주택 10호(단독) · 20세대(공동) 이상</div>
-            <div class="gls-basis">근거: 빈집 및 소규모주택 정비에 관한 특례법 · 동법 시행령 제3·17~19·23·32·33·40·48조</div>
-          </div>
-        </div>
+            <!-- 재개발(주택정비형) -->
+            <div class="gls-card">
+              <div class="gls-card-head">
+                <span class="gls-dot" style="background:#1D4ED8;"></span>
+                <span class="gls-title">재개발(주택정비형)</span>
+                <a class="gls-link" href="https://cleanup.seoul.go.kr/cleanup/view/redevelop.do" target="_blank">정보몽땅 ↗</a>
+              </div>
+              <div class="gls-body">
+                <div class="gls-def">노후·불량건축물이 해당 지역 건축물 수의 <strong>60% 이상</strong>이고, 면적 <strong>1만㎡ 이상</strong>인 지역 중 다음 중 하나에 해당하는 지역에서 주거환경을 개선하기 위해 시행하는 사업.<br><br>① 과소필지 40% 이상<br>② 주택접도율 40% 이하<br>③ 호수밀도 60 이상<br>④ 노후건축물 연면적 합계가 전체 연면적의 60% 이상</div>
+                <div class="gls-basis">근거: 도시정비법 제2조제2호나목 · 영 별표1 제2호 · 서울시 조례 제6조제1항제2·3호</div>
+              </div>
+            </div>
 
-        <!-- 지역주택 -->
-        <div class="gls-card">
-          <div class="gls-card-head">
-            <span class="gls-dot" style="background:#7C3AED;"></span>
-            <span class="gls-title">지역주택</span>
-            <a class="gls-link" href="https://cleanup.seoul.go.kr/cleanup/view/localHouse.do" target="_blank">정보몽땅 ↗</a>
-          </div>
-          <div class="gls-body">
-            <div class="gls-def">무주택자 또는 85㎡ 이하 1채 소유자가 <strong>조합을 설립</strong>하여 사업대상지 토지를 확보하고, 등록사업자와 공동으로 주택(아파트)을 건설하는 사업.<br><br>조합원 자격: 서울·인천·경기 <strong>6개월 이상 거주</strong>, 조합설립인가 신청일~입주가능일까지 무주택 또는 85㎡ 이하 1채 소유 세대주</div>
-            <div class="gls-basis">근거: 주택법</div>
-          </div>
-        </div>
+            <!-- 가로주택정비 -->
+            <div class="gls-card">
+              <div class="gls-card-head">
+                <span class="gls-dot" style="background:#0891B2;"></span>
+                <span class="gls-title">가로주택정비</span>
+                <a class="gls-link" href="https://cleanup.seoul.go.kr/cleanup/view/garoHouse.do" target="_blank">정보몽땅 ↗</a>
+              </div>
+              <div class="gls-body">
+                <div class="gls-def">노후·불량건축물이 밀집한 가로구역에서 <strong>종전의 가로를 유지</strong>하면서 소규모로 정비하여 주거환경을 개선하는 사업.<br><br>① 6m 이상 도로로 둘러싸인 <strong>1만3천㎡ 미만</strong> 가로구역<br>② 노후·불량건축물 수가 전체의 <strong>2/3 이상</strong><br>③ 기존주택 10호(단독) · 20세대(공동) 이상</div>
+                <div class="gls-basis">근거: 빈집 및 소규모주택 정비에 관한 특례법 · 동법 시행령 제3·17~19·23·32·33·40·48조</div>
+              </div>
+            </div>
 
-        <!-- 주거환경개선(정비형) -->
-        <div class="gls-card">
-          <div class="gls-card-head">
-            <span class="gls-dot" style="background:#059669;"></span>
-            <span class="gls-title">주거환경개선(정비형)</span>
-          </div>
-          <div class="gls-body">
-            <div class="gls-def">도시저소득 주민이 집단거주하는 지역으로서 정비기반시설이 극히 열악하고 노후·불량건축물이 과도하게 밀집한 지역에서 다음 방법으로 시행하는 주거환경개선사업.<br><br>① <strong>수용방식</strong>: 정비구역 전부·일부를 수용하여 주택 건설 후 공급<br>② <strong>환지방식</strong>: 환지로 공급<br>③ <strong>관리처분방식</strong>: 관리처분계획에 따라 주택·부대시설 건설·공급</div>
-            <div class="gls-basis">근거: 도시 및 주거환경정비법 제2조제2호가목 · 제23조제1항 제2·3·4호</div>
-          </div>
-        </div>
+            <!-- 지역주택 -->
+            <div class="gls-card">
+              <div class="gls-card-head">
+                <span class="gls-dot" style="background:#7C3AED;"></span>
+                <span class="gls-title">지역주택</span>
+                <a class="gls-link" href="https://cleanup.seoul.go.kr/cleanup/view/localHouse.do" target="_blank">정보몽땅 ↗</a>
+              </div>
+              <div class="gls-body">
+                <div class="gls-def">무주택자 또는 85㎡ 이하 1채 소유자가 <strong>조합을 설립</strong>하여 사업대상지 토지를 확보하고, 등록사업자와 공동으로 주택(아파트)을 건설하는 사업.<br><br>조합원 자격: 서울·인천·경기 <strong>6개월 이상 거주</strong>, 조합설립인가 신청일~입주가능일까지 무주택 또는 85㎡ 이하 1채 소유 세대주</div>
+                <div class="gls-basis">근거: 주택법</div>
+              </div>
+            </div>
 
-        <!-- 주거환경개선(관리형) -->
-        <div class="gls-card">
-          <div class="gls-card-head">
-            <span class="gls-dot" style="background:#059669; opacity:0.55;"></span>
-            <span class="gls-title">주거환경개선(관리형)</span>
-          </div>
-          <div class="gls-body">
-            <div class="gls-def">사업시행자가 정비기반시설·공동이용시설을 설치·확대하고, <strong>토지등소유자가 스스로 주택을 보전·정비·개량</strong>하는 방법으로 시행하는 주거환경개선사업.<br><br>전면철거 없이 기존 주거지를 보전하면서 공공이 기반시설을 정비하는 방식. "관리형"은 서울시 조례에서 부여한 명칭.</div>
-            <div class="gls-basis">근거: 도시 및 주거환경정비법 제23조제1항 제1호 · 서울특별시 도시 및 주거환경정비 조례 제6조 [시행 2018.7.19.]</div>
-          </div>
-        </div>
+            <!-- 주거환경개선(정비형) -->
+            <div class="gls-card">
+              <div class="gls-card-head">
+                <span class="gls-dot" style="background:#059669;"></span>
+                <span class="gls-title">주거환경개선(정비형)</span>
+              </div>
+              <div class="gls-body">
+                <div class="gls-def">도시저소득 주민이 집단거주하는 지역으로서 정비기반시설이 극히 열악하고 노후·불량건축물이 과도하게 밀집한 지역에서 다음 방법으로 시행하는 주거환경개선사업.<br><br>① <strong>수용방식</strong>: 정비구역 전부·일부를 수용하여 주택 건설 후 공급<br>② <strong>환지방식</strong>: 환지로 공급<br>③ <strong>관리처분방식</strong>: 관리처분계획에 따라 주택·부대시설 건설·공급</div>
+                <div class="gls-basis">근거: 도시 및 주거환경정비법 제2조제2호가목 · 제23조제1항 제2·3·4호</div>
+              </div>
+            </div>
+
+            <!-- 주거환경개선(관리형) -->
+            <div class="gls-card">
+              <div class="gls-card-head">
+                <span class="gls-dot" style="background:#059669; opacity:0.55;"></span>
+                <span class="gls-title">주거환경개선(관리형)</span>
+              </div>
+              <div class="gls-body">
+                <div class="gls-def">사업시행자가 정비기반시설·공동이용시설을 설치·확대하고, <strong>토지등소유자가 스스로 주택을 보전·정비·개량</strong>하는 방법으로 시행하는 주거환경개선사업.<br><br>전면철거 없이 기존 주거지를 보전하면서 공공이 기반시설을 정비하는 방식. "관리형"은 서울시 조례에서 부여한 명칭.</div>
+                <div class="gls-basis">근거: 도시 및 주거환경정비법 제23조제1항 제1호 · 서울특별시 도시 및 주거환경정비 조례 제6조 [시행 2018.7.19.]</div>
+              </div>
+            </div>
+
+          </div><!-- /gls-acc-body -->
+        </div><!-- /gls-section 개발방식 -->
+
+        <!-- ── 섹션 2: 형성 유형 ─────────────────── -->
+        <div class="gls-section">
+          <button class="gls-acc-btn open" onclick="toggleGlsSection(this)">
+            형성 유형<span class="gls-acc-arrow">▾</span>
+          </button>
+          <div class="gls-acc-body open">
+
+            <!-- 자연발생 -->
+            <div class="gls-card">
+              <div class="gls-card-head">
+                <span class="gls-diamond" style="background:#DC2626;"></span>
+                <span class="gls-title">자연발생</span>
+              </div>
+              <div class="gls-body">
+                <div class="gls-def">외부의 계획적 개입 없이, 전쟁 피난민·농촌 이탈 인구가 도시 외곽 구릉지·산기슭의 유휴 국공유지를 <strong>자발적으로 무단 점유</strong>하며 형성된 무허가 정착지. 비정형 필지 구조와 지형에 순응하는 곡선형 골목이 특징이며, 원형 보존율이 높다.</div>
+                <div class="gls-meta-row">
+                  <div class="gls-meta-item">
+                    <span class="gls-meta-label">공간 특성</span>
+                    <span class="gls-meta-val">비정형 필지, 곡선 골목, 지형 순응형 배치</span>
+                  </div>
+                  <div class="gls-meta-item">
+                    <span class="gls-meta-label">형성 시기</span>
+                    <span class="gls-meta-val">주로 1950~60년대 (한국전쟁 이후 도시화 초기)</span>
+                  </div>
+                  <div class="gls-meta-item">
+                    <span class="gls-meta-label">분류 근거</span>
+                    <span class="gls-meta-val">정착 경위 — 공공 이주 명령 없이 자발적 점유로 형성된 경우</span>
+                  </div>
+                </div>
+                <div class="gls-basis">출처: 서울시 무허가정착지 실태조사 보고서(2020) · 성주인 외, 「서울시 비닐하우스촌의 형성과 변천」(2015)</div>
+              </div>
+            </div>
+
+            <!-- 집단이주 -->
+            <div class="gls-card">
+              <div class="gls-card-head">
+                <span class="gls-diamond" style="background:#EA580C;"></span>
+                <span class="gls-title">집단이주</span>
+              </div>
+              <div class="gls-body">
+                <div class="gls-def">서울시 주도의 도심 정비·개발 사업(청계천 복개, 영동 개발 등)으로 기존 판자촌·무허가촌 주민을 외곽 지정 부지에 <strong>강제·집단 이주</strong>시켜 형성된 정착지. 격자형 필지 구조가 공통적으로 나타나며, 공공이 부지를 지정한 흔적이 공간 구조에 남아 있다.</div>
+                <div class="gls-meta-row">
+                  <div class="gls-meta-item">
+                    <span class="gls-meta-label">공간 특성</span>
+                    <span class="gls-meta-val">격자형 필지, 균일한 획지 크기, 계획적 동선</span>
+                  </div>
+                  <div class="gls-meta-item">
+                    <span class="gls-meta-label">형성 시기</span>
+                    <span class="gls-meta-val">주로 1960~70년대 (도시정비 철거이주 집중기)</span>
+                  </div>
+                  <div class="gls-meta-item">
+                    <span class="gls-meta-label">분류 근거</span>
+                    <span class="gls-meta-val">정착 경위 — 공공 명령·지원에 의한 집단 이주로 형성된 경우</span>
+                  </div>
+                </div>
+                <div class="gls-basis">출처: 서울시 무허가정착지 실태조사 보고서(2020) · 박은수, 「서울 강북지역 집단이주촌 연구」· SBS 2025.05(백사마을 이주 경위)</div>
+              </div>
+            </div>
+
+            <!-- 신발생 -->
+            <div class="gls-card">
+              <div class="gls-card-head">
+                <span class="gls-diamond" style="background:#D97706;"></span>
+                <span class="gls-title">신발생</span>
+              </div>
+              <div class="gls-body">
+                <div class="gls-def">1970년대 이후 강남 개발·재개발 사업으로 발생한 2차 철거이주민, 또는 경제적 취약 계층이 도시 외곽 그린벨트·공원·국유지에 <strong>비닐하우스·조립식 구조물</strong>을 설치하여 새롭게 형성한 정착지. 기존 자연발생·집단이주 유형보다 늦게 생성되었으며, 구조물의 임시성이 높다.</div>
+                <div class="gls-meta-row">
+                  <div class="gls-meta-item">
+                    <span class="gls-meta-label">공간 특성</span>
+                    <span class="gls-meta-val">비닐하우스·컨테이너 구조 밀집, 공원·도로 용지 점유</span>
+                  </div>
+                  <div class="gls-meta-item">
+                    <span class="gls-meta-label">형성 시기</span>
+                    <span class="gls-meta-val">주로 1980년대 이후 (강남 개발·올림픽 전후 재정착)</span>
+                  </div>
+                  <div class="gls-meta-item">
+                    <span class="gls-meta-label">분류 근거</span>
+                    <span class="gls-meta-val">정착 경위 — 1970년대 이후 2차 철거 혹은 개인 점유로 새롭게 발생한 경우</span>
+                  </div>
+                </div>
+                <div class="gls-basis">출처: 서울시 무허가정착지 실태조사 보고서(2020) · 성주인 외, 「서울시 비닐하우스촌의 형성과 변천」(2015) · 논문 11(장지동 화훼마을 형성과 변천)</div>
+              </div>
+            </div>
+
+          </div><!-- /gls-acc-body -->
+        </div><!-- /gls-section 형성유형 -->
 
       </div>
     </div>
@@ -1619,6 +1796,11 @@ function toggleGlossary() {
 function closeGlossary() {
   document.getElementById('glossary-panel').classList.remove('open');
   document.getElementById('btn-glossary').classList.remove('active');
+}
+
+function toggleGlsSection(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
 }
 
 // 바깥 클릭 시 닫기
