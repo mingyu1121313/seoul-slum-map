@@ -11609,7 +11609,16 @@
       "query": "서울특별시 강북구 미아동",
       "lat": 37.6202206,
       "lng": 127.0197351,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 11,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 32
+      },
+      "near_hubs": [
+        "CBD"
+      ],
+      "near_job": true
     },
     {
       "id": "nb002",
@@ -11623,7 +11632,16 @@
       "query": "서울특별시 강북구 미아동",
       "lat": 37.6241267,
       "lng": 127.0169625,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 13,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 36
+      },
+      "near_hubs": [
+        "CBD"
+      ],
+      "near_job": true
     },
     {
       "id": "nb003",
@@ -11637,7 +11655,12 @@
       "query": "서울특별시 강북구 수유동",
       "lat": 37.6375721,
       "lng": 127.007477,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 12,
+      "is_slope": false,
+      "near_minutes": {},
+      "near_hubs": [],
+      "near_job": false
     },
     {
       "id": "nb004",
@@ -11651,7 +11674,12 @@
       "query": "서울특별시 강북구 미아동",
       "lat": 37.6301248,
       "lng": 127.022025,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 10,
+      "is_slope": false,
+      "near_minutes": {},
+      "near_hubs": [],
+      "near_job": false
     },
     {
       "id": "nb005",
@@ -11665,7 +11693,18 @@
       "query": "서울특별시 성북구 길음동",
       "lat": 37.6097924,
       "lng": 127.0225168,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 22,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 36,
+        "Seongsu": 39
+      },
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
+      "near_job": true
     },
     {
       "id": "nb006",
@@ -11679,7 +11718,16 @@
       "query": "서울특별시 성북구 정릉동",
       "lat": 37.6093812,
       "lng": 127.0075446,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 6,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 31
+      },
+      "near_hubs": [
+        "CBD"
+      ],
+      "near_job": true
     },
     {
       "id": "nb007",
@@ -11693,7 +11741,16 @@
       "query": "서울특별시 성북구 정릉동",
       "lat": 37.6111289,
       "lng": 127.0040771,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 36,
+      "is_slope": true,
+      "near_minutes": {
+        "CBD": 32
+      },
+      "near_hubs": [
+        "CBD"
+      ],
+      "near_job": true
     },
     {
       "id": "nb008",
@@ -11707,7 +11764,18 @@
       "query": "서울특별시 성북구 상월곡동",
       "lat": 37.6070161,
       "lng": 127.0504726,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 6,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 31,
+        "Seongsu": 31
+      },
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
+      "near_job": true
     },
     {
       "id": "nb009",
@@ -11721,7 +11789,16 @@
       "query": "서울특별시 성북구 석관동",
       "lat": 37.6094926,
       "lng": 127.0642808,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 4,
+      "is_slope": false,
+      "near_minutes": {
+        "Seongsu": 39
+      },
+      "near_hubs": [
+        "Seongsu"
+      ],
+      "near_job": true
     },
     {
       "id": "nb010",
@@ -11735,7 +11812,16 @@
       "query": "서울특별시 성북구 정릉동",
       "lat": 37.6105931,
       "lng": 127.0097908,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 15,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 29
+      },
+      "near_hubs": [
+        "CBD"
+      ],
+      "near_job": true
     },
     {
       "id": "nb011",
@@ -11749,7 +11835,16 @@
       "query": "서울특별시 성북구 정릉동",
       "lat": 37.6118811,
       "lng": 127.006406,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 21,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 28
+      },
+      "near_hubs": [
+        "CBD"
+      ],
+      "near_job": true
     },
     {
       "id": "nb012",
@@ -11763,7 +11858,16 @@
       "query": "서울특별시 성북구 성북동",
       "lat": 37.6016692,
       "lng": 126.9909046,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 63,
+      "is_slope": true,
+      "near_minutes": {
+        "CBD": 40
+      },
+      "near_hubs": [
+        "CBD"
+      ],
+      "near_job": true
     },
     {
       "id": "nb013",
@@ -11777,7 +11881,16 @@
       "query": "서울특별시 성북구 석관동",
       "lat": 37.6101097,
       "lng": 127.0598268,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 1,
+      "is_slope": false,
+      "near_minutes": {
+        "Seongsu": 36
+      },
+      "near_hubs": [
+        "Seongsu"
+      ],
+      "near_job": true
     },
     {
       "id": "nb014",
@@ -11791,7 +11904,12 @@
       "query": "서울특별시 도봉구 방학동",
       "lat": 37.6692818,
       "lng": 127.0331742,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 12,
+      "is_slope": false,
+      "near_minutes": {},
+      "near_hubs": [],
+      "near_job": false
     },
     {
       "id": "nb015",
@@ -11805,7 +11923,12 @@
       "query": "서울특별시 도봉구 도봉동",
       "lat": 37.6865349,
       "lng": 127.0416591,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 16,
+      "is_slope": false,
+      "near_minutes": {},
+      "near_hubs": [],
+      "near_job": false
     },
     {
       "id": "nb016",
@@ -11819,7 +11942,12 @@
       "query": "서울특별시 도봉구 도봉동",
       "lat": 37.6822951,
       "lng": 127.050595,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 3,
+      "is_slope": false,
+      "near_minutes": {},
+      "near_hubs": [],
+      "near_job": false
     },
     {
       "id": "nb017",
@@ -11833,7 +11961,12 @@
       "query": "서울특별시 도봉구 방학동",
       "lat": 37.6624479,
       "lng": 127.0280323,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 10,
+      "is_slope": false,
+      "near_minutes": {},
+      "near_hubs": [],
+      "near_job": false
     },
     {
       "id": "nb018",
@@ -11847,7 +11980,12 @@
       "query": "서울특별시 노원구 공릉동",
       "lat": 37.625999,
       "lng": 127.0757546,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 11,
+      "is_slope": false,
+      "near_minutes": {},
+      "near_hubs": [],
+      "near_job": false
     },
     {
       "id": "nb019",
@@ -11861,7 +11999,12 @@
       "query": "서울특별시 노원구 월계동",
       "lat": 37.6210578,
       "lng": 127.0582645,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 21,
+      "is_slope": false,
+      "near_minutes": {},
+      "near_hubs": [],
+      "near_job": false
     },
     {
       "id": "nb020",
@@ -11875,7 +12018,12 @@
       "query": "서울특별시 노원구 공릉동",
       "lat": 37.6236164,
       "lng": 127.0783257,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 13,
+      "is_slope": false,
+      "near_minutes": {},
+      "near_hubs": [],
+      "near_job": false
     },
     {
       "id": "nb021",
@@ -11889,7 +12037,17 @@
       "query": "서울특별시 은평구 신사동",
       "lat": 37.5963361,
       "lng": 126.9057391,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 37,
+      "is_slope": true,
+      "near_minutes": {
+        "CBD": 43,
+        "Sangam": 27
+      },
+      "near_hubs": [
+        "Sangam"
+      ],
+      "near_job": true
     },
     {
       "id": "nb022",
@@ -11903,7 +12061,18 @@
       "query": "서울특별시 은평구 응암동",
       "lat": 37.5983965,
       "lng": 126.9369856,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 28,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 27,
+        "Sangam": 35
+      },
+      "near_hubs": [
+        "CBD",
+        "Sangam"
+      ],
+      "near_job": true
     },
     {
       "id": "nb023",
@@ -11917,7 +12086,18 @@
       "query": "서울특별시 은평구 녹번동",
       "lat": 37.5990934,
       "lng": 126.938209,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 23,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 27,
+        "Sangam": 36
+      },
+      "near_hubs": [
+        "CBD",
+        "Sangam"
+      ],
+      "near_job": true
     },
     {
       "id": "nb024",
@@ -11931,7 +12111,18 @@
       "query": "서울특별시 은평구 역촌동",
       "lat": 37.6073215,
       "lng": 126.9149059,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 4,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 34,
+        "Sangam": 29
+      },
+      "near_hubs": [
+        "CBD",
+        "Sangam"
+      ],
+      "near_job": true
     },
     {
       "id": "nb025",
@@ -11945,7 +12136,16 @@
       "query": "서울특별시 은평구 불광동",
       "lat": 37.6227762,
       "lng": 126.9230081,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 6,
+      "is_slope": false,
+      "near_minutes": {
+        "Sangam": 30
+      },
+      "near_hubs": [
+        "Sangam"
+      ],
+      "near_job": true
     },
     {
       "id": "nb026",
@@ -11959,7 +12159,17 @@
       "query": "서울특별시 은평구 신사동",
       "lat": 37.5947743,
       "lng": 126.9073168,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 30,
+      "is_slope": true,
+      "near_minutes": {
+        "CBD": 49,
+        "Sangam": 24
+      },
+      "near_hubs": [
+        "Sangam"
+      ],
+      "near_job": true
     },
     {
       "id": "nb027",
@@ -11973,7 +12183,22 @@
       "query": "서울특별시 은평구 수색동",
       "lat": 37.5792518,
       "lng": 126.8982671,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 8,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 33,
+        "YBD": 33,
+        "Magok": 23,
+        "Sangam": 13
+      },
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Magok",
+        "Sangam"
+      ],
+      "near_job": true
     },
     {
       "id": "nb028",
@@ -11987,7 +12212,17 @@
       "query": "서울특별시 은평구 신사동",
       "lat": 37.5964105,
       "lng": 126.9077123,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 22,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 41,
+        "Sangam": 25
+      },
+      "near_hubs": [
+        "Sangam"
+      ],
+      "near_job": true
     },
     {
       "id": "nb029",
@@ -12001,7 +12236,21 @@
       "query": "서울특별시 은평구 응암동",
       "lat": 37.5872583,
       "lng": 126.9217961,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 17,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 39,
+        "YBD": 51,
+        "Yongsan": 32,
+        "Sangam": 22
+      },
+      "near_hubs": [
+        "CBD",
+        "Yongsan",
+        "Sangam"
+      ],
+      "near_job": true
     },
     {
       "id": "nb030",
@@ -12015,7 +12264,20 @@
       "query": "서울특별시 서대문구 북가좌동",
       "lat": 37.5795554,
       "lng": 126.9164758,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 21,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 42,
+        "YBD": 41,
+        "Yongsan": 37,
+        "Sangam": 21
+      },
+      "near_hubs": [
+        "Yongsan",
+        "Sangam"
+      ],
+      "near_job": true
     },
     {
       "id": "nb031",
@@ -12029,7 +12291,20 @@
       "query": "서울특별시 서대문구 홍은동",
       "lat": 37.5830085,
       "lng": 126.9257107,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 7,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 41,
+        "YBD": 47,
+        "Yongsan": 29,
+        "Sangam": 24
+      },
+      "near_hubs": [
+        "Yongsan",
+        "Sangam"
+      ],
+      "near_job": true
     },
     {
       "id": "nb032",
@@ -12043,7 +12318,20 @@
       "query": "서울특별시 서대문구 홍은동",
       "lat": 37.5955036,
       "lng": 126.9411976,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 10,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 23,
+        "Yongsan": 35,
+        "Sangam": 32
+      },
+      "near_hubs": [
+        "CBD",
+        "Yongsan",
+        "Sangam"
+      ],
+      "near_job": true
     },
     {
       "id": "nb033",
@@ -12057,7 +12345,22 @@
       "query": "서울특별시 서대문구 홍제동",
       "lat": 37.5852274,
       "lng": 126.9477418,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 29,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 19,
+        "YBD": 26,
+        "Yongsan": 30,
+        "Sangam": 36
+      },
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
+      "near_job": true
     },
     {
       "id": "nb034",
@@ -12071,7 +12374,22 @@
       "query": "서울특별시 마포구 연남동",
       "lat": 37.5638625,
       "lng": 126.9234387,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 3,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 31,
+        "YBD": 31,
+        "Yongsan": 27,
+        "Sangam": 23
+      },
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
+      "near_job": true
     },
     {
       "id": "nb035",
@@ -12085,7 +12403,18 @@
       "query": "서울특별시 양천구 신월동",
       "lat": 37.5351653,
       "lng": 126.8250188,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 6,
+      "is_slope": false,
+      "near_minutes": {
+        "Magok": 22,
+        "Sangam": 40
+      },
+      "near_hubs": [
+        "Magok",
+        "Sangam"
+      ],
+      "near_job": true
     },
     {
       "id": "nb036",
@@ -12099,7 +12428,19 @@
       "query": "서울특별시 양천구 신월동",
       "lat": 37.5291947,
       "lng": 126.8354992,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 1,
+      "is_slope": false,
+      "near_minutes": {
+        "YBD": 26,
+        "Magok": 26,
+        "Sangam": 43
+      },
+      "near_hubs": [
+        "YBD",
+        "Magok"
+      ],
+      "near_job": true
     },
     {
       "id": "nb037",
@@ -12113,7 +12454,19 @@
       "query": "서울특별시 양천구 목동",
       "lat": 37.52917,
       "lng": 126.8735394,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": -3,
+      "is_slope": false,
+      "near_minutes": {
+        "YBD": 18,
+        "Magok": 28,
+        "Sangam": 44
+      },
+      "near_hubs": [
+        "YBD",
+        "Magok"
+      ],
+      "near_job": true
     },
     {
       "id": "nb038",
@@ -12127,7 +12480,14 @@
       "query": "서울특별시 구로구 온수동",
       "lat": 37.4932113,
       "lng": 126.8217593,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 12,
+      "is_slope": false,
+      "near_minutes": {
+        "Magok": 56
+      },
+      "near_hubs": [],
+      "near_job": false
     },
     {
       "id": "nb039",
@@ -12141,7 +12501,18 @@
       "query": "서울특별시 구로구 구로동",
       "lat": 37.493625,
       "lng": 126.8876459,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 6,
+      "is_slope": false,
+      "near_minutes": {
+        "YBD": 29,
+        "Yongsan": 30
+      },
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb040",
@@ -12155,7 +12526,16 @@
       "query": "서울특별시 구로구 개봉동",
       "lat": 37.4875633,
       "lng": 126.8573852,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 2,
+      "is_slope": false,
+      "near_minutes": {
+        "YBD": 38
+      },
+      "near_hubs": [
+        "YBD"
+      ],
+      "near_job": true
     },
     {
       "id": "nb041",
@@ -12169,7 +12549,18 @@
       "query": "서울특별시 구로구 오류동",
       "lat": 37.4981443,
       "lng": 126.8425024,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 27,
+      "is_slope": false,
+      "near_minutes": {
+        "YBD": 33,
+        "Magok": 38
+      },
+      "near_hubs": [
+        "YBD",
+        "Magok"
+      ],
+      "near_job": true
     },
     {
       "id": "nb042",
@@ -12183,7 +12574,12 @@
       "query": "서울특별시 금천구 시흥동",
       "lat": 37.4408093,
       "lng": 126.9044902,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 12,
+      "is_slope": false,
+      "near_minutes": {},
+      "near_hubs": [],
+      "near_job": false
     },
     {
       "id": "nb043",
@@ -12197,7 +12593,12 @@
       "query": "서울특별시 금천구 시흥동",
       "lat": 37.4372046,
       "lng": 126.9024368,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 3,
+      "is_slope": false,
+      "near_minutes": {},
+      "near_hubs": [],
+      "near_job": false
     },
     {
       "id": "nb044",
@@ -12211,7 +12612,12 @@
       "query": "서울특별시 금천구 독산동",
       "lat": 37.4539907,
       "lng": 126.8893511,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 9,
+      "is_slope": false,
+      "near_minutes": {},
+      "near_hubs": [],
+      "near_job": false
     },
     {
       "id": "nb045",
@@ -12225,7 +12631,16 @@
       "query": "서울특별시 금천구 독산동",
       "lat": 37.4748049,
       "lng": 126.8965203,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 13,
+      "is_slope": false,
+      "near_minutes": {
+        "YBD": 26
+      },
+      "near_hubs": [
+        "YBD"
+      ],
+      "near_job": true
     },
     {
       "id": "nb046",
@@ -12239,7 +12654,18 @@
       "query": "서울특별시 영등포구 대림동",
       "lat": 37.4943531,
       "lng": 126.9013208,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 6,
+      "is_slope": false,
+      "near_minutes": {
+        "YBD": 27,
+        "Yongsan": 29
+      },
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb047",
@@ -12253,7 +12679,18 @@
       "query": "서울특별시 영등포구 대림동",
       "lat": 37.4923554,
       "lng": 126.9040306,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 4,
+      "is_slope": false,
+      "near_minutes": {
+        "YBD": 24,
+        "Yongsan": 39
+      },
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb048",
@@ -12267,7 +12704,18 @@
       "query": "서울특별시 영등포구 도림동",
       "lat": 37.5079696,
       "lng": 126.9015746,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 4,
+      "is_slope": false,
+      "near_minutes": {
+        "YBD": 21,
+        "Yongsan": 23
+      },
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb049",
@@ -12281,7 +12729,22 @@
       "query": "서울특별시 동작구 흑석동",
       "lat": 37.5098265,
       "lng": 126.9582871,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 63,
+      "is_slope": true,
+      "near_minutes": {
+        "CBD": 30,
+        "GBD": 31,
+        "YBD": 15,
+        "Yongsan": 20
+      },
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb050",
@@ -12295,7 +12758,22 @@
       "query": "서울특별시 동작구 상도동",
       "lat": 37.4995235,
       "lng": 126.9518057,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 14,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 33,
+        "GBD": 35,
+        "YBD": 25,
+        "Yongsan": 21
+      },
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb051",
@@ -12309,7 +12787,22 @@
       "query": "서울특별시 동작구 상도동",
       "lat": 37.5057484,
       "lng": 126.9421339,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 18,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 22,
+        "GBD": 40,
+        "YBD": 21,
+        "Yongsan": 23
+      },
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb052",
@@ -12323,7 +12816,18 @@
       "query": "서울특별시 동작구 상도동",
       "lat": 37.4998436,
       "lng": 126.9323567,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 7,
+      "is_slope": false,
+      "near_minutes": {
+        "YBD": 18,
+        "Yongsan": 24
+      },
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb053",
@@ -12337,7 +12841,17 @@
       "query": "서울특별시 관악구 신림동",
       "lat": 37.473743,
       "lng": 126.9131483,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 16,
+      "is_slope": false,
+      "near_minutes": {
+        "YBD": 39,
+        "Yongsan": 47
+      },
+      "near_hubs": [
+        "YBD"
+      ],
+      "near_job": true
     },
     {
       "id": "nb054",
@@ -12351,7 +12865,18 @@
       "query": "서울특별시 관악구 신림동",
       "lat": 37.4837562,
       "lng": 126.9283744,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 6,
+      "is_slope": false,
+      "near_minutes": {
+        "YBD": 24,
+        "Yongsan": 29
+      },
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb055",
@@ -12365,7 +12890,19 @@
       "query": "서울특별시 관악구 봉천동",
       "lat": 37.4716873,
       "lng": 126.9700169,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 37,
+      "is_slope": true,
+      "near_minutes": {
+        "GBD": 25,
+        "YBD": 41,
+        "Yongsan": 34
+      },
+      "near_hubs": [
+        "GBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb056",
@@ -12379,7 +12916,18 @@
       "query": "서울특별시 관악구 신림동",
       "lat": 37.4691421,
       "lng": 126.9364636,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 12,
+      "is_slope": false,
+      "near_minutes": {
+        "YBD": 30,
+        "Yongsan": 36
+      },
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb057",
@@ -12393,7 +12941,20 @@
       "query": "서울특별시 관악구 봉천동",
       "lat": 37.4819953,
       "lng": 126.9516219,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 2,
+      "is_slope": false,
+      "near_minutes": {
+        "GBD": 16,
+        "YBD": 28,
+        "Yongsan": 26
+      },
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb058",
@@ -12407,7 +12968,20 @@
       "query": "서울특별시 관악구 봉천동",
       "lat": 37.4849028,
       "lng": 126.9460746,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 7,
+      "is_slope": false,
+      "near_minutes": {
+        "GBD": 23,
+        "YBD": 24,
+        "Yongsan": 31
+      },
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb059",
@@ -12421,7 +12995,18 @@
       "query": "서울특별시 관악구 신림동",
       "lat": 37.4788235,
       "lng": 126.9250498,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 15,
+      "is_slope": false,
+      "near_minutes": {
+        "YBD": 33,
+        "Yongsan": 39
+      },
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb060",
@@ -12435,7 +13020,18 @@
       "query": "서울특별시 동대문구 휘경동",
       "lat": 37.5893212,
       "lng": 127.0624557,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 9,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 27,
+        "Seongsu": 26
+      },
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
+      "near_job": true
     },
     {
       "id": "nb061",
@@ -12449,7 +13045,18 @@
       "query": "서울특별시 동대문구 전농동",
       "lat": 37.5863483,
       "lng": 127.0524271,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 7,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 33,
+        "Seongsu": 22
+      },
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
+      "near_job": true
     },
     {
       "id": "nb062",
@@ -12463,7 +13070,17 @@
       "query": "서울특별시 종로구 신영동",
       "lat": 37.6033831,
       "lng": 126.960007,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 37,
+      "is_slope": true,
+      "near_minutes": {
+        "CBD": 23,
+        "Sangam": 48
+      },
+      "near_hubs": [
+        "CBD"
+      ],
+      "near_job": true
     },
     {
       "id": "nb063",
@@ -12477,7 +13094,21 @@
       "query": "서울특별시 종로구 옥인동",
       "lat": 37.5833452,
       "lng": 126.9667542,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 14,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 19,
+        "YBD": 31,
+        "Yongsan": 25,
+        "Sangam": 66
+      },
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb064",
@@ -12491,7 +13122,16 @@
       "query": "서울특별시 중랑구 면목동",
       "lat": 37.5739595,
       "lng": 127.0842764,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 21,
+      "is_slope": false,
+      "near_minutes": {
+        "Seongsu": 19
+      },
+      "near_hubs": [
+        "Seongsu"
+      ],
+      "near_job": true
     },
     {
       "id": "nb065",
@@ -12505,7 +13145,20 @@
       "query": "서울특별시 성북구 삼선동",
       "lat": 37.5815912,
       "lng": 127.0085138,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 39,
+      "is_slope": true,
+      "near_minutes": {
+        "CBD": 29,
+        "Seongsu": 30,
+        "Yongsan": 32
+      },
+      "near_hubs": [
+        "CBD",
+        "Seongsu",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb066",
@@ -12519,7 +13172,20 @@
       "query": "서울특별시 성북구 삼선동",
       "lat": 37.5869684,
       "lng": 127.0062386,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 38,
+      "is_slope": true,
+      "near_minutes": {
+        "CBD": 25,
+        "Seongsu": 26,
+        "Yongsan": 26
+      },
+      "near_hubs": [
+        "CBD",
+        "Seongsu",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb067",
@@ -12533,7 +13199,20 @@
       "query": "서울특별시 성북구 삼선동",
       "lat": 37.5865002,
       "lng": 127.0072749,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 27,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 26,
+        "Seongsu": 27,
+        "Yongsan": 27
+      },
+      "near_hubs": [
+        "CBD",
+        "Seongsu",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb068",
@@ -12547,7 +13226,18 @@
       "query": "서울특별시 성북구 성북동",
       "lat": 37.5942383,
       "lng": 126.9922953,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 24,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 35,
+        "Yongsan": 36
+      },
+      "near_hubs": [
+        "CBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb069",
@@ -12561,7 +13251,18 @@
       "query": "서울특별시 성북구 성북동",
       "lat": 37.5944505,
       "lng": 126.991249,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 34,
+      "is_slope": true,
+      "near_minutes": {
+        "CBD": 36,
+        "Yongsan": 37
+      },
+      "near_hubs": [
+        "CBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb070",
@@ -12575,7 +13276,22 @@
       "query": "서울특별시 중구 신당동",
       "lat": 37.5558294,
       "lng": 127.0136969,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 23,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 23,
+        "GBD": 25,
+        "Seongsu": 25,
+        "Yongsan": 27
+      },
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "Seongsu",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb071",
@@ -12589,7 +13305,22 @@
       "query": "서울특별시 중구 신당동",
       "lat": 37.5638478,
       "lng": 127.0264692,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 26,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 19,
+        "GBD": 33,
+        "Seongsu": 11,
+        "Yongsan": 29
+      },
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "Seongsu",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb072",
@@ -12603,7 +13334,22 @@
       "query": "서울특별시 중구 광희동",
       "lat": 37.5647451,
       "lng": 127.0096221,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 4,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 13,
+        "GBD": 35,
+        "Seongsu": 13,
+        "Yongsan": 19
+      },
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "Seongsu",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb073",
@@ -12617,7 +13363,22 @@
       "query": "서울특별시 중구 신당동",
       "lat": 37.5640235,
       "lng": 127.016683,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 4,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 18,
+        "GBD": 36,
+        "Seongsu": 14,
+        "Yongsan": 26
+      },
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "Seongsu",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb074",
@@ -12631,7 +13392,22 @@
       "query": "서울특별시 중구 장충동",
       "lat": 37.5593966,
       "lng": 127.0037498,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 25,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 30,
+        "GBD": 26,
+        "Seongsu": 27,
+        "Yongsan": 25
+      },
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "Seongsu",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb075",
@@ -12645,7 +13421,22 @@
       "query": "서울특별시 중구 신당동",
       "lat": 37.5586065,
       "lng": 127.0163162,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 7,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 21,
+        "GBD": 33,
+        "Seongsu": 21,
+        "Yongsan": 27
+      },
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "Seongsu",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb076",
@@ -12659,7 +13450,20 @@
       "query": "서울특별시 종로구 이화동",
       "lat": 37.5780008,
       "lng": 127.0082052,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 49,
+      "is_slope": true,
+      "near_minutes": {
+        "CBD": 21,
+        "Seongsu": 30,
+        "Yongsan": 27
+      },
+      "near_hubs": [
+        "CBD",
+        "Seongsu",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb077",
@@ -12673,7 +13477,20 @@
       "query": "서울특별시 종로구 충신동",
       "lat": 37.5765277,
       "lng": 127.0071802,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 34,
+      "is_slope": true,
+      "near_minutes": {
+        "CBD": 19,
+        "Seongsu": 28,
+        "Yongsan": 25
+      },
+      "near_hubs": [
+        "CBD",
+        "Seongsu",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb078",
@@ -12687,7 +13504,20 @@
       "query": "서울특별시 종로구 충신동",
       "lat": 37.5750664,
       "lng": 127.003297,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 2,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 15,
+        "Seongsu": 24,
+        "Yongsan": 21
+      },
+      "near_hubs": [
+        "CBD",
+        "Seongsu",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb079",
@@ -12701,7 +13531,22 @@
       "query": "서울특별시 종로구 행촌동",
       "lat": 37.5748438,
       "lng": 126.9629951,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 48,
+      "is_slope": true,
+      "near_minutes": {
+        "CBD": 26,
+        "YBD": 28,
+        "Yongsan": 29,
+        "Sangam": 36
+      },
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
+      "near_job": true
     },
     {
       "id": "nb080",
@@ -12715,7 +13560,19 @@
       "query": "서울특별시 종로구 부암동",
       "lat": 37.6004333,
       "lng": 126.9663362,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 49,
+      "is_slope": true,
+      "near_minutes": {
+        "CBD": 25,
+        "Yongsan": 32,
+        "Sangam": 58
+      },
+      "near_hubs": [
+        "CBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb081",
@@ -12729,7 +13586,19 @@
       "query": "서울특별시 종로구 부암동",
       "lat": 37.592803,
       "lng": 126.9652598,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 46,
+      "is_slope": true,
+      "near_minutes": {
+        "CBD": 19,
+        "Yongsan": 26,
+        "Sangam": 57
+      },
+      "near_hubs": [
+        "CBD",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb082",
@@ -12743,7 +13612,20 @@
       "query": "서울특별시 종로구 명륜3가",
       "lat": 37.5871002,
       "lng": 126.9959381,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 13,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 25,
+        "Seongsu": 32,
+        "Yongsan": 34
+      },
+      "near_hubs": [
+        "CBD",
+        "Seongsu",
+        "Yongsan"
+      ],
+      "near_job": true
     },
     {
       "id": "nb083",
@@ -12757,7 +13639,20 @@
       "query": "서울특별시 종로구 혜화동",
       "lat": 37.587331,
       "lng": 127.0027886,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "relief_m": 17,
+      "is_slope": false,
+      "near_minutes": {
+        "CBD": 21,
+        "Seongsu": 28,
+        "Yongsan": 28
+      },
+      "near_hubs": [
+        "CBD",
+        "Seongsu",
+        "Yongsan"
+      ],
+      "near_job": true
     }
   ]
 }

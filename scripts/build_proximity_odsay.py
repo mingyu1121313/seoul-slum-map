@@ -98,11 +98,15 @@ def run():
     api_key = load_api_key()
     cache   = load_cache()
 
-    # 마커 로드
+    # 마커 로드 (items + items_관리형 모두 포함)
     a = json.load(open(f"{ROOT}/layerA.json", encoding="utf-8"))
     b = json.load(open(f"{ROOT}/layerB.json", encoding="utf-8"))
     all_items = []
-    for src, items in [("A", a["items"]), ("B", b["items"])]:
+    for src, items in [
+        ("A",    a.get("items", [])),
+        ("A관리", a.get("items_관리형", [])),
+        ("B",    b.get("items", [])),
+    ]:
         for item in items:
             if item.get("lat") and item.get("lng"):
                 all_items.append((src, item))
@@ -150,8 +154,9 @@ def run():
 
     # ── 태깅 ────────────────────────────────────
     print("\n태깅 시작...")
-    for src_letter, data_obj in [("A", a), ("B", b)]:
-        for item in data_obj["items"]:
+
+    def tag_list(items):
+        for item in items:
             item_id = item.get("id")
             if not item_id or not item.get("lat"):
                 item["near_minutes"] = {}
@@ -164,12 +169,11 @@ def run():
                 key   = f"{item_id}:{h['id']}"
                 dist  = haversine(item["lat"], item["lng"], h["lat"], h["lng"])
                 if dist > MAX_KM:
-                    # 직선거리 초과 → 확실히 불가
                     minutes_map[h["id"]] = None
                 elif key in cache:
-                    minutes_map[h["id"]] = cache[key]  # 분 or None
+                    minutes_map[h["id"]] = cache[key]
                 else:
-                    minutes_map[h["id"]] = None  # 아직 미조회
+                    minutes_map[h["id"]] = None
 
             near_hubs = [hub_id for hub_id, mins in minutes_map.items()
                          if mins is not None and mins <= CUTOFF_MIN]
@@ -178,6 +182,10 @@ def run():
             item["near_hubs"]    = near_hubs
             item["near_job"]     = len(near_hubs) > 0
 
+    tag_list(a.get("items", []))
+    tag_list(a.get("items_관리형", []))
+    tag_list(b.get("items", []))
+
     # 저장
     with open(f"{ROOT}/layerA.json", "w", encoding="utf-8") as f:
         json.dump(a, f, ensure_ascii=False, indent=2)
@@ -185,16 +193,19 @@ def run():
         json.dump(b, f, ensure_ascii=False, indent=2)
 
     # 집계 리포트
-    near_a = sum(1 for it in a["items"] if it.get("near_job"))
-    near_b = sum(1 for it in b["items"] if it.get("near_job"))
-    print(f"layerA 직주근접: {near_a}/{len(a['items'])}")
-    print(f"layerB 직주근접: {near_b}/{len(b['items'])}")
+    near_a  = sum(1 for it in a.get("items", []) if it.get("near_job"))
+    near_am = sum(1 for it in a.get("items_관리형", []) if it.get("near_job"))
+    near_b  = sum(1 for it in b.get("items", []) if it.get("near_job"))
+    print(f"layerA items 직주근접:       {near_a}/{len(a.get('items', []))}")
+    print(f"layerA items_관리형 직주근접: {near_am}/{len(a.get('items_관리형', []))}")
+    print(f"layerB items 직주근접:       {near_b}/{len(b.get('items', []))}")
 
     # 검증 케이스
     print("\n[직주근접 검증]")
     checks = [("백사", False), ("구룡", None), ("사근동", None), ("꽃담", None)]
+    all_a = list(a.get("items", [])) + list(a.get("items_관리형", []))
     for keyword, expected in checks:
-        for it in list(a["items"]) + list(b["items"]):
+        for it in all_a + list(b.get("items", [])):
             if keyword in it.get("name", ""):
                 print(f"  {it['name'][:30]:30s} near_job={it.get('near_job')}  hubs={it.get('near_hubs')}  minutes={it.get('near_minutes')}")
                 break

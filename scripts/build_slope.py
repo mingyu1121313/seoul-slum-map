@@ -75,18 +75,27 @@ def process_file(path):
     with open(path, encoding="utf-8") as f:
         data = json.load(f)
 
-    items  = data["items"]
-    valid  = [(i, it) for i, it in enumerate(items) if it.get("lat") and it.get("lng")]
-    print(f"  {path}: {len(valid)} / {len(items)} 유효 마커")
+    # items + items_관리형 모두 수집 (관리형은 layerA에만 존재)
+    all_items = list(data.get("items", []))
+    if "items_관리형" in data:
+        all_items.extend(data["items_관리형"])
 
-    # 전체 샘플 포인트 수집
-    all_idx  = []   # item 인덱스
+    # 이미 relief_m가 있는 항목은 스킵 (수동 보정·기존 결과 보존)
+    valid = [it for it in all_items
+             if it.get("lat") and it.get("lng") and "relief_m" not in it]
+    print(f"  {path}: 신규 처리 대상 {len(valid)} / 전체 {len(all_items)}")
+
+    if not valid:
+        print(f"  → 처리할 항목 없음, 검증만 수행")
+
+    # 전체 샘플 포인트 수집 (item 인덱스 대신 dict 레퍼런스로 추적)
+    all_refs = []   # item dict 참조
     all_locs = []   # {"latitude": ..., "longitude": ...}
     N_PTS = 1 + len(RADII) * len(DIRS)  # 17
 
-    for i, item in valid:
+    for item in valid:
         for (la, lo) in sample_points(item["lat"], item["lng"]):
-            all_idx.append(i)
+            all_refs.append(item)
             all_locs.append({"latitude": la, "longitude": lo})
 
     # 배치 API 호출
@@ -105,27 +114,27 @@ def process_file(path):
         all_elevs.extend(elevs)
         time.sleep(0.4)
 
-    # N_PTS 단위로 묶어서 relief 계산
+    # N_PTS 단위로 묶어서 relief 계산 (item dict 레퍼런스로 직접 기록)
     for chunk_start in range(0, len(all_elevs), N_PTS):
-        chunk     = all_elevs[chunk_start:chunk_start + N_PTS]
-        item_idx  = all_idx[chunk_start]
+        chunk    = all_elevs[chunk_start:chunk_start + N_PTS]
+        item_ref = all_refs[chunk_start]
         if any(v is None for v in chunk):
-            items[item_idx]["relief_m"]  = None
-            items[item_idx]["is_slope"]  = False
+            item_ref["relief_m"] = None
+            item_ref["is_slope"] = False
         else:
-            center     = chunk[0]
-            surround   = chunk[1:]
-            relief     = round(center - min(surround))
-            items[item_idx]["relief_m"]  = relief
-            items[item_idx]["is_slope"]  = relief >= THRESHOLD
+            center   = chunk[0]
+            surround = chunk[1:]
+            relief   = round(center - min(surround))
+            item_ref["relief_m"] = relief
+            item_ref["is_slope"] = relief >= THRESHOLD
 
     # 집계
-    flagged = sum(1 for it in items if it.get("is_slope"))
-    print(f"  → 경사지: {flagged} 곳 (relief ≥ {THRESHOLD}m)")
+    flagged = sum(1 for it in all_items if it.get("is_slope"))
+    print(f"  → 경사지(누적): {flagged} / {len(all_items)} (relief ≥ {THRESHOLD}m)")
 
     # 검증 케이스 출력
     print("  [검증]")
-    for it in items:
+    for it in all_items:
         key = it.get("name", "")
         for kw, expected in VERIFY_CASES.items():
             if kw in key:
