@@ -338,7 +338,7 @@
       "lng": 127.0772796,
       "geocode_status": "ok",
       "slope_pct": 17.3,
-      "is_slope": false,
+      "is_slope": true,
       "near_job": false,
       "near_hubs": [],
       "relief_m": 4,
