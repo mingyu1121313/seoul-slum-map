@@ -280,6 +280,16 @@
       transition: all 0.12s;
     }
     .filter-mode-btn.active { background: #1d4ed8; color: #fff; border-color: #1d4ed8; }
+    .attr-tag {
+      font-size: 9.5px;
+      font-weight: 700;
+      background: #dbeafe;
+      color: #1d4ed8;
+      border-radius: 4px;
+      padding: 1px 6px;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
 
     /* ── 지도 래퍼 ───────────────────────────── */
     #map-wrapper { flex: 1; position: relative; overflow: hidden; }
@@ -886,14 +896,22 @@
       <span class="acc-arrow open" id="acc-c-arrow" onclick="toggleAcc('c')">&#9654;</span>
     </div>
     <div class="acc-body" id="acc-c-body">
+      <!-- 경사지 필터 행 -->
       <div class="attr-filter-row">
         <input type="checkbox" class="cat-chk" id="chk-attr-slope"
                onchange="toggleAttr('slope', this.checked)">
         <label for="chk-attr-slope" class="attr-filter-label">
-          경사지<span class="attr-filter-sub">slope ≥ 15%</span>
+          경사지<span class="attr-filter-sub">relief ≥ 15m</span>
         </label>
         <span class="attr-count" id="attr-count-slope"></span>
+        <span class="cat-expand" id="attr-exp-slope"
+              onclick="toggleAttrList('slope', event)">&#9654;</span>
       </div>
+      <div class="cat-list" id="attr-list-slope">
+        <!-- populated by buildAttrFilterBody() -->
+      </div>
+
+      <!-- 직주근접 필터 행 -->
       <div class="attr-filter-row">
         <input type="checkbox" class="cat-chk" id="chk-attr-near"
                onchange="toggleAttr('near', this.checked)">
@@ -901,7 +919,14 @@
           직주근접<span class="attr-filter-sub">거점 40분 이내</span>
         </label>
         <span class="attr-count" id="attr-count-near"></span>
+        <span class="cat-expand" id="attr-exp-near"
+              onclick="toggleAttrList('near', event)">&#9654;</span>
       </div>
+      <div class="cat-list" id="attr-list-near">
+        <!-- populated by buildAttrFilterBody() -->
+      </div>
+
+      <!-- AND/OR 토글 -->
       <div class="filter-mode-wrap" id="filter-mode-wrap">
         <span class="filter-mode-label">중복 조건</span>
         <button class="filter-mode-btn active" id="btn-mode-and" onclick="setFilterMode('AND')">AND</button>
@@ -1532,6 +1557,96 @@ function setFilterMode(mode) {
   applyVisibility();
 }
 
+/* ────────────────────────────────────────────────
+   속성 필터 리스트 빌드 / 토글
+──────────────────────────────────────────────── */
+function buildAttrFilterBody(data) {
+  const allItems = [
+    ...(data.layerA.items || []),
+    ...(data.layerA.items_관리형 || []),
+    ...(data.layerB.items || []),
+  ];
+
+  // ── 경사지 리스트 ──
+  const slopeList = document.getElementById('attr-list-slope');
+  if (slopeList) {
+    slopeList.innerHTML = '';
+    allItems.filter(it => it.is_slope).forEach(item => {
+      const cat = item.formation_type
+        ? (item.formation_type || '신발생')
+        : getCategoryA(item);
+      const addr = item.address || [item.gu, item.dong].filter(Boolean).join(' ');
+      const tag  = item.relief_m != null ? `relief ${item.relief_m}m` : '';
+      const li   = document.createElement('div');
+      li.className = 'cat-list-item';
+      li.innerHTML = `<span class="cat-list-name">${item.name || ''}</span>` +
+                     `<span class="cat-list-addr">${addr}</span>` +
+                     (tag ? `<span class="attr-tag">${tag}</span>` : '');
+      li.onclick = () => {
+        showPanel(item, cat);
+        if (item.lat && item.lng) map.panTo(new naver.maps.LatLng(item.lat, item.lng));
+      };
+      slopeList.appendChild(li);
+    });
+  }
+
+  // ── 직주근접 리스트 ──
+  const nearList = document.getElementById('attr-list-near');
+  if (nearList) {
+    nearList.innerHTML = '';
+    allItems.filter(it => it.near_job).forEach(item => {
+      const cat  = item.formation_type
+        ? (item.formation_type || '신발생')
+        : getCategoryA(item);
+      const addr = item.address || [item.gu, item.dong].filter(Boolean).join(' ');
+      // 가장 가까운 거점 2개 표시 (분 기준 정렬)
+      const mins = item.near_minutes || {};
+      const sorted = Object.entries(mins)
+        .filter(([,m]) => m != null && m <= 40)
+        .sort(([,a],[,b]) => a - b)
+        .slice(0, 2)
+        .map(([hub, m]) => `${hub} ${m}분`);
+      const tag = sorted.join(', ');
+
+      const li = document.createElement('div');
+      li.className = 'cat-list-item';
+      li.innerHTML = `<span class="cat-list-name">${item.name || ''}</span>` +
+                     `<span class="cat-list-addr">${addr}</span>` +
+                     (tag ? `<span class="attr-tag">${tag}</span>` : '');
+      li.onclick = () => {
+        showPanel(item, cat);
+        if (item.lat && item.lng) map.panTo(new naver.maps.LatLng(item.lat, item.lng));
+      };
+      nearList.appendChild(li);
+    });
+  }
+}
+
+function toggleAttrList(key, e) {
+  if (e) e.stopPropagation();
+  const list  = document.getElementById('attr-list-' + key);
+  const arrow = document.getElementById('attr-exp-' + key);
+  if (!list) return;
+  const isOpen = list.style.maxHeight && list.style.maxHeight !== '0px';
+  const accBody = document.getElementById('acc-c-body');
+
+  if (isOpen) {
+    const h = list.scrollHeight;
+    list.style.maxHeight = '0px';
+    if (arrow) arrow.classList.remove('open');
+    if (accBody && !accBody.classList.contains('collapsed')) {
+      accBody.style.maxHeight = (parseFloat(accBody.style.maxHeight) - h) + 'px';
+    }
+  } else {
+    list.style.maxHeight = list.scrollHeight + 'px';
+    if (arrow) arrow.classList.add('open');
+    if (accBody && !accBody.classList.contains('collapsed')) {
+      const cur = parseFloat(accBody.style.maxHeight) || accBody.scrollHeight;
+      accBody.style.maxHeight = (cur + list.scrollHeight) + 'px';
+    }
+  }
+}
+
 function updateFilterCounts() {
   let slopeCnt = 0, nearCnt = 0, total = 0;
   Object.keys(markersByCategory).forEach(cat => {
@@ -1859,7 +1974,11 @@ function showPanel(item, cat) {
       rows += `<tr><td>경사도</td><td>${slopeLabel}</td></tr>`;
     }
     if (item.near_hubs && item.near_hubs.length > 0) {
-      rows += `<tr><td>직주근접</td><td>${item.near_hubs.join(', ')}</td></tr>`;
+      const mins = item.near_minutes || {};
+      const hubStr = item.near_hubs
+        .map(h => mins[h] != null ? `${h} ${mins[h]}분` : h)
+        .join(', ');
+      rows += `<tr><td>직주근접</td><td>${hubStr}</td></tr>`;
     }
     body.innerHTML = rows ? `<table class="p-table"><tbody>${rows}</tbody></table>` : '<p style="color:#aaa;font-size:12px;">상세정보 없음</p>';
   } else {
@@ -1879,7 +1998,11 @@ function showPanel(item, cat) {
       rows += `<tr><td>경사도</td><td>${slopeLabel}</td></tr>`;
     }
     if (item.near_hubs && item.near_hubs.length > 0) {
-      rows += `<tr><td>직주근접</td><td>${item.near_hubs.join(', ')}</td></tr>`;
+      const mins = item.near_minutes || {};
+      const hubStr = item.near_hubs
+        .map(h => mins[h] != null ? `${h} ${mins[h]}분` : h)
+        .join(', ');
+      rows += `<tr><td>직주근접</td><td>${hubStr}</td></tr>`;
     }
 
     let extra = '';
@@ -1960,6 +2083,7 @@ async function main() {
     const data = await loadData();
     initMarkers(data);
     buildSidebar(data);
+    buildAttrFilterBody(data);
     updateFilterCounts();
   } catch (err) {
     console.error('데이터 로드 실패:', err);

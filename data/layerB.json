@@ -24,14 +24,16 @@
       "lng": 127.0647692,
       "geocode_status": "ok",
       "slope_pct": 2.0,
-      "is_slope": false,
+      "is_slope": true,
       "near_job": true,
       "near_hubs": [
-        "GBD",
-        "Seongsu",
-        "Pangyo",
-        "Yongsan"
-      ]
+        "GBD"
+      ],
+      "relief_m": 13,
+      "near_minutes": {
+        "GBD": 25,
+        "Seongsu": 41
+      }
     },
     {
       "id": "mh02",
@@ -51,11 +53,11 @@
       "lng": 127.083501,
       "geocode_status": "ok",
       "slope_pct": 10.7,
-      "is_slope": false,
-      "near_job": true,
-      "near_hubs": [
-        "Seongsu"
-      ]
+      "is_slope": true,
+      "near_job": false,
+      "near_hubs": [],
+      "relief_m": 19,
+      "near_minutes": {}
     },
     {
       "id": "mh03",
@@ -78,13 +80,13 @@
       "is_slope": false,
       "near_job": true,
       "near_hubs": [
-        "CBD",
-        "GBD",
-        "YBD",
-        "Seongsu",
-        "Pangyo",
-        "Yongsan"
-      ]
+        "GBD"
+      ],
+      "relief_m": 4,
+      "near_minutes": {
+        "GBD": 22,
+        "Seongsu": 45
+      }
     },
     {
       "id": "mh04",
@@ -105,12 +107,13 @@
       "geocode_status": "ok",
       "slope_pct": 22.7,
       "is_slope": true,
-      "near_job": true,
-      "near_hubs": [
-        "GBD",
-        "Seongsu",
-        "Pangyo"
-      ]
+      "near_job": false,
+      "near_hubs": [],
+      "relief_m": 29,
+      "near_minutes": {
+        "GBD": 43,
+        "Pangyo": 42
+      }
     },
     {
       "id": "mh05",
@@ -133,12 +136,14 @@
       "is_slope": false,
       "near_job": true,
       "near_hubs": [
-        "CBD",
         "GBD",
-        "Seongsu",
-        "Pangyo",
-        "Yongsan"
-      ]
+        "Seongsu"
+      ],
+      "relief_m": 5,
+      "near_minutes": {
+        "GBD": 21,
+        "Seongsu": 40
+      }
     },
     {
       "id": "mh06",
@@ -158,15 +163,17 @@
       "lng": 127.0610645,
       "geocode_status": "ok",
       "slope_pct": 7.3,
-      "is_slope": false,
+      "is_slope": true,
       "near_job": true,
       "near_hubs": [
-        "CBD",
         "GBD",
-        "Seongsu",
-        "Pangyo",
-        "Yongsan"
-      ]
+        "Seongsu"
+      ],
+      "relief_m": 26,
+      "near_minutes": {
+        "GBD": 17,
+        "Seongsu": 32
+      }
     },
     {
       "id": "mh07",
@@ -190,12 +197,14 @@
       "near_job": true,
       "near_hubs": [
         "CBD",
-        "YBD",
-        "Magok",
-        "Seongsu",
-        "Yongsan",
-        "Sangam"
-      ]
+        "Yongsan"
+      ],
+      "relief_m": 71,
+      "near_minutes": {
+        "CBD": 36,
+        "Yongsan": 38,
+        "Sangam": 47
+      }
     },
     {
       "id": "mh08",
@@ -215,15 +224,19 @@
       "lng": 127.0472835,
       "geocode_status": "ok",
       "slope_pct": 10.0,
-      "is_slope": false,
+      "is_slope": true,
       "near_job": true,
       "near_hubs": [
         "CBD",
         "GBD",
-        "YBD",
-        "Seongsu",
-        "Yongsan"
-      ]
+        "Seongsu"
+      ],
+      "relief_m": 18,
+      "near_minutes": {
+        "CBD": 29,
+        "GBD": 35,
+        "Seongsu": 9
+      }
     },
     {
       "id": "mh09",
@@ -243,14 +256,15 @@
       "lng": 127.0031518,
       "geocode_status": "ok",
       "slope_pct": 10.7,
-      "is_slope": false,
+      "is_slope": true,
       "near_job": true,
       "near_hubs": [
-        "CBD",
-        "Seongsu",
-        "Yongsan",
-        "Sangam"
-      ]
+        "CBD"
+      ],
+      "relief_m": 21,
+      "near_minutes": {
+        "CBD": 37
+      }
     },
     {
       "id": "mh12",
@@ -274,12 +288,13 @@
       "near_job": true,
       "near_hubs": [
         "CBD",
-        "GBD",
-        "YBD",
-        "Seongsu",
-        "Yongsan",
-        "Sangam"
-      ]
+        "Yongsan"
+      ],
+      "relief_m": 74,
+      "near_minutes": {
+        "CBD": 36,
+        "Yongsan": 39
+      }
     },
     {
       "id": "mh20",
@@ -299,9 +314,11 @@
       "lng": 127.0831841,
       "geocode_status": "ok",
       "slope_pct": 11.3,
-      "is_slope": false,
+      "is_slope": true,
       "near_job": false,
-      "near_hubs": []
+      "near_hubs": [],
+      "relief_m": 27,
+      "near_minutes": {}
     },
     {
       "id": "mh22",
@@ -321,9 +338,11 @@
       "lng": 127.0772796,
       "geocode_status": "ok",
       "slope_pct": 17.3,
-      "is_slope": true,
+      "is_slope": false,
       "near_job": false,
-      "near_hubs": []
+      "near_hubs": [],
+      "relief_m": 4,
+      "near_minutes": {}
     },
     {
       "id": "mh23",
@@ -345,7 +364,9 @@
       "slope_pct": 26.7,
       "is_slope": true,
       "near_job": false,
-      "near_hubs": []
+      "near_hubs": [],
+      "relief_m": 22,
+      "near_minutes": {}
     },
     {
       "id": "mh24",
@@ -365,15 +386,17 @@
       "lng": 127.0036566,
       "geocode_status": "ok",
       "slope_pct": 18.7,
-      "is_slope": true,
+      "is_slope": false,
       "near_job": true,
       "near_hubs": [
-        "CBD",
         "GBD",
-        "YBD",
-        "Seongsu",
         "Yongsan"
-      ]
+      ],
+      "relief_m": 12,
+      "near_minutes": {
+        "GBD": 17,
+        "Yongsan": 33
+      }
     },
     {
       "id": "mh25",
@@ -393,15 +416,18 @@
       "lng": 126.9900044,
       "geocode_status": "ok",
       "slope_pct": 12.0,
-      "is_slope": false,
+      "is_slope": true,
       "near_job": true,
       "near_hubs": [
-        "CBD",
         "GBD",
-        "YBD",
-        "Seongsu",
         "Yongsan"
-      ]
+      ],
+      "relief_m": 15,
+      "near_minutes": {
+        "GBD": 21,
+        "YBD": 43,
+        "Yongsan": 27
+      }
     },
     {
       "id": "mh29",
@@ -429,7 +455,15 @@
         "YBD",
         "Seongsu",
         "Yongsan"
-      ]
+      ],
+      "relief_m": 8,
+      "near_minutes": {
+        "CBD": 30,
+        "GBD": 12,
+        "YBD": 22,
+        "Seongsu": 31,
+        "Yongsan": 27
+      }
     },
     {
       "id": "mh30",
@@ -452,13 +486,12 @@
       "is_slope": false,
       "near_job": true,
       "near_hubs": [
-        "CBD",
-        "GBD",
-        "YBD",
-        "Seongsu",
-        "Pangyo",
-        "Yongsan"
-      ]
+        "GBD"
+      ],
+      "relief_m": 8,
+      "near_minutes": {
+        "GBD": 21
+      }
     },
     {
       "id": "mh31",
@@ -479,12 +512,10 @@
       "geocode_status": "ok",
       "slope_pct": 2.0,
       "is_slope": false,
-      "near_job": true,
-      "near_hubs": [
-        "GBD",
-        "Seongsu",
-        "Pangyo"
-      ]
+      "near_job": false,
+      "near_hubs": [],
+      "relief_m": 5,
+      "near_minutes": {}
     }
   ]
 }
