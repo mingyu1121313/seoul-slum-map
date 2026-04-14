@@ -228,6 +228,59 @@
     .cat-list-name { font-weight: 600; flex-shrink: 0; }
     .cat-list-addr { font-size: 9.5px; color: #9ca3af; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
 
+    /* ── 속성 필터 ───────────────────────────── */
+    .attr-filter-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 14px;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    .attr-filter-label {
+      flex: 1;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #222;
+      cursor: pointer;
+    }
+    .attr-filter-sub {
+      font-size: 9.5px;
+      font-weight: 400;
+      color: #9ca3af;
+      margin-left: 4px;
+    }
+    .attr-count {
+      font-size: 10px;
+      font-weight: 700;
+      background: #dbeafe;
+      color: #1d4ed8;
+      border-radius: 10px;
+      padding: 2px 7px;
+      flex-shrink: 0;
+    }
+    .filter-mode-wrap {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px 10px;
+      font-size: 10px;
+      color: #9ca3af;
+    }
+    .filter-mode-wrap.visible { display: flex; }
+    .filter-mode-label { flex: 1; }
+    .filter-mode-btn {
+      border: 1px solid #d1d5db;
+      background: transparent;
+      padding: 3px 11px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #6b7280;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+    .filter-mode-btn.active { background: #1d4ed8; color: #fff; border-color: #1d4ed8; }
+
     /* ── 지도 래퍼 ───────────────────────────── */
     #map-wrapper { flex: 1; position: relative; overflow: hidden; }
     #map { width: 100%; height: 100%; }
@@ -826,6 +879,36 @@
       <!-- populated by buildSidebar() -->
     </div>
 
+    <!-- 속성 필터 아코디언 -->
+    <div class="acc-header" id="acc-c-header">
+      <span class="acc-title" onclick="toggleAcc('c')">속성 필터</span>
+      <span class="group-count" id="group-count-c" style="visibility:hidden;"></span>
+      <span class="acc-arrow open" id="acc-c-arrow" onclick="toggleAcc('c')">&#9654;</span>
+    </div>
+    <div class="acc-body" id="acc-c-body">
+      <div class="attr-filter-row">
+        <input type="checkbox" class="cat-chk" id="chk-attr-slope"
+               onchange="toggleAttr('slope', this.checked)">
+        <label for="chk-attr-slope" class="attr-filter-label">
+          경사지<span class="attr-filter-sub">slope ≥ 15%</span>
+        </label>
+        <span class="attr-count" id="attr-count-slope"></span>
+      </div>
+      <div class="attr-filter-row">
+        <input type="checkbox" class="cat-chk" id="chk-attr-near"
+               onchange="toggleAttr('near', this.checked)">
+        <label for="chk-attr-near" class="attr-filter-label">
+          직주근접<span class="attr-filter-sub">거점 40분 이내</span>
+        </label>
+        <span class="attr-count" id="attr-count-near"></span>
+      </div>
+      <div class="filter-mode-wrap" id="filter-mode-wrap">
+        <span class="filter-mode-label">중복 조건</span>
+        <button class="filter-mode-btn active" id="btn-mode-and" onclick="setFilterMode('AND')">AND</button>
+        <button class="filter-mode-btn" id="btn-mode-or"  onclick="setFilterMode('OR')">OR</button>
+      </div>
+    </div>
+
   </div>
 
   <!-- 지도 -->
@@ -1104,6 +1187,9 @@ const markersByCategory = {};   // category → [naver.maps.Marker]
 const hiddenCategories = new Set();
 const itemsByMarker = new WeakMap(); // marker → item data
 
+// 속성 필터 상태
+const attrFilters = { slope: false, near: false, mode: 'AND' };
+
 let map;
 
 /* ────────────────────────────────────────────────
@@ -1287,9 +1373,9 @@ function buildSidebar(data) {
   });
 
   requestAnimationFrame(() => {
-    ['acc-a-body', 'acc-b-body'].forEach(id => {
+    ['acc-a-body', 'acc-b-body', 'acc-c-body'].forEach(id => {
       const el = document.getElementById(id);
-      el.style.maxHeight = el.scrollHeight + 'px';
+      if (el) el.style.maxHeight = el.scrollHeight + 'px';
     });
   });
 }
@@ -1359,14 +1445,13 @@ function sanitizeId(str) {
 function toggleCategory(cat) {
   if (hiddenCategories.has(cat)) {
     hiddenCategories.delete(cat);
-    (markersByCategory[cat] || []).forEach(m => m.setMap(map));
   } else {
     hiddenCategories.add(cat);
-    (markersByCategory[cat] || []).forEach(m => m.setMap(null));
   }
   updateCategoryUI(cat);
   const groupId = LAYER_A_ORDER.includes(cat) ? 'a' : 'b';
   updateGroupCheckbox(groupId);
+  applyVisibility();
 }
 
 function updateCategoryUI(cat) {
@@ -1387,13 +1472,104 @@ function toggleGroup(groupId, checked) {
   cats.forEach(cat => {
     if (checked) {
       hiddenCategories.delete(cat);
-      (markersByCategory[cat] || []).forEach(m => m.setMap(map));
     } else {
       hiddenCategories.add(cat);
-      (markersByCategory[cat] || []).forEach(m => m.setMap(null));
     }
     updateCategoryUI(cat);
   });
+  applyVisibility();
+}
+
+/* ────────────────────────────────────────────────
+   속성 필터 — applyVisibility / toggleAttr / setFilterMode
+──────────────────────────────────────────────── */
+function applyVisibility() {
+  const slopeOn = attrFilters.slope;
+  const nearOn  = attrFilters.near;
+  const andMode = attrFilters.mode === 'AND';
+  const anyAttr = slopeOn || nearOn;
+
+  Object.keys(markersByCategory).forEach(cat => {
+    const catHidden = hiddenCategories.has(cat);
+    (markersByCategory[cat] || []).forEach(m => {
+      if (catHidden) { m.setMap(null); return; }
+      if (!anyAttr)  { m.setMap(map);  return; }
+
+      const data   = itemsByMarker.get(m);
+      const item   = data ? data.item : null;
+      const slope  = item && item.is_slope  === true;
+      const near   = item && item.near_job  === true;
+
+      let pass;
+      if (slopeOn && nearOn) {
+        pass = andMode ? (slope && near) : (slope || near);
+      } else if (slopeOn) {
+        pass = slope;
+      } else {
+        pass = near;
+      }
+      m.setMap(pass ? map : null);
+    });
+  });
+
+  updateFilterCounts();
+}
+
+function toggleAttr(key, checked) {
+  attrFilters[key] = checked;
+  // AND/OR 토글은 두 필터 모두 켜져 있을 때만 의미 있음
+  const wrap = document.getElementById('filter-mode-wrap');
+  if (wrap) wrap.classList.toggle('visible', attrFilters.slope && attrFilters.near);
+  applyVisibility();
+}
+
+function setFilterMode(mode) {
+  attrFilters.mode = mode;
+  ['AND','OR'].forEach(m => {
+    const btn = document.getElementById('btn-mode-' + m.toLowerCase());
+    if (btn) btn.classList.toggle('active', m === mode);
+  });
+  applyVisibility();
+}
+
+function updateFilterCounts() {
+  let slopeCnt = 0, nearCnt = 0, total = 0;
+  Object.keys(markersByCategory).forEach(cat => {
+    (markersByCategory[cat] || []).forEach(m => {
+      const data = itemsByMarker.get(m);
+      const item = data ? data.item : null;
+      if (!item) return;
+      total++;
+      if (item.is_slope) slopeCnt++;
+      if (item.near_job) nearCnt++;
+    });
+  });
+
+  const slopeEl = document.getElementById('attr-count-slope');
+  const nearEl  = document.getElementById('attr-count-near');
+  const gcC     = document.getElementById('group-count-c');
+
+  if (slopeEl) slopeEl.textContent = slopeCnt;
+  if (nearEl)  nearEl.textContent  = nearCnt;
+
+  // 대분류 배지: 필터 활성화 시 현재 표시 중인 마커 수
+  const anyAttr = attrFilters.slope || attrFilters.near;
+  if (gcC) {
+    if (anyAttr) {
+      let shown = 0;
+      Object.keys(markersByCategory).forEach(cat => {
+        (markersByCategory[cat] || []).forEach(m => {
+          if (m.getMap()) shown++;
+        });
+      });
+      gcC.textContent = shown;
+      gcC.style.visibility = 'visible';
+      gcC.style.background = '#dbeafe';
+      gcC.style.color = '#1d4ed8';
+    } else {
+      gcC.style.visibility = 'hidden';
+    }
+  }
 }
 
 function updateGroupCheckbox(groupId) {
@@ -1676,6 +1852,15 @@ function showPanel(item, cat) {
     if (item.geocode_status && item.geocode_status !== 'ok') {
       rows += `<tr><td>좌표</td><td><span style="color:#f59e0b;font-size:10px;">근사값(동 중심)</span></td></tr>`;
     }
+    if (item.slope_pct != null) {
+      const slopeLabel = item.is_slope
+        ? `<span style="color:#b45309;font-weight:700;">${item.slope_pct}% (경사지)</span>`
+        : `${item.slope_pct}%`;
+      rows += `<tr><td>경사도</td><td>${slopeLabel}</td></tr>`;
+    }
+    if (item.near_hubs && item.near_hubs.length > 0) {
+      rows += `<tr><td>직주근접</td><td>${item.near_hubs.join(', ')}</td></tr>`;
+    }
     body.innerHTML = rows ? `<table class="p-table"><tbody>${rows}</tbody></table>` : '<p style="color:#aaa;font-size:12px;">상세정보 없음</p>';
   } else {
     // Layer B
@@ -1687,6 +1872,15 @@ function showPanel(item, cat) {
     if (item.address)        rows += `<tr><td>주소</td><td>${item.address}</td></tr>`;
     if (item.gu)             rows += `<tr><td>자치구</td><td>${item.gu}</td></tr>`;
     if (item.dong)           rows += `<tr><td>동</td><td>${item.dong}</td></tr>`;
+    if (item.slope_pct != null) {
+      const slopeLabel = item.is_slope
+        ? `<span style="color:#b45309;font-weight:700;">${item.slope_pct}% (경사지)</span>`
+        : `${item.slope_pct}%`;
+      rows += `<tr><td>경사도</td><td>${slopeLabel}</td></tr>`;
+    }
+    if (item.near_hubs && item.near_hubs.length > 0) {
+      rows += `<tr><td>직주근접</td><td>${item.near_hubs.join(', ')}</td></tr>`;
+    }
 
     let extra = '';
     if (item.note) {
@@ -1766,6 +1960,7 @@ async function main() {
     const data = await loadData();
     initMarkers(data);
     buildSidebar(data);
+    updateFilterCounts();
   } catch (err) {
     console.error('데이터 로드 실패:', err);
   }

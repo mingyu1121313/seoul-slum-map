@@ -22,7 +22,16 @@
       "query": "서울특별시 강남구 개포로 양재대로 478",
       "lat": 37.4787023,
       "lng": 127.0647692,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "slope_pct": 2.0,
+      "is_slope": false,
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "Seongsu",
+        "Pangyo",
+        "Yongsan"
+      ]
     },
     {
       "id": "mh02",
@@ -39,8 +48,14 @@
       "source": "서울시 / 서울시 무허가 주거지의 공간구조 특성 연구",
       "query": "서울특별시 노원구 중계동 27-55",
       "lat": 37.6436204,
-      "lng": 127.0835010,
-      "geocode_status": "ok"
+      "lng": 127.083501,
+      "geocode_status": "ok",
+      "slope_pct": 10.7,
+      "is_slope": false,
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ]
     },
     {
       "id": "mh03",
@@ -58,7 +73,18 @@
       "query": "서울특별시 강남구 개포로25길 32",
       "lat": 37.4814548,
       "lng": 127.0480266,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "slope_pct": 4.7,
+      "is_slope": false,
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Seongsu",
+        "Pangyo",
+        "Yongsan"
+      ]
     },
     {
       "id": "mh04",
@@ -76,7 +102,15 @@
       "query": "서울특별시 서초구 내곡동 우면산",
       "lat": 37.4595839,
       "lng": 127.0869756,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "slope_pct": 22.7,
+      "is_slope": true,
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "Seongsu",
+        "Pangyo"
+      ]
     },
     {
       "id": "mh05",
@@ -94,7 +128,17 @@
       "query": "서울특별시 강남구 개포동 1197-1",
       "lat": 37.4751771,
       "lng": 127.0499287,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "slope_pct": 2.0,
+      "is_slope": false,
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "Seongsu",
+        "Pangyo",
+        "Yongsan"
+      ]
     },
     {
       "id": "mh06",
@@ -112,7 +156,17 @@
       "query": "서울특별시 강남구 개포동 달터근린공원 내 156번지",
       "lat": 37.4853564,
       "lng": 127.0610645,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "slope_pct": 7.3,
+      "is_slope": false,
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "Seongsu",
+        "Pangyo",
+        "Yongsan"
+      ]
     },
     {
       "id": "mh07",
@@ -130,7 +184,18 @@
       "query": "서울특별시 서대문구 홍제동 9-81",
       "lat": 37.5906314,
       "lng": 126.9526157,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "slope_pct": 34.7,
+      "is_slope": true,
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Magok",
+        "Seongsu",
+        "Yongsan",
+        "Sangam"
+      ]
     },
     {
       "id": "mh08",
@@ -148,7 +213,17 @@
       "query": "서울특별시 성동구 사근동 293번지",
       "lat": 37.563631,
       "lng": 127.0472835,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "slope_pct": 10.0,
+      "is_slope": false,
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Seongsu",
+        "Yongsan"
+      ]
     },
     {
       "id": "mh09",
@@ -166,7 +241,16 @@
       "query": "서울특별시 성북구 정릉동 768-3",
       "lat": 37.6155692,
       "lng": 127.0031518,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "slope_pct": 10.7,
+      "is_slope": false,
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu",
+        "Yongsan",
+        "Sangam"
+      ]
     },
     {
       "id": "mh12",
@@ -184,7 +268,18 @@
       "query": "서울특별시 성북구 성북동 226-107",
       "lat": 37.5928005,
       "lng": 126.9910154,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "slope_pct": 25.3,
+      "is_slope": true,
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Seongsu",
+        "Yongsan",
+        "Sangam"
+      ]
     },
     {
       "id": "mh20",
@@ -202,7 +297,11 @@
       "query": "서울특별시 노원구 상계동 1361-5",
       "lat": 37.6745717,
       "lng": 127.0831841,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "slope_pct": 11.3,
+      "is_slope": false,
+      "near_job": false,
+      "near_hubs": []
     },
     {
       "id": "mh22",
@@ -218,9 +317,13 @@
       "note": "노원구 집단이주 정착지.",
       "source": "서울시 무허가 주거지의 공간구조 특성 연구",
       "query": "서울특별시 노원구 상계동 111-158",
-      "lat": 37.6708000,
+      "lat": 37.6708,
       "lng": 127.0772796,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "slope_pct": 17.3,
+      "is_slope": true,
+      "near_job": false,
+      "near_hubs": []
     },
     {
       "id": "mh23",
@@ -238,7 +341,11 @@
       "query": "서울특별시 노원구 상계동 산161-13",
       "lat": 37.6710163,
       "lng": 127.0859974,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "slope_pct": 26.7,
+      "is_slope": true,
+      "near_job": false,
+      "near_hubs": []
     },
     {
       "id": "mh24",
@@ -256,7 +363,17 @@
       "query": "서울특별시 서초구 방배동 998",
       "lat": 37.4781156,
       "lng": 127.0036566,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "slope_pct": 18.7,
+      "is_slope": true,
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Seongsu",
+        "Yongsan"
+      ]
     },
     {
       "id": "mh25",
@@ -274,7 +391,17 @@
       "query": "서울특별시 서초구 우면동 산1번지",
       "lat": 37.4735314,
       "lng": 126.9900044,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "slope_pct": 12.0,
+      "is_slope": false,
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Seongsu",
+        "Yongsan"
+      ]
     },
     {
       "id": "mh29",
@@ -292,7 +419,17 @@
       "query": "서울특별시 서초구 잠원동 61-6",
       "lat": 37.5136033,
       "lng": 127.0112773,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "slope_pct": 6.7,
+      "is_slope": false,
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Seongsu",
+        "Yongsan"
+      ]
     },
     {
       "id": "mh30",
@@ -308,9 +445,20 @@
       "note": "서초구 신발생 무허가 주거지.",
       "source": "서울시 무허가 주거지의 공간구조 특성 연구",
       "query": "서울특별시 서초구 우면동 140",
-      "lat": 37.4663050,
+      "lat": 37.466305,
       "lng": 127.0276429,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "slope_pct": 5.3,
+      "is_slope": false,
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Seongsu",
+        "Pangyo",
+        "Yongsan"
+      ]
     },
     {
       "id": "mh31",
@@ -328,7 +476,15 @@
       "query": "서울특별시 송파구 장지동 596-5번지",
       "lat": 37.469405,
       "lng": 127.1259807,
-      "geocode_status": "ok"
+      "geocode_status": "ok",
+      "slope_pct": 2.0,
+      "is_slope": false,
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "Seongsu",
+        "Pangyo"
+      ]
     }
   ]
 }
