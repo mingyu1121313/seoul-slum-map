@@ -39,10 +39,14 @@
       "geocode_status": "ok",
       "slope_pct": 4.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 10,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 34
+      }
     },
     {
       "id": "la0074",
@@ -58,10 +62,14 @@
       "geocode_status": "ok",
       "slope_pct": 1.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 5,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 30
+      }
     },
     {
       "id": "la0078",
@@ -77,10 +85,14 @@
       "geocode_status": "ok",
       "slope_pct": 2.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 2,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 29
+      }
     },
     {
       "id": "la0082",
@@ -96,10 +108,14 @@
       "geocode_status": "ok",
       "slope_pct": 5.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 9,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 37
+      }
     },
     {
       "id": "la0083",
@@ -115,10 +131,14 @@
       "geocode_status": "ok",
       "slope_pct": 5.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 9,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 37
+      }
     },
     {
       "id": "la0084",
@@ -134,10 +154,14 @@
       "geocode_status": "ok",
       "slope_pct": 4.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 8,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 35
+      }
     },
     {
       "id": "la0086",
@@ -153,10 +177,14 @@
       "geocode_status": "ok",
       "slope_pct": 5.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 14,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 34
+      }
     },
     {
       "id": "la0087",
@@ -172,10 +200,14 @@
       "geocode_status": "ok",
       "slope_pct": 5.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 9,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 39
+      }
     },
     {
       "id": "la0088",
@@ -191,10 +223,14 @@
       "geocode_status": "ok",
       "slope_pct": 6.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 17,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 38
+      }
     },
     {
       "id": "la0089",
@@ -210,10 +246,14 @@
       "geocode_status": "ok",
       "slope_pct": 2.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 13,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 34
+      }
     },
     {
       "id": "la0090",
@@ -229,10 +269,14 @@
       "geocode_status": "ok",
       "slope_pct": 10.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 8,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 32
+      }
     },
     {
       "id": "la0095",
@@ -248,10 +292,14 @@
       "geocode_status": "ok",
       "slope_pct": 1.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 15,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 30
+      }
     },
     {
       "id": "la0096",
@@ -267,10 +315,14 @@
       "geocode_status": "ok",
       "slope_pct": 2.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 15,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 31
+      }
     },
     {
       "id": "la0097",
@@ -286,10 +338,14 @@
       "geocode_status": "ok",
       "slope_pct": 6.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 16,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 35
+      }
     },
     {
       "id": "la0099",
@@ -305,10 +361,14 @@
       "geocode_status": "ok",
       "slope_pct": 10.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD"
+      ],
       "relief_m": 2,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 34
+      }
     },
     {
       "id": "la0107",
@@ -324,10 +384,14 @@
       "geocode_status": "ok",
       "slope_pct": 2.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD"
+      ],
       "relief_m": 4,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 33
+      }
     },
     {
       "id": "la0108",
@@ -343,10 +407,14 @@
       "geocode_status": "ok",
       "slope_pct": 5.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD"
+      ],
       "relief_m": 3,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 35
+      }
     },
     {
       "id": "la0112",
@@ -381,10 +449,14 @@
       "geocode_status": "ok",
       "slope_pct": 2.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD"
+      ],
       "relief_m": 7,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 39
+      }
     },
     {
       "id": "la0114",
@@ -400,10 +472,14 @@
       "geocode_status": "ok",
       "slope_pct": 4.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD"
+      ],
       "relief_m": 11,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 39
+      }
     },
     {
       "id": "la0115",
@@ -419,10 +495,14 @@
       "geocode_status": "ok",
       "slope_pct": 11.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD"
+      ],
       "relief_m": 9,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 34
+      }
     },
     {
       "id": "la0117",
@@ -438,10 +518,14 @@
       "geocode_status": "ok",
       "slope_pct": 4.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD"
+      ],
       "relief_m": 8,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 35
+      }
     },
     {
       "id": "la0118",
@@ -476,10 +560,14 @@
       "geocode_status": "ok",
       "slope_pct": 5.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD"
+      ],
       "relief_m": 19,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 32
+      }
     },
     {
       "id": "la0120",
@@ -495,10 +583,14 @@
       "geocode_status": "ok",
       "slope_pct": 18.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD"
+      ],
       "relief_m": 43,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 31
+      }
     },
     {
       "id": "la0121",
@@ -514,10 +606,14 @@
       "geocode_status": "ok",
       "slope_pct": 8.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD"
+      ],
       "relief_m": 14,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 34
+      }
     },
     {
       "id": "la0123",
@@ -533,10 +629,14 @@
       "geocode_status": "ok",
       "slope_pct": 5.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD"
+      ],
       "relief_m": 3,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 37
+      }
     },
     {
       "id": "la0124",
@@ -780,10 +880,16 @@
       "geocode_status": "ok",
       "slope_pct": 1.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Magok",
+        "Sangam"
+      ],
       "relief_m": 4,
-      "near_minutes": {}
+      "near_minutes": {
+        "Magok": 16,
+        "Sangam": 32
+      }
     },
     {
       "id": "la0144",
@@ -799,10 +905,16 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Magok",
+        "Sangam"
+      ],
       "relief_m": 4,
-      "near_minutes": {}
+      "near_minutes": {
+        "Magok": 12,
+        "Sangam": 29
+      }
     },
     {
       "id": "la0145",
@@ -818,10 +930,16 @@
       "geocode_status": "ok",
       "slope_pct": 2.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Magok",
+        "Sangam"
+      ],
       "relief_m": 6,
-      "near_minutes": {}
+      "near_minutes": {
+        "Magok": 18,
+        "Sangam": 32
+      }
     },
     {
       "id": "la0148",
@@ -837,10 +955,18 @@
       "geocode_status": "ok",
       "slope_pct": 11.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok",
+        "Sangam"
+      ],
       "relief_m": 19,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 20,
+        "Magok": 19,
+        "Sangam": 26
+      }
     },
     {
       "id": "la0150",
@@ -856,10 +982,18 @@
       "geocode_status": "ok",
       "slope_pct": 20.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok",
+        "Sangam"
+      ],
       "relief_m": 19,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 26,
+        "Magok": 27,
+        "Sangam": 34
+      }
     },
     {
       "id": "la0151",
@@ -875,10 +1009,18 @@
       "geocode_status": "ok",
       "slope_pct": 20.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok",
+        "Sangam"
+      ],
       "relief_m": 47,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 27,
+        "Magok": 26,
+        "Sangam": 33
+      }
     },
     {
       "id": "la0152",
@@ -894,10 +1036,18 @@
       "geocode_status": "ok",
       "slope_pct": 7.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok",
+        "Sangam"
+      ],
       "relief_m": 11,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 20,
+        "Magok": 18,
+        "Sangam": 25
+      }
     },
     {
       "id": "la0160",
@@ -913,10 +1063,16 @@
       "geocode_status": "ok",
       "slope_pct": 1.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Magok",
+        "Sangam"
+      ],
       "relief_m": 7,
-      "near_minutes": {}
+      "near_minutes": {
+        "Magok": 17,
+        "Sangam": 37
+      }
     },
     {
       "id": "la0163",
@@ -932,10 +1088,16 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Magok",
+        "Sangam"
+      ],
       "relief_m": 3,
-      "near_minutes": {}
+      "near_minutes": {
+        "Magok": 23,
+        "Sangam": 35
+      }
     },
     {
       "id": "la0164",
@@ -951,10 +1113,16 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Magok",
+        "Sangam"
+      ],
       "relief_m": 3,
-      "near_minutes": {}
+      "near_minutes": {
+        "Magok": 23,
+        "Sangam": 35
+      }
     },
     {
       "id": "la0165",
@@ -970,10 +1138,16 @@
       "geocode_status": "ok",
       "slope_pct": 1.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Magok",
+        "Sangam"
+      ],
       "relief_m": 2,
-      "near_minutes": {}
+      "near_minutes": {
+        "Magok": 21,
+        "Sangam": 31
+      }
     },
     {
       "id": "la0166",
@@ -989,10 +1163,16 @@
       "geocode_status": "ok",
       "slope_pct": 2.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Magok",
+        "Sangam"
+      ],
       "relief_m": 8,
-      "near_minutes": {}
+      "near_minutes": {
+        "Magok": 20,
+        "Sangam": 34
+      }
     },
     {
       "id": "la0172",
@@ -1008,10 +1188,18 @@
       "geocode_status": "ok",
       "slope_pct": 16.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok",
+        "Sangam"
+      ],
       "relief_m": 24,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 14,
+        "Magok": 26,
+        "Sangam": 35
+      }
     },
     {
       "id": "la0178",
@@ -1027,10 +1215,17 @@
       "geocode_status": "ok",
       "slope_pct": 6.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok"
+      ],
       "relief_m": 9,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 24,
+        "Magok": 31,
+        "Sangam": 49
+      }
     },
     {
       "id": "la0179",
@@ -1046,10 +1241,18 @@
       "geocode_status": "ok",
       "slope_pct": 6.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok",
+        "Sangam"
+      ],
       "relief_m": 9,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 24,
+        "Magok": 26,
+        "Sangam": 40
+      }
     },
     {
       "id": "la0181",
@@ -1065,10 +1268,17 @@
       "geocode_status": "ok",
       "slope_pct": 6.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok"
+      ],
       "relief_m": 9,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 24,
+        "Magok": 31,
+        "Sangam": 49
+      }
     },
     {
       "id": "la0185",
@@ -1084,10 +1294,18 @@
       "geocode_status": "ok",
       "slope_pct": 18.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok",
+        "Sangam"
+      ],
       "relief_m": 39,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 27,
+        "Magok": 21,
+        "Sangam": 29
+      }
     },
     {
       "id": "la0186",
@@ -1103,10 +1321,18 @@
       "geocode_status": "ok",
       "slope_pct": 20.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok",
+        "Sangam"
+      ],
       "relief_m": 8,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 29,
+        "Magok": 21,
+        "Sangam": 27
+      }
     },
     {
       "id": "la0188",
@@ -1122,10 +1348,18 @@
       "geocode_status": "ok",
       "slope_pct": 12.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 21,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 25,
+        "YBD": 24,
+        "Yongsan": 25
+      }
     },
     {
       "id": "la0189",
@@ -1141,10 +1375,18 @@
       "geocode_status": "ok",
       "slope_pct": 4.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 15,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 21,
+        "YBD": 25,
+        "Yongsan": 26
+      }
     },
     {
       "id": "la0191",
@@ -1160,10 +1402,18 @@
       "geocode_status": "ok",
       "slope_pct": 25.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 23,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 29,
+        "YBD": 22,
+        "Yongsan": 30
+      }
     },
     {
       "id": "la0192",
@@ -1179,10 +1429,18 @@
       "geocode_status": "ok",
       "slope_pct": 25.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 61,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 29,
+        "YBD": 22,
+        "Yongsan": 30
+      }
     },
     {
       "id": "la0193",
@@ -1198,10 +1456,16 @@
       "geocode_status": "ok",
       "slope_pct": 10.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 6,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 24,
+        "Yongsan": 30
+      }
     },
     {
       "id": "la0195",
@@ -1217,10 +1481,18 @@
       "geocode_status": "ok",
       "slope_pct": 4.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 1,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 22,
+        "YBD": 27,
+        "Yongsan": 31
+      }
     },
     {
       "id": "la0196",
@@ -1236,10 +1508,18 @@
       "geocode_status": "ok",
       "slope_pct": 23.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 58,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 26,
+        "YBD": 25,
+        "Yongsan": 27
+      }
     },
     {
       "id": "la0197",
@@ -1255,10 +1535,16 @@
       "geocode_status": "ok",
       "slope_pct": 16.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 36,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 31,
+        "Yongsan": 33
+      }
     },
     {
       "id": "la0200",
@@ -1274,10 +1560,16 @@
       "geocode_status": "ok",
       "slope_pct": 6.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 15,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 29,
+        "Yongsan": 35
+      }
     },
     {
       "id": "la0201",
@@ -1293,10 +1585,14 @@
       "geocode_status": "ok",
       "slope_pct": 20.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD"
+      ],
       "relief_m": 55,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 35
+      }
     },
     {
       "id": "la0202",
@@ -1312,10 +1608,16 @@
       "geocode_status": "ok",
       "slope_pct": 19.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 6,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 33,
+        "Yongsan": 40
+      }
     },
     {
       "id": "la0203",
@@ -1331,10 +1633,16 @@
       "geocode_status": "ok",
       "slope_pct": 20.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 15,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 25,
+        "Yongsan": 31
+      }
     },
     {
       "id": "la0204",
@@ -1350,10 +1658,16 @@
       "geocode_status": "ok",
       "slope_pct": 38.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 12,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 31,
+        "Yongsan": 37
+      }
     },
     {
       "id": "la0205",
@@ -1369,10 +1683,16 @@
       "geocode_status": "ok",
       "slope_pct": 4.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 3,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 28,
+        "Yongsan": 30
+      }
     },
     {
       "id": "la0206",
@@ -1391,7 +1711,10 @@
       "near_job": false,
       "near_hubs": [],
       "relief_m": 27,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 41,
+        "Yongsan": 46
+      }
     },
     {
       "id": "la0207",
@@ -1410,7 +1733,10 @@
       "near_job": false,
       "near_hubs": [],
       "relief_m": 8,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 42,
+        "Yongsan": 48
+      }
     },
     {
       "id": "la0208",
@@ -1426,10 +1752,14 @@
       "geocode_status": "ok",
       "slope_pct": 22.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD"
+      ],
       "relief_m": 7,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 40
+      }
     },
     {
       "id": "la0209",
@@ -1448,7 +1778,9 @@
       "near_job": false,
       "near_hubs": [],
       "relief_m": 55,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 46
+      }
     },
     {
       "id": "la0212",
@@ -1464,10 +1796,16 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 8,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 25,
+        "Yongsan": 31
+      }
     },
     {
       "id": "la0213",
@@ -1483,10 +1821,16 @@
       "geocode_status": "ok",
       "slope_pct": 16.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 7,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 25,
+        "Yongsan": 30
+      }
     },
     {
       "id": "la0214",
@@ -1502,10 +1846,16 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 4,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 32,
+        "Yongsan": 39
+      }
     },
     {
       "id": "la0219",
@@ -1521,10 +1871,14 @@
       "geocode_status": "ok",
       "slope_pct": 24.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 29,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 21
+      }
     },
     {
       "id": "la0222",
@@ -1540,10 +1894,16 @@
       "geocode_status": "ok",
       "slope_pct": 6.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "Seongsu"
+      ],
       "relief_m": 20,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 23,
+        "Seongsu": 13
+      }
     },
     {
       "id": "la0223",
@@ -1559,10 +1919,16 @@
       "geocode_status": "ok",
       "slope_pct": 0.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "Seongsu"
+      ],
       "relief_m": 14,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 28,
+        "Seongsu": 18
+      }
     },
     {
       "id": "la0224",
@@ -1578,10 +1944,16 @@
       "geocode_status": "ok",
       "slope_pct": 2.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "Seongsu"
+      ],
       "relief_m": 4,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 32,
+        "Seongsu": 14
+      }
     },
     {
       "id": "la0226",
@@ -1597,10 +1969,16 @@
       "geocode_status": "ok",
       "slope_pct": 2.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "Seongsu"
+      ],
       "relief_m": 7,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 27,
+        "Seongsu": 15
+      }
     },
     {
       "id": "la0228",
@@ -1616,10 +1994,16 @@
       "geocode_status": "ok",
       "slope_pct": 5.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "Seongsu"
+      ],
       "relief_m": 19,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 31,
+        "Seongsu": 21
+      }
     },
     {
       "id": "la0234",
@@ -1635,10 +2019,16 @@
       "geocode_status": "ok",
       "slope_pct": 1.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "Seongsu"
+      ],
       "relief_m": 4,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 33,
+        "Seongsu": 14
+      }
     },
     {
       "id": "la0237",
@@ -1654,10 +2044,14 @@
       "geocode_status": "ok",
       "slope_pct": 5.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD"
+      ],
       "relief_m": 9,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 30
+      }
     },
     {
       "id": "la0238",
@@ -1673,10 +2067,14 @@
       "geocode_status": "ok",
       "slope_pct": 4.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD"
+      ],
       "relief_m": 17,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 31
+      }
     },
     {
       "id": "la0239",
@@ -1692,10 +2090,16 @@
       "geocode_status": "ok",
       "slope_pct": 14.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok"
+      ],
       "relief_m": 36,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 38,
+        "Magok": 37
+      }
     },
     {
       "id": "la0241",
@@ -1711,10 +2115,16 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok"
+      ],
       "relief_m": 5,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 27,
+        "Magok": 37
+      }
     },
     {
       "id": "la0242",
@@ -1730,10 +2140,16 @@
       "geocode_status": "ok",
       "slope_pct": 6.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok"
+      ],
       "relief_m": 4,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 25,
+        "Magok": 37
+      }
     },
     {
       "id": "la0243",
@@ -1752,7 +2168,9 @@
       "near_job": false,
       "near_hubs": [],
       "relief_m": 32,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 42
+      }
     },
     {
       "id": "la0249",
@@ -1768,10 +2186,16 @@
       "geocode_status": "ok",
       "slope_pct": 2.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok"
+      ],
       "relief_m": 3,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 31,
+        "Magok": 36
+      }
     },
     {
       "id": "la0250",
@@ -1787,10 +2211,16 @@
       "geocode_status": "ok",
       "slope_pct": 10.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok"
+      ],
       "relief_m": 19,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 33,
+        "Magok": 36
+      }
     },
     {
       "id": "la0252",
@@ -1806,10 +2236,16 @@
       "geocode_status": "ok",
       "slope_pct": 15.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok"
+      ],
       "relief_m": null,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 33,
+        "Magok": 35
+      }
     },
     {
       "id": "la0253",
@@ -1825,10 +2261,16 @@
       "geocode_status": "ok",
       "slope_pct": 15.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok"
+      ],
       "relief_m": null,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 33,
+        "Magok": 33
+      }
     },
     {
       "id": "la0254",
@@ -1844,10 +2286,16 @@
       "geocode_status": "ok",
       "slope_pct": 16.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok"
+      ],
       "relief_m": null,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 37,
+        "Magok": 35
+      }
     },
     {
       "id": "la0255",
@@ -1863,10 +2311,16 @@
       "geocode_status": "ok",
       "slope_pct": 15.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok"
+      ],
       "relief_m": null,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 39,
+        "Magok": 33
+      }
     },
     {
       "id": "la0256",
@@ -1882,10 +2336,16 @@
       "geocode_status": "ok",
       "slope_pct": 8.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Magok"
+      ],
       "relief_m": null,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 35,
+        "Magok": 37
+      }
     },
     {
       "id": "la0258",
@@ -1901,10 +2361,16 @@
       "geocode_status": "ok",
       "slope_pct": 2.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": null,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 25,
+        "Yongsan": 24
+      }
     },
     {
       "id": "la0265",
@@ -1923,7 +2389,9 @@
       "near_job": false,
       "near_hubs": [],
       "relief_m": 20,
-      "near_minutes": {}
+      "near_minutes": {
+        "Magok": 49
+      }
     },
     {
       "id": "la0266",
@@ -1942,7 +2410,9 @@
       "near_job": false,
       "near_hubs": [],
       "relief_m": 11,
-      "near_minutes": {}
+      "near_minutes": {
+        "Magok": 43
+      }
     },
     {
       "id": "la0275",
@@ -1958,10 +2428,14 @@
       "geocode_status": "ok",
       "slope_pct": 8.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD"
+      ],
       "relief_m": 5,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 27
+      }
     },
     {
       "id": "la0277",
@@ -1977,10 +2451,14 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD"
+      ],
       "relief_m": 9,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 33
+      }
     },
     {
       "id": "la0278",
@@ -1996,10 +2474,14 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD"
+      ],
       "relief_m": 9,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 33
+      }
     },
     {
       "id": "la0279",
@@ -2015,10 +2497,14 @@
       "geocode_status": "ok",
       "slope_pct": 5.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD"
+      ],
       "relief_m": 6,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 33
+      }
     },
     {
       "id": "la0280",
@@ -2034,10 +2520,14 @@
       "geocode_status": "ok",
       "slope_pct": 5.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD"
+      ],
       "relief_m": 6,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 33
+      }
     },
     {
       "id": "la0284",
@@ -2056,7 +2546,9 @@
       "near_job": false,
       "near_hubs": [],
       "relief_m": 17,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 42
+      }
     },
     {
       "id": "la0285",
@@ -2072,10 +2564,14 @@
       "geocode_status": "ok",
       "slope_pct": 4.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD"
+      ],
       "relief_m": 18,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 39
+      }
     },
     {
       "id": "la0286",
@@ -2091,10 +2587,14 @@
       "geocode_status": "ok",
       "slope_pct": 7.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD"
+      ],
       "relief_m": 16,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 32
+      }
     },
     {
       "id": "la0287",
@@ -2528,10 +3028,15 @@
       "geocode_status": "ok",
       "slope_pct": 2.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 4,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 45,
+        "Seongsu": 20
+      }
     },
     {
       "id": "la0332",
@@ -2547,10 +3052,16 @@
       "geocode_status": "ok",
       "slope_pct": 4.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 2,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 37,
+        "Seongsu": 19
+      }
     },
     {
       "id": "la0334",
@@ -2566,10 +3077,18 @@
       "geocode_status": "ok",
       "slope_pct": 1.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu",
+        "Yongsan"
+      ],
       "relief_m": 4,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 18,
+        "Seongsu": 13,
+        "Yongsan": 24
+      }
     },
     {
       "id": "la0336",
@@ -2585,10 +3104,16 @@
       "geocode_status": "ok",
       "slope_pct": 2.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 2,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 23,
+        "Seongsu": 16
+      }
     },
     {
       "id": "la0343",
@@ -2604,10 +3129,14 @@
       "geocode_status": "ok",
       "slope_pct": 1.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 7,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 31
+      }
     },
     {
       "id": "la0344",
@@ -2623,10 +3152,14 @@
       "geocode_status": "ok",
       "slope_pct": 6.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 12,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 31
+      }
     },
     {
       "id": "la0347",
@@ -2642,10 +3175,14 @@
       "geocode_status": "ok",
       "slope_pct": 6.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 22,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 35
+      }
     },
     {
       "id": "la0353",
@@ -2661,10 +3198,16 @@
       "geocode_status": "ok",
       "slope_pct": 8.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 7,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 40,
+        "Seongsu": 21
+      }
     },
     {
       "id": "la0354",
@@ -2680,10 +3223,16 @@
       "geocode_status": "ok",
       "slope_pct": 7.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 4,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 33,
+        "Seongsu": 23
+      }
     },
     {
       "id": "la0355",
@@ -2699,10 +3248,16 @@
       "geocode_status": "ok",
       "slope_pct": 4.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 3,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 37,
+        "Seongsu": 17
+      }
     },
     {
       "id": "la0359",
@@ -2718,10 +3273,16 @@
       "geocode_status": "ok",
       "slope_pct": 1.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 2,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 24,
+        "Seongsu": 18
+      }
     },
     {
       "id": "la0360",
@@ -2737,10 +3298,16 @@
       "geocode_status": "ok",
       "slope_pct": 5.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 2,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 32,
+        "Seongsu": 22
+      }
     },
     {
       "id": "la0361",
@@ -2756,10 +3323,16 @@
       "geocode_status": "ok",
       "slope_pct": 4.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": -1,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 27,
+        "Seongsu": 22
+      }
     },
     {
       "id": "la0363",
@@ -2775,10 +3348,16 @@
       "geocode_status": "ok",
       "slope_pct": 6.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 10,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 33,
+        "Seongsu": 26
+      }
     },
     {
       "id": "la0364",
@@ -2794,10 +3373,16 @@
       "geocode_status": "ok",
       "slope_pct": 12.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 20,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 36,
+        "Seongsu": 24
+      }
     },
     {
       "id": "la0365",
@@ -2813,10 +3398,16 @@
       "geocode_status": "ok",
       "slope_pct": 10.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 11,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 33,
+        "Seongsu": 34
+      }
     },
     {
       "id": "la0367",
@@ -2832,10 +3423,16 @@
       "geocode_status": "ok",
       "slope_pct": 8.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 12,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 27,
+        "Seongsu": 26
+      }
     },
     {
       "id": "la0368",
@@ -2851,10 +3448,16 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 12,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 26,
+        "Seongsu": 23
+      }
     },
     {
       "id": "la0369",
@@ -2870,10 +3473,14 @@
       "geocode_status": "ok",
       "slope_pct": 24.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 12,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 27
+      }
     },
     {
       "id": "la0371",
@@ -2889,10 +3496,14 @@
       "geocode_status": "ok",
       "slope_pct": 2.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 6,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 32
+      }
     },
     {
       "id": "la0373",
@@ -2908,10 +3519,20 @@
       "geocode_status": "ok",
       "slope_pct": 10.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 26,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 16,
+        "GBD": 27,
+        "YBD": 7,
+        "Yongsan": 8
+      }
     },
     {
       "id": "la0374",
@@ -2927,10 +3548,20 @@
       "geocode_status": "ok",
       "slope_pct": 4.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 21,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 20,
+        "GBD": 31,
+        "YBD": 11,
+        "Yongsan": 12
+      }
     },
     {
       "id": "la0375",
@@ -2946,10 +3577,19 @@
       "geocode_status": "ok",
       "slope_pct": 8.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 21,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 23,
+        "GBD": 42,
+        "YBD": 14,
+        "Yongsan": 23
+      }
     },
     {
       "id": "la0376",
@@ -2965,10 +3605,20 @@
       "geocode_status": "ok",
       "slope_pct": 10.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 6,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 18,
+        "GBD": 29,
+        "YBD": 9,
+        "Yongsan": 10
+      }
     },
     {
       "id": "la0377",
@@ -2984,10 +3634,18 @@
       "geocode_status": "ok",
       "slope_pct": 11.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 17,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 22,
+        "YBD": 13,
+        "Yongsan": 14
+      }
     },
     {
       "id": "la0378",
@@ -3003,10 +3661,18 @@
       "geocode_status": "ok",
       "slope_pct": 9.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 29,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 28,
+        "YBD": 15,
+        "Yongsan": 20
+      }
     },
     {
       "id": "la0379",
@@ -3022,10 +3688,20 @@
       "geocode_status": "ok",
       "slope_pct": 6.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 13,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 24,
+        "GBD": 35,
+        "YBD": 14,
+        "Yongsan": 22
+      }
     },
     {
       "id": "la0380",
@@ -3041,10 +3717,18 @@
       "geocode_status": "ok",
       "slope_pct": 4.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 12,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 20,
+        "YBD": 11,
+        "Yongsan": 12
+      }
     },
     {
       "id": "la0381",
@@ -3060,10 +3744,18 @@
       "geocode_status": "ok",
       "slope_pct": 12.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 9,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 26,
+        "YBD": 20,
+        "Yongsan": 18
+      }
     },
     {
       "id": "la0382",
@@ -3079,10 +3771,18 @@
       "geocode_status": "ok",
       "slope_pct": 12.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 21,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 26,
+        "YBD": 25,
+        "Yongsan": 18
+      }
     },
     {
       "id": "la0383",
@@ -3098,10 +3798,16 @@
       "geocode_status": "ok",
       "slope_pct": 6.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 7,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 17,
+        "Yongsan": 20
+      }
     },
     {
       "id": "la0384",
@@ -3117,10 +3823,18 @@
       "geocode_status": "ok",
       "slope_pct": 11.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 13,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 22,
+        "YBD": 18,
+        "Yongsan": 14
+      }
     },
     {
       "id": "la0386",
@@ -3136,10 +3850,20 @@
       "geocode_status": "ok",
       "slope_pct": 10.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 15,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 25,
+        "GBD": 30,
+        "YBD": 10,
+        "Yongsan": 16
+      }
     },
     {
       "id": "la0389",
@@ -3155,10 +3879,18 @@
       "geocode_status": "ok",
       "slope_pct": 14.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 20,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 30,
+        "YBD": 29,
+        "Yongsan": 32
+      }
     },
     {
       "id": "la0390",
@@ -3174,10 +3906,18 @@
       "geocode_status": "ok",
       "slope_pct": 14.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 20,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 26,
+        "YBD": 31,
+        "Yongsan": 24
+      }
     },
     {
       "id": "la0391",
@@ -3193,10 +3933,18 @@
       "geocode_status": "ok",
       "slope_pct": 6.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 13,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 24,
+        "YBD": 29,
+        "Yongsan": 22
+      }
     },
     {
       "id": "la0392",
@@ -3212,10 +3960,18 @@
       "geocode_status": "ok",
       "slope_pct": 18.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 31,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 23,
+        "YBD": 28,
+        "Yongsan": 21
+      }
     },
     {
       "id": "la0395",
@@ -3231,10 +3987,18 @@
       "geocode_status": "ok",
       "slope_pct": 15.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 20,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 29,
+        "YBD": 27,
+        "Yongsan": 36
+      }
     },
     {
       "id": "la0397",
@@ -3250,10 +4014,18 @@
       "geocode_status": "ok",
       "slope_pct": 21.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 13,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 29,
+        "YBD": 28,
+        "Yongsan": 37
+      }
     },
     {
       "id": "la0398",
@@ -3269,10 +4041,18 @@
       "geocode_status": "ok",
       "slope_pct": 6.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 7,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 27,
+        "YBD": 27,
+        "Yongsan": 35
+      }
     },
     {
       "id": "la0399",
@@ -3288,10 +4068,18 @@
       "geocode_status": "ok",
       "slope_pct": 24.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 21,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 29,
+        "YBD": 36,
+        "Yongsan": 28
+      }
     },
     {
       "id": "la0400",
@@ -3307,10 +4095,18 @@
       "geocode_status": "ok",
       "slope_pct": 14.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 30,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 23,
+        "YBD": 38,
+        "Yongsan": 30
+      }
     },
     {
       "id": "la0401",
@@ -3326,10 +4122,18 @@
       "geocode_status": "ok",
       "slope_pct": 12.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 7,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 27,
+        "YBD": 36,
+        "Yongsan": 28
+      }
     },
     {
       "id": "la0402",
@@ -3345,10 +4149,18 @@
       "geocode_status": "ok",
       "slope_pct": 21.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 39,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 21,
+        "YBD": 39,
+        "Yongsan": 32
+      }
     },
     {
       "id": "la0405",
@@ -3364,10 +4176,18 @@
       "geocode_status": "ok",
       "slope_pct": 18.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 4,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 23,
+        "YBD": 28,
+        "Yongsan": 21
+      }
     },
     {
       "id": "la0407",
@@ -3383,10 +4203,20 @@
       "geocode_status": "ok",
       "slope_pct": 5.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 11,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 26,
+        "GBD": 33,
+        "YBD": 23,
+        "Yongsan": 22
+      }
     },
     {
       "id": "la0408",
@@ -3402,10 +4232,20 @@
       "geocode_status": "ok",
       "slope_pct": 30.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 10,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 33,
+        "GBD": 31,
+        "YBD": 25,
+        "Yongsan": 21
+      }
     },
     {
       "id": "la0409",
@@ -3421,10 +4261,20 @@
       "geocode_status": "ok",
       "slope_pct": 6.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 20,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 37,
+        "GBD": 34,
+        "YBD": 22,
+        "Yongsan": 23
+      }
     },
     {
       "id": "la0410",
@@ -3440,10 +4290,16 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 6,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 20,
+        "Yongsan": 24
+      }
     },
     {
       "id": "la0411",
@@ -3459,10 +4315,18 @@
       "geocode_status": "ok",
       "slope_pct": 24.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 21,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 31,
+        "YBD": 20,
+        "Yongsan": 28
+      }
     },
     {
       "id": "la0413",
@@ -3478,10 +4342,16 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 1,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 23,
+        "Yongsan": 27
+      }
     },
     {
       "id": "la0414",
@@ -3497,10 +4367,16 @@
       "geocode_status": "ok",
       "slope_pct": 12.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 28,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 25,
+        "Yongsan": 32
+      }
     },
     {
       "id": "la0415",
@@ -3516,10 +4392,16 @@
       "geocode_status": "ok",
       "slope_pct": 13.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 9,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 21,
+        "Yongsan": 27
+      }
     },
     {
       "id": "la0416",
@@ -3535,10 +4417,18 @@
       "geocode_status": "ok",
       "slope_pct": 7.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 20,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 28,
+        "YBD": 21,
+        "Yongsan": 24
+      }
     },
     {
       "id": "la0417",
@@ -3554,10 +4444,16 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 20,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 20,
+        "Yongsan": 29
+      }
     },
     {
       "id": "la0418",
@@ -3573,10 +4469,16 @@
       "geocode_status": "ok",
       "slope_pct": 8.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 14,
-      "near_minutes": {}
+      "near_minutes": {
+        "YBD": 17,
+        "Yongsan": 27
+      }
     },
     {
       "id": "la0421",
@@ -3592,10 +4494,20 @@
       "geocode_status": "ok",
       "slope_pct": 14.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 23,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 31,
+        "GBD": 31,
+        "YBD": 16,
+        "Yongsan": 23
+      }
     },
     {
       "id": "la0426",
@@ -3611,10 +4523,20 @@
       "geocode_status": "ok",
       "slope_pct": 33.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 50,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 36,
+        "GBD": 32,
+        "YBD": 23,
+        "Yongsan": 28
+      }
     },
     {
       "id": "la0427",
@@ -3630,10 +4552,20 @@
       "geocode_status": "ok",
       "slope_pct": 21.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 43,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 29,
+        "GBD": 26,
+        "YBD": 20,
+        "Yongsan": 20
+      }
     },
     {
       "id": "la0428",
@@ -3649,10 +4581,20 @@
       "geocode_status": "ok",
       "slope_pct": 11.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 23,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 28,
+        "GBD": 26,
+        "YBD": 13,
+        "Yongsan": 18
+      }
     },
     {
       "id": "la0429",
@@ -3668,10 +4610,19 @@
       "geocode_status": "ok",
       "slope_pct": 19.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 42,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 19,
+        "YBD": 19,
+        "Yongsan": 22,
+        "Sangam": 47
+      }
     },
     {
       "id": "la0431",
@@ -3687,10 +4638,19 @@
       "geocode_status": "ok",
       "slope_pct": 14.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 17,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 25,
+        "YBD": 18,
+        "Yongsan": 21,
+        "Sangam": 49
+      }
     },
     {
       "id": "la0432",
@@ -3706,10 +4666,19 @@
       "geocode_status": "ok",
       "slope_pct": 4.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan"
+      ],
       "relief_m": 15,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 22,
+        "YBD": 16,
+        "Yongsan": 23,
+        "Sangam": 45
+      }
     },
     {
       "id": "la0436",
@@ -3725,10 +4694,20 @@
       "geocode_status": "ok",
       "slope_pct": 16.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 6,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 26,
+        "YBD": 10,
+        "Yongsan": 13,
+        "Sangam": 35
+      }
     },
     {
       "id": "la0438",
@@ -3744,10 +4723,21 @@
       "geocode_status": "ok",
       "slope_pct": 1.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 12,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 34,
+        "YBD": 33,
+        "Magok": 44,
+        "Yongsan": 31,
+        "Sangam": 24
+      }
     },
     {
       "id": "la0440",
@@ -3763,10 +4753,21 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 10,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 35,
+        "YBD": 33,
+        "Magok": 45,
+        "Yongsan": 33,
+        "Sangam": 22
+      }
     },
     {
       "id": "la0441",
@@ -3782,10 +4783,21 @@
       "geocode_status": "ok",
       "slope_pct": 1.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 11,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 34,
+        "YBD": 32,
+        "Magok": 46,
+        "Yongsan": 34,
+        "Sangam": 25
+      }
     },
     {
       "id": "la0443",
@@ -3801,10 +4813,21 @@
       "geocode_status": "ok",
       "slope_pct": 2.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 9,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 34,
+        "YBD": 32,
+        "Magok": 48,
+        "Yongsan": 34,
+        "Sangam": 27
+      }
     },
     {
       "id": "la0444",
@@ -3820,10 +4843,22 @@
       "geocode_status": "ok",
       "slope_pct": 7.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Magok",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 3,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 36,
+        "YBD": 33,
+        "Magok": 36,
+        "Yongsan": 32,
+        "Sangam": 28
+      }
     },
     {
       "id": "la0445",
@@ -3839,10 +4874,20 @@
       "geocode_status": "ok",
       "slope_pct": 5.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 21,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 27,
+        "YBD": 24,
+        "Yongsan": 20,
+        "Sangam": 32
+      }
     },
     {
       "id": "la0446",
@@ -3858,10 +4903,22 @@
       "geocode_status": "ok",
       "slope_pct": 11.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Magok",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 18,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 33,
+        "YBD": 33,
+        "Magok": 36,
+        "Yongsan": 25,
+        "Sangam": 19
+      }
     },
     {
       "id": "la0447",
@@ -3877,10 +4934,22 @@
       "geocode_status": "ok",
       "slope_pct": 6.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Magok",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 13,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 32,
+        "YBD": 33,
+        "Magok": 34,
+        "Yongsan": 23,
+        "Sangam": 21
+      }
     },
     {
       "id": "la0448",
@@ -3896,10 +4965,22 @@
       "geocode_status": "ok",
       "slope_pct": 6.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Magok",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 24,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 35,
+        "YBD": 30,
+        "Magok": 33,
+        "Yongsan": 29,
+        "Sangam": 21
+      }
     },
     {
       "id": "la0450",
@@ -3915,10 +4996,20 @@
       "geocode_status": "ok",
       "slope_pct": 23.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 11,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 26,
+        "YBD": 15,
+        "Yongsan": 16,
+        "Sangam": 39
+      }
     },
     {
       "id": "la0451",
@@ -3934,10 +5025,20 @@
       "geocode_status": "ok",
       "slope_pct": 4.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 18,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 26,
+        "YBD": 21,
+        "Yongsan": 16,
+        "Sangam": 31
+      }
     },
     {
       "id": "la0452",
@@ -3953,10 +5054,20 @@
       "geocode_status": "ok",
       "slope_pct": 5.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 11,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 26,
+        "YBD": 20,
+        "Yongsan": 16,
+        "Sangam": 24
+      }
     },
     {
       "id": "la0456",
@@ -3972,10 +5083,20 @@
       "geocode_status": "ok",
       "slope_pct": 4.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 4,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 21,
+        "YBD": 11,
+        "Yongsan": 23,
+        "Sangam": 38
+      }
     },
     {
       "id": "la0461",
@@ -3991,10 +5112,20 @@
       "geocode_status": "ok",
       "slope_pct": 24.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 39,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 27,
+        "YBD": 20,
+        "Yongsan": 19,
+        "Sangam": 32
+      }
     },
     {
       "id": "la0462",
@@ -4010,10 +5141,20 @@
       "geocode_status": "ok",
       "slope_pct": 14.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 45,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 17,
+        "YBD": 27,
+        "Yongsan": 25,
+        "Sangam": 30
+      }
     },
     {
       "id": "la0464",
@@ -4029,10 +5170,22 @@
       "geocode_status": "ok",
       "slope_pct": 2.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Magok",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 2,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 37,
+        "YBD": 32,
+        "Magok": 28,
+        "Yongsan": 25,
+        "Sangam": 13
+      }
     },
     {
       "id": "la0465",
@@ -4048,10 +5201,20 @@
       "geocode_status": "ok",
       "slope_pct": 18.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 8,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 30,
+        "YBD": 18,
+        "Yongsan": 19,
+        "Sangam": 35
+      }
     },
     {
       "id": "la0469",
@@ -4067,10 +5230,21 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 12,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 32,
+        "YBD": 28,
+        "Magok": 47,
+        "Yongsan": 29,
+        "Sangam": 33
+      }
     },
     {
       "id": "la0475",
@@ -4086,10 +5260,21 @@
       "geocode_status": "ok",
       "slope_pct": 6.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 12,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 40,
+        "YBD": 38,
+        "Magok": 43,
+        "Yongsan": 34,
+        "Sangam": 18
+      }
     },
     {
       "id": "la0478",
@@ -4105,10 +5290,20 @@
       "geocode_status": "ok",
       "slope_pct": 26.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 21,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 23,
+        "YBD": 19,
+        "Yongsan": 27,
+        "Sangam": 40
+      }
     },
     {
       "id": "la0482",
@@ -4124,10 +5319,20 @@
       "geocode_status": "ok",
       "slope_pct": 19.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 28,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 18,
+        "YBD": 16,
+        "Yongsan": 23,
+        "Sangam": 35
+      }
     },
     {
       "id": "la0483",
@@ -4143,10 +5348,20 @@
       "geocode_status": "ok",
       "slope_pct": 14.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 3,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 36,
+        "YBD": 36,
+        "Yongsan": 24,
+        "Sangam": 20
+      }
     },
     {
       "id": "la0485",
@@ -4162,10 +5377,20 @@
       "geocode_status": "ok",
       "slope_pct": 8.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 16,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 40,
+        "YBD": 34,
+        "Yongsan": 30,
+        "Sangam": 33
+      }
     },
     {
       "id": "la0486",
@@ -4181,10 +5406,20 @@
       "geocode_status": "ok",
       "slope_pct": 18.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 8,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 17,
+        "YBD": 24,
+        "Yongsan": 27,
+        "Sangam": 31
+      }
     },
     {
       "id": "la0487",
@@ -4200,10 +5435,20 @@
       "geocode_status": "ok",
       "slope_pct": 18.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 36,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 17,
+        "YBD": 23,
+        "Yongsan": 27,
+        "Sangam": 34
+      }
     },
     {
       "id": "la0489",
@@ -4219,10 +5464,20 @@
       "geocode_status": "ok",
       "slope_pct": 10.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 26,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 11,
+        "YBD": 13,
+        "Yongsan": 19,
+        "Sangam": 34
+      }
     },
     {
       "id": "la0490",
@@ -4238,10 +5493,17 @@
       "geocode_status": "ok",
       "slope_pct": 16.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Yongsan"
+      ],
       "relief_m": 25,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 28,
+        "Yongsan": 35,
+        "Sangam": 46
+      }
     },
     {
       "id": "la0491",
@@ -4257,10 +5519,15 @@
       "geocode_status": "ok",
       "slope_pct": 17.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD"
+      ],
       "relief_m": 34,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 31,
+        "Sangam": 49
+      }
     },
     {
       "id": "la0492",
@@ -4276,10 +5543,16 @@
       "geocode_status": "ok",
       "slope_pct": 16.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD"
+      ],
       "relief_m": 10,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 34,
+        "Yongsan": 44,
+        "Sangam": 47
+      }
     },
     {
       "id": "la0498",
@@ -4295,10 +5568,20 @@
       "geocode_status": "ok",
       "slope_pct": 14.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "YBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 7,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 39,
+        "YBD": 34,
+        "Yongsan": 30,
+        "Sangam": 33
+      }
     },
     {
       "id": "la0499",
@@ -4314,10 +5597,18 @@
       "geocode_status": "ok",
       "slope_pct": 33.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 59,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 46,
+        "YBD": 46,
+        "Yongsan": 33,
+        "Sangam": 26
+      }
     },
     {
       "id": "la0500",
@@ -4333,10 +5624,18 @@
       "geocode_status": "ok",
       "slope_pct": 33.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 59,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 45,
+        "YBD": 51,
+        "Yongsan": 33,
+        "Sangam": 25
+      }
     },
     {
       "id": "la0502",
@@ -4352,10 +5651,18 @@
       "geocode_status": "ok",
       "slope_pct": 2.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 12,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 42,
+        "YBD": 48,
+        "Yongsan": 30,
+        "Sangam": 25
+      }
     },
     {
       "id": "la0508",
@@ -4371,10 +5678,18 @@
       "geocode_status": "ok",
       "slope_pct": 14.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Yongsan",
+        "Sangam"
+      ],
       "relief_m": 2,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 31,
+        "Yongsan": 33,
+        "Sangam": 40
+      }
     },
     {
       "id": "la0509",
@@ -4390,10 +5705,17 @@
       "geocode_status": "ok",
       "slope_pct": 36.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Yongsan"
+      ],
       "relief_m": 27,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 33,
+        "Yongsan": 34,
+        "Sangam": 42
+      }
     },
     {
       "id": "la0532",
@@ -4409,10 +5731,17 @@
       "geocode_status": "ok",
       "slope_pct": 12.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "Yongsan"
+      ],
       "relief_m": 23,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 21,
+        "YBD": 43,
+        "Yongsan": 28
+      }
     },
     {
       "id": "la0541",
@@ -4428,10 +5757,17 @@
       "geocode_status": "ok",
       "slope_pct": 8.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "Yongsan"
+      ],
       "relief_m": 44,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 16,
+        "YBD": 41,
+        "Yongsan": 27
+      }
     },
     {
       "id": "la0556",
@@ -4447,10 +5783,16 @@
       "geocode_status": "ok",
       "slope_pct": 8.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "Yongsan"
+      ],
       "relief_m": 15,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 22,
+        "Yongsan": 34
+      }
     },
     {
       "id": "la0557",
@@ -4466,10 +5808,17 @@
       "geocode_status": "ok",
       "slope_pct": 5.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "Seongsu"
+      ],
       "relief_m": 6,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 14,
+        "Seongsu": 36,
+        "Yongsan": 41
+      }
     },
     {
       "id": "la0558",
@@ -4485,10 +5834,16 @@
       "geocode_status": "ok",
       "slope_pct": 4.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "Seongsu"
+      ],
       "relief_m": -2,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 17,
+        "Seongsu": 38
+      }
     },
     {
       "id": "la0559",
@@ -4504,10 +5859,16 @@
       "geocode_status": "ok",
       "slope_pct": 4.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "GBD",
+        "Seongsu"
+      ],
       "relief_m": -5,
-      "near_minutes": {}
+      "near_minutes": {
+        "GBD": 16,
+        "Seongsu": 39
+      }
     },
     {
       "id": "la0585",
@@ -4523,10 +5884,20 @@
       "geocode_status": "ok",
       "slope_pct": 15.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "Seongsu",
+        "Yongsan"
+      ],
       "relief_m": 65,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 25,
+        "GBD": 26,
+        "Seongsu": 21,
+        "Yongsan": 27
+      }
     },
     {
       "id": "la0589",
@@ -4542,10 +5913,20 @@
       "geocode_status": "ok",
       "slope_pct": 22.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "Seongsu",
+        "Yongsan"
+      ],
       "relief_m": 47,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 37,
+        "GBD": 32,
+        "Seongsu": 27,
+        "Yongsan": 26
+      }
     },
     {
       "id": "la0590",
@@ -4561,10 +5942,20 @@
       "geocode_status": "ok",
       "slope_pct": 32.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "Seongsu",
+        "Yongsan"
+      ],
       "relief_m": 48,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 25,
+        "GBD": 30,
+        "Seongsu": 21,
+        "Yongsan": 36
+      }
     },
     {
       "id": "la0595",
@@ -4580,10 +5971,18 @@
       "geocode_status": "ok",
       "slope_pct": 10.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "Seongsu"
+      ],
       "relief_m": 18,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 29,
+        "GBD": 35,
+        "Seongsu": 9
+      }
     },
     {
       "id": "la0601",
@@ -4599,10 +5998,20 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "Seongsu",
+        "Yongsan"
+      ],
       "relief_m": 15,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 31,
+        "GBD": 25,
+        "Seongsu": 12,
+        "Yongsan": 34
+      }
     },
     {
       "id": "la0602",
@@ -4618,10 +6027,18 @@
       "geocode_status": "ok",
       "slope_pct": 2.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "Seongsu"
+      ],
       "relief_m": 12,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 37,
+        "GBD": 28,
+        "Seongsu": 14
+      }
     },
     {
       "id": "la0603",
@@ -4637,10 +6054,19 @@
       "geocode_status": "ok",
       "slope_pct": 0.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "Seongsu"
+      ],
       "relief_m": 10,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 35,
+        "GBD": 27,
+        "Seongsu": 12,
+        "Yongsan": 41
+      }
     },
     {
       "id": "la0604",
@@ -4656,10 +6082,18 @@
       "geocode_status": "ok",
       "slope_pct": 1.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "Seongsu"
+      ],
       "relief_m": 12,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 37,
+        "GBD": 31,
+        "Seongsu": 12
+      }
     },
     {
       "id": "la0608",
@@ -4675,10 +6109,16 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 6,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 29,
+        "Seongsu": 12
+      }
     },
     {
       "id": "la0614",
@@ -4694,10 +6134,20 @@
       "geocode_status": "ok",
       "slope_pct": 8.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "GBD",
+        "Seongsu",
+        "Yongsan"
+      ],
       "relief_m": 17,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 22,
+        "GBD": 27,
+        "Seongsu": 12,
+        "Yongsan": 25
+      }
     },
     {
       "id": "la0618",
@@ -4713,10 +6163,16 @@
       "geocode_status": "ok",
       "slope_pct": 4.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 10,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 29,
+        "Seongsu": 31
+      }
     },
     {
       "id": "la0622",
@@ -4732,10 +6188,16 @@
       "geocode_status": "ok",
       "slope_pct": 10.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 22,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 26,
+        "Seongsu": 29
+      }
     },
     {
       "id": "la0624",
@@ -4751,10 +6213,16 @@
       "geocode_status": "ok",
       "slope_pct": 32.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 7,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 30,
+        "Seongsu": 31
+      }
     },
     {
       "id": "la0625",
@@ -4770,10 +6238,16 @@
       "geocode_status": "ok",
       "slope_pct": 20.7,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 45,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 27,
+        "Seongsu": 33
+      }
     },
     {
       "id": "la0626",
@@ -4789,10 +6263,18 @@
       "geocode_status": "ok",
       "slope_pct": 14.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu",
+        "Yongsan"
+      ],
       "relief_m": 6,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 23,
+        "Seongsu": 24,
+        "Yongsan": 24
+      }
     },
     {
       "id": "la0627",
@@ -4808,10 +6290,16 @@
       "geocode_status": "ok",
       "slope_pct": 10.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu"
+      ],
       "relief_m": 1,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 25,
+        "Seongsu": 27
+      }
     },
     {
       "id": "la0628",
@@ -4827,10 +6315,18 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu",
+        "Yongsan"
+      ],
       "relief_m": 6,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 23,
+        "Seongsu": 25,
+        "Yongsan": 29
+      }
     },
     {
       "id": "la0631",
@@ -4846,10 +6342,18 @@
       "geocode_status": "ok",
       "slope_pct": 10.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu",
+        "Yongsan"
+      ],
       "relief_m": 24,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 31,
+        "Seongsu": 30,
+        "Yongsan": 34
+      }
     },
     {
       "id": "la0633",
@@ -4865,10 +6369,14 @@
       "geocode_status": "ok",
       "slope_pct": 0.7,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 5,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 38
+      }
     },
     {
       "id": "la0634",
@@ -4884,10 +6392,14 @@
       "geocode_status": "ok",
       "slope_pct": 4.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 1,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 37
+      }
     },
     {
       "id": "la0635",
@@ -4903,10 +6415,14 @@
       "geocode_status": "ok",
       "slope_pct": 4.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 1,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 37
+      }
     },
     {
       "id": "la0636",
@@ -4922,10 +6438,14 @@
       "geocode_status": "ok",
       "slope_pct": 4.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 7,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 36
+      }
     },
     {
       "id": "la0637",
@@ -4941,10 +6461,14 @@
       "geocode_status": "ok",
       "slope_pct": 4.0,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 1,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 37
+      }
     },
     {
       "id": "la0638",
@@ -4960,10 +6484,14 @@
       "geocode_status": "ok",
       "slope_pct": 1.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 4,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 35
+      }
     },
     {
       "id": "la0639",
@@ -4979,10 +6507,14 @@
       "geocode_status": "ok",
       "slope_pct": 3.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "Seongsu"
+      ],
       "relief_m": 2,
-      "near_minutes": {}
+      "near_minutes": {
+        "Seongsu": 33
+      }
     },
     {
       "id": "la0641",
@@ -4998,10 +6530,18 @@
       "geocode_status": "ok",
       "slope_pct": 23.3,
       "is_slope": false,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Seongsu",
+        "Yongsan"
+      ],
       "relief_m": 12,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 27,
+        "Seongsu": 28,
+        "Yongsan": 28
+      }
     },
     {
       "id": "la0642",
@@ -5017,10 +6557,16 @@
       "geocode_status": "ok",
       "slope_pct": 25.3,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": [
+        "CBD",
+        "Yongsan"
+      ],
       "relief_m": 34,
-      "near_minutes": {}
+      "near_minutes": {
+        "CBD": 36,
+        "Yongsan": 37
+      }
     },
     {
       "id": "la0643",
