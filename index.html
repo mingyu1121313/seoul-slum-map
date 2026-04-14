@@ -1538,6 +1538,7 @@ function applyVisibility() {
   });
 
   updateFilterCounts();
+  buildAttrFilterBody();
 }
 
 function toggleAttr(key, checked) {
@@ -1560,33 +1561,43 @@ function setFilterMode(mode) {
 /* ────────────────────────────────────────────────
    속성 필터 리스트 빌드 / 토글
 ──────────────────────────────────────────────── */
-function buildAttrFilterBody(data) {
-  const allItems = [
-    ...(data.layerA.items || []),
-    ...(data.layerA.items_관리형 || []),
-    ...(data.layerB.items || []),
-  ];
+function buildAttrFilterBody() {
+  // 현재 보이는 카테고리(hiddenCategories에 없는)의 마커만 수집
+  const slopeItems = [];
+  const nearItems  = [];
+
+  Object.keys(markersByCategory).forEach(cat => {
+    if (hiddenCategories.has(cat)) return;   // 숨겨진 카테고리 제외
+    (markersByCategory[cat] || []).forEach(m => {
+      const d    = itemsByMarker.get(m);
+      const item = d ? d.item : null;
+      if (!item) return;
+      if (item.is_slope) slopeItems.push({ item, cat });
+      if (item.near_job) nearItems.push({ item, cat });
+    });
+  });
+
+  function makeItem(item, cat, tag) {
+    const addr = item.address || [item.gu, item.dong].filter(Boolean).join(' ');
+    const li   = document.createElement('div');
+    li.className = 'cat-list-item';
+    li.innerHTML = `<span class="cat-list-name">${item.name || ''}</span>` +
+                   `<span class="cat-list-addr">${addr}</span>` +
+                   (tag ? `<span class="attr-tag">${tag}</span>` : '');
+    li.onclick = () => {
+      showPanel(item, cat);
+      if (item.lat && item.lng) map.panTo(new naver.maps.LatLng(item.lat, item.lng));
+    };
+    return li;
+  }
 
   // ── 경사지 리스트 ──
   const slopeList = document.getElementById('attr-list-slope');
   if (slopeList) {
     slopeList.innerHTML = '';
-    allItems.filter(it => it.is_slope).forEach(item => {
-      const cat = item.formation_type
-        ? (item.formation_type || '신발생')
-        : getCategoryA(item);
-      const addr = item.address || [item.gu, item.dong].filter(Boolean).join(' ');
-      const tag  = item.relief_m != null ? `relief ${item.relief_m}m` : '';
-      const li   = document.createElement('div');
-      li.className = 'cat-list-item';
-      li.innerHTML = `<span class="cat-list-name">${item.name || ''}</span>` +
-                     `<span class="cat-list-addr">${addr}</span>` +
-                     (tag ? `<span class="attr-tag">${tag}</span>` : '');
-      li.onclick = () => {
-        showPanel(item, cat);
-        if (item.lat && item.lng) map.panTo(new naver.maps.LatLng(item.lat, item.lng));
-      };
-      slopeList.appendChild(li);
+    slopeItems.forEach(({ item, cat }) => {
+      const tag = item.relief_m != null ? `relief ${item.relief_m}m` : '';
+      slopeList.appendChild(makeItem(item, cat, tag));
     });
   }
 
@@ -1594,31 +1605,30 @@ function buildAttrFilterBody(data) {
   const nearList = document.getElementById('attr-list-near');
   if (nearList) {
     nearList.innerHTML = '';
-    allItems.filter(it => it.near_job).forEach(item => {
-      const cat  = item.formation_type
-        ? (item.formation_type || '신발생')
-        : getCategoryA(item);
-      const addr = item.address || [item.gu, item.dong].filter(Boolean).join(' ');
-      // 가장 가까운 거점 2개 표시 (분 기준 정렬)
+    nearItems.forEach(({ item, cat }) => {
       const mins = item.near_minutes || {};
-      const sorted = Object.entries(mins)
-        .filter(([,m]) => m != null && m <= 40)
-        .sort(([,a],[,b]) => a - b)
+      const tag  = Object.entries(mins)
+        .filter(([, m]) => m != null && m <= 40)
+        .sort(([, a], [, b]) => a - b)
         .slice(0, 2)
-        .map(([hub, m]) => `${hub} ${m}분`);
-      const tag = sorted.join(', ');
-
-      const li = document.createElement('div');
-      li.className = 'cat-list-item';
-      li.innerHTML = `<span class="cat-list-name">${item.name || ''}</span>` +
-                     `<span class="cat-list-addr">${addr}</span>` +
-                     (tag ? `<span class="attr-tag">${tag}</span>` : '');
-      li.onclick = () => {
-        showPanel(item, cat);
-        if (item.lat && item.lng) map.panTo(new naver.maps.LatLng(item.lat, item.lng));
-      };
-      nearList.appendChild(li);
+        .map(([hub, m]) => `${hub} ${m}분`)
+        .join(', ');
+      nearList.appendChild(makeItem(item, cat, tag));
     });
+  }
+
+  // 열려 있는 리스트의 maxHeight를 새 내용에 맞게 재조정
+  ['slope', 'near'].forEach(key => {
+    const list = document.getElementById('attr-list-' + key);
+    if (list && list.style.maxHeight && list.style.maxHeight !== '0px') {
+      list.style.maxHeight = 'none';
+      list.style.maxHeight = list.scrollHeight + 'px';
+    }
+  });
+  const accBody = document.getElementById('acc-c-body');
+  if (accBody && accBody.style.maxHeight && accBody.style.maxHeight !== '0px') {
+    accBody.style.maxHeight = 'none';
+    accBody.style.maxHeight = accBody.scrollHeight + 'px';
   }
 }
 
@@ -1650,6 +1660,7 @@ function toggleAttrList(key, e) {
 function updateFilterCounts() {
   let slopeCnt = 0, nearCnt = 0, total = 0;
   Object.keys(markersByCategory).forEach(cat => {
+    if (hiddenCategories.has(cat)) return;   // 숨겨진 카테고리 제외
     (markersByCategory[cat] || []).forEach(m => {
       const data = itemsByMarker.get(m);
       const item = data ? data.item : null;
@@ -2083,7 +2094,7 @@ async function main() {
     const data = await loadData();
     initMarkers(data);
     buildSidebar(data);
-    buildAttrFilterBody(data);
+    buildAttrFilterBody();
     updateFilterCounts();
   } catch (err) {
     console.error('데이터 로드 실패:', err);
