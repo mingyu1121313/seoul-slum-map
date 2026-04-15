@@ -933,9 +933,10 @@
         </div>
         <div style="display:flex;gap:5px;flex-wrap:wrap;">
           <button class="filter-mode-btn active" id="btn-age-0"   onclick="setAgeFilter(0)"  style="font-size:11px;padding:2px 8px;">전체</button>
+          <button class="filter-mode-btn"        id="btn-age-10"  onclick="setAgeFilter(10)" style="font-size:11px;padding:2px 8px;">10년+</button>
+          <button class="filter-mode-btn"        id="btn-age-20"  onclick="setAgeFilter(20)" style="font-size:11px;padding:2px 8px;">20년+</button>
           <button class="filter-mode-btn"        id="btn-age-30"  onclick="setAgeFilter(30)" style="font-size:11px;padding:2px 8px;">30년+</button>
           <button class="filter-mode-btn"        id="btn-age-40"  onclick="setAgeFilter(40)" style="font-size:11px;padding:2px 8px;">40년+</button>
-          <button class="filter-mode-btn"        id="btn-age-50"  onclick="setAgeFilter(50)" style="font-size:11px;padding:2px 8px;">50년+</button>
         </div>
       </div>
 
@@ -1392,11 +1393,11 @@ function initMarkers(data) {
 function getBldgAgeColor(age) {
   // 노후도 오버레이 색상 (fill): 파랑(새건물) → 빨강(노후)
   if (!age || age <= 0)  return null;
-  if (age < 20)  return '#60a5fa'; // 파랑 (20년 미만)
-  if (age < 30)  return '#a3e635'; // 연두
-  if (age < 40)  return '#fbbf24'; // 노랑
-  if (age < 50)  return '#f97316'; // 주황
-  return '#dc2626';                 // 빨강 (50년+)
+  if (age < 10)  return '#60a5fa'; // 파랑 (10년 미만)
+  if (age < 20)  return '#a3e635'; // 연두
+  if (age < 30)  return '#fbbf24'; // 노랑
+  if (age < 40)  return '#f97316'; // 주황
+  return '#dc2626';                 // 빨강 (40년+)
 }
 
 function createPolygon(item, cat, pdata) {
@@ -1699,7 +1700,7 @@ function toggleAttr(key, checked) {
 
 function setAgeFilter(minAge) {
   attrFilters.age_min = minAge;
-  [0, 30, 40, 50].forEach(v => {
+  [0, 10, 20, 30, 40].forEach(v => {
     const btn = document.getElementById('btn-age-' + v);
     if (btn) btn.classList.toggle('active', v === minAge);
   });
