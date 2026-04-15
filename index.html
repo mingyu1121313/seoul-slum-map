@@ -1384,14 +1384,16 @@ function createPolygon(item, cat, pdata) {
   const paths = (pdata.polygon.type === 'MultiPolygon' ? coords : [coords])
     .map(ring => ring[0].map(([lng, lat]) => new naver.maps.LatLng(lat, lng)));
 
+  const isApprox = !!pdata.approximate;
   const poly = new naver.maps.Polygon({
     map: map,
     paths: paths,
     strokeColor: cfg.color,
-    strokeWeight: 2,
-    strokeOpacity: 0.85,
+    strokeWeight: isApprox ? 1.5 : 2,
+    strokeOpacity: isApprox ? 0.5 : 0.85,
+    strokeStyle: isApprox ? 'shortdash' : 'solid',
     fillColor: cfg.color,
-    fillOpacity: 0.18,
+    fillOpacity: isApprox ? 0.07 : 0.18,
     zIndex: 5,
     clickable: true,
   });
@@ -1401,7 +1403,8 @@ function createPolygon(item, cat, pdata) {
   // 클릭 → 사이드바 패널
   naver.maps.Event.addListener(poly, 'click', function() {
     if (activePolygon && activePolygon !== poly) {
-      activePolygon.setOptions({ fillOpacity: 0.18 });
+      const prevData = itemsByPolygon.get(activePolygon);
+      activePolygon.setOptions({ fillOpacity: prevData && prevData.pdata.approximate ? 0.07 : 0.18 });
     }
     poly.setOptions({ fillOpacity: 0.42 });
     activePolygon = poly;
