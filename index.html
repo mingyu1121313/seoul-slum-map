@@ -1202,6 +1202,7 @@
 const CAT_CONFIG = {
   '재개발(주택정비형)':   { color: '#1D4ED8', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
   '가로주택정비':        { color: '#0891B2', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
+  '모아타운':           { color: '#16A34A', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
   '지역주택':           { color: '#7C3AED', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
   '주거환경개선(정비형)': { color: '#059669', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
   '자연발생':           { color: '#DC2626', layer: 'B', shape: 'diamond', size: 11, opacity: 1 },
@@ -1212,6 +1213,7 @@ const CAT_CONFIG = {
 const LAYER_A_ORDER = [
   '재개발(주택정비형)',
   '가로주택정비',
+  '모아타운',
   '지역주택',
   '주거환경개선(정비형)',
 ];
@@ -1288,7 +1290,7 @@ function makeIcon(color, shape, size, opacity) {
 ──────────────────────────────────────────────── */
 function getCategoryA(item) {
   if (item.category === '주거환경개선사업') return '주거환경개선(정비형)';
-  // 재개발(주택정비형), 가로주택정비, 지역주택
+  // 재개발(주택정비형), 가로주택정비, 모아타운, 지역주택
   return item.category;
 }
 
