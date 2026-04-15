@@ -27,7 +27,17 @@ print("▶ 의제처리구역 SHP 로드 중...")
 zones = gpd.read_file(SHP, encoding="cp949")
 # EPSG:5174 → WGS84
 zones = zones.to_crs("EPSG:4326")
-print(f"  {len(zones)}개 구역 로드 완료 (CRS: {zones.crs})")
+print(f"  {len(zones)}개 구역 로드 (CRS: {zones.crs})")
+
+# ── 1-1. legacy 광역 zone 제거 (토지구획정리/택지개발/MLSFC_CL=None/50ha+) ──
+before = len(zones)
+EXCLUDE_KW = ("토지구획정리", "토지구획", "택지개발")
+mask_legacy_name = zones["DGM_NM"].fillna("").str.contains("|".join(EXCLUDE_KW))
+mask_no_class    = zones["MLSFC_CL"].isna()
+mask_too_big     = zones["DGM_AR"].fillna(0) > 500_000   # 50 ha
+mask_drop = mask_legacy_name | mask_no_class | mask_too_big
+zones = zones[~mask_drop].reset_index(drop=True)
+print(f"  legacy 광역 zone 제거: {before} → {len(zones)} ({before-len(zones)}건 제외)")
 
 # ── 2. 571개 사이트 수집 ─────────────────────────────────────────
 sites = []
