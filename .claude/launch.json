@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "slum-map",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "8080", "."],
+      "port": 8080
+    }
+  ]
+}

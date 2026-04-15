@@ -926,6 +926,19 @@
         <!-- populated by buildAttrFilterBody() -->
       </div>
 
+      <!-- 노후도 필터 -->
+      <div style="padding:8px 14px;border-bottom:1px solid #f5f5f5;">
+        <div style="font-size:11.5px;font-weight:600;color:#222;margin-bottom:5px;">
+          노후도<span style="font-size:9.5px;font-weight:400;color:#9ca3af;margin-left:5px;">구역 내 평균 건물 연차</span>
+        </div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;">
+          <button class="filter-mode-btn active" id="btn-age-0"   onclick="setAgeFilter(0)"  style="font-size:11px;padding:2px 8px;">전체</button>
+          <button class="filter-mode-btn"        id="btn-age-30"  onclick="setAgeFilter(30)" style="font-size:11px;padding:2px 8px;">30년+</button>
+          <button class="filter-mode-btn"        id="btn-age-40"  onclick="setAgeFilter(40)" style="font-size:11px;padding:2px 8px;">40년+</button>
+          <button class="filter-mode-btn"        id="btn-age-50"  onclick="setAgeFilter(50)" style="font-size:11px;padding:2px 8px;">50년+</button>
+        </div>
+      </div>
+
       <!-- AND/OR 토글 -->
       <div class="filter-mode-wrap" id="filter-mode-wrap">
         <span class="filter-mode-label">중복 조건</span>
@@ -1222,11 +1235,15 @@ const LAYER_B_ORDER = ['자연발생', '집단이주', '신발생'];
    상태
 ──────────────────────────────────────────────── */
 const markersByCategory = {};   // category → [naver.maps.Marker]
+const polygonsByCategory = {};  // category → [naver.maps.Polygon]
 const hiddenCategories = new Set();
-const itemsByMarker = new WeakMap(); // marker → item data
+const itemsByMarker  = new WeakMap(); // marker  → {item, cat}
+const itemsByPolygon = new WeakMap(); // polygon → {item, cat}
+let polygonsData = null;   // polygons.json 전체
+let activePolygon = null;  // 현재 선택된 폴리곤
 
 // 속성 필터 상태
-const attrFilters = { slope: false, near: false, mode: 'AND' };
+const attrFilters = { slope: false, near: false, mode: 'AND', age_min: 0 };
 
 let map;
 
@@ -1301,6 +1318,8 @@ function createMarker(item, cat) {
   const cfg = CAT_CONFIG[cat];
   if (!cfg) return null;
   if (!item.lat || !item.lng) return null;
+  // 폴리곤이 있는 사이트는 마커 생략
+  if (polygonsData && polygonsData.polygons[item.id]?.polygon) return null;
 
   const icon = makeIcon(cfg.color, cfg.shape || 'circle', cfg.size, cfg.opacity);
   const marker = new naver.maps.Marker({
@@ -1365,6 +1384,92 @@ function initMarkers(data) {
     const m = createMarker(item, cat);
     if (m) markersByCategory[cat].push(m);
   });
+}
+
+/* ────────────────────────────────────────────────
+   폴리곤 초기화 (polygons.json)
+──────────────────────────────────────────────── */
+function getBldgAgeColor(age) {
+  // 노후도 오버레이 색상 (fill): 파랑(새건물) → 빨강(노후)
+  if (!age || age <= 0)  return null;
+  if (age < 20)  return '#60a5fa'; // 파랑 (20년 미만)
+  if (age < 30)  return '#a3e635'; // 연두
+  if (age < 40)  return '#fbbf24'; // 노랑
+  if (age < 50)  return '#f97316'; // 주황
+  return '#dc2626';                 // 빨강 (50년+)
+}
+
+function createPolygon(item, cat, pdata) {
+  const cfg = CAT_CONFIG[cat];
+  if (!cfg || !pdata || !pdata.polygon) return null;
+
+  const coords = pdata.polygon.coordinates;
+  const paths = (pdata.polygon.type === 'MultiPolygon' ? coords : [coords])
+    .map(ring => ring[0].map(([lng, lat]) => new naver.maps.LatLng(lat, lng)));
+
+  const poly = new naver.maps.Polygon({
+    map: map,
+    paths: paths,
+    strokeColor: cfg.color,
+    strokeWeight: 2,
+    strokeOpacity: 0.85,
+    fillColor: cfg.color,
+    fillOpacity: 0.18,
+    zIndex: 5,
+    clickable: true,
+  });
+
+  itemsByPolygon.set(poly, { item, cat, pdata });
+
+  // 클릭 → 사이드바 패널
+  naver.maps.Event.addListener(poly, 'click', function() {
+    if (activePolygon && activePolygon !== poly) {
+      activePolygon.setOptions({ fillOpacity: 0.18 });
+    }
+    poly.setOptions({ fillOpacity: 0.42 });
+    activePolygon = poly;
+    showPanel(item, cat);
+  });
+
+  // 호버 툴팁
+  const tooltip = document.getElementById('marker-tooltip');
+  naver.maps.Event.addListener(poly, 'mouseover', function(e) {
+    const name = item.name || '';
+    if (!name) return;
+    const pe = e.pointerEvent || e;
+    const cx = (pe.clientX !== undefined) ? pe.clientX : (pe.pageX || 0);
+    const cy = (pe.clientY !== undefined) ? pe.clientY : (pe.pageY || 0);
+    tooltip.textContent = name;
+    tooltip.style.left  = cx + 'px';
+    tooltip.style.top   = (cy - 38) + 'px';
+    tooltip.style.display = 'block';
+  });
+  naver.maps.Event.addListener(poly, 'mouseout', function() {
+    tooltip.style.display = 'none';
+  });
+
+  return poly;
+}
+
+function initPolygons(data) {
+  if (!polygonsData) return;
+  const polys = polygonsData.polygons;
+
+  function processItems(items, getCat) {
+    (items || []).forEach(item => {
+      const cat = getCat(item);
+      const pdata = polys[item.id];
+      if (!pdata || !pdata.polygon) return; // 폴리곤 없으면 마커 유지
+
+      if (!polygonsByCategory[cat]) polygonsByCategory[cat] = [];
+      const poly = createPolygon(item, cat, pdata);
+      if (poly) polygonsByCategory[cat].push(poly);
+    });
+  }
+
+  processItems(data.layerA.items,          getCategoryA);
+  processItems(data.layerA.items_관리형 || [], () => '주거환경개선(관리형)');
+  processItems(data.layerB.items,          getCategoryB);
 }
 
 /* ────────────────────────────────────────────────
@@ -1521,32 +1626,62 @@ function toggleGroup(groupId, checked) {
 /* ────────────────────────────────────────────────
    속성 필터 — applyVisibility / toggleAttr / setFilterMode
 ──────────────────────────────────────────────── */
-function applyVisibility() {
+function passesFilters(item, pdata) {
   const slopeOn = attrFilters.slope;
   const nearOn  = attrFilters.near;
   const andMode = attrFilters.mode === 'AND';
+  const ageMin  = attrFilters.age_min || 0;
   const anyAttr = slopeOn || nearOn;
 
+  // 노후도 필터
+  if (ageMin > 0) {
+    const age = pdata ? pdata.avg_bldg_age : null;
+    if (!age || age < ageMin) return false;
+  }
+
+  if (!anyAttr) return true;
+
+  const slope = item && item.is_slope === true;
+  const near  = item && item.near_job === true;
+  if (slopeOn && nearOn) return andMode ? (slope && near) : (slope || near);
+  if (slopeOn) return slope;
+  return near;
+}
+
+function applyVisibility() {
+  const polys = polygonsData ? polygonsData.polygons : {};
+
+  // 마커 (폴리곤 없는 사이트)
   Object.keys(markersByCategory).forEach(cat => {
     const catHidden = hiddenCategories.has(cat);
     (markersByCategory[cat] || []).forEach(m => {
       if (catHidden) { m.setMap(null); return; }
-      if (!anyAttr)  { m.setMap(map);  return; }
+      const d = itemsByMarker.get(m);
+      const item = d ? d.item : null;
+      const pdata = item ? polys[item.id] : null;
+      m.setMap(passesFilters(item, pdata) ? map : null);
+    });
+  });
 
-      const data   = itemsByMarker.get(m);
-      const item   = data ? data.item : null;
-      const slope  = item && item.is_slope  === true;
-      const near   = item && item.near_job  === true;
+  // 폴리곤 (폴리곤 있는 사이트)
+  Object.keys(polygonsByCategory).forEach(cat => {
+    const catHidden = hiddenCategories.has(cat);
+    (polygonsByCategory[cat] || []).forEach(poly => {
+      if (catHidden) { poly.setMap(null); return; }
+      const d = itemsByPolygon.get(poly);
+      const item = d ? d.item : null;
+      const pdata = d ? d.pdata : null;
+      const show = passesFilters(item, pdata);
+      poly.setMap(show ? map : null);
 
-      let pass;
-      if (slopeOn && nearOn) {
-        pass = andMode ? (slope && near) : (slope || near);
-      } else if (slopeOn) {
-        pass = slope;
-      } else {
-        pass = near;
+      // 노후도 색상 오버레이 (ageMin > 0 시 fill 색상 변경)
+      if (show && attrFilters.age_min > 0 && pdata) {
+        const ageColor = getBldgAgeColor(pdata.avg_bldg_age);
+        if (ageColor) poly.setOptions({ fillColor: ageColor, fillOpacity: 0.45 });
+      } else if (show) {
+        const cfg = CAT_CONFIG[cat];
+        if (cfg) poly.setOptions({ fillColor: cfg.color, fillOpacity: 0.18 });
       }
-      m.setMap(pass ? map : null);
     });
   });
 
@@ -1559,6 +1694,15 @@ function toggleAttr(key, checked) {
   // AND/OR 토글은 두 필터 모두 켜져 있을 때만 의미 있음
   const wrap = document.getElementById('filter-mode-wrap');
   if (wrap) wrap.classList.toggle('visible', attrFilters.slope && attrFilters.near);
+  applyVisibility();
+}
+
+function setAgeFilter(minAge) {
+  attrFilters.age_min = minAge;
+  [0, 30, 40, 50].forEach(v => {
+    const btn = document.getElementById('btn-age-' + v);
+    if (btn) btn.classList.toggle('active', v === minAge);
+  });
   applyVisibility();
 }
 
@@ -1672,10 +1816,23 @@ function toggleAttrList(key, e) {
 
 function updateFilterCounts() {
   let slopeCnt = 0, nearCnt = 0, total = 0;
+  // 마커에서 집계
   Object.keys(markersByCategory).forEach(cat => {
-    if (hiddenCategories.has(cat)) return;   // 숨겨진 카테고리 제외
+    if (hiddenCategories.has(cat)) return;
     (markersByCategory[cat] || []).forEach(m => {
       const data = itemsByMarker.get(m);
+      const item = data ? data.item : null;
+      if (!item) return;
+      total++;
+      if (item.is_slope) slopeCnt++;
+      if (item.near_job) nearCnt++;
+    });
+  });
+  // 폴리곤에서도 집계
+  Object.keys(polygonsByCategory).forEach(cat => {
+    if (hiddenCategories.has(cat)) return;
+    (polygonsByCategory[cat] || []).forEach(poly => {
+      const data = itemsByPolygon.get(poly);
       const item = data ? data.item : null;
       if (!item) return;
       total++;
@@ -2087,10 +2244,12 @@ async function loadGuBoundary() {
 ──────────────────────────────────────────────── */
 async function loadData() {
   const v = Date.now();
-  const [a, b] = await Promise.all([
-    fetch('data/layerA.json?v=' + v).then(r => r.json()),
-    fetch('data/layerB.json?v=' + v).then(r => r.json()),
+  const [a, b, p] = await Promise.all([
+    fetch('data/layerA.json?v='    + v).then(r => r.json()),
+    fetch('data/layerB.json?v='    + v).then(r => r.json()),
+    fetch('data/polygons.json?v='  + v).then(r => r.json()).catch(() => null),
   ]);
+  polygonsData = p;
   return { layerA: a, layerB: b };
 }
 
@@ -2105,7 +2264,8 @@ async function main() {
 
   try {
     const data = await loadData();
-    initMarkers(data);
+    initPolygons(data);   // 폴리곤 먼저 (마커보다 z-index 낮음)
+    initMarkers(data);    // 폴리곤 없는 사이트는 마커로
     buildSidebar(data);
     buildAttrFilterBody();
     updateFilterCounts();
