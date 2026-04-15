@@ -3,3 +3,9 @@ scripts/odsay_key.txt
 data/odsay_cache.json
 backups/
 .DS_Store
+
+# raw source datasets (too large, not needed at runtime)
+AL_D010_11_20260409/
+UQ181_의제처리구역_202602/
+서울시 건축연도별 주택현황 통계.csv
+서울시 건축연도별 주택현황 통계.json
