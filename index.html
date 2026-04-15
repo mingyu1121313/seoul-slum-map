@@ -1048,18 +1048,6 @@
               </div>
             </div>
 
-            <!-- 주거환경개선(관리형) -->
-            <div class="gls-card">
-              <div class="gls-card-head">
-                <span class="gls-dot" style="background:#F59E0B;"></span>
-                <span class="gls-title">주거환경개선(관리형)</span>
-              </div>
-              <div class="gls-body">
-                <div class="gls-def">사업시행자가 정비기반시설·공동이용시설을 설치·확대하고, <strong>토지등소유자가 스스로 주택을 보전·정비·개량</strong>하는 방법으로 시행하는 주거환경개선사업.<br><br>전면철거 없이 기존 주거지를 보전하면서 공공이 기반시설을 정비하는 방식. "관리형"은 서울시 조례에서 부여한 명칭.</div>
-                <div class="gls-basis">근거: 도시 및 주거환경정비법 제23조제1항 제1호 · 서울특별시 도시 및 주거환경정비 조례 제6조 [시행 2018.7.19.]</div>
-              </div>
-            </div>
-
           </div><!-- /gls-acc-body -->
         </div><!-- /gls-section 개발방식 -->
 
@@ -1161,7 +1149,6 @@
       <div class="legend-row"><span class="legend-dot" style="background:#0891B2;"></span>가로주택정비</div>
       <div class="legend-row"><span class="legend-dot" style="background:#7C3AED;"></span>지역주택</div>
       <div class="legend-row"><span class="legend-dot" style="background:#059669;"></span>주거환경개선(정비형)</div>
-      <div class="legend-row"><span class="legend-dot" style="background:#F59E0B;"></span>주거환경개선(관리형)</div>
       <hr class="legend-sep">
       <div class="legend-group-label">형성 유형</div>
       <div class="legend-row"><span class="legend-diamond" style="background:#DC2626;"></span>자연발생</div>
@@ -1217,7 +1204,6 @@ const CAT_CONFIG = {
   '가로주택정비':        { color: '#0891B2', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
   '지역주택':           { color: '#7C3AED', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
   '주거환경개선(정비형)': { color: '#059669', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
-  '주거환경개선(관리형)': { color: '#F59E0B', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
   '자연발생':           { color: '#DC2626', layer: 'B', shape: 'diamond', size: 11, opacity: 1 },
   '집단이주':           { color: '#EA580C', layer: 'B', shape: 'diamond', size: 11, opacity: 1 },
   '신발생':             { color: '#D97706', layer: 'B', shape: 'diamond', size: 11, opacity: 1 },
@@ -1228,7 +1214,6 @@ const LAYER_A_ORDER = [
   '가로주택정비',
   '지역주택',
   '주거환경개선(정비형)',
-  '주거환경개선(관리형)',
 ];
 const LAYER_B_ORDER = ['자연발생', '집단이주', '신발생'];
 
@@ -1302,7 +1287,6 @@ function makeIcon(color, shape, size, opacity) {
    카테고리 판별
 ──────────────────────────────────────────────── */
 function getCategoryA(item) {
-  if (item.subcategory === '관리형') return '주거환경개선(관리형)';
   if (item.category === '주거환경개선사업') return '주거환경개선(정비형)';
   // 재개발(주택정비형), 가로주택정비, 지역주택
   return item.category;
@@ -1365,14 +1349,6 @@ function initMarkers(data) {
   // Layer A — items (정비형)
   (data.layerA.items || []).forEach(item => {
     const cat = getCategoryA(item);
-    if (!markersByCategory[cat]) markersByCategory[cat] = [];
-    const m = createMarker(item, cat);
-    if (m) markersByCategory[cat].push(m);
-  });
-
-  // Layer A — items_관리형
-  (data.layerA.items_관리형 || []).forEach(item => {
-    const cat = '주거환경개선(관리형)';
     if (!markersByCategory[cat]) markersByCategory[cat] = [];
     const m = createMarker(item, cat);
     if (m) markersByCategory[cat].push(m);
@@ -1469,7 +1445,6 @@ function initPolygons(data) {
   }
 
   processItems(data.layerA.items,          getCategoryA);
-  processItems(data.layerA.items_관리형 || [], () => '주거환경개선(관리형)');
   processItems(data.layerB.items,          getCategoryB);
 }
 
@@ -1484,10 +1459,6 @@ function buildSidebar(data) {
   (data.layerA.items || []).forEach(item => {
     const c = getCategoryA(item);
     if (counts[c] !== undefined) { counts[c]++; catItems[c].push(item); }
-  });
-  (data.layerA.items_관리형 || []).forEach(item => {
-    counts['주거환경개선(관리형)']++;
-    catItems['주거환경개선(관리형)'].push(item);
   });
   (data.layerB.items || []).forEach(item => {
     const c = getCategoryB(item);
