@@ -1,0 +1,491 @@
+{
+  "total": 81,
+  "items": [
+    {
+      "id": "la0115",
+      "zone_name": "미아 제10-1구역 주택재개발정비사업조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0119",
+      "zone_name": "미아제3구역 주택재개발정비사업조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0120",
+      "zone_name": "미아동 791-2882번지 일대 주택정비형 재개발사업",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0124",
+      "zone_name": "번동 148번지 일대 주택정비형 재개발사업",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0142",
+      "zone_name": "(가칭)공항동지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0144",
+      "zone_name": "(가칭)방화지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0145",
+      "zone_name": "송정역지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0148",
+      "zone_name": "(가칭)등촌동지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0152",
+      "zone_name": "등촌649 소규모재개발정비사업조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0188",
+      "zone_name": "(가칭)청림동지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0189",
+      "zone_name": "행운스타리움지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0205",
+      "zone_name": "(가칭)신대방역2단지 지역주택조합 추진위원회",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0213",
+      "zone_name": "(가칭)당곡역 지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0214",
+      "zone_name": "(가칭)신림지역주택조합 추진위원회",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0219",
+      "zone_name": "(가칭)한강광장 지역주택조합 추진위원회",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0242",
+      "zone_name": "개봉역 림괄지역주택조합 공동주택 신축공사",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0258",
+      "zone_name": "(가칭)구로3동 16통 24통 지역주택조합사업",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0275",
+      "zone_name": "독산지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0299",
+      "zone_name": "상계6재정비촉진구역 주택재개발정비사업 조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0304",
+      "zone_name": "상계2재정비촉진구역 주택재개발정비사업 조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0305",
+      "zone_name": "상계1재정비촉진구역 주택재개발정비사업 조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0320",
+      "zone_name": "쌍문2구역(쌍문동 81번지 일대) 주택정비형 재개발사업",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0322",
+      "zone_name": "쌍문제1구역 주택재개발정비사업조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0329",
+      "zone_name": "답십리제17구역 주택재개발정비사업",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0347",
+      "zone_name": "이문1재정비촉진구역 주택재개발정비사업조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0353",
+      "zone_name": "(가칭)전농지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0368",
+      "zone_name": "회기제1구역 주택재개발정비사업조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0391",
+      "zone_name": "사당3동 지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0399",
+      "zone_name": "(가칭)사당3동 양지지역주택조합 추진위원회",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0405",
+      "zone_name": "(가칭)이수지역주택조합 추진위원회",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0408",
+      "zone_name": "(가칭)상도메트로타운 지역주택조합 추진위원회",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0409",
+      "zone_name": "상도스타리움 지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0415",
+      "zone_name": "(가칭)상도3동 지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0417",
+      "zone_name": "(가칭)보라매센트럴 지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0426",
+      "zone_name": "흑석3재정비촉진구역 주택재개발정비사업조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0556",
+      "zone_name": "삼성홈스테이 지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0627",
+      "zone_name": "보문제2구역 주택재개발정비사업조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0645",
+      "zone_name": "안암2구역 주택재개발 정비사업조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0667",
+      "zone_name": "장위 4구역 주택재개발정비사업조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0695",
+      "zone_name": "(가칭)가락2지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0696",
+      "zone_name": "(가칭)가락1지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0706",
+      "zone_name": "(가칭)거여파크 지역주택조합 추진위원회",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0707",
+      "zone_name": "(가칭)거여역1지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0708",
+      "zone_name": "거여역2 지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0738",
+      "zone_name": "(가칭)오금역 지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0770",
+      "zone_name": "신월1구역 주택재개발정비사업 조합설립추진위원회",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0775",
+      "zone_name": "신정1재정비촉진구역1지구 주택재개발정비사업 조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0791",
+      "zone_name": "신정2재정비촉진구역2지구 주택재개발정비사업조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0808",
+      "zone_name": "(가칭)대림3지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0810",
+      "zone_name": "(가칭)영등포대림 지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0814",
+      "zone_name": "(가칭)대림1동지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0815",
+      "zone_name": "(가칭)대림동지역주택조합 추진위원회",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0843",
+      "zone_name": "(가칭)신길5동지역주택조합추진위원회",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0846",
+      "zone_name": "(가칭)뉴신길지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0847",
+      "zone_name": "(가칭)신길지역주택조합 추진위원회",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la0992",
+      "zone_name": "수색13재정비촉진구역 주택재개발정비사업 조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la1041",
+      "zone_name": "중림동 398번지 일대 재개발정비사업조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la1042",
+      "zone_name": "(가칭)황학동1010일대 지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la1043",
+      "zone_name": "황학동 청계 지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la1045",
+      "zone_name": "상봉13구역 재개발정비사업 조합설립추진위원회",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la1075",
+      "zone_name": "(가칭)면목2동지역주택조합",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "la1096",
+      "zone_name": "상봉역5구역 가로주택정비사업",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "jb01",
+      "zone_name": "상계4-1(희망촌)",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "jb02",
+      "zone_name": "창천",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "jb04",
+      "zone_name": "중곡4-1",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "jb05",
+      "zone_name": "무수골",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "jb13",
+      "zone_name": "구로3-3",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "jb14",
+      "zone_name": "구로3-4",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "jb15",
+      "zone_name": "구로6-1",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "jb16",
+      "zone_name": "공덕1-1",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "jb17",
+      "zone_name": "상암2-1",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "jb18",
+      "zone_name": "상암2-2",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "mh02",
+      "zone_name": "백사마을",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "mh04",
+      "zone_name": "헌인마을",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "mh05",
+      "zone_name": "수정마을",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "mh06",
+      "zone_name": "달터마을",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "mh07",
+      "zone_name": "개미마을",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "mh23",
+      "zone_name": "희망촌",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "mh25",
+      "zone_name": "성뒤마을",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "mh30",
+      "zone_name": "접시꽃마을",
+      "match_method": "circle_placeholder",
+      "category": null
+    },
+    {
+      "id": "mh31",
+      "zone_name": "화훼마을",
+      "match_method": "circle_placeholder",
+      "category": null
+    }
+  ]
+}

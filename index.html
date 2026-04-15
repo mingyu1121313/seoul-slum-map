@@ -940,6 +940,19 @@
         </div>
       </div>
 
+      <!-- 폐쇄성 필터 -->
+      <div style="padding:8px 14px;border-bottom:1px solid #f5f5f5;">
+        <div style="font-size:11.5px;font-weight:600;color:#222;margin-bottom:5px;">
+          폐쇄성<span style="font-size:9.5px;font-weight:400;color:#9ca3af;margin-left:5px;">경계·진입로·내부망·용도 가중합</span>
+        </div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;">
+          <button class="filter-mode-btn active" id="btn-enc-all" onclick="setEnclosureFilter('')"  style="font-size:11px;padding:2px 8px;">전체</button>
+          <button class="filter-mode-btn"        id="btn-enc-hi"  onclick="setEnclosureFilter('상')" style="font-size:11px;padding:2px 8px;">상</button>
+          <button class="filter-mode-btn"        id="btn-enc-mid" onclick="setEnclosureFilter('중')" style="font-size:11px;padding:2px 8px;">중</button>
+          <button class="filter-mode-btn"        id="btn-enc-lo"  onclick="setEnclosureFilter('하')" style="font-size:11px;padding:2px 8px;">하</button>
+        </div>
+      </div>
+
       <!-- AND/OR 토글 -->
       <div class="filter-mode-wrap" id="filter-mode-wrap">
         <span class="filter-mode-label">중복 조건</span>
@@ -1231,7 +1244,7 @@ let polygonsData = null;   // polygons.json 전체
 let activePolygon = null;  // 현재 선택된 폴리곤
 
 // 속성 필터 상태
-const attrFilters = { slope: false, near: false, mode: 'AND', age_min: 0 };
+const attrFilters = { slope: false, near: false, mode: 'AND', age_min: 0, enclosure: '' };
 
 let map;
 
@@ -1616,6 +1629,12 @@ function passesFilters(item, pdata) {
     if (!age || age < ageMin) return false;
   }
 
+  // 폐쇄성 필터
+  if (attrFilters.enclosure) {
+    const g = pdata ? pdata.enclosure_grade : null;
+    if (g !== attrFilters.enclosure) return false;
+  }
+
   if (!anyAttr) return true;
 
   const slope = item && item.is_slope === true;
@@ -1679,6 +1698,16 @@ function setAgeFilter(minAge) {
   [0, 10, 20, 30, 40].forEach(v => {
     const btn = document.getElementById('btn-age-' + v);
     if (btn) btn.classList.toggle('active', v === minAge);
+  });
+  applyVisibility();
+}
+
+function setEnclosureFilter(grade) {
+  attrFilters.enclosure = grade || '';
+  const map = { '': 'btn-enc-all', '상': 'btn-enc-hi', '중': 'btn-enc-mid', '하': 'btn-enc-lo' };
+  Object.entries(map).forEach(([g, id]) => {
+    const btn = document.getElementById(id);
+    if (btn) btn.classList.toggle('active', g === (grade || ''));
   });
   applyVisibility();
 }
@@ -2103,6 +2132,7 @@ function closeFullPano() {
 ──────────────────────────────────────────────── */
 function showPanel(item, cat) {
   const cfg = CAT_CONFIG[cat] || { color: '#888' };
+  const pdata = (polygonsData && item && item.id) ? polygonsData.polygons[item.id] : null;
 
   document.getElementById('p-name').textContent = item.name || '(이름 없음)';
 
@@ -2138,6 +2168,10 @@ function showPanel(item, cat) {
         .join(', ');
       rows += `<tr><td>직주근접</td><td>${hubStr}</td></tr>`;
     }
+    if (pdata && pdata.enclosure_grade) {
+      const gc = { '상': '#dc2626', '중': '#f59e0b', '하': '#16a34a' }[pdata.enclosure_grade] || '#555';
+      rows += `<tr><td>폐쇄성</td><td><span style="color:${gc};font-weight:700;">${pdata.enclosure_grade}</span> <span style="color:#9ca3af;font-size:10px;">(${pdata.enclosure_score})</span></td></tr>`;
+    }
     body.innerHTML = rows ? `<table class="p-table"><tbody>${rows}</tbody></table>` : '<p style="color:#aaa;font-size:12px;">상세정보 없음</p>';
   } else {
     // Layer B
@@ -2161,6 +2195,10 @@ function showPanel(item, cat) {
         .map(h => mins[h] != null ? `${h} ${mins[h]}분` : h)
         .join(', ');
       rows += `<tr><td>직주근접</td><td>${hubStr}</td></tr>`;
+    }
+    if (pdata && pdata.enclosure_grade) {
+      const gc = { '상': '#dc2626', '중': '#f59e0b', '하': '#16a34a' }[pdata.enclosure_grade] || '#555';
+      rows += `<tr><td>폐쇄성</td><td><span style="color:${gc};font-weight:700;">${pdata.enclosure_grade}</span> <span style="color:#9ca3af;font-size:10px;">(${pdata.enclosure_score})</span></td></tr>`;
     }
 
     let extra = '';
