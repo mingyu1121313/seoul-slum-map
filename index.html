@@ -1497,12 +1497,24 @@ function getPathsBBoxArea(paths) {
   return (maxLat - minLat) * (maxLng - minLng);
 }
 
+const _labelCtx = (() => {
+  const c = document.createElement('canvas');
+  return c.getContext('2d');
+})();
+const _LABEL_FONT_ROW1 = '700 11px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif';
+const _LABEL_FONT_ROW2 = '500 10px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif';
+
 function estimateLabelSize(short, addr, stage) {
-  const row1 = (short || '').length + 1 + (addr || '').length;
-  const row2 = (stage || '').length;
-  const maxLen = Math.max(row1, row2);
-  const w = Math.min(160, Math.max(90, maxLen * 11 + 16));
-  const h = stage ? 34 : 22;
+  _labelCtx.font = _LABEL_FONT_ROW1;
+  const shortW = _labelCtx.measureText(short || '').width;
+  const addrW  = _labelCtx.measureText(addr  || '').width;
+  _labelCtx.font = _LABEL_FONT_ROW2;
+  const stageW = _labelCtx.measureText(stage || '').width;
+  const row1W  = shortW + 4 /* .pl-short margin-right */ + addrW;
+  const textW  = Math.max(row1W, stageW);
+  // padding 6+6 + border 1+1 = 14
+  const w = Math.min(160, Math.max(90, Math.ceil(textW + 14)));
+  const h = stage ? 38 : 22;
   return { w, h };
 }
 
