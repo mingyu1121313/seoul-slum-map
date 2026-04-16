@@ -2054,10 +2054,10 @@ function passesFiltersWith(item, pdata, override) {
   const ageMin  = f.age_min || 0;
   const anyAttr = slopeOn || nearOn;
 
-  // 노후도 필터
+  // 노후도 필터 (avg_bldg_age 데이터 없는 폴리곤은 필터 skip — 모아타운 등)
   if (ageMin > 0) {
     const age = pdata ? pdata.avg_bldg_age : null;
-    if (!age || age < ageMin) return false;
+    if (age != null && age < ageMin) return false;
   }
 
   // 폐쇄성 필터
