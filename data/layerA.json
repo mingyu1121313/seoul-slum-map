@@ -9094,11 +9094,11 @@
       "geocode_status": "ok",
       "slope_pct": 12.0,
       "is_slope": true,
-      "near_job": false,
-      "near_hubs": [],
+      "near_job": true,
+      "near_hubs": ["CBD"],
       "relief_m": 52,
       "near_minutes": {
-        "CBD": 21
+        "CBD": 20
       }
     },
     {
@@ -9532,10 +9532,10 @@
       "category": "모아타운",
       "stage": "관리계획수립",
       "near_minutes": {
-        "CBD": 25
+        "CBD": 20
       },
-      "near_hubs": [],
-      "near_job": false
+      "near_hubs": ["CBD"],
+      "near_job": true
     },
     {
       "id": "moa1353",
