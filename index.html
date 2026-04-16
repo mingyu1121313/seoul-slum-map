@@ -313,6 +313,48 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
+    /* ── 폴리곤 위 라벨 (jaegebal.com 스타일) ───────── */
+    .poly-label {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      min-width: 88px;
+      max-width: 160px;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+      pointer-events: none;
+      user-select: none;
+      text-align: center;
+    }
+    .poly-label .pl-bar {
+      height: 3px;
+      width: 100%;
+    }
+    .poly-label .pl-row1 {
+      padding: 3px 6px 1px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #111827;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .poly-label .pl-short {
+      margin-right: 4px;
+    }
+    .poly-label .pl-row2 {
+      padding: 0 6px 3px;
+      font-size: 10px;
+      font-weight: 500;
+      color: #6b7280;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     /* ── 하단 푸터 ───────────────────────────── */
     #site-footer {
       background: #111;
@@ -1229,14 +1271,14 @@
    색상 / 카테고리 설정
 ──────────────────────────────────────────────── */
 const CAT_CONFIG = {
-  '재개발(주택정비형)':   { color: '#1D4ED8', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
-  '가로주택정비':        { color: '#0891B2', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
-  '모아타운':           { color: '#16A34A', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
-  '지역주택':           { color: '#7C3AED', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
-  '주거환경개선(정비형)': { color: '#059669', layer: 'A', shape: 'circle', size: 11, opacity: 1 },
-  '자연발생':           { color: '#DC2626', layer: 'B', shape: 'diamond', size: 11, opacity: 1 },
-  '집단이주':           { color: '#EA580C', layer: 'B', shape: 'diamond', size: 11, opacity: 1 },
-  '신발생':             { color: '#D97706', layer: 'B', shape: 'diamond', size: 11, opacity: 1 },
+  '재개발(주택정비형)':   { color: '#1D4ED8', layer: 'A', shape: 'circle', size: 11, opacity: 1, short: '재개발' },
+  '가로주택정비':        { color: '#0891B2', layer: 'A', shape: 'circle', size: 11, opacity: 1, short: '가로주택' },
+  '모아타운':           { color: '#16A34A', layer: 'A', shape: 'circle', size: 11, opacity: 1, short: '모아' },
+  '지역주택':           { color: '#7C3AED', layer: 'A', shape: 'circle', size: 11, opacity: 1, short: '지주택' },
+  '주거환경개선(정비형)': { color: '#059669', layer: 'A', shape: 'circle', size: 11, opacity: 1, short: '주거환경' },
+  '자연발생':           { color: '#DC2626', layer: 'B', shape: 'diamond', size: 11, opacity: 1, short: '자연발생' },
+  '집단이주':           { color: '#EA580C', layer: 'B', shape: 'diamond', size: 11, opacity: 1, short: '집단이주' },
+  '신발생':             { color: '#D97706', layer: 'B', shape: 'diamond', size: 11, opacity: 1, short: '신발생' },
 };
 
 const LAYER_A_ORDER = [
@@ -1253,9 +1295,11 @@ const LAYER_B_ORDER = ['자연발생', '집단이주', '신발생'];
 ──────────────────────────────────────────────── */
 const markersByCategory = {};   // category → [naver.maps.Marker]
 const polygonsByCategory = {};  // category → [naver.maps.Polygon]
+const labelsByCategory  = {};   // category → [naver.maps.Marker] (폴리곤 위 라벨)
 const hiddenCategories = new Set();
 const itemsByMarker  = new WeakMap(); // marker  → {item, cat}
 const itemsByPolygon = new WeakMap(); // polygon → {item, cat}
+const ZOOM_LABEL_MIN = 14;
 let polygonsData = null;   // polygons.json 전체
 let activePolygon = null;  // 현재 선택된 폴리곤
 
@@ -1407,6 +1451,51 @@ function getBldgAgeColor(age) {
   return '#dc2626';                 // 빨강 (40년+)
 }
 
+function escapeHtml(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+function getPolygonCentroid(paths) {
+  // paths: LatLng[][] — 첫 번째 링 기준 평균 좌표
+  const ring = (paths && paths[0]) || [];
+  if (!ring.length) return null;
+  let sumLat = 0, sumLng = 0;
+  ring.forEach(p => { sumLat += p.lat(); sumLng += p.lng(); });
+  return new naver.maps.LatLng(sumLat / ring.length, sumLng / ring.length);
+}
+
+function createPolygonLabel(item, cat, paths) {
+  const cfg = CAT_CONFIG[cat];
+  if (!cfg) return null;
+  const center = getPolygonCentroid(paths);
+  if (!center) return null;
+
+  const short = cfg.short || cat;
+  const addr  = item.address || item.name || '';
+  const stage = item.stage || '';
+
+  const html = `
+    <div class="poly-label">
+      <div class="pl-bar" style="background:${cfg.color}"></div>
+      <div class="pl-row1"><span class="pl-short" style="color:${cfg.color}">${escapeHtml(short)}</span>${escapeHtml(addr)}</div>
+      ${stage ? `<div class="pl-row2">${escapeHtml(stage)}</div>` : ''}
+    </div>`;
+
+  const label = new naver.maps.Marker({
+    position: center,
+    map: (map.getZoom() >= ZOOM_LABEL_MIN) ? map : null,
+    icon: {
+      content: html,
+      anchor: new naver.maps.Point(60, 14),
+    },
+    zIndex: 50,
+    clickable: false,
+  });
+  return label;
+}
+
 function createPolygon(item, cat, pdata) {
   const cfg = CAT_CONFIG[cat];
   if (!cfg || !pdata || !pdata.polygon) return null;
@@ -1473,13 +1562,37 @@ function initPolygons(data) {
       if (!pdata || !pdata.polygon) return; // 폴리곤 없으면 마커 유지
 
       if (!polygonsByCategory[cat]) polygonsByCategory[cat] = [];
+      if (!labelsByCategory[cat])   labelsByCategory[cat]   = [];
       const poly = createPolygon(item, cat, pdata);
-      if (poly) polygonsByCategory[cat].push(poly);
+      if (poly) {
+        polygonsByCategory[cat].push(poly);
+        // 라벨 생성 (폴리곤 paths 재구성)
+        const coords = pdata.polygon.coordinates;
+        const paths = (pdata.polygon.type === 'MultiPolygon' ? coords : [coords])
+          .map(ring => ring[0].map(([lng, lat]) => new naver.maps.LatLng(lat, lng)));
+        const label = createPolygonLabel(item, cat, paths);
+        if (label) labelsByCategory[cat].push(label);
+      }
     });
   }
 
   processItems(data.layerA.items,          getCategoryA);
   processItems(data.layerB.items,          getCategoryB);
+
+  // 줌 변경 → 라벨 가시성 토글
+  naver.maps.Event.addListener(map, 'zoom_changed', updateLabelVisibilityByZoom);
+}
+
+function updateLabelVisibilityByZoom() {
+  const show = map.getZoom() >= ZOOM_LABEL_MIN;
+  Object.keys(labelsByCategory).forEach(cat => {
+    if (hiddenCategories.has(cat)) return; // 카테고리 숨김 상태면 그대로 둠
+    (labelsByCategory[cat] || []).forEach(lb => {
+      // 개별 숨김 플래그(_attrHidden)가 true면 표시하지 않음
+      if (lb._attrHidden) return;
+      lb.setMap(show ? map : null);
+    });
+  });
 }
 
 /* ────────────────────────────────────────────────
@@ -1676,9 +1789,10 @@ function applyVisibility() {
   });
 
   // 폴리곤 (폴리곤 있는 사이트)
+  const showLabelsByZoom = map.getZoom() >= ZOOM_LABEL_MIN;
   Object.keys(polygonsByCategory).forEach(cat => {
     const catHidden = hiddenCategories.has(cat);
-    (polygonsByCategory[cat] || []).forEach(poly => {
+    (polygonsByCategory[cat] || []).forEach((poly, idx) => {
       if (catHidden) { poly.setMap(null); return; }
       const d = itemsByPolygon.get(poly);
       const item = d ? d.item : null;
@@ -1693,6 +1807,13 @@ function applyVisibility() {
       } else if (show) {
         const cfg = CAT_CONFIG[cat];
         if (cfg) poly.setOptions({ fillColor: cfg.color, fillOpacity: 0.18 });
+      }
+
+      // 라벨: 폴리곤과 1:1 매칭, 카테고리 숨김·필터 탈락·줌 미달이면 숨김
+      const label = (labelsByCategory[cat] || [])[idx];
+      if (label) {
+        label._attrHidden = !show;
+        label.setMap((show && showLabelsByZoom) ? map : null);
       }
     });
   });
@@ -1736,8 +1857,12 @@ function setAttrListOpen(key, open) {
   const arrow = document.getElementById('attr-exp-' + key);
   if (!list) return;
   const isOpen = list.style.maxHeight && list.style.maxHeight !== '0px';
-  if (open === isOpen) return;
-  toggleAttrList(key);
+  if (open !== isOpen) {
+    toggleAttrList(key);
+  } else if (!open && arrow) {
+    // 이미 닫혀 있지만 화살표가 펼쳐진 상태로 남아있는 경우 동기화
+    arrow.classList.remove('open');
+  }
 }
 
 function setFilterMode(mode) {
