@@ -2958,6 +2958,10 @@ function showPanel(item, cat) {
     if (item.geocode_status && item.geocode_status !== 'ok') {
       rows += `<tr><td>좌표</td><td><span style="color:#f59e0b;font-size:10px;">근사값(동 중심)</span></td></tr>`;
     }
+    if (pdata && pdata.zone_area_m2) {
+      const a = Math.round(pdata.zone_area_m2).toLocaleString();
+      rows += `<tr><td>면적</td><td>${a} m²</td></tr>`;
+    }
     if (item.slope_pct != null) {
       const slopeLabel = item.is_slope
         ? `<span style="color:#b45309;font-weight:700;">${item.slope_pct}% (경사지)</span>`
@@ -2986,6 +2990,10 @@ function showPanel(item, cat) {
     if (item.address)        rows += `<tr><td>주소</td><td>${item.address}</td></tr>`;
     if (item.gu)             rows += `<tr><td>자치구</td><td>${item.gu}</td></tr>`;
     if (item.dong)           rows += `<tr><td>동</td><td>${item.dong}</td></tr>`;
+    if (pdata && pdata.zone_area_m2) {
+      const a = Math.round(pdata.zone_area_m2).toLocaleString();
+      rows += `<tr><td>면적</td><td>${a} m²</td></tr>`;
+    }
     if (item.slope_pct != null) {
       const slopeLabel = item.is_slope
         ? `<span style="color:#b45309;font-weight:700;">${item.slope_pct}% (경사지)</span>`
