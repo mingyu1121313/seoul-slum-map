@@ -1551,6 +1551,7 @@ function createPolygonLabel(item, cat, paths) {
   label._w        = size.w;
   label._h        = size.h;
   label._offsetY  = 0;
+  label._onMap    = false; // 성능: setMap 중복 호출 방지 플래그
   return label;
 }
 
@@ -1661,16 +1662,23 @@ const MAX_STACK   = 5;    // 한 클러스터당 최대 표시
 let _overflowMarkers = [];
 let _relayoutTimer = null;
 let _relayingOut = false;
+let _pendingRelayout = false;
 
 function scheduleRelayout() {
-  if (_relayoutTimer || _relayingOut) return;
+  // 실행 중이면 끝난 뒤 1회 재실행 예약(trailing)
+  if (_relayingOut) { _pendingRelayout = true; return; }
+  // 연속 이벤트 오면 마지막 것만 실행(trailing-debounce)
+  if (_relayoutTimer) clearTimeout(_relayoutTimer);
   _relayoutTimer = setTimeout(() => {
     _relayoutTimer = null;
     _relayingOut = true;
     try { relayoutLabels(); }
     catch (e) { console.error('relayoutLabels error:', e); }
-    finally { _relayingOut = false; }
-  }, 16);
+    finally {
+      _relayingOut = false;
+      if (_pendingRelayout) { _pendingRelayout = false; scheduleRelayout(); }
+    }
+  }, 120);
 }
 
 function boxesCollide(a, b) {
@@ -1688,34 +1696,79 @@ function relayoutLabels() {
   if (!projection) return;
 
   const showByZoom = map.getZoom() >= ZOOM_LABEL_MIN;
+  const bounds = map.getBounds();
+  // 뷰포트 10% 여유(panning 직후 튀는 것 방지)
+  const sw = bounds.getSW(), ne = bounds.getNE();
+  const latSpan = ne.lat() - sw.lat(), lngSpan = ne.lng() - sw.lng();
+  const latMin = sw.lat() - latSpan * 0.1, latMax = ne.lat() + latSpan * 0.1;
+  const lngMin = sw.lng() - lngSpan * 0.1, lngMax = ne.lng() + lngSpan * 0.1;
 
-  // 대상 라벨 수집 (카테고리 숨김·속성 필터 통과한 것만)
+  // _onMap 플래그로 setMap 중복 호출 방지하며 off 처리
+  const hideLabel = (lb) => {
+    if (lb._onMap) { lb.setMap(null); lb._onMap = false; }
+  };
+
+  // 대상 라벨 수집 (카테고리 숨김·속성 필터·뷰포트 통과한 것만)
   const candidates = [];
   Object.keys(labelsByCategory).forEach(cat => {
-    if (hiddenCategories.has(cat)) {
-      (labelsByCategory[cat] || []).forEach(lb => lb.setMap(null));
-      return;
-    }
-    (labelsByCategory[cat] || []).forEach(lb => {
-      if (lb._attrHidden) { lb.setMap(null); return; }
+    const arr = labelsByCategory[cat] || [];
+    if (hiddenCategories.has(cat)) { arr.forEach(hideLabel); return; }
+    for (let i = 0; i < arr.length; i++) {
+      const lb = arr[i];
+      if (lb._attrHidden) { hideLabel(lb); continue; }
+      if (!showByZoom)    { hideLabel(lb); continue; }
+      // 뷰포트 컬링
+      const pos = lb.getPosition();
+      const lat = pos.lat(), lng = pos.lng();
+      if (lat < latMin || lat > latMax || lng < lngMin || lng > lngMax) {
+        hideLabel(lb); continue;
+      }
       candidates.push(lb);
-    });
+    }
   });
 
   clearOverflowMarkers();
+  if (!showByZoom) return;
 
-  if (!showByZoom) {
-    candidates.forEach(lb => lb.setMap(null));
-    return;
-  }
-
-  // 면적 내림차순 정렬: 큰 폴리곤이 먼저 배치(맨 아래), 작은 게 나중에 위로 쌓임
+  // 면적 내림차순(큰 폴리곤이 먼저 배치 → 작은 게 위로 쌓임)
   candidates.sort((a, b) => (b._area || 0) - (a._area || 0));
 
-  const placed = []; // {box, cluster}
-  const clusters = []; // {anchor, overflow}
+  // 공간 그리드 인덱싱 (충돌 검사 O(N²) → 근접 O(N))
+  const CELL = 64;
+  const grid = new Map();
+  const gkey = (cx, cy) => cx * 100000 + cy;
+  function insertGrid(entry) {
+    const b = entry.box;
+    const cx0 = Math.floor(b.x / CELL), cy0 = Math.floor(b.y / CELL);
+    const cx1 = Math.floor((b.x + b.w) / CELL), cy1 = Math.floor((b.y + b.h) / CELL);
+    for (let cx = cx0; cx <= cx1; cx++) {
+      for (let cy = cy0; cy <= cy1; cy++) {
+        const k = gkey(cx, cy);
+        let bucket = grid.get(k);
+        if (!bucket) { bucket = []; grid.set(k, bucket); }
+        bucket.push(entry);
+      }
+    }
+  }
+  function findCollider(trial) {
+    const cx0 = Math.floor(trial.x / CELL), cy0 = Math.floor(trial.y / CELL);
+    const cx1 = Math.floor((trial.x + trial.w) / CELL), cy1 = Math.floor((trial.y + trial.h) / CELL);
+    for (let cx = cx0; cx <= cx1; cx++) {
+      for (let cy = cy0; cy <= cy1; cy++) {
+        const bucket = grid.get(gkey(cx, cy));
+        if (!bucket) continue;
+        for (let i = 0; i < bucket.length; i++) {
+          if (boxesCollide(trial, bucket[i].box)) return bucket[i];
+        }
+      }
+    }
+    return null;
+  }
 
-  candidates.forEach(label => {
+  const clusters = [];
+
+  for (let i = 0; i < candidates.length; i++) {
+    const label = candidates[i];
     const pos = label.getPosition();
     const px  = projection.fromCoordToOffset(pos);
     const w = label._w, h = label._h;
@@ -1724,31 +1777,35 @@ function relayoutLabels() {
 
     let stackIdx = 0;
     let cluster = null;
+    let placedOk = false;
     while (stackIdx < MAX_STACK) {
       const offsetY = stackIdx * (h + STACK_GAP);
       const trialBox = { x: baseX, y: baseY - offsetY, w: w, h: h };
-      const collider = placed.find(p => boxesCollide(trialBox, p.box));
+      const collider = findCollider(trialBox);
       if (!collider) {
         setLabelOffsetY(label, offsetY);
-        label.setMap(map);
+        if (!label._onMap) { label.setMap(map); label._onMap = true; }
         const myCluster = cluster || (() => {
           const c = { anchor: pos, overflow: 0 };
           clusters.push(c);
           return c;
         })();
-        placed.push({ box: trialBox, cluster: myCluster });
-        return;
+        insertGrid({ box: trialBox, cluster: myCluster });
+        placedOk = true;
+        break;
       }
       cluster = collider.cluster;
       stackIdx++;
     }
-    // 스택 초과 → 숨김 + 클러스터 카운트
-    label.setMap(null);
-    if (cluster) cluster.overflow++;
-  });
+    if (!placedOk) {
+      hideLabel(label);
+      if (cluster) cluster.overflow++;
+    }
+  }
 
   // +N 배지 렌더
-  clusters.forEach(c => {
+  for (let i = 0; i < clusters.length; i++) {
+    const c = clusters[i];
     if (c.overflow > 0) {
       const badge = new naver.maps.Marker({
         position: c.anchor,
@@ -1762,7 +1819,7 @@ function relayoutLabels() {
       });
       _overflowMarkers.push(badge);
     }
-  });
+  }
 }
 
 /* ────────────────────────────────────────────────
