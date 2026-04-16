@@ -1039,6 +1039,14 @@
         <!-- populated by buildAttrFilterBody() -->
       </div>
 
+      <!-- 필터 통과 목록 -->
+      <div class="attr-filter-row" id="passed-list-row">
+        <label class="attr-filter-label" style="cursor:pointer;" onclick="togglePassedList(event)">필터 통과 목록</label>
+        <span class="attr-count" id="passed-list-count">0</span>
+        <span class="cat-expand" id="passed-list-exp" onclick="togglePassedList(event)">&#9654;</span>
+      </div>
+      <div class="cat-list" id="passed-list-body"></div>
+
       <!-- AND/OR 토글 -->
       <div class="filter-mode-wrap" id="filter-mode-wrap">
         <span class="filter-mode-label">중복 조건</span>
@@ -2129,49 +2137,47 @@ function setFilterMode(mode) {
    속성 필터 리스트 빌드 / 토글
 ──────────────────────────────────────────────── */
 function buildAttrFilterBody() {
-  // 현재 보이는 카테고리(hiddenCategories에 없는)의 마커·폴리곤 모두 수집
+  // 개별 속성 리스트: 해당 속성 override + 나머지 현재 필터 교차 통과한 것만
   const slopeItems = [];
   const nearItems  = [];
   const ageItems   = [];
   const encItems   = [];
-  const seen       = new Set();
   const ageMin     = attrFilters.age_min || 0;
   const encGrade   = attrFilters.enclosure || '';
   const polys      = polygonsData ? polygonsData.polygons : {};
 
+  const seen = new Set();
   function collect(item, cat, pdata) {
     if (!item || seen.has(item.id)) return;
     seen.add(item.id);
-    if (item.is_slope) slopeItems.push({ item, cat, pdata });
-    if (item.near_job) nearItems.push({ item, cat, pdata });
-    const age = pdata ? pdata.avg_bldg_age : null;
-    if (ageMin > 0 && age != null && age >= ageMin) {
-      ageItems.push({ item, cat, pdata });
+    if (item.is_slope && passesFiltersWith(item, pdata, { slope: true })) {
+      slopeItems.push({ item, cat, pdata });
     }
-    const g = pdata ? pdata.enclosure_grade : null;
-    if (encGrade && g === encGrade) {
-      encItems.push({ item, cat, pdata });
+    if (item.near_job && passesFiltersWith(item, pdata, { near: true })) {
+      nearItems.push({ item, cat, pdata });
+    }
+    if (ageMin > 0) {
+      const age = pdata ? pdata.avg_bldg_age : null;
+      if (age != null && age >= ageMin && passesFilters(item, pdata)) {
+        ageItems.push({ item, cat, pdata });
+      }
+    }
+    if (encGrade) {
+      const g = pdata ? pdata.enclosure_grade : null;
+      if (g === encGrade && passesFilters(item, pdata)) {
+        encItems.push({ item, cat, pdata });
+      }
     }
   }
 
-  Object.keys(markersByCategory).forEach(cat => {
-    if (hiddenCategories.has(cat)) return;
-    (markersByCategory[cat] || []).forEach(m => {
-      const d    = itemsByMarker.get(m);
-      const item = d ? d.item : null;
-      const pdata = item ? (polys[item.id] || null) : null;
-      collect(item, cat, pdata);
+  if (rawData) {
+    (rawData.layerA && rawData.layerA.items || []).forEach(item => {
+      collect(item, getCategoryA(item), polys[item.id] || null);
     });
-  });
-  Object.keys(polygonsByCategory).forEach(cat => {
-    if (hiddenCategories.has(cat)) return;
-    (polygonsByCategory[cat] || []).forEach(poly => {
-      const d = itemsByPolygon.get(poly);
-      const item  = d ? d.item  : null;
-      const pdata = d ? d.pdata : (item ? polys[item.id] : null);
-      collect(item, cat, pdata);
+    (rawData.layerB && rawData.layerB.items || []).forEach(item => {
+      collect(item, getCategoryB(item), polys[item.id] || null);
     });
-  });
+  }
 
   // 정렬: 노후도는 연차 내림차순, 폐쇄성은 점수 내림차순
   ageItems.sort((a, b) => (b.pdata?.avg_bldg_age || 0) - (a.pdata?.avg_bldg_age || 0));
@@ -2241,17 +2247,8 @@ function buildAttrFilterBody() {
     });
   }
 
-  // 카운트 배지
-  const ageCntEl = document.getElementById('attr-count-age');
-  if (ageCntEl) {
-    if (ageMin > 0) { ageCntEl.textContent = ageItems.length; ageCntEl.style.display = ''; }
-    else ageCntEl.style.display = 'none';
-  }
-  const encCntEl = document.getElementById('attr-count-enc');
-  if (encCntEl) {
-    if (encGrade) { encCntEl.textContent = encItems.length; encCntEl.style.display = ''; }
-    else encCntEl.style.display = 'none';
-  }
+  // 필터 통과 목록 (통합)
+  buildPassedList();
 
   // 열려 있는 리스트의 maxHeight를 새 내용에 맞게 재조정
   ['slope', 'near', 'age', 'enc'].forEach(key => {
@@ -2261,10 +2258,88 @@ function buildAttrFilterBody() {
       list.style.maxHeight = list.scrollHeight + 'px';
     }
   });
+  const passedBody = document.getElementById('passed-list-body');
+  if (passedBody && passedBody.style.maxHeight && passedBody.style.maxHeight !== '0px') {
+    passedBody.style.maxHeight = 'none';
+    passedBody.style.maxHeight = passedBody.scrollHeight + 'px';
+  }
   const accBody = document.getElementById('acc-c-body');
   if (accBody && accBody.style.maxHeight && accBody.style.maxHeight !== '0px') {
     accBody.style.maxHeight = 'none';
     accBody.style.maxHeight = accBody.scrollHeight + 'px';
+  }
+}
+
+function buildPassedList() {
+  if (!rawData) return;
+  const polys = polygonsData ? polygonsData.polygons : {};
+  const seen = new Set();
+  const items = [];
+
+  function addIf(item, cat) {
+    if (!item || seen.has(item.id)) return;
+    const pdata = polys[item.id] || null;
+    if (passesFilters(item, pdata)) {
+      seen.add(item.id);
+      items.push({ item, cat });
+    }
+  }
+  (rawData.layerA && rawData.layerA.items || []).forEach(it => addIf(it, getCategoryA(it)));
+  (rawData.layerB && rawData.layerB.items || []).forEach(it => addIf(it, getCategoryB(it)));
+
+  // 이름 가나다순
+  items.sort((a, b) => (a.item.name || '').localeCompare(b.item.name || '', 'ko'));
+
+  const body  = document.getElementById('passed-list-body');
+  const cntEl = document.getElementById('passed-list-count');
+  if (cntEl) cntEl.textContent = items.length;
+  if (!body) return;
+  body.innerHTML = '';
+  if (items.length === 0) {
+    const msg = document.createElement('div');
+    msg.className = 'cat-list-item';
+    msg.style.color = '#9ca3af';
+    msg.style.justifyContent = 'center';
+    msg.textContent = '조건에 맞는 사이트가 없습니다';
+    body.appendChild(msg);
+    return;
+  }
+  items.forEach(({ item, cat }) => {
+    const addr = item.address || [item.gu, item.dong].filter(Boolean).join(' ');
+    const li = document.createElement('div');
+    li.className = 'cat-list-item';
+    li.innerHTML = `<span class="cat-list-name">${item.name || ''}</span>` +
+                   `<span class="cat-list-addr">${addr}</span>`;
+    li.onclick = () => {
+      showPanel(item, cat);
+      if (item.lat && item.lng) map.panTo(new naver.maps.LatLng(item.lat, item.lng));
+    };
+    body.appendChild(li);
+  });
+}
+
+function togglePassedList(e) {
+  if (e) e.stopPropagation();
+  const list  = document.getElementById('passed-list-body');
+  const arrow = document.getElementById('passed-list-exp');
+  if (!list) return;
+  const isOpen = list.style.maxHeight && list.style.maxHeight !== '0px';
+  const accBody = document.getElementById('acc-c-body');
+
+  if (isOpen) {
+    const h = list.scrollHeight;
+    list.style.maxHeight = '0px';
+    if (arrow) arrow.classList.remove('open');
+    if (accBody && !accBody.classList.contains('collapsed')) {
+      accBody.style.maxHeight = (parseFloat(accBody.style.maxHeight) - h) + 'px';
+    }
+  } else {
+    list.style.maxHeight = list.scrollHeight + 'px';
+    if (arrow) arrow.classList.add('open');
+    if (accBody && !accBody.classList.contains('collapsed')) {
+      const cur = parseFloat(accBody.style.maxHeight) || accBody.scrollHeight;
+      accBody.style.maxHeight = (cur + list.scrollHeight) + 'px';
+    }
   }
 }
 
