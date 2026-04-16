@@ -1014,6 +1014,14 @@
       <span class="acc-arrow open" id="acc-c-arrow" onclick="toggleAcc('c')">&#9654;</span>
     </div>
     <div class="acc-body" id="acc-c-body">
+      <!-- 필터 통과 목록 (최상단) -->
+      <div class="attr-filter-row" id="passed-list-row">
+        <label class="attr-filter-label" style="cursor:pointer;" onclick="togglePassedList(event)">필터 통과 목록</label>
+        <span class="attr-count" id="passed-list-count">0</span>
+        <span class="cat-expand" id="passed-list-exp" onclick="togglePassedList(event)">&#9654;</span>
+      </div>
+      <div class="cat-list" id="passed-list-body"></div>
+
       <!-- 경사지 필터 행 -->
       <div class="attr-filter-row">
         <input type="checkbox" class="cat-chk" id="chk-attr-slope"
@@ -1084,14 +1092,6 @@
       <div class="cat-list" id="attr-list-enc">
         <!-- populated by buildAttrFilterBody() -->
       </div>
-
-      <!-- 필터 통과 목록 -->
-      <div class="attr-filter-row" id="passed-list-row">
-        <label class="attr-filter-label" style="cursor:pointer;" onclick="togglePassedList(event)">필터 통과 목록</label>
-        <span class="attr-count" id="passed-list-count">0</span>
-        <span class="cat-expand" id="passed-list-exp" onclick="togglePassedList(event)">&#9654;</span>
-      </div>
-      <div class="cat-list" id="passed-list-body"></div>
 
       <!-- AND/OR 토글 -->
       <div class="filter-mode-wrap" id="filter-mode-wrap">
@@ -2228,36 +2228,30 @@ function setFilterMode(mode) {
    속성 필터 리스트 빌드 / 토글
 ──────────────────────────────────────────────── */
 function buildAttrFilterBody() {
-  // 개별 속성 리스트: 해당 속성 override + 나머지 현재 필터 교차 통과한 것만
+  // 개별 속성 리스트: 전체 데이터 기준 해당 속성 단독 조건 (다른 필터 상태 무시, 고정)
   const slopeItems = [];
   const nearItems  = [];
   const ageItems   = [];
   const encItems   = [];
-  const ageMin     = attrFilters.age_min || 0;
-  const encGrade   = attrFilters.enclosure || '';
   const polys      = polygonsData ? polygonsData.polygons : {};
 
   const seen = new Set();
   function collect(item, cat, pdata) {
     if (!item || seen.has(item.id)) return;
     seen.add(item.id);
-    if (item.is_slope && passesFiltersWith(item, pdata, { slope: true })) {
+    if (item.is_slope) {
       slopeItems.push({ item, cat, pdata });
     }
-    if (item.near_job && passesFiltersWith(item, pdata, { near: true })) {
+    if (item.near_job) {
       nearItems.push({ item, cat, pdata });
     }
-    if (ageMin > 0) {
-      const age = pdata ? pdata.avg_bldg_age : null;
-      if (age != null && age >= ageMin && passesFilters(item, pdata)) {
-        ageItems.push({ item, cat, pdata });
-      }
+    // 노후도: avg_bldg_age 있는 전체 폴리곤 (연차 내림차순 정렬용)
+    if (pdata && pdata.avg_bldg_age != null) {
+      ageItems.push({ item, cat, pdata });
     }
-    if (encGrade) {
-      const g = pdata ? pdata.enclosure_grade : null;
-      if (g === encGrade && passesFilters(item, pdata)) {
-        encItems.push({ item, cat, pdata });
-      }
+    // 폐쇄성: enclosure_grade 있는 전체 폴리곤 (점수 내림차순 정렬용)
+    if (pdata && pdata.enclosure_grade) {
+      encItems.push({ item, cat, pdata });
     }
   }
 
@@ -2552,23 +2546,34 @@ function updateFilterCounts() {
     gcC.style.color = '#1d4ed8';
   }
 
-  // 경사지 / 직주근접: 해당 속성만 true 로 override
+  // 개별 배지/버튼 카운트는 전체 612 기준으로 "순수 속성 단독" 계산 (카테고리 필터 영향 X)
+  // passesFiltersWith가 attrFilters에 override를 얹어 평가하므로, 다른 속성을 비활성화한 override로 계산
+  const allA = pairsA, allB = pairsB;
+  function countPure(override) {
+    const ov = Object.assign({ slope: false, near: false, age_min: 0, enclosure: '' }, override);
+    let n = 0;
+    for (const [it, pd] of allA) if (passesFiltersWith(it, pd, ov)) n++;
+    for (const [it, pd] of allB) if (passesFiltersWith(it, pd, ov)) n++;
+    return n;
+  }
+
+  // 경사지 / 직주근접: 해당 속성만 true (고정)
   const slopeEl = document.getElementById('attr-count-slope');
   const nearEl  = document.getElementById('attr-count-near');
-  if (slopeEl) slopeEl.textContent = countWith({ slope: true }).total;
-  if (nearEl)  nearEl.textContent  = countWith({ near:  true }).total;
+  if (slopeEl) slopeEl.textContent = countPure({ slope: true });
+  if (nearEl)  nearEl.textContent  = countPure({ near:  true });
 
-  // 노후도 버튼 (0/10/20/30/40) 각 가정
+  // 노후도 버튼 (0/10/20/30/40) 각 가정 (고정)
   [0, 10, 20, 30, 40].forEach(v => {
     const el = document.getElementById('btn-age-' + v + '-cnt');
-    if (el) el.textContent = countWith({ age_min: v }).total;
+    if (el) el.textContent = countPure({ age_min: v });
   });
 
-  // 폐쇄성 버튼 (전체/상/중/하)
+  // 폐쇄성 버튼 (전체/상/중/하) (고정)
   const encMap = { '': 'all', '상': 'hi', '중': 'mid', '하': 'lo' };
   Object.entries(encMap).forEach(([g, key]) => {
     const el = document.getElementById('btn-enc-' + key + '-cnt');
-    if (el) el.textContent = countWith({ enclosure: g }).total;
+    if (el) el.textContent = countPure({ enclosure: g });
   });
 }
 
