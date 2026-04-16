@@ -9420,7 +9420,9 @@
         "CBD": 30
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 68,
+      "is_slope": true
     },
     {
       "id": "moa1179",
@@ -9436,7 +9438,9 @@
       "near_hubs": [
         "YBD"
       ],
-      "near_job": true
+      "near_job": true,
+      "relief_m": 23,
+      "is_slope": false
     },
     {
       "id": "moa1188",
@@ -9447,7 +9451,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 6,
+      "is_slope": false
     },
     {
       "id": "moa1218",
@@ -9458,7 +9464,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 27,
+      "is_slope": false
     },
     {
       "id": "moa1229",
@@ -9469,7 +9477,9 @@
       "stage": "관리계획수립",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 5,
+      "is_slope": false
     },
     {
       "id": "moa1236",
@@ -9480,7 +9490,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 4,
+      "is_slope": false
     },
     {
       "id": "moa1308",
@@ -9491,7 +9503,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 2,
+      "is_slope": false
     },
     {
       "id": "moa1328",
@@ -9502,7 +9516,9 @@
       "stage": "관리계획수립",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 9,
+      "is_slope": false
     },
     {
       "id": "moa1344",
@@ -9513,7 +9529,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 32,
+      "is_slope": true
     },
     {
       "id": "moa1349",
@@ -9524,7 +9542,9 @@
       "stage": "관리계획수립",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 9,
+      "is_slope": false
     },
     {
       "id": "moa1350",
@@ -9539,7 +9559,9 @@
       "near_hubs": [
         "CBD"
       ],
-      "near_job": true
+      "near_job": true,
+      "relief_m": 38,
+      "is_slope": true
     },
     {
       "id": "moa1353",
@@ -9552,7 +9574,9 @@
         "YBD": 23
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 10,
+      "is_slope": false
     },
     {
       "id": "moa1368",
@@ -9565,7 +9589,9 @@
         "YBD": 29
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 35,
+      "is_slope": true
     },
     {
       "id": "moa1377",
@@ -9576,7 +9602,9 @@
       "stage": "관리계획수립",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 2,
+      "is_slope": false
     },
     {
       "id": "moa1382",
@@ -9591,7 +9619,9 @@
       "near_hubs": [
         "CBD"
       ],
-      "near_job": true
+      "near_job": true,
+      "relief_m": 36,
+      "is_slope": true
     },
     {
       "id": "moa1384",
@@ -9602,7 +9632,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 8,
+      "is_slope": false
     },
     {
       "id": "moa1392",
@@ -9613,7 +9645,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 20,
+      "is_slope": false
     },
     {
       "id": "moa1410",
@@ -9624,7 +9658,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 4,
+      "is_slope": false
     },
     {
       "id": "moa1430",
@@ -9635,7 +9671,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 10,
+      "is_slope": false
     },
     {
       "id": "moa1467",
@@ -9646,7 +9684,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 9,
+      "is_slope": false
     },
     {
       "id": "moa1503",
@@ -9657,7 +9697,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 9,
+      "is_slope": false
     },
     {
       "id": "moa1516",
@@ -9672,7 +9714,9 @@
       "near_hubs": [
         "YBD"
       ],
-      "near_job": true
+      "near_job": true,
+      "relief_m": 27,
+      "is_slope": false
     },
     {
       "id": "moa1530",
@@ -9685,7 +9729,9 @@
         "YBD": 32
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 46,
+      "is_slope": true
     },
     {
       "id": "moa1532",
@@ -9696,7 +9742,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 9,
+      "is_slope": false
     },
     {
       "id": "moa1540",
@@ -9707,7 +9755,9 @@
       "stage": "수립범위자문",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 8,
+      "is_slope": false
     },
     {
       "id": "moa1555",
@@ -9718,7 +9768,9 @@
       "stage": "관리계획수립",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 19,
+      "is_slope": false
     },
     {
       "id": "moa1559",
@@ -9731,7 +9783,9 @@
         "YBD": 31
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 36,
+      "is_slope": true
     },
     {
       "id": "moa1564",
@@ -9742,7 +9796,9 @@
       "stage": "관리지역지정(공람)",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 21,
+      "is_slope": false
     },
     {
       "id": "moa1592",
@@ -9753,7 +9809,9 @@
       "stage": "사전자문",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 12,
+      "is_slope": false
     },
     {
       "id": "moa1611",
@@ -9764,7 +9822,9 @@
       "stage": "관리계획수립",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 6,
+      "is_slope": false
     },
     {
       "id": "moa1614",
@@ -9775,7 +9835,9 @@
       "stage": "위원회심의",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 9,
+      "is_slope": false
     },
     {
       "id": "moa1618",
@@ -9788,7 +9850,9 @@
         "GBD": 21
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 12,
+      "is_slope": false
     },
     {
       "id": "moa1651",
@@ -9799,7 +9863,9 @@
       "stage": "관리계획수립",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 1,
+      "is_slope": false
     },
     {
       "id": "moa1653",
@@ -9810,7 +9876,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 2,
+      "is_slope": false
     },
     {
       "id": "moa1660",
@@ -9821,7 +9889,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 13,
+      "is_slope": false
     },
     {
       "id": "moa1671",
@@ -9832,7 +9902,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 6,
+      "is_slope": false
     },
     {
       "id": "moa1688",
@@ -9843,7 +9915,9 @@
       "stage": "위원회심의",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 41,
+      "is_slope": true
     },
     {
       "id": "moa1690",
@@ -9854,7 +9928,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 12,
+      "is_slope": false
     },
     {
       "id": "moa1696",
@@ -9865,7 +9941,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 16,
+      "is_slope": false
     },
     {
       "id": "moa1706",
@@ -9878,7 +9956,9 @@
         "CBD": 32
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 44,
+      "is_slope": true
     },
     {
       "id": "moa1722",
@@ -9889,7 +9969,9 @@
       "stage": "관리계획수립",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 32,
+      "is_slope": true
     },
     {
       "id": "moa1726",
@@ -9900,7 +9982,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 7,
+      "is_slope": false
     },
     {
       "id": "moa1733",
@@ -9913,7 +9997,9 @@
         "YBD": 23
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 13,
+      "is_slope": false
     },
     {
       "id": "moa1738",
@@ -9924,7 +10010,9 @@
       "stage": "관리계획수립",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 16,
+      "is_slope": false
     },
     {
       "id": "moa1752",
@@ -9935,7 +10023,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 5,
+      "is_slope": false
     },
     {
       "id": "moa1761",
@@ -9946,7 +10036,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 38,
+      "is_slope": true
     },
     {
       "id": "moa1785",
@@ -9957,7 +10049,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 14,
+      "is_slope": false
     },
     {
       "id": "moa1804",
@@ -9968,7 +10062,9 @@
       "stage": "사전자문",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 6,
+      "is_slope": false
     },
     {
       "id": "moa1814",
@@ -9979,7 +10075,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 9,
+      "is_slope": false
     },
     {
       "id": "moa1851",
@@ -9994,7 +10092,9 @@
       "near_hubs": [
         "GBD"
       ],
-      "near_job": true
+      "near_job": true,
+      "relief_m": 27,
+      "is_slope": false
     },
     {
       "id": "moa1856",
@@ -10005,7 +10105,9 @@
       "stage": "건축심의",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 25,
+      "is_slope": false
     },
     {
       "id": "moa1867",
@@ -10018,7 +10120,9 @@
         "CBD": 28
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 93,
+      "is_slope": true
     },
     {
       "id": "moa1881",
@@ -10029,7 +10133,9 @@
       "stage": "관리지역지정(공람)",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 9,
+      "is_slope": false
     },
     {
       "id": "moa1885",
@@ -10042,7 +10148,9 @@
         "CBD": 28
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 23,
+      "is_slope": false
     },
     {
       "id": "moa1906",
@@ -10055,7 +10163,9 @@
         "YBD": 24
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 54,
+      "is_slope": true
     },
     {
       "id": "moa1950",
@@ -10066,7 +10176,9 @@
       "stage": "시공사선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 1,
+      "is_slope": false
     },
     {
       "id": "moa1952",
@@ -10079,7 +10191,9 @@
         "YBD": 29
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 74,
+      "is_slope": true
     },
     {
       "id": "moa1965",
@@ -10092,7 +10206,9 @@
         "GBD": 21
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 13,
+      "is_slope": false
     },
     {
       "id": "moa1976",
@@ -10103,7 +10219,9 @@
       "stage": "수립범위자문",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 5,
+      "is_slope": false
     },
     {
       "id": "moa2010",
@@ -10114,7 +10232,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 2,
+      "is_slope": false
     },
     {
       "id": "moa2023",
@@ -10129,7 +10249,9 @@
       "near_hubs": [
         "CBD"
       ],
-      "near_job": true
+      "near_job": true,
+      "relief_m": 8,
+      "is_slope": false
     },
     {
       "id": "moa2032",
@@ -10140,7 +10262,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 17,
+      "is_slope": false
     },
     {
       "id": "moa2047",
@@ -10151,7 +10275,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 8,
+      "is_slope": false
     },
     {
       "id": "moa2063",
@@ -10164,7 +10290,9 @@
         "YBD": 34
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 10,
+      "is_slope": false
     },
     {
       "id": "moa2076",
@@ -10175,7 +10303,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 6,
+      "is_slope": false
     },
     {
       "id": "moa2079",
@@ -10188,7 +10318,9 @@
         "YBD": 27
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 10,
+      "is_slope": false
     },
     {
       "id": "moa2103",
@@ -10199,7 +10331,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 5,
+      "is_slope": false
     },
     {
       "id": "moa2106",
@@ -10210,7 +10344,9 @@
       "stage": "사전자문",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 17,
+      "is_slope": false
     },
     {
       "id": "moa2142",
@@ -10221,7 +10357,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 9,
+      "is_slope": false
     },
     {
       "id": "moa2146",
@@ -10232,7 +10370,9 @@
       "stage": "사전자문",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 19,
+      "is_slope": false
     },
     {
       "id": "moa2153",
@@ -10243,7 +10383,9 @@
       "stage": "관리계획수립",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 2,
+      "is_slope": false
     },
     {
       "id": "moa2165",
@@ -10256,7 +10398,9 @@
         "CBD": 25
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 41,
+      "is_slope": true
     },
     {
       "id": "moa2175",
@@ -10267,7 +10411,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 14,
+      "is_slope": false
     },
     {
       "id": "moa2177",
@@ -10278,7 +10424,9 @@
       "stage": "위원회심의",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 6,
+      "is_slope": false
     },
     {
       "id": "moa2179",
@@ -10289,7 +10437,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 4,
+      "is_slope": false
     },
     {
       "id": "moa2204",
@@ -10300,7 +10450,9 @@
       "stage": "위원회심의",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 1,
+      "is_slope": false
     },
     {
       "id": "moa2218",
@@ -10311,7 +10463,9 @@
       "stage": "수립범위자문",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 43,
+      "is_slope": true
     },
     {
       "id": "moa2238",
@@ -10322,7 +10476,9 @@
       "stage": "철거",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 3,
+      "is_slope": false
     },
     {
       "id": "moa2241",
@@ -10333,7 +10489,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 21,
+      "is_slope": false
     },
     {
       "id": "moa2254",
@@ -10346,7 +10504,9 @@
         "YBD": 21
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 1,
+      "is_slope": false
     },
     {
       "id": "moa2259",
@@ -10357,7 +10517,9 @@
       "stage": "위원회심의",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 4,
+      "is_slope": false
     },
     {
       "id": "moa2260",
@@ -10368,7 +10530,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 10,
+      "is_slope": false
     },
     {
       "id": "moa2270",
@@ -10379,7 +10543,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 17,
+      "is_slope": false
     },
     {
       "id": "moa2282",
@@ -10390,7 +10556,9 @@
       "stage": "관리계획수립",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 18,
+      "is_slope": false
     },
     {
       "id": "moa2289",
@@ -10401,7 +10569,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 27,
+      "is_slope": false
     },
     {
       "id": "moa2323",
@@ -10412,7 +10582,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 7,
+      "is_slope": false
     },
     {
       "id": "moa2341",
@@ -10423,7 +10595,9 @@
       "stage": "관리계획수립",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 7,
+      "is_slope": false
     },
     {
       "id": "moa2346",
@@ -10434,7 +10608,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 8,
+      "is_slope": false
     },
     {
       "id": "moa2356",
@@ -10450,7 +10626,9 @@
       "near_hubs": [
         "YBD"
       ],
-      "near_job": true
+      "near_job": true,
+      "relief_m": 19,
+      "is_slope": false
     },
     {
       "id": "moa2386",
@@ -10465,7 +10643,9 @@
       "near_hubs": [
         "CBD"
       ],
-      "near_job": true
+      "near_job": true,
+      "relief_m": 7,
+      "is_slope": false
     },
     {
       "id": "moa2422",
@@ -10476,7 +10656,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 13,
+      "is_slope": false
     },
     {
       "id": "moa2424",
@@ -10487,7 +10669,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 6,
+      "is_slope": false
     },
     {
       "id": "moa2430",
@@ -10498,7 +10682,9 @@
       "stage": "위원회심의",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 3,
+      "is_slope": false
     },
     {
       "id": "moa2461",
@@ -10511,7 +10697,9 @@
         "CBD": 35
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 10,
+      "is_slope": false
     },
     {
       "id": "moa2478",
@@ -10522,7 +10710,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 12,
+      "is_slope": false
     },
     {
       "id": "moa2494",
@@ -10533,7 +10723,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 3,
+      "is_slope": false
     },
     {
       "id": "moa2500",
@@ -10544,7 +10736,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 16,
+      "is_slope": false
     },
     {
       "id": "moa2503",
@@ -10555,7 +10749,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 20,
+      "is_slope": false
     },
     {
       "id": "moa2523",
@@ -10566,7 +10762,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 4,
+      "is_slope": false
     },
     {
       "id": "moa2534",
@@ -10577,7 +10775,9 @@
       "stage": "위원회심의",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 6,
+      "is_slope": false
     },
     {
       "id": "moa2537",
@@ -10588,7 +10788,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 8,
+      "is_slope": false
     },
     {
       "id": "moa2548",
@@ -10601,7 +10803,9 @@
         "GBD": 22
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 9,
+      "is_slope": false
     },
     {
       "id": "moa2558",
@@ -10612,7 +10816,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 4,
+      "is_slope": false
     },
     {
       "id": "moa2601",
@@ -10623,7 +10829,9 @@
       "stage": "관리계획수립",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 13,
+      "is_slope": false
     },
     {
       "id": "moa2602",
@@ -10634,7 +10842,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 1,
+      "is_slope": false
     },
     {
       "id": "moa2608",
@@ -10647,7 +10857,9 @@
         "CBD": 30
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 27,
+      "is_slope": false
     },
     {
       "id": "moa2617",
@@ -10658,7 +10870,9 @@
       "stage": "관리지역고시",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 13,
+      "is_slope": false
     },
     {
       "id": "moa2911",
@@ -10673,7 +10887,9 @@
       "near_hubs": [
         "GBD"
       ],
-      "near_job": true
+      "near_job": true,
+      "relief_m": 39,
+      "is_slope": true
     },
     {
       "id": "moa2942",
@@ -10689,7 +10905,9 @@
       "near_hubs": [
         "YBD"
       ],
-      "near_job": true
+      "near_job": true,
+      "relief_m": 8,
+      "is_slope": false
     },
     {
       "id": "moa4302",
@@ -10700,7 +10918,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 35,
+      "is_slope": true
     },
     {
       "id": "moa4303",
@@ -10711,7 +10931,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 13,
+      "is_slope": false
     },
     {
       "id": "moa4304",
@@ -10722,7 +10944,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 10,
+      "is_slope": false
     },
     {
       "id": "moa4305",
@@ -10735,7 +10959,9 @@
         "GBD": 24
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 36,
+      "is_slope": true
     },
     {
       "id": "moa4306",
@@ -10746,7 +10972,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 5,
+      "is_slope": false
     },
     {
       "id": "moa4307",
@@ -10757,7 +10985,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 25,
+      "is_slope": false
     },
     {
       "id": "moa4523",
@@ -10768,7 +10998,9 @@
       "stage": "관리계획수립",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 89,
+      "is_slope": true
     },
     {
       "id": "moa4524",
@@ -10783,7 +11015,9 @@
       "near_hubs": [
         "GBD"
       ],
-      "near_job": true
+      "near_job": true,
+      "relief_m": 13,
+      "is_slope": false
     },
     {
       "id": "moa4528",
@@ -10794,7 +11028,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 11,
+      "is_slope": false
     },
     {
       "id": "moa4557",
@@ -10807,7 +11043,9 @@
         "CBD": 31
       },
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 26,
+      "is_slope": false
     },
     {
       "id": "moa4588",
@@ -10818,7 +11056,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 12,
+      "is_slope": false
     },
     {
       "id": "moa4589",
@@ -10829,7 +11069,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 17,
+      "is_slope": false
     },
     {
       "id": "moa4608",
@@ -10844,7 +11086,9 @@
       "near_hubs": [
         "GBD"
       ],
-      "near_job": true
+      "near_job": true,
+      "relief_m": 14,
+      "is_slope": false
     },
     {
       "id": "moa4614",
@@ -10855,7 +11099,9 @@
       "stage": "대상지선정",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 10,
+      "is_slope": false
     },
     {
       "id": "moa4624",
@@ -10866,7 +11112,9 @@
       "stage": "관리지역지정(공람)",
       "near_minutes": {},
       "near_hubs": [],
-      "near_job": false
+      "near_job": false,
+      "relief_m": 1,
+      "is_slope": false
     }
   ]
 }
