@@ -34,6 +34,15 @@ BUFFER_M = 200
 W1, W2, W3, W4 = 0.30, 0.25, 0.25, 0.20
 CUT_HI, CUT_LO = 65, 35
 
+# ── 수동 오버라이드 (폐쇄성 화이트리스트) ──
+# OSM 데이터 한계로 자동 계산이 현장과 다른 구역을 수동 보정.
+# 스크립트 재실행 시 자동 계산 결과를 이 값으로 덮어씀.
+# 예) 차 못 가는 좁은 골목이 OSM에 도로로 등록되어 c3 저평가되는 달동네
+MANUAL_ENCLOSURE_OVERRIDE = {
+    "jb03":    {"grade": "상", "score": 70.0},  # 현저2 — 인왕산 기슭 달동네
+    "moa1350": {"grade": "상", "score": 70.0},  # 현저동 1-5 (동일 구역)
+}
+
 def log(*a, **kw): print(*a, **kw, flush=True)
 
 # ── 1. polygons.json 로드 ──────────────────────────────────
@@ -227,6 +236,14 @@ for sid, (raw, detail) in computed_raw.items():
     grades_count[polys_in[sid]["enclosure_grade"]] += 1
 
 computed = len(computed_raw)
+
+# ── 수동 오버라이드 적용 ──
+for sid, ov in MANUAL_ENCLOSURE_OVERRIDE.items():
+    if sid in polys_in:
+        before = polys_in[sid].get("enclosure_grade")
+        polys_in[sid]["enclosure_grade"] = ov["grade"]
+        polys_in[sid]["enclosure_score"] = ov["score"]
+        log(f"  override: {sid} {before} → {ov['grade']} ({ov['score']})")
 
 pdata["meta"]["enclosure_computed"] = True
 pdata["meta"]["enclosure_weights"] = {"c1": W1, "c2": W2, "c3": W3, "c4": W4}
