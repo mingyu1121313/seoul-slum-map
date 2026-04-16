@@ -1652,13 +1652,13 @@ let _relayingOut = false;
 
 function scheduleRelayout() {
   if (_relayoutTimer || _relayingOut) return;
-  _relayoutTimer = requestAnimationFrame(() => {
+  _relayoutTimer = setTimeout(() => {
     _relayoutTimer = null;
     _relayingOut = true;
     try { relayoutLabels(); }
     catch (e) { console.error('relayoutLabels error:', e); }
     finally { _relayingOut = false; }
-  });
+  }, 16);
 }
 
 function boxesCollide(a, b) {
