@@ -329,6 +329,14 @@
       background: #f9fafb;
     }
     .near-hub-row:hover { background: #f1f3f7; }
+    .near-hub-chk {
+      width: 13px;
+      height: 13px;
+      accent-color: #2563eb;
+      margin: 0;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
     .near-hub-label {
       flex: 1;
       font-size: 10.5px;
@@ -1422,7 +1430,15 @@ let rawData = null;        // {layerA, layerB} 원본
 let activePolygon = null;  // 현재 선택된 폴리곤
 
 // 속성 필터 상태
-const attrFilters = { slope: false, near: false, mode: 'AND', age_min: 0, enclosure: '' };
+const NEAR_HUB_IDS = ['GBD', 'CBD', 'YBD'];
+const attrFilters = {
+  slope: false,
+  near: false,
+  nearHubs: new Set(NEAR_HUB_IDS),  // 3거점 중 허용된 hub 집합 (기본 전체)
+  mode: 'AND',
+  age_min: 0,
+  enclosure: ''
+};
 
 let map;
 
@@ -2104,7 +2120,9 @@ function passesFiltersWith(item, pdata, override) {
   if (!anyAttr) return true;
 
   const slope = item && item.is_slope === true;
-  const near  = item && item.near_job === true;
+  const hubs  = f.nearHubs instanceof Set ? f.nearHubs : new Set(NEAR_HUB_IDS);
+  const itemHubs = (item && item.near_hubs) || [];
+  const near  = item && item.near_job === true && itemHubs.some(h => hubs.has(h));
   if (slopeOn && nearOn) return andMode ? (slope && near) : (slope || near);
   if (slopeOn) return slope;
   return near;
@@ -2209,7 +2227,32 @@ function updateSubcategoryCounts() {
 
 function toggleAttr(key, checked) {
   attrFilters[key] = checked;
+  // 직주근접 상위 체크: 3개 하위 일괄 토글
+  if (key === 'near') {
+    if (checked) {
+      attrFilters.nearHubs = new Set(NEAR_HUB_IDS);
+    } else {
+      attrFilters.nearHubs = new Set();
+    }
+    NEAR_HUB_IDS.forEach(h => {
+      const chk = document.getElementById('chk-near-' + h);
+      if (chk) chk.checked = checked;
+    });
+  }
   // AND/OR 토글은 두 필터 모두 켜져 있을 때만 의미 있음
+  const wrap = document.getElementById('filter-mode-wrap');
+  if (wrap) wrap.classList.toggle('visible', attrFilters.slope && attrFilters.near);
+  applyVisibility();
+}
+
+function toggleNearHubChk(hubId, checked) {
+  if (checked) attrFilters.nearHubs.add(hubId);
+  else         attrFilters.nearHubs.delete(hubId);
+  // 하위 → 상위 동기화: 하나라도 체크면 near=true, 모두 해제면 false
+  const anyOn = attrFilters.nearHubs.size > 0;
+  attrFilters.near = anyOn;
+  const topChk = document.getElementById('chk-attr-near');
+  if (topChk) topChk.checked = anyOn;
   const wrap = document.getElementById('filter-mode-wrap');
   if (wrap) wrap.classList.toggle('visible', attrFilters.slope && attrFilters.near);
   applyVisibility();
@@ -2352,11 +2395,16 @@ function buildAttrFilterBody() {
       const sec = document.createElement('div');
       sec.className = 'near-hub-sec';
       const count = byHub[h.id].length;
+      const isChecked = attrFilters.nearHubs.has(h.id);
       sec.innerHTML = `
-        <div class="near-hub-row" onclick="toggleNearHub('${h.id}', event)">
-          <span class="near-hub-label">${h.label}<span class="near-hub-sub">${h.sub}</span></span>
-          <span class="near-hub-count">${count}</span>
-          <span class="cat-expand" id="near-exp-${h.id}">&#9654;</span>
+        <div class="near-hub-row">
+          <input type="checkbox" class="near-hub-chk" id="chk-near-${h.id}"
+                 ${isChecked ? 'checked' : ''}
+                 onclick="event.stopPropagation()"
+                 onchange="toggleNearHubChk('${h.id}', this.checked)">
+          <span class="near-hub-label" onclick="toggleNearHub('${h.id}', event)">${h.label}<span class="near-hub-sub">${h.sub}</span></span>
+          <span class="near-hub-count" onclick="toggleNearHub('${h.id}', event)">${count}</span>
+          <span class="cat-expand" id="near-exp-${h.id}" onclick="toggleNearHub('${h.id}', event)">&#9654;</span>
         </div>
         <div class="near-list" id="near-list-${h.id}"></div>
       `;
@@ -2599,18 +2647,21 @@ function updateFilterCounts() {
   // passesFiltersWith가 attrFilters에 override를 얹어 평가하므로, 다른 속성을 비활성화한 override로 계산
   const allA = pairsA, allB = pairsB;
   function countPure(override) {
-    const ov = Object.assign({ slope: false, near: false, age_min: 0, enclosure: '' }, override);
+    const ov = Object.assign(
+      { slope: false, near: false, age_min: 0, enclosure: '', nearHubs: new Set(NEAR_HUB_IDS) },
+      override
+    );
     let n = 0;
     for (const [it, pd] of allA) if (passesFiltersWith(it, pd, ov)) n++;
     for (const [it, pd] of allB) if (passesFiltersWith(it, pd, ov)) n++;
     return n;
   }
 
-  // 경사지 / 직주근접: 해당 속성만 true (고정)
+  // 경사지 / 직주근접: 해당 속성만 true (고정, nearHubs=전체 3거점)
   const slopeEl = document.getElementById('attr-count-slope');
   const nearEl  = document.getElementById('attr-count-near');
   if (slopeEl) slopeEl.textContent = countPure({ slope: true });
-  if (nearEl)  nearEl.textContent  = countPure({ near:  true });
+  if (nearEl)  nearEl.textContent  = countPure({ near:  true, nearHubs: new Set(NEAR_HUB_IDS) });
 
   // 노후도 버튼 (0/10/20/30/40) 각 가정 (고정)
   [0, 10, 20, 30, 40].forEach(v => {
