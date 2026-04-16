@@ -1586,10 +1586,9 @@ function initPolygons(data) {
 function updateLabelVisibilityByZoom() {
   const show = map.getZoom() >= ZOOM_LABEL_MIN;
   Object.keys(labelsByCategory).forEach(cat => {
-    if (hiddenCategories.has(cat)) return; // 카테고리 숨김 상태면 그대로 둠
+    const catHidden = hiddenCategories.has(cat);
     (labelsByCategory[cat] || []).forEach(lb => {
-      // 개별 숨김 플래그(_attrHidden)가 true면 표시하지 않음
-      if (lb._attrHidden) return;
+      if (catHidden || lb._attrHidden) { lb.setMap(null); return; }
       lb.setMap(show ? map : null);
     });
   });
@@ -1793,7 +1792,12 @@ function applyVisibility() {
   Object.keys(polygonsByCategory).forEach(cat => {
     const catHidden = hiddenCategories.has(cat);
     (polygonsByCategory[cat] || []).forEach((poly, idx) => {
-      if (catHidden) { poly.setMap(null); return; }
+      const label = (labelsByCategory[cat] || [])[idx];
+      if (catHidden) {
+        poly.setMap(null);
+        if (label) { label._attrHidden = true; label.setMap(null); }
+        return;
+      }
       const d = itemsByPolygon.get(poly);
       const item = d ? d.item : null;
       const pdata = d ? d.pdata : null;
@@ -1810,7 +1814,6 @@ function applyVisibility() {
       }
 
       // 라벨: 폴리곤과 1:1 매칭, 카테고리 숨김·필터 탈락·줌 미달이면 숨김
-      const label = (labelsByCategory[cat] || [])[idx];
       if (label) {
         label._attrHidden = !show;
         label.setMap((show && showLabelsByZoom) ? map : null);
