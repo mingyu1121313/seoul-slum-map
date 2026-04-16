@@ -1543,9 +1543,8 @@ function createPolygonLabel(item, cat, paths) {
 }
 
 function setLabelOffsetY(label, offsetY) {
-  if (label._offsetY === offsetY && label._iconApplied) return;
+  if (label._offsetY === offsetY) return; // 초기 0 → 0 호출 시 setIcon 생략(성능)
   label._offsetY = offsetY;
-  label._iconApplied = true;
   label.setIcon({
     content: label._content,
     anchor: new naver.maps.Point(Math.round(label._w / 2), Math.round(label._h / 2) + offsetY)
@@ -1637,7 +1636,7 @@ function initPolygons(data) {
 
   // 줌/팬 종료 → 라벨 재배치
   naver.maps.Event.addListener(map, 'zoom_changed', scheduleRelayout);
-  naver.maps.Event.addListener(map, 'idle', scheduleRelayout);
+  naver.maps.Event.addListener(map, 'dragend', scheduleRelayout);
   // 초기 1회
   scheduleRelayout();
 }
@@ -1649,12 +1648,16 @@ const STACK_GAP   = 2;    // px
 const MAX_STACK   = 5;    // 한 클러스터당 최대 표시
 let _overflowMarkers = [];
 let _relayoutTimer = null;
+let _relayingOut = false;
 
 function scheduleRelayout() {
-  if (_relayoutTimer) return;
+  if (_relayoutTimer || _relayingOut) return;
   _relayoutTimer = requestAnimationFrame(() => {
     _relayoutTimer = null;
-    relayoutLabels();
+    _relayingOut = true;
+    try { relayoutLabels(); }
+    catch (e) { console.error('relayoutLabels error:', e); }
+    finally { _relayingOut = false; }
   });
 }
 
