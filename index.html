@@ -928,8 +928,13 @@
 
       <!-- 노후도 필터 -->
       <div style="padding:8px 14px;border-bottom:1px solid #f5f5f5;">
-        <div style="font-size:11.5px;font-weight:600;color:#222;margin-bottom:5px;">
-          노후도<span style="font-size:9.5px;font-weight:400;color:#9ca3af;margin-left:5px;">구역 내 평균 건물 연차</span>
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:5px;">
+          <div style="flex:1;font-size:11.5px;font-weight:600;color:#222;">
+            노후도<span style="font-size:9.5px;font-weight:400;color:#9ca3af;margin-left:5px;">구역 내 평균 건물 연차</span>
+          </div>
+          <span class="attr-count" id="attr-count-age" style="display:none;"></span>
+          <span class="cat-expand" id="attr-exp-age"
+                onclick="toggleAttrList('age', event)">&#9654;</span>
         </div>
         <div style="display:flex;gap:5px;flex-wrap:wrap;">
           <button class="filter-mode-btn active" id="btn-age-0"   onclick="setAgeFilter(0)"  style="font-size:11px;padding:2px 8px;">전체</button>
@@ -939,11 +944,19 @@
           <button class="filter-mode-btn"        id="btn-age-40"  onclick="setAgeFilter(40)" style="font-size:11px;padding:2px 8px;">40년+</button>
         </div>
       </div>
+      <div class="cat-list" id="attr-list-age">
+        <!-- populated by buildAttrFilterBody() -->
+      </div>
 
       <!-- 폐쇄성 필터 -->
       <div style="padding:8px 14px;border-bottom:1px solid #f5f5f5;">
-        <div style="font-size:11.5px;font-weight:600;color:#222;margin-bottom:5px;">
-          폐쇄성<span style="font-size:9.5px;font-weight:400;color:#9ca3af;margin-left:5px;">경계·진입로·내부망·용도 가중합</span>
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:5px;">
+          <div style="flex:1;font-size:11.5px;font-weight:600;color:#222;">
+            폐쇄성<span style="font-size:9.5px;font-weight:400;color:#9ca3af;margin-left:5px;">경계·진입로·내부망·용도 가중합</span>
+          </div>
+          <span class="attr-count" id="attr-count-enc" style="display:none;"></span>
+          <span class="cat-expand" id="attr-exp-enc"
+                onclick="toggleAttrList('enc', event)">&#9654;</span>
         </div>
         <div style="display:flex;gap:5px;flex-wrap:wrap;">
           <button class="filter-mode-btn active" id="btn-enc-all" onclick="setEnclosureFilter('')"  style="font-size:11px;padding:2px 8px;">전체</button>
@@ -951,6 +964,9 @@
           <button class="filter-mode-btn"        id="btn-enc-mid" onclick="setEnclosureFilter('중')" style="font-size:11px;padding:2px 8px;">중</button>
           <button class="filter-mode-btn"        id="btn-enc-lo"  onclick="setEnclosureFilter('하')" style="font-size:11px;padding:2px 8px;">하</button>
         </div>
+      </div>
+      <div class="cat-list" id="attr-list-enc">
+        <!-- populated by buildAttrFilterBody() -->
       </div>
 
       <!-- AND/OR 토글 -->
@@ -1700,6 +1716,7 @@ function setAgeFilter(minAge) {
     if (btn) btn.classList.toggle('active', v === minAge);
   });
   applyVisibility();
+  setAttrListOpen('age', minAge > 0);
 }
 
 function setEnclosureFilter(grade) {
@@ -1710,6 +1727,17 @@ function setEnclosureFilter(grade) {
     if (btn) btn.classList.toggle('active', g === (grade || ''));
   });
   applyVisibility();
+  setAttrListOpen('enc', !!grade);
+}
+
+// 속성 리스트를 열림/닫힘 상태로 강제 세팅
+function setAttrListOpen(key, open) {
+  const list  = document.getElementById('attr-list-' + key);
+  const arrow = document.getElementById('attr-exp-' + key);
+  if (!list) return;
+  const isOpen = list.style.maxHeight && list.style.maxHeight !== '0px';
+  if (open === isOpen) return;
+  toggleAttrList(key);
 }
 
 function setFilterMode(mode) {
@@ -1725,20 +1753,53 @@ function setFilterMode(mode) {
    속성 필터 리스트 빌드 / 토글
 ──────────────────────────────────────────────── */
 function buildAttrFilterBody() {
-  // 현재 보이는 카테고리(hiddenCategories에 없는)의 마커만 수집
+  // 현재 보이는 카테고리(hiddenCategories에 없는)의 마커·폴리곤 모두 수집
   const slopeItems = [];
   const nearItems  = [];
+  const ageItems   = [];
+  const encItems   = [];
+  const seen       = new Set();
+  const ageMin     = attrFilters.age_min || 0;
+  const encGrade   = attrFilters.enclosure || '';
+  const polys      = polygonsData ? polygonsData.polygons : {};
+
+  function collect(item, cat, pdata) {
+    if (!item || seen.has(item.id)) return;
+    seen.add(item.id);
+    if (item.is_slope) slopeItems.push({ item, cat, pdata });
+    if (item.near_job) nearItems.push({ item, cat, pdata });
+    const age = pdata ? pdata.avg_bldg_age : null;
+    if (ageMin > 0 && age != null && age >= ageMin) {
+      ageItems.push({ item, cat, pdata });
+    }
+    const g = pdata ? pdata.enclosure_grade : null;
+    if (encGrade && g === encGrade) {
+      encItems.push({ item, cat, pdata });
+    }
+  }
 
   Object.keys(markersByCategory).forEach(cat => {
-    if (hiddenCategories.has(cat)) return;   // 숨겨진 카테고리 제외
+    if (hiddenCategories.has(cat)) return;
     (markersByCategory[cat] || []).forEach(m => {
       const d    = itemsByMarker.get(m);
       const item = d ? d.item : null;
-      if (!item) return;
-      if (item.is_slope) slopeItems.push({ item, cat });
-      if (item.near_job) nearItems.push({ item, cat });
+      const pdata = item ? (polys[item.id] || null) : null;
+      collect(item, cat, pdata);
     });
   });
+  Object.keys(polygonsByCategory).forEach(cat => {
+    if (hiddenCategories.has(cat)) return;
+    (polygonsByCategory[cat] || []).forEach(poly => {
+      const d = itemsByPolygon.get(poly);
+      const item  = d ? d.item  : null;
+      const pdata = d ? d.pdata : (item ? polys[item.id] : null);
+      collect(item, cat, pdata);
+    });
+  });
+
+  // 정렬: 노후도는 연차 내림차순, 폐쇄성은 점수 내림차순
+  ageItems.sort((a, b) => (b.pdata?.avg_bldg_age || 0) - (a.pdata?.avg_bldg_age || 0));
+  encItems.sort((a, b) => (b.pdata?.enclosure_score || 0) - (a.pdata?.enclosure_score || 0));
 
   function makeItem(item, cat, tag) {
     const addr = item.address || [item.gu, item.dong].filter(Boolean).join(' ');
@@ -1780,8 +1841,44 @@ function buildAttrFilterBody() {
     });
   }
 
+  // ── 노후도 리스트 ──
+  const ageList = document.getElementById('attr-list-age');
+  if (ageList) {
+    ageList.innerHTML = '';
+    ageItems.forEach(({ item, cat, pdata }) => {
+      const tag = pdata && pdata.avg_bldg_age != null
+        ? `${pdata.avg_bldg_age.toFixed(1)}년`
+        : '';
+      ageList.appendChild(makeItem(item, cat, tag));
+    });
+  }
+
+  // ── 폐쇄성 리스트 ──
+  const encList = document.getElementById('attr-list-enc');
+  if (encList) {
+    encList.innerHTML = '';
+    encItems.forEach(({ item, cat, pdata }) => {
+      const tag = pdata && pdata.enclosure_score != null
+        ? `${pdata.enclosure_grade} ${pdata.enclosure_score}`
+        : (pdata?.enclosure_grade || '');
+      encList.appendChild(makeItem(item, cat, tag));
+    });
+  }
+
+  // 카운트 배지
+  const ageCntEl = document.getElementById('attr-count-age');
+  if (ageCntEl) {
+    if (ageMin > 0) { ageCntEl.textContent = ageItems.length; ageCntEl.style.display = ''; }
+    else ageCntEl.style.display = 'none';
+  }
+  const encCntEl = document.getElementById('attr-count-enc');
+  if (encCntEl) {
+    if (encGrade) { encCntEl.textContent = encItems.length; encCntEl.style.display = ''; }
+    else encCntEl.style.display = 'none';
+  }
+
   // 열려 있는 리스트의 maxHeight를 새 내용에 맞게 재조정
-  ['slope', 'near'].forEach(key => {
+  ['slope', 'near', 'age', 'enc'].forEach(key => {
     const list = document.getElementById('attr-list-' + key);
     if (list && list.style.maxHeight && list.style.maxHeight !== '0px') {
       list.style.maxHeight = 'none';
