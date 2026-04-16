@@ -1518,6 +1518,14 @@ function estimateLabelSize(short, addr, stage) {
   return { w, h };
 }
 
+// 라벨용 주소 축약: "서울특별시 서대문구 현저동 1-5번지" → "현저동 1-5"
+function shortenAddrForLabel(addr) {
+  if (!addr) return '';
+  let s = addr.replace(/^서울(특별시|시)?\s*\S+구\s*/, ''); // 시/구 접두사 제거
+  s = s.replace(/번지\s*$/, ''); // 꼬리 "번지" 제거
+  return s.trim();
+}
+
 function createPolygonLabel(item, cat, paths) {
   const cfg = CAT_CONFIG[cat];
   if (!cfg) return null;
@@ -1525,7 +1533,7 @@ function createPolygonLabel(item, cat, paths) {
   if (!center) return null;
 
   const short = cfg.short || cat;
-  const addr  = item.address || item.name || '';
+  const addr  = shortenAddrForLabel(item.address || item.name || '');
   const stage = item.stage || '';
 
   const html = `
