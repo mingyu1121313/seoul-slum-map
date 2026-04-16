@@ -183,6 +183,12 @@
       padding: 2px 7px;
       flex-shrink: 0;
     }
+    .cat-count-total {
+      margin-left: 3px;
+      font-weight: 400;
+      color: #c7c9cf;
+      font-size: 9.5px;
+    }
     .group-count {
       font-size: 9px;
       font-weight: 700;
@@ -1925,7 +1931,7 @@ function makeCatSection(cat, count, items) {
            onchange="toggleCategory('${cat}')">
     ${iconHtml}
     <span class="cat-label">${cat}</span>
-    <span class="cat-count">${count}</span>
+    <span class="cat-count"><span class="cat-count-passed">${count}</span><span class="cat-count-total">/ ${count}</span></span>
     <span class="cat-expand" id="cat-exp-${sid}" onclick="toggleCatList('${sid}', event)">&#9654;</span>
   `;
 
@@ -1937,6 +1943,7 @@ function makeCatSection(cat, count, items) {
   items.forEach(item => {
     const li = document.createElement('div');
     li.className = 'cat-list-item';
+    if (item.id != null) li.setAttribute('data-id', item.id);
     const addr = item.address || (item.gu ? item.gu + (item.dong ? ' ' + item.dong : '') : '');
     li.innerHTML = `<span class="cat-list-name">${item.name || ''}</span><span class="cat-list-addr">${addr}</span>`;
     li.onclick = () => {
@@ -2079,6 +2086,50 @@ function applyVisibility() {
   scheduleRelayout();
   updateFilterCounts();
   buildAttrFilterBody();
+  updateSubcategoryCounts();
+}
+
+function updateSubcategoryCounts() {
+  if (!rawData) return;
+  const polys = polygonsData ? polygonsData.polygons : {};
+
+  // 카테고리별 통과 수 집계 + 통과한 id 집합
+  const passedCount = {};
+  const passedIds = new Set();
+
+  function tally(item, cat) {
+    if (!item || !cat) return;
+    const pdata = polys[item.id] || null;
+    if (passesFilters(item, pdata)) {
+      passedCount[cat] = (passedCount[cat] || 0) + 1;
+      passedIds.add(String(item.id));
+    }
+  }
+  (rawData.layerA && rawData.layerA.items || []).forEach(it => tally(it, getCategoryA(it)));
+  (rawData.layerB && rawData.layerB.items || []).forEach(it => tally(it, getCategoryB(it)));
+
+  // 카테고리 행의 '통과 수' 배지 갱신
+  [...LAYER_A_ORDER, ...LAYER_B_ORDER].forEach(cat => {
+    const sid = sanitizeId(cat);
+    const row = document.getElementById('cat-row-' + sid);
+    if (!row) return;
+    const passedEl = row.querySelector('.cat-count-passed');
+    if (passedEl) passedEl.textContent = passedCount[cat] || 0;
+
+    // 펼침 리스트 항목 표시/숨김
+    const list = document.getElementById('cat-list-' + sid);
+    if (!list) return;
+    list.querySelectorAll('.cat-list-item').forEach(li => {
+      const id = li.getAttribute('data-id');
+      if (id == null) return;
+      li.style.display = passedIds.has(id) ? '' : 'none';
+    });
+    // 열려 있으면 높이 재계산
+    if (list.style.maxHeight && list.style.maxHeight !== '0px') {
+      list.style.maxHeight = 'none';
+      list.style.maxHeight = list.scrollHeight + 'px';
+    }
+  });
 }
 
 function toggleAttr(key, checked) {
@@ -2830,6 +2881,7 @@ async function main() {
     buildSidebar(data);
     buildAttrFilterBody();
     updateFilterCounts();
+    updateSubcategoryCounts();
   } catch (err) {
     console.error('데이터 로드 실패:', err);
   }
