@@ -280,6 +280,18 @@
       transition: all 0.12s;
     }
     .filter-mode-btn.active { background: #1d4ed8; color: #fff; border-color: #1d4ed8; }
+    .btn-cnt {
+      display: inline-block;
+      margin-left: 4px;
+      font-size: 9px;
+      font-weight: 700;
+      background: rgba(0,0,0,0.08);
+      color: inherit;
+      border-radius: 8px;
+      padding: 0 5px;
+      line-height: 1.4;
+    }
+    .filter-mode-btn.active .btn-cnt { background: rgba(255,255,255,0.28); color: #fff; }
     .attr-tag {
       font-size: 9.5px;
       font-weight: 700;
@@ -952,7 +964,7 @@
     <!-- 속성 필터 아코디언 -->
     <div class="acc-header" id="acc-c-header">
       <span class="acc-title" onclick="toggleAcc('c')">속성 필터</span>
-      <span class="group-count" id="group-count-c" style="visibility:hidden;"></span>
+      <span class="group-count" id="group-count-c"></span>
       <span class="acc-arrow open" id="acc-c-arrow" onclick="toggleAcc('c')">&#9654;</span>
     </div>
     <div class="acc-body" id="acc-c-body">
@@ -992,16 +1004,15 @@
           <div style="flex:1;font-size:11.5px;font-weight:600;color:#222;">
             노후도<span style="font-size:9.5px;font-weight:400;color:#9ca3af;margin-left:5px;">구역 내 평균 건물 연차</span>
           </div>
-          <span class="attr-count" id="attr-count-age" style="display:none;"></span>
           <span class="cat-expand" id="attr-exp-age"
                 onclick="toggleAttrList('age', event)">&#9654;</span>
         </div>
         <div style="display:flex;gap:5px;flex-wrap:wrap;">
-          <button class="filter-mode-btn active" id="btn-age-0"   onclick="setAgeFilter(0)"  style="font-size:11px;padding:2px 8px;">전체</button>
-          <button class="filter-mode-btn"        id="btn-age-10"  onclick="setAgeFilter(10)" style="font-size:11px;padding:2px 8px;">10년+</button>
-          <button class="filter-mode-btn"        id="btn-age-20"  onclick="setAgeFilter(20)" style="font-size:11px;padding:2px 8px;">20년+</button>
-          <button class="filter-mode-btn"        id="btn-age-30"  onclick="setAgeFilter(30)" style="font-size:11px;padding:2px 8px;">30년+</button>
-          <button class="filter-mode-btn"        id="btn-age-40"  onclick="setAgeFilter(40)" style="font-size:11px;padding:2px 8px;">40년+</button>
+          <button class="filter-mode-btn active" id="btn-age-0"   onclick="setAgeFilter(0)"  style="font-size:11px;padding:2px 8px;">전체<span class="btn-cnt" id="btn-age-0-cnt"></span></button>
+          <button class="filter-mode-btn"        id="btn-age-10"  onclick="setAgeFilter(10)" style="font-size:11px;padding:2px 8px;">10년+<span class="btn-cnt" id="btn-age-10-cnt"></span></button>
+          <button class="filter-mode-btn"        id="btn-age-20"  onclick="setAgeFilter(20)" style="font-size:11px;padding:2px 8px;">20년+<span class="btn-cnt" id="btn-age-20-cnt"></span></button>
+          <button class="filter-mode-btn"        id="btn-age-30"  onclick="setAgeFilter(30)" style="font-size:11px;padding:2px 8px;">30년+<span class="btn-cnt" id="btn-age-30-cnt"></span></button>
+          <button class="filter-mode-btn"        id="btn-age-40"  onclick="setAgeFilter(40)" style="font-size:11px;padding:2px 8px;">40년+<span class="btn-cnt" id="btn-age-40-cnt"></span></button>
         </div>
       </div>
       <div class="cat-list" id="attr-list-age">
@@ -1014,15 +1025,14 @@
           <div style="flex:1;font-size:11.5px;font-weight:600;color:#222;">
             폐쇄성<span style="font-size:9.5px;font-weight:400;color:#9ca3af;margin-left:5px;">경계·진입로·내부망·용도 가중합</span>
           </div>
-          <span class="attr-count" id="attr-count-enc" style="display:none;"></span>
           <span class="cat-expand" id="attr-exp-enc"
                 onclick="toggleAttrList('enc', event)">&#9654;</span>
         </div>
         <div style="display:flex;gap:5px;flex-wrap:wrap;">
-          <button class="filter-mode-btn active" id="btn-enc-all" onclick="setEnclosureFilter('')"  style="font-size:11px;padding:2px 8px;">전체</button>
-          <button class="filter-mode-btn"        id="btn-enc-hi"  onclick="setEnclosureFilter('상')" style="font-size:11px;padding:2px 8px;">상</button>
-          <button class="filter-mode-btn"        id="btn-enc-mid" onclick="setEnclosureFilter('중')" style="font-size:11px;padding:2px 8px;">중</button>
-          <button class="filter-mode-btn"        id="btn-enc-lo"  onclick="setEnclosureFilter('하')" style="font-size:11px;padding:2px 8px;">하</button>
+          <button class="filter-mode-btn active" id="btn-enc-all" onclick="setEnclosureFilter('')"  style="font-size:11px;padding:2px 8px;">전체<span class="btn-cnt" id="btn-enc-all-cnt"></span></button>
+          <button class="filter-mode-btn"        id="btn-enc-hi"  onclick="setEnclosureFilter('상')" style="font-size:11px;padding:2px 8px;">상<span class="btn-cnt" id="btn-enc-hi-cnt"></span></button>
+          <button class="filter-mode-btn"        id="btn-enc-mid" onclick="setEnclosureFilter('중')" style="font-size:11px;padding:2px 8px;">중<span class="btn-cnt" id="btn-enc-mid-cnt"></span></button>
+          <button class="filter-mode-btn"        id="btn-enc-lo"  onclick="setEnclosureFilter('하')" style="font-size:11px;padding:2px 8px;">하<span class="btn-cnt" id="btn-enc-lo-cnt"></span></button>
         </div>
       </div>
       <div class="cat-list" id="attr-list-enc">
@@ -1319,6 +1329,7 @@ const itemsByMarker  = new WeakMap(); // marker  → {item, cat}
 const itemsByPolygon = new WeakMap(); // polygon → {item, cat}
 const ZOOM_LABEL_MIN = 14;
 let polygonsData = null;   // polygons.json 전체
+let rawData = null;        // {layerA, layerB} 원본
 let activePolygon = null;  // 현재 선택된 폴리곤
 
 // 속성 필터 상태
@@ -1980,11 +1991,12 @@ function toggleGroup(groupId, checked) {
 /* ────────────────────────────────────────────────
    속성 필터 — applyVisibility / toggleAttr / setFilterMode
 ──────────────────────────────────────────────── */
-function passesFilters(item, pdata) {
-  const slopeOn = attrFilters.slope;
-  const nearOn  = attrFilters.near;
-  const andMode = attrFilters.mode === 'AND';
-  const ageMin  = attrFilters.age_min || 0;
+function passesFiltersWith(item, pdata, override) {
+  const f = override ? Object.assign({}, attrFilters, override) : attrFilters;
+  const slopeOn = f.slope;
+  const nearOn  = f.near;
+  const andMode = f.mode === 'AND';
+  const ageMin  = f.age_min || 0;
   const anyAttr = slopeOn || nearOn;
 
   // 노후도 필터
@@ -1994,9 +2006,9 @@ function passesFilters(item, pdata) {
   }
 
   // 폐쇄성 필터
-  if (attrFilters.enclosure) {
+  if (f.enclosure) {
     const g = pdata ? pdata.enclosure_grade : null;
-    if (g !== attrFilters.enclosure) return false;
+    if (g !== f.enclosure) return false;
   }
 
   if (!anyAttr) return true;
@@ -2006,6 +2018,10 @@ function passesFilters(item, pdata) {
   if (slopeOn && nearOn) return andMode ? (slope && near) : (slope || near);
   if (slopeOn) return slope;
   return near;
+}
+
+function passesFilters(item, pdata) {
+  return passesFiltersWith(item, pdata);
 }
 
 function applyVisibility() {
@@ -2278,57 +2294,54 @@ function toggleAttrList(key, e) {
 }
 
 function updateFilterCounts() {
-  let slopeCnt = 0, nearCnt = 0, total = 0;
-  // 마커에서 집계
-  Object.keys(markersByCategory).forEach(cat => {
-    if (hiddenCategories.has(cat)) return;
-    (markersByCategory[cat] || []).forEach(m => {
-      const data = itemsByMarker.get(m);
-      const item = data ? data.item : null;
-      if (!item) return;
-      total++;
-      if (item.is_slope) slopeCnt++;
-      if (item.near_job) nearCnt++;
-    });
-  });
-  // 폴리곤에서도 집계
-  Object.keys(polygonsByCategory).forEach(cat => {
-    if (hiddenCategories.has(cat)) return;
-    (polygonsByCategory[cat] || []).forEach(poly => {
-      const data = itemsByPolygon.get(poly);
-      const item = data ? data.item : null;
-      if (!item) return;
-      total++;
-      if (item.is_slope) slopeCnt++;
-      if (item.near_job) nearCnt++;
-    });
-  });
+  if (!rawData) return;
+  const polys = polygonsData ? polygonsData.polygons : {};
+  const itemsA = rawData.layerA && rawData.layerA.items ? rawData.layerA.items : [];
+  const itemsB = rawData.layerB && rawData.layerB.items ? rawData.layerB.items : [];
 
+  // 각 아이템의 pdata 캐싱
+  const pairsA = itemsA.map(it => [it, polys[it.id] || null]);
+  const pairsB = itemsB.map(it => [it, polys[it.id] || null]);
+
+  function countWith(override) {
+    let a = 0, b = 0;
+    for (const [it, pd] of pairsA) if (passesFiltersWith(it, pd, override)) a++;
+    for (const [it, pd] of pairsB) if (passesFiltersWith(it, pd, override)) b++;
+    return { a, b, total: a + b };
+  }
+
+  // 현재 필터 그대로
+  const cur = countWith(null);
+  const gcA = document.getElementById('group-count-a');
+  const gcB = document.getElementById('group-count-b');
+  const gcC = document.getElementById('group-count-c');
+  if (gcA) gcA.textContent = cur.a;
+  if (gcB) gcB.textContent = cur.b;
+  if (gcC) {
+    gcC.textContent = cur.total;
+    gcC.style.visibility = 'visible';
+    gcC.style.background = '#dbeafe';
+    gcC.style.color = '#1d4ed8';
+  }
+
+  // 경사지 / 직주근접: 해당 속성만 true 로 override
   const slopeEl = document.getElementById('attr-count-slope');
   const nearEl  = document.getElementById('attr-count-near');
-  const gcC     = document.getElementById('group-count-c');
+  if (slopeEl) slopeEl.textContent = countWith({ slope: true }).total;
+  if (nearEl)  nearEl.textContent  = countWith({ near:  true }).total;
 
-  if (slopeEl) slopeEl.textContent = slopeCnt;
-  if (nearEl)  nearEl.textContent  = nearCnt;
+  // 노후도 버튼 (0/10/20/30/40) 각 가정
+  [0, 10, 20, 30, 40].forEach(v => {
+    const el = document.getElementById('btn-age-' + v + '-cnt');
+    if (el) el.textContent = countWith({ age_min: v }).total;
+  });
 
-  // 대분류 배지: 필터 활성화 시 현재 표시 중인 마커 수
-  const anyAttr = attrFilters.slope || attrFilters.near;
-  if (gcC) {
-    if (anyAttr) {
-      let shown = 0;
-      Object.keys(markersByCategory).forEach(cat => {
-        (markersByCategory[cat] || []).forEach(m => {
-          if (m.getMap()) shown++;
-        });
-      });
-      gcC.textContent = shown;
-      gcC.style.visibility = 'visible';
-      gcC.style.background = '#dbeafe';
-      gcC.style.color = '#1d4ed8';
-    } else {
-      gcC.style.visibility = 'hidden';
-    }
-  }
+  // 폐쇄성 버튼 (전체/상/중/하)
+  const encMap = { '': 'all', '상': 'hi', '중': 'mid', '하': 'lo' };
+  Object.entries(encMap).forEach(([g, key]) => {
+    const el = document.getElementById('btn-enc-' + key + '-cnt');
+    if (el) el.textContent = countWith({ enclosure: g }).total;
+  });
 }
 
 function updateGroupCheckbox(groupId) {
@@ -2722,7 +2735,8 @@ async function loadData() {
     fetch('data/polygons.json?v='  + v).then(r => r.json()).catch(() => null),
   ]);
   polygonsData = p;
-  return { layerA: a, layerB: b };
+  rawData = { layerA: a, layerB: b };
+  return rawData;
 }
 
 async function main() {
