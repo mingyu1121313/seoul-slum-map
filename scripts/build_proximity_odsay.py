@@ -29,6 +29,14 @@ HUBS = [
     {"id": "YBD", "name": "YBD (여의도)", "lat": 37.5219, "lng": 126.9245},
 ]
 
+# ── 수동 오버라이드 (직주근접 화이트리스트) ──
+# 스크립트 재실행 시 ODsay 측정 결과를 이 값으로 덮어씀.
+# key: item_id, value: {hub_id: minutes, ...}
+MANUAL_NEAR_OVERRIDE = {
+    "jb03":    {"CBD": 20},  # 현저2 (주거환경, 3호선 독립문역 접근성)
+    "moa1350": {"CBD": 20},  # 현저동 1-5 (모아타운)
+}
+
 
 def haversine(lat1, lng1, lat2, lng2):
     R = 6371
@@ -169,6 +177,12 @@ def run():
                     minutes_map[h["id"]] = cache[key]
                 else:
                     minutes_map[h["id"]] = None
+
+            # 수동 오버라이드 적용 (ODsay 결과를 덮어씀)
+            override = MANUAL_NEAR_OVERRIDE.get(item_id)
+            if override:
+                for hub_id, mins in override.items():
+                    minutes_map[hub_id] = mins
 
             near_hubs = [hub_id for hub_id, mins in minutes_map.items()
                          if mins is not None and mins <= CUTOFF_MIN]

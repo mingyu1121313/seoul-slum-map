@@ -9095,7 +9095,9 @@
       "slope_pct": 12.0,
       "is_slope": true,
       "near_job": true,
-      "near_hubs": ["CBD"],
+      "near_hubs": [
+        "CBD"
+      ],
       "relief_m": 52,
       "near_minutes": {
         "CBD": 20
@@ -9534,7 +9536,9 @@
       "near_minutes": {
         "CBD": 20
       },
-      "near_hubs": ["CBD"],
+      "near_hubs": [
+        "CBD"
+      ],
       "near_job": true
     },
     {
