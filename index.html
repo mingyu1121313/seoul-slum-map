@@ -298,6 +298,46 @@
       line-height: 1.4;
     }
     .filter-mode-btn.active .btn-cnt { background: rgba(255,255,255,0.28); color: #fff; }
+    /* 직주근접 서브 아코디언 (GBD/CBD/YBD) */
+    .near-hub-sec { border-bottom: 1px solid #eef0f3; }
+    .near-hub-sec:last-child { border-bottom: none; }
+    .near-hub-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px 6px 30px;
+      cursor: pointer;
+      background: #f9fafb;
+    }
+    .near-hub-row:hover { background: #f1f3f7; }
+    .near-hub-label {
+      flex: 1;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #334155;
+    }
+    .near-hub-sub {
+      font-size: 9px;
+      font-weight: 400;
+      color: #9ca3af;
+      margin-left: 3px;
+    }
+    .near-hub-count {
+      font-size: 9.5px;
+      font-weight: 700;
+      background: #e0e7ff;
+      color: #3730a3;
+      border-radius: 9px;
+      padding: 1px 6px;
+      flex-shrink: 0;
+    }
+    .near-list {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.22s ease;
+      background: #fdfdfe;
+    }
+    .near-list .cat-list-item { padding-left: 44px; }
     .attr-tag {
       font-size: 9.5px;
       font-weight: 700;
@@ -994,7 +1034,7 @@
         <input type="checkbox" class="cat-chk" id="chk-attr-near"
                onchange="toggleAttr('near', this.checked)">
         <label for="chk-attr-near" class="attr-filter-label">
-          직주근접<span class="attr-filter-sub">거점 40분 이내</span>
+          직주근접<span class="attr-filter-sub">3도심 20분 이내</span>
         </label>
         <span class="attr-count" id="attr-count-near"></span>
         <span class="cat-expand" id="attr-exp-near"
@@ -2258,19 +2298,50 @@ function buildAttrFilterBody() {
     });
   }
 
-  // ── 직주근접 리스트 ──
+  // ── 직주근접 리스트 (GBD/CBD/YBD 3 서브 아코디언) ──
   const nearList = document.getElementById('attr-list-near');
   if (nearList) {
     nearList.innerHTML = '';
+    const HUB_DEFS = [
+      { id: 'GBD', label: 'GBD', sub: '강남' },
+      { id: 'CBD', label: 'CBD', sub: '시청' },
+      { id: 'YBD', label: 'YBD', sub: '여의도' },
+    ];
+    // 도심별 분류 (20분 이내, 중복 노출 허용)
+    const byHub = { GBD: [], CBD: [], YBD: [] };
     nearItems.forEach(({ item, cat }) => {
       const mins = item.near_minutes || {};
-      const tag  = Object.entries(mins)
-        .filter(([, m]) => m != null && m <= 40)
-        .sort(([, a], [, b]) => a - b)
-        .slice(0, 2)
-        .map(([hub, m]) => `${hub} ${m}분`)
-        .join(', ');
-      nearList.appendChild(makeItem(item, cat, tag));
+      HUB_DEFS.forEach(h => {
+        const m = mins[h.id];
+        if (m != null && m <= 20) byHub[h.id].push({ item, cat, minutes: m });
+      });
+    });
+    // 각 그룹 내부: 분 수 오름차순
+    Object.values(byHub).forEach(arr => arr.sort((a, b) => a.minutes - b.minutes));
+
+    HUB_DEFS.forEach(h => {
+      const sec = document.createElement('div');
+      sec.className = 'near-hub-sec';
+      const count = byHub[h.id].length;
+      sec.innerHTML = `
+        <div class="near-hub-row" onclick="toggleNearHub('${h.id}', event)">
+          <span class="near-hub-label">${h.label}<span class="near-hub-sub">${h.sub}</span></span>
+          <span class="near-hub-count">${count}</span>
+          <span class="cat-expand" id="near-exp-${h.id}">&#9654;</span>
+        </div>
+        <div class="near-list" id="near-list-${h.id}"></div>
+      `;
+      nearList.appendChild(sec);
+      const sub = sec.querySelector('.near-list');
+      byHub[h.id].forEach(({ item, cat, minutes }) => {
+        sub.appendChild(makeItem(item, cat, `${h.id} ${minutes}분`));
+      });
+      // 이전 열림 상태 복원
+      if (nearHubOpen[h.id]) {
+        sub.style.maxHeight = sub.scrollHeight + 'px';
+        const arrow = sec.querySelector('.cat-expand');
+        if (arrow) arrow.classList.add('open');
+      }
     });
   }
 
@@ -2391,6 +2462,37 @@ function togglePassedList(e) {
       const cur = parseFloat(accBody.style.maxHeight) || accBody.scrollHeight;
       accBody.style.maxHeight = (cur + list.scrollHeight) + 'px';
     }
+  }
+}
+
+const nearHubOpen = { GBD: false, CBD: false, YBD: false };
+
+function toggleNearHub(hub, e) {
+  if (e) e.stopPropagation();
+  const list  = document.getElementById('near-list-' + hub);
+  const arrow = document.getElementById('near-exp-' + hub);
+  if (!list) return;
+  const isOpen = list.style.maxHeight && list.style.maxHeight !== '0px';
+  const delta  = isOpen ? -list.scrollHeight : list.scrollHeight;
+
+  if (isOpen) {
+    list.style.maxHeight = '0px';
+    if (arrow) arrow.classList.remove('open');
+    nearHubOpen[hub] = false;
+  } else {
+    list.style.maxHeight = list.scrollHeight + 'px';
+    if (arrow) arrow.classList.add('open');
+    nearHubOpen[hub] = true;
+  }
+
+  // 부모 attr-list-near 와 acc-c-body max-height 재계산
+  const parent = document.getElementById('attr-list-near');
+  if (parent && parent.style.maxHeight && parent.style.maxHeight !== '0px') {
+    parent.style.maxHeight = (parseFloat(parent.style.maxHeight) + delta) + 'px';
+  }
+  const accBody = document.getElementById('acc-c-body');
+  if (accBody && !accBody.classList.contains('collapsed') && accBody.style.maxHeight) {
+    accBody.style.maxHeight = (parseFloat(accBody.style.maxHeight) + delta) + 'px';
   }
 }
 

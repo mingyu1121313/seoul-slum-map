@@ -18,20 +18,15 @@ import urllib.request, urllib.parse
 ROOT         = "../data"
 KEY_FILE     = "odsay_key.txt"
 CACHE_FILE   = f"{ROOT}/odsay_cache.json"
-CUTOFF_MIN   = 40      # 직주근접 판정 시간 (분)
-MAX_KM       = 7.9     # 직선거리 사전 필터 (km)
+CUTOFF_MIN   = 20      # 직주근접 판정 시간 (분) — 3도심 20분 이내
+MAX_KM       = 5.0     # 직선거리 사전 필터 (km) — 20분이면 5km 이내가 현실적
 DAILY_LIMIT  = 950     # 일일 호출 hard cap
 SLEEP_S      = 0.25    # API 호출 간격 (초)
 
 HUBS = [
-    {"id": "CBD",     "name": "CBD (시청)",    "lat": 37.5665, "lng": 126.9780},
-    {"id": "GBD",     "name": "GBD (강남)",    "lat": 37.4979, "lng": 127.0276},
-    {"id": "YBD",     "name": "YBD (여의도)",  "lat": 37.5219, "lng": 126.9245},
-    {"id": "Magok",   "name": "마곡",          "lat": 37.5585, "lng": 126.8295},
-    {"id": "Seongsu", "name": "성수",          "lat": 37.5445, "lng": 127.0568},
-    {"id": "Pangyo",  "name": "판교",          "lat": 37.3944, "lng": 127.1100},
-    {"id": "Yongsan", "name": "용산",          "lat": 37.5298, "lng": 126.9644},
-    {"id": "Sangam",  "name": "상암(DMC)",     "lat": 37.5828, "lng": 126.8896},
+    {"id": "CBD", "name": "CBD (시청)",   "lat": 37.5665, "lng": 126.9780},
+    {"id": "GBD", "name": "GBD (강남)",   "lat": 37.4979, "lng": 127.0276},
+    {"id": "YBD", "name": "YBD (여의도)", "lat": 37.5219, "lng": 126.9245},
 ]
 
 
