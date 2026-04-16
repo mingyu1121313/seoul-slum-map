@@ -313,6 +313,24 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
+    /* ── 오버플로우 클러스터 배지 ───────────────── */
+    .poly-cluster-more {
+      width: 26px;
+      height: 22px;
+      border-radius: 11px;
+      background: #374151;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      user-select: none;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+    }
+
     /* ── 폴리곤 위 라벨 (jaegebal.com 스타일) ───────── */
     .poly-label {
       background: #fff;
@@ -1466,6 +1484,28 @@ function getPolygonCentroid(paths) {
   return new naver.maps.LatLng(sumLat / ring.length, sumLng / ring.length);
 }
 
+function getPathsBBoxArea(paths) {
+  let minLat = Infinity, maxLat = -Infinity, minLng = Infinity, maxLng = -Infinity;
+  (paths || []).forEach(ring => ring.forEach(p => {
+    const lat = p.lat(), lng = p.lng();
+    if (lat < minLat) minLat = lat;
+    if (lat > maxLat) maxLat = lat;
+    if (lng < minLng) minLng = lng;
+    if (lng > maxLng) maxLng = lng;
+  }));
+  if (!isFinite(minLat)) return 0;
+  return (maxLat - minLat) * (maxLng - minLng);
+}
+
+function estimateLabelSize(short, addr, stage) {
+  const row1 = (short || '').length + 1 + (addr || '').length;
+  const row2 = (stage || '').length;
+  const maxLen = Math.max(row1, row2);
+  const w = Math.min(160, Math.max(90, maxLen * 11 + 16));
+  const h = stage ? 34 : 22;
+  return { w, h };
+}
+
 function createPolygonLabel(item, cat, paths) {
   const cfg = CAT_CONFIG[cat];
   if (!cfg) return null;
@@ -1483,17 +1523,33 @@ function createPolygonLabel(item, cat, paths) {
       ${stage ? `<div class="pl-row2">${escapeHtml(stage)}</div>` : ''}
     </div>`;
 
+  const size = estimateLabelSize(short, addr, stage);
   const label = new naver.maps.Marker({
     position: center,
-    map: (map.getZoom() >= ZOOM_LABEL_MIN) ? map : null,
+    map: null, // relayoutLabels에서 가시성 결정
     icon: {
       content: html,
-      anchor: new naver.maps.Point(60, 14),
+      anchor: new naver.maps.Point(Math.round(size.w / 2), Math.round(size.h / 2)),
     },
     zIndex: 50,
     clickable: false,
   });
+  label._content  = html;
+  label._area     = getPathsBBoxArea(paths);
+  label._w        = size.w;
+  label._h        = size.h;
+  label._offsetY  = 0;
   return label;
+}
+
+function setLabelOffsetY(label, offsetY) {
+  if (label._offsetY === offsetY && label._iconApplied) return;
+  label._offsetY = offsetY;
+  label._iconApplied = true;
+  label.setIcon({
+    content: label._content,
+    anchor: new naver.maps.Point(Math.round(label._w / 2), Math.round(label._h / 2) + offsetY)
+  });
 }
 
 function createPolygon(item, cat, pdata) {
@@ -1579,18 +1635,118 @@ function initPolygons(data) {
   processItems(data.layerA.items,          getCategoryA);
   processItems(data.layerB.items,          getCategoryB);
 
-  // 줌 변경 → 라벨 가시성 토글
-  naver.maps.Event.addListener(map, 'zoom_changed', updateLabelVisibilityByZoom);
+  // 줌/팬 종료 → 라벨 재배치
+  naver.maps.Event.addListener(map, 'zoom_changed', scheduleRelayout);
+  naver.maps.Event.addListener(map, 'idle', scheduleRelayout);
+  // 초기 1회
+  scheduleRelayout();
 }
 
-function updateLabelVisibilityByZoom() {
-  const show = map.getZoom() >= ZOOM_LABEL_MIN;
+/* ────────────────────────────────────────────────
+   라벨 겹침 해소 — 수직 스택 배치
+──────────────────────────────────────────────── */
+const STACK_GAP   = 2;    // px
+const MAX_STACK   = 5;    // 한 클러스터당 최대 표시
+let _overflowMarkers = [];
+let _relayoutTimer = null;
+
+function scheduleRelayout() {
+  if (_relayoutTimer) return;
+  _relayoutTimer = requestAnimationFrame(() => {
+    _relayoutTimer = null;
+    relayoutLabels();
+  });
+}
+
+function boxesCollide(a, b) {
+  return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
+}
+
+function clearOverflowMarkers() {
+  _overflowMarkers.forEach(m => m.setMap(null));
+  _overflowMarkers = [];
+}
+
+function relayoutLabels() {
+  if (!map || !map.getProjection) return;
+  const projection = map.getProjection();
+  if (!projection) return;
+
+  const showByZoom = map.getZoom() >= ZOOM_LABEL_MIN;
+
+  // 대상 라벨 수집 (카테고리 숨김·속성 필터 통과한 것만)
+  const candidates = [];
   Object.keys(labelsByCategory).forEach(cat => {
-    const catHidden = hiddenCategories.has(cat);
+    if (hiddenCategories.has(cat)) {
+      (labelsByCategory[cat] || []).forEach(lb => lb.setMap(null));
+      return;
+    }
     (labelsByCategory[cat] || []).forEach(lb => {
-      if (catHidden || lb._attrHidden) { lb.setMap(null); return; }
-      lb.setMap(show ? map : null);
+      if (lb._attrHidden) { lb.setMap(null); return; }
+      candidates.push(lb);
     });
+  });
+
+  clearOverflowMarkers();
+
+  if (!showByZoom) {
+    candidates.forEach(lb => lb.setMap(null));
+    return;
+  }
+
+  // 면적 내림차순 정렬: 큰 폴리곤이 먼저 배치(맨 아래), 작은 게 나중에 위로 쌓임
+  candidates.sort((a, b) => (b._area || 0) - (a._area || 0));
+
+  const placed = []; // {box, cluster}
+  const clusters = []; // {anchor, overflow}
+
+  candidates.forEach(label => {
+    const pos = label.getPosition();
+    const px  = projection.fromCoordToOffset(pos);
+    const w = label._w, h = label._h;
+    const baseX = px.x - w / 2;
+    const baseY = px.y - h / 2;
+
+    let stackIdx = 0;
+    let cluster = null;
+    while (stackIdx < MAX_STACK) {
+      const offsetY = stackIdx * (h + STACK_GAP);
+      const trialBox = { x: baseX, y: baseY - offsetY, w: w, h: h };
+      const collider = placed.find(p => boxesCollide(trialBox, p.box));
+      if (!collider) {
+        setLabelOffsetY(label, offsetY);
+        label.setMap(map);
+        const myCluster = cluster || (() => {
+          const c = { anchor: pos, overflow: 0 };
+          clusters.push(c);
+          return c;
+        })();
+        placed.push({ box: trialBox, cluster: myCluster });
+        return;
+      }
+      cluster = collider.cluster;
+      stackIdx++;
+    }
+    // 스택 초과 → 숨김 + 클러스터 카운트
+    label.setMap(null);
+    if (cluster) cluster.overflow++;
+  });
+
+  // +N 배지 렌더
+  clusters.forEach(c => {
+    if (c.overflow > 0) {
+      const badge = new naver.maps.Marker({
+        position: c.anchor,
+        map: map,
+        icon: {
+          content: `<div class="poly-cluster-more">+${c.overflow}</div>`,
+          anchor: new naver.maps.Point(13, 11),
+        },
+        zIndex: 60,
+        clickable: false,
+      });
+      _overflowMarkers.push(badge);
+    }
   });
 }
 
@@ -1788,14 +1944,13 @@ function applyVisibility() {
   });
 
   // 폴리곤 (폴리곤 있는 사이트)
-  const showLabelsByZoom = map.getZoom() >= ZOOM_LABEL_MIN;
   Object.keys(polygonsByCategory).forEach(cat => {
     const catHidden = hiddenCategories.has(cat);
     (polygonsByCategory[cat] || []).forEach((poly, idx) => {
       const label = (labelsByCategory[cat] || [])[idx];
       if (catHidden) {
         poly.setMap(null);
-        if (label) { label._attrHidden = true; label.setMap(null); }
+        if (label) label._attrHidden = true;
         return;
       }
       const d = itemsByPolygon.get(poly);
@@ -1813,14 +1968,11 @@ function applyVisibility() {
         if (cfg) poly.setOptions({ fillColor: cfg.color, fillOpacity: 0.18 });
       }
 
-      // 라벨: 폴리곤과 1:1 매칭, 카테고리 숨김·필터 탈락·줌 미달이면 숨김
-      if (label) {
-        label._attrHidden = !show;
-        label.setMap((show && showLabelsByZoom) ? map : null);
-      }
+      if (label) label._attrHidden = !show;
     });
   });
 
+  scheduleRelayout();
   updateFilterCounts();
   buildAttrFilterBody();
 }
