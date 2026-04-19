@@ -38,6 +38,13 @@ VERIFY_CASES = {
     "정릉": True,   # 경사지 O
 }
 
+# ── 수동 오버라이드 (경사지 판정) ──
+# relief 단독 기준이 borderline(15-30m)이면서 slope_pct가 낮은(<5%) 평지를
+# 경사지로 잘못 분류한 경우 수동으로 false 처리.
+MANUAL_SLOPE_OVERRIDE = {
+    "la0432": False,  # 공덕6구역 (relief 15·slope 4% — 평지 위성영상 확인)
+}
+
 
 def sample_points(lat, lng):
     """중심 + 8방위×2거리 = 17개 좌표 반환 [(lat,lng), ...]"""

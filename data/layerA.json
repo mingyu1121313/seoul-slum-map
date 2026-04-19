@@ -3850,7 +3850,7 @@
       "lng": 126.9559887,
       "geocode_status": "ok",
       "slope_pct": 4.0,
-      "is_slope": true,
+      "is_slope": false,
       "near_job": true,
       "near_hubs": [
         "YBD"
