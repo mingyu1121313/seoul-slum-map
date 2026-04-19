@@ -1136,6 +1136,70 @@
         <!-- populated by buildAttrFilterBody() -->
       </div>
 
+      <!-- 사업단계 필터 -->
+      <div style="padding:8px 14px;border-bottom:1px solid #f5f5f5;">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:5px;">
+          <div style="flex:1;font-size:11.5px;font-weight:600;color:#222;">
+            사업단계<span style="font-size:9.5px;font-weight:400;color:#9ca3af;margin-left:5px;">정식 명칭 통일 버킷</span>
+            <span class="enc-info-btn" id="stage-info-btn"
+                  onclick="toggleStageInfo(event)"
+                  title="사업유형별 단계 매핑">&#9432;</span>
+          </div>
+        </div>
+        <div class="enc-info-box" id="stage-info-box" style="display:none;">
+          <b>사업유형별 정식 단계 순서</b><br>
+          • <b>재개발(주택/도시정비형)</b>: 구역지정→추진위→조합설립→건축심의→사업시행→관리처분→이주→착공→준공<br>
+          • <b>재건축</b>: 안전진단→구역지정→추진위→조합설립→건축심의→사업시행→관리처분→이주→착공→준공<br>
+          • <b>가로주택정비</b>: 대상지선정→조합설립→사업시행→관리처분→이주→착공→준공 (추진위·관리처분 생략 가능)<br>
+          • <b>모아타운</b>: 대상지선정→관리계획수립→관리지역고시→(편입 가로주택 단계 승계)<br>
+          • <b>주거환경개선(정비형)</b>: 정비구역지정→정비계획결정→시행자지정→사업시행계획승인→착공→준공<br>
+          <b>버킷 그룹</b> —
+          <span style="color:#f59e0b;font-weight:700;">추진중</span> ·
+          <span style="color:#3b82f6;font-weight:700;">진행중</span> ·
+          <span style="color:#10b981;font-weight:700;">완료</span><br>
+          <b>데이터 출처</b> — 서울시 정비사업 추진현황 xlsx (2025.12 기준, 456건) · jaegebal.com 크롤 · 토지이음 고시정보 · 8개 핵심 사이트 수동 보정 (해제·재지정 이력 포함)
+        </div>
+        <div style="font-size:10px;color:#f59e0b;font-weight:700;margin-top:4px;letter-spacing:0.3px;">추진중</div>
+        <div style="display:flex;gap:3px;flex-wrap:wrap;margin-top:2px;">
+          <button class="filter-mode-btn" id="btn-stage-prep" onclick="toggleStageBucket('추진준비')" style="font-size:10px;padding:2px 6px;">추진준비<span class="btn-cnt" id="btn-stage-prep-cnt"></span></button>
+          <button class="filter-mode-btn" id="btn-stage-num"  onclick="toggleStageBucket('연번부여')" style="font-size:10px;padding:2px 6px;">연번부여<span class="btn-cnt" id="btn-stage-num-cnt"></span></button>
+          <button class="filter-mode-btn" id="btn-stage-safe" onclick="toggleStageBucket('안전진단')" style="font-size:10px;padding:2px 6px;">안전진단<span class="btn-cnt" id="btn-stage-safe-cnt"></span></button>
+          <button class="filter-mode-btn" id="btn-stage-sel"  onclick="toggleStageBucket('대상지선정')" style="font-size:10px;padding:2px 6px;">대상지선정<span class="btn-cnt" id="btn-stage-sel-cnt"></span></button>
+        </div>
+        <div style="font-size:10px;color:#3b82f6;font-weight:700;margin-top:5px;letter-spacing:0.3px;">진행중</div>
+        <div style="display:flex;gap:3px;flex-wrap:wrap;margin-top:2px;">
+          <button class="filter-mode-btn" id="btn-stage-zone"  onclick="toggleStageBucket('구역지정')" style="font-size:10px;padding:2px 6px;">구역지정<span class="btn-cnt" id="btn-stage-zone-cnt"></span></button>
+          <button class="filter-mode-btn" id="btn-stage-comm"  onclick="toggleStageBucket('추진위원회')" style="font-size:10px;padding:2px 6px;">추진위원회<span class="btn-cnt" id="btn-stage-comm-cnt"></span></button>
+          <button class="filter-mode-btn" id="btn-stage-union" onclick="toggleStageBucket('조합설립인가')" style="font-size:10px;padding:2px 6px;">조합설립인가<span class="btn-cnt" id="btn-stage-union-cnt"></span></button>
+          <button class="filter-mode-btn" id="btn-stage-arch"  onclick="toggleStageBucket('건축심의')" style="font-size:10px;padding:2px 6px;">건축심의<span class="btn-cnt" id="btn-stage-arch-cnt"></span></button>
+          <button class="filter-mode-btn" id="btn-stage-exec"  onclick="toggleStageBucket('사업시행인가')" style="font-size:10px;padding:2px 6px;">사업시행인가<span class="btn-cnt" id="btn-stage-exec-cnt"></span></button>
+          <button class="filter-mode-btn" id="btn-stage-disp"  onclick="toggleStageBucket('관리처분인가')" style="font-size:10px;padding:2px 6px;">관리처분인가<span class="btn-cnt" id="btn-stage-disp-cnt"></span></button>
+          <button class="filter-mode-btn" id="btn-stage-move"  onclick="toggleStageBucket('이주')" style="font-size:10px;padding:2px 6px;">이주<span class="btn-cnt" id="btn-stage-move-cnt"></span></button>
+        </div>
+        <div style="font-size:10px;color:#10b981;font-weight:700;margin-top:5px;letter-spacing:0.3px;">완료</div>
+        <div style="display:flex;gap:3px;flex-wrap:wrap;margin-top:2px;">
+          <button class="filter-mode-btn" id="btn-stage-start" onclick="toggleStageBucket('착공')" style="font-size:10px;padding:2px 6px;">착공<span class="btn-cnt" id="btn-stage-start-cnt"></span></button>
+          <button class="filter-mode-btn" id="btn-stage-done"  onclick="toggleStageBucket('준공')" style="font-size:10px;padding:2px 6px;">준공<span class="btn-cnt" id="btn-stage-done-cnt"></span></button>
+          <button class="filter-mode-btn" id="btn-stage-end"   onclick="toggleStageBucket('청산')" style="font-size:10px;padding:2px 6px;">청산<span class="btn-cnt" id="btn-stage-end-cnt"></span></button>
+        </div>
+      </div>
+
+      <!-- 정체연수 필터 -->
+      <div style="padding:8px 14px;border-bottom:1px solid #f5f5f5;">
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:5px;">
+          <div style="flex:1;font-size:11.5px;font-weight:600;color:#222;">
+            정체연수<span style="font-size:9.5px;font-weight:400;color:#9ca3af;margin-left:5px;">최초 지정 후 경과 (해제·재지정 area 기준)</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;">
+          <button class="filter-mode-btn active" id="btn-yrs-0"  onclick="setYearsFilter(0)"  style="font-size:11px;padding:2px 8px;">전체<span class="btn-cnt" id="btn-yrs-0-cnt"></span></button>
+          <button class="filter-mode-btn"        id="btn-yrs-5"  onclick="setYearsFilter(5)"  style="font-size:11px;padding:2px 8px;">5년+<span class="btn-cnt" id="btn-yrs-5-cnt"></span></button>
+          <button class="filter-mode-btn"        id="btn-yrs-10" onclick="setYearsFilter(10)" style="font-size:11px;padding:2px 8px;">10년+<span class="btn-cnt" id="btn-yrs-10-cnt"></span></button>
+          <button class="filter-mode-btn"        id="btn-yrs-15" onclick="setYearsFilter(15)" style="font-size:11px;padding:2px 8px;">15년+<span class="btn-cnt" id="btn-yrs-15-cnt"></span></button>
+          <button class="filter-mode-btn"        id="btn-yrs-20" onclick="setYearsFilter(20)" style="font-size:11px;padding:2px 8px;">20년+<span class="btn-cnt" id="btn-yrs-20-cnt"></span></button>
+        </div>
+      </div>
+
       <!-- AND/OR 토글 -->
       <div class="filter-mode-wrap" id="filter-mode-wrap">
         <span class="filter-mode-label">중복 조건</span>
@@ -1426,6 +1490,7 @@ const itemsByMarker  = new WeakMap(); // marker  → {item, cat}
 const itemsByPolygon = new WeakMap(); // polygon → {item, cat}
 const ZOOM_LABEL_MIN = 14;
 let polygonsData = null;   // polygons.json 전체
+let stagesData   = {};     // stages.json (id별 사업단계 정보)
 let rawData = null;        // {layerA, layerB} 원본
 let activePolygon = null;  // 현재 선택된 폴리곤
 
@@ -1437,8 +1502,28 @@ const attrFilters = {
   nearHubs: new Set(NEAR_HUB_IDS),  // 3거점 중 허용된 hub 집합 (기본 전체)
   mode: 'AND',
   age_min: 0,
-  enclosure: ''
+  enclosure: '',
+  stages: new Set(),      // 선택된 사업단계 버킷 (빈 Set = 전체 통과)
+  years_min: 0            // 정체연수 최소값 (0 = 전체 통과)
 };
+
+// 사업단계 12개 버킷 → 버튼 ID 매핑
+const STAGE_BUCKETS = [
+  { name: '추진준비',     btn: 'btn-stage-prep',  group: '추진중' },
+  { name: '연번부여',     btn: 'btn-stage-num',   group: '추진중' },
+  { name: '안전진단',     btn: 'btn-stage-safe',  group: '추진중' },
+  { name: '대상지선정',   btn: 'btn-stage-sel',   group: '추진중' },
+  { name: '구역지정',     btn: 'btn-stage-zone',  group: '진행중' },
+  { name: '추진위원회',   btn: 'btn-stage-comm',  group: '진행중' },
+  { name: '조합설립인가', btn: 'btn-stage-union', group: '진행중' },
+  { name: '건축심의',     btn: 'btn-stage-arch',  group: '진행중' },
+  { name: '사업시행인가', btn: 'btn-stage-exec',  group: '진행중' },
+  { name: '관리처분인가', btn: 'btn-stage-disp',  group: '진행중' },
+  { name: '이주',         btn: 'btn-stage-move',  group: '진행중' },
+  { name: '착공',         btn: 'btn-stage-start', group: '완료'  },
+  { name: '준공',         btn: 'btn-stage-done',  group: '완료'  },
+  { name: '청산',         btn: 'btn-stage-end',   group: '완료'  },
+];
 
 let map;
 
@@ -2117,6 +2202,22 @@ function passesFiltersWith(item, pdata, override) {
     if (g !== f.enclosure) return false;
   }
 
+  // 사업단계 버킷 필터 (선택 버킷 OR 매칭)
+  const stageSet = f.stages instanceof Set ? f.stages : new Set();
+  if (stageSet.size > 0) {
+    const sd = item ? stagesData[item.id] : null;
+    const bucket = sd ? sd.bucket : null;
+    if (!bucket || !stageSet.has(bucket)) return false;
+  }
+
+  // 정체연수 필터 (years_stalled 없는 항목은 필터 skip)
+  const yrsMin = f.years_min || 0;
+  if (yrsMin > 0) {
+    const sd = item ? stagesData[item.id] : null;
+    const yrs = sd ? sd.years_stalled : null;
+    if (yrs == null || yrs < yrsMin) return false;
+  }
+
   if (!anyAttr) return true;
 
   const slope = item && item.is_slope === true;
@@ -2587,6 +2688,39 @@ function toggleEncInfo(e) {
   }
 }
 
+function toggleStageInfo(e) {
+  if (e) e.stopPropagation();
+  const box = document.getElementById('stage-info-box');
+  if (!box) return;
+  const show = box.style.display === 'none' || !box.style.display;
+  box.style.display = show ? 'block' : 'none';
+  const accBody = document.getElementById('acc-c-body');
+  if (accBody && accBody.style.maxHeight && accBody.style.maxHeight !== '0px' && !accBody.classList.contains('collapsed')) {
+    accBody.style.maxHeight = 'none';
+    accBody.style.maxHeight = accBody.scrollHeight + 'px';
+  }
+}
+
+function toggleStageBucket(name) {
+  if (attrFilters.stages.has(name)) attrFilters.stages.delete(name);
+  else                              attrFilters.stages.add(name);
+  // 모든 단계 버튼 active 동기화
+  STAGE_BUCKETS.forEach(s => {
+    const btn = document.getElementById(s.btn);
+    if (btn) btn.classList.toggle('active', attrFilters.stages.has(s.name));
+  });
+  applyVisibility();
+}
+
+function setYearsFilter(minYrs) {
+  attrFilters.years_min = minYrs;
+  [0, 5, 10, 15, 20].forEach(v => {
+    const btn = document.getElementById('btn-yrs-' + v);
+    if (btn) btn.classList.toggle('active', v === minYrs);
+  });
+  applyVisibility();
+}
+
 function toggleAttrList(key, e) {
   if (e) e.stopPropagation();
   const list  = document.getElementById('attr-list-' + key);
@@ -2648,7 +2782,8 @@ function updateFilterCounts() {
   const allA = pairsA, allB = pairsB;
   function countPure(override) {
     const ov = Object.assign(
-      { slope: false, near: false, age_min: 0, enclosure: '', nearHubs: new Set(NEAR_HUB_IDS) },
+      { slope: false, near: false, age_min: 0, enclosure: '', nearHubs: new Set(NEAR_HUB_IDS),
+        stages: new Set(), years_min: 0 },
       override
     );
     let n = 0;
@@ -2674,6 +2809,18 @@ function updateFilterCounts() {
   Object.entries(encMap).forEach(([g, key]) => {
     const el = document.getElementById('btn-enc-' + key + '-cnt');
     if (el) el.textContent = countPure({ enclosure: g });
+  });
+
+  // 사업단계 버튼: 각 버킷 단독 적용 시 통과 수
+  STAGE_BUCKETS.forEach(s => {
+    const el = document.getElementById(s.btn + '-cnt');
+    if (el) el.textContent = countPure({ stages: new Set([s.name]) });
+  });
+
+  // 정체연수 버튼: 각 임계값 단독 적용 시 통과 수
+  [0, 5, 10, 15, 20].forEach(v => {
+    const el = document.getElementById('btn-yrs-' + v + '-cnt');
+    if (el) el.textContent = countPure({ years_min: v });
   });
 }
 
@@ -2951,7 +3098,23 @@ function showPanel(item, cat) {
   if (cfg.layer === 'A') {
     // Layer A
     let rows = '';
-    if (item.stage)    rows += `<tr><td>단계</td><td>${item.stage}</td></tr>`;
+    const sd = stagesData[item.id];
+    if (item.stage)    rows += `<tr><td>단계</td><td>${item.stage}${sd && sd.bucket ? ` <span style="color:#9ca3af;font-size:10px;">(${sd.group}·${sd.bucket})</span>` : ''}</td></tr>`;
+    if (sd && sd.years_stalled != null) {
+      const ystyle = sd.years_stalled >= 20 ? 'color:#dc2626;font-weight:700;' :
+                     sd.years_stalled >= 10 ? 'color:#f59e0b;font-weight:700;' : '';
+      const yrAreaNote = sd.area_first_year && sd.area_first_year !== sd.first_year
+        ? ` <span style="color:#9ca3af;font-size:10px;">(area ${sd.area_first_year}~)</span>` : '';
+      rows += `<tr><td>정체연수</td><td><span style="${ystyle}">${sd.years_stalled}년</span>${yrAreaNote}</td></tr>`;
+    }
+    if (sd && sd.history && sd.history.length > 0) {
+      const histHtml = sd.history.map(h => {
+        const dt = h.date || h.year;
+        const note = h.note ? ` <span style="color:#9ca3af;font-size:10px;">${h.note}</span>` : '';
+        return `<div style="font-size:11px;line-height:1.5;"><b>${dt}</b> · ${h.event}${note}</div>`;
+      }).join('');
+      rows += `<tr><td style="vertical-align:top;">이력</td><td>${histHtml}</td></tr>`;
+    }
     if (item.status)   rows += `<tr><td>상태</td><td>${item.status}</td></tr>`;
     if (item.address)  rows += `<tr><td>주소</td><td>${item.address}</td></tr>`;
     if (item.gu)       rows += `<tr><td>자치구</td><td>${item.gu}</td></tr>`;
@@ -3070,12 +3233,14 @@ async function loadGuBoundary() {
 ──────────────────────────────────────────────── */
 async function loadData() {
   const v = Date.now();
-  const [a, b, p] = await Promise.all([
+  const [a, b, p, s] = await Promise.all([
     fetch('data/layerA.json?v='    + v).then(r => r.json()),
     fetch('data/layerB.json?v='    + v).then(r => r.json()),
     fetch('data/polygons.json?v='  + v).then(r => r.json()).catch(() => null),
+    fetch('data/stages.json?v='    + v).then(r => r.json()).catch(() => ({})),
   ]);
   polygonsData = p;
+  stagesData = s || {};
   rawData = { layerA: a, layerB: b };
   return rawData;
 }

@@ -1,0 +1,5577 @@
+{
+  "la0047": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0063": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0074": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0078": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0082": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0083": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0084": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0086": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0087": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0088": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0089": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0090": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0095": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0096": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0097": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0099": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0107": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0108": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2010-03-18",
+      "추진위원회": "2004-09-06",
+      "조합설립인가": "2016-05-31"
+    },
+    "first_year": 2004,
+    "years_stalled": 22,
+    "source": "xlsx"
+  },
+  "la0112": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0113": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0114": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2010-03-18",
+      "추진위원회": "2004-09-06",
+      "조합설립인가": "2016-05-31"
+    },
+    "first_year": 2004,
+    "years_stalled": 22,
+    "source": "xlsx"
+  },
+  "la0115": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0117": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0118": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2010-12-30",
+      "추진위원회": "2006-07-12",
+      "조합설립인가": "2022-05-16",
+      "건축심의": "2023-06-30"
+    },
+    "first_year": 2006,
+    "years_stalled": 20,
+    "source": "xlsx"
+  },
+  "la0119": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0120": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0121": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0123": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0124": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0125": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0126": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0127": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0128": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0129": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0130": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0131": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-08-28"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0132": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0133": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0134": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0135": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0142": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0144": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0145": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0148": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0150": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0151": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0152": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0160": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0163": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0164": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0165": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2024-03-21",
+      "조합설립인가": "2024-08-16"
+    },
+    "first_year": 2024,
+    "years_stalled": 2,
+    "source": "xlsx"
+  },
+  "la0166": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0172": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0178": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0179": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0181": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0185": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0186": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0188": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0189": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0191": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0192": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {
+      "추진위원회": "2008-07-15",
+      "조합설립인가": "2014-05-15",
+      "건축심의": "2023-02-14",
+      "사업시행인가": "2024-05-30"
+    },
+    "first_year": 2008,
+    "years_stalled": 18,
+    "source": "xlsx"
+  },
+  "la0193": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0195": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0196": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2014-06-19",
+      "추진위원회": "2009-09-09",
+      "조합설립인가": "2020-09-29",
+      "건축심의": "2023-08-29",
+      "사업시행인가": "2025-05-30"
+    },
+    "first_year": 2009,
+    "years_stalled": 17,
+    "source": "xlsx"
+  },
+  "la0197": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0200": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0201": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0202": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2008-04-10",
+      "추진위원회": "2008-04-24",
+      "조합설립인가": "2008-08-27",
+      "건축심의": "2017-08-22",
+      "사업시행인가": "2018-09-20",
+      "관리처분인가": "2021-04-29",
+      "이주": "2021-10-25"
+    },
+    "first_year": 2008,
+    "years_stalled": 18,
+    "source": "xlsx"
+  },
+  "la0203": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0204": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0205": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0206": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0207": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0208": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0209": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2024-09-26"
+    },
+    "first_year": 2024,
+    "years_stalled": 2,
+    "source": "xlsx"
+  },
+  "la0212": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2008-04-10",
+      "추진위원회": "2016-03-24",
+      "조합설립인가": "2019-11-21",
+      "건축심의": "2023-02-27",
+      "사업시행인가": "2025-03-11"
+    },
+    "first_year": 2008,
+    "years_stalled": 18,
+    "source": "xlsx"
+  },
+  "la0213": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0214": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0219": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0222": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0223": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-07-03"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0224": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0226": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0228": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0234": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0237": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-03-13",
+      "추진위원회": "2025-10-01"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0238": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-04-17",
+      "추진위원회": "2025-10-01"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0239": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0241": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0242": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0243": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0249": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0250": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {
+      "구역지정": "2014-03-13",
+      "건축심의": "2018-02-01",
+      "사업시행인가": "2018-12-20",
+      "관리처분인가": "2021-06-10",
+      "착공": "2025-05-01"
+    },
+    "first_year": 2014,
+    "years_stalled": 12,
+    "source": "xlsx"
+  },
+  "la0252": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0253": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0254": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0255": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0256": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-04-24",
+      "추진위원회": "2025-11-06"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0258": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0265": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0266": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0275": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0277": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0278": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0279": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0280": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0284": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2024-07-11"
+    },
+    "first_year": 2024,
+    "years_stalled": 2,
+    "source": "xlsx"
+  },
+  "la0285": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0286": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-01-16",
+      "조합설립인가": "2025-08-21"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0287": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0288": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0289": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0290": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0291": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0297": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0299": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0300": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0303": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2008-09-11",
+      "추진위원회": "2008-11-18",
+      "조합설립인가": "2009-06-23",
+      "건축심의": "2025-12-18"
+    },
+    "first_year": 2008,
+    "years_stalled": 18,
+    "source": "xlsx"
+  },
+  "la0304": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2008-09-11",
+      "추진위원회": "2009-08-24",
+      "조합설립인가": "2010-05-07",
+      "건축심의": "2020-04-14",
+      "사업시행인가": "2021-09-01"
+    },
+    "first_year": 2008,
+    "years_stalled": 18,
+    "source": "xlsx"
+  },
+  "la0305": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2008-09-11",
+      "추진위원회": "2008-12-29",
+      "조합설립인가": "2013-08-23",
+      "건축심의": "2020-01-06",
+      "사업시행인가": "2020-10-19",
+      "관리처분인가": "2025-12-23"
+    },
+    "first_year": 2008,
+    "years_stalled": 18,
+    "source": "xlsx"
+  },
+  "la0314": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {
+      "구역지정": "2007-02-08",
+      "추진위원회": "2004-12-09",
+      "조합설립인가": "2007-04-02",
+      "건축심의": "2007-04-12",
+      "사업시행인가": "2007-08-30",
+      "관리처분인가": "2021-03-10",
+      "착공": "2023-09-01"
+    },
+    "first_year": 2004,
+    "years_stalled": 22,
+    "source": "xlsx"
+  },
+  "la0315": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0316": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0318": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0319": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0320": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0322": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0323": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2024-02-22",
+      "조합설립인가": "2025-09-26"
+    },
+    "first_year": 2024,
+    "years_stalled": 2,
+    "source": "xlsx"
+  },
+  "la0326": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0327": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0328": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0329": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0332": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0334": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0336": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0343": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2008-01-07",
+      "추진위원회": "2004-06-23",
+      "조합설립인가": "2017-03-16",
+      "건축심의": "2021-10-26",
+      "사업시행인가": "2023-02-16",
+      "관리처분인가": "2024-04-01",
+      "이주": "2024-11-25"
+    },
+    "first_year": 2004,
+    "years_stalled": 22,
+    "source": "xlsx"
+  },
+  "la0344": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0347": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0353": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0354": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0355": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2008-07-10",
+      "추진위원회": "2005-09-27",
+      "조합설립인가": "2021-12-08",
+      "건축심의": "2023-10-17"
+    },
+    "first_year": 2005,
+    "years_stalled": 21,
+    "source": "xlsx"
+  },
+  "la0359": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2009-06-25",
+      "추진위원회": "2007-01-31",
+      "조합설립인가": "2022-01-14"
+    },
+    "first_year": 2007,
+    "years_stalled": 19,
+    "source": "xlsx"
+  },
+  "la0360": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2009-02-12",
+      "추진위원회": "2004-08-31",
+      "조합설립인가": "2017-12-27",
+      "건축심의": "2019-07-24",
+      "사업시행인가": "2020-12-24",
+      "관리처분인가": "2023-11-09",
+      "이주": "2025-06-01"
+    },
+    "first_year": 2004,
+    "years_stalled": 22,
+    "source": "xlsx"
+  },
+  "la0361": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2005-12-29",
+      "추진위원회": "2006-06-20",
+      "조합설립인가": "2016-05-16",
+      "건축심의": "2017-09-26",
+      "사업시행인가": "2019-03-07",
+      "관리처분인가": "2022-08-25",
+      "이주": "2023-06-17"
+    },
+    "first_year": 2005,
+    "years_stalled": 21,
+    "source": "xlsx"
+  },
+  "la0363": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-06-26"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0364": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {
+      "구역지정": "2007-09-06",
+      "추진위원회": "2004-06-25",
+      "조합설립인가": "2007-12-26",
+      "건축심의": "2008-10-15",
+      "사업시행인가": "2009-04-02",
+      "관리처분인가": "2020-04-23",
+      "착공": "2022-12-29"
+    },
+    "first_year": 2004,
+    "years_stalled": 22,
+    "source": "xlsx"
+  },
+  "la0365": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2008-11-13",
+      "추진위원회": "2004-08-04",
+      "조합설립인가": "2019-05-07",
+      "건축심의": "2022-04-22",
+      "사업시행인가": "2024-11-07"
+    },
+    "first_year": 2004,
+    "years_stalled": 22,
+    "source": "xlsx"
+  },
+  "la0367": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2010-11-25",
+      "추진위원회": "2006-01-09",
+      "조합설립인가": "2018-07-11",
+      "건축심의": "2022-04-26",
+      "사업시행인가": "2024-07-11",
+      "관리처분인가": "2025-09-25"
+    },
+    "first_year": 2006,
+    "years_stalled": 20,
+    "source": "xlsx"
+  },
+  "la0368": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0369": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2023-06-22"
+    },
+    "first_year": 2023,
+    "years_stalled": 3,
+    "source": "xlsx"
+  },
+  "la0371": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0373": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0374": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2009-12-10",
+      "추진위원회": "2011-07-29",
+      "조합설립인가": "2017-11-10",
+      "건축심의": "2021-06-08",
+      "사업시행인가": "2023-03-07"
+    },
+    "first_year": 2009,
+    "years_stalled": 17,
+    "source": "xlsx"
+  },
+  "la0375": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2009-12-10",
+      "추진위원회": "2010-06-29",
+      "조합설립인가": "2015-04-02",
+      "건축심의": "2017-06-13",
+      "사업시행인가": "2018-04-30",
+      "관리처분인가": "2022-12-19",
+      "이주": "2023-12-12"
+    },
+    "first_year": 2009,
+    "years_stalled": 17,
+    "source": "xlsx"
+  },
+  "la0376": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2009-12-10",
+      "추진위원회": "2004-12-10",
+      "조합설립인가": "2017-12-29",
+      "건축심의": "2018-11-13",
+      "사업시행인가": "2021-02-26"
+    },
+    "first_year": 2004,
+    "years_stalled": 22,
+    "source": "xlsx"
+  },
+  "la0377": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2009-12-10",
+      "추진위원회": "2010-02-26",
+      "조합설립인가": "2016-02-11",
+      "건축심의": "2019-05-28",
+      "사업시행인가": "2021-02-26",
+      "관리처분인가": "2023-09-25",
+      "이주": "2024-04-22"
+    },
+    "first_year": 2009,
+    "years_stalled": 17,
+    "source": "xlsx"
+  },
+  "la0378": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {
+      "구역지정": "2009-12-10",
+      "추진위원회": "2010-03-25",
+      "조합설립인가": "2011-03-17",
+      "건축심의": "2017-10-24",
+      "사업시행인가": "2014-09-01",
+      "관리처분인가": "2021-01-25",
+      "착공": "2025-06-27"
+    },
+    "first_year": 2009,
+    "years_stalled": 17,
+    "source": "xlsx"
+  },
+  "la0379": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {
+      "구역지정": "2009-12-10",
+      "추진위원회": "2010-02-04",
+      "조합설립인가": "2010-06-24",
+      "건축심의": "2024-01-09",
+      "사업시행인가": "2014-08-08",
+      "관리처분인가": "2021-03-08",
+      "착공": "2025-11-14"
+    },
+    "first_year": 2009,
+    "years_stalled": 17,
+    "source": "xlsx"
+  },
+  "la0380": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2009-12-10",
+      "추진위원회": "2011-07-29",
+      "조합설립인가": "2017-11-10",
+      "건축심의": "2021-06-08",
+      "사업시행인가": "2023-03-07"
+    },
+    "first_year": 2009,
+    "years_stalled": 17,
+    "source": "xlsx"
+  },
+  "la0381": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0382": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2010-06-03",
+      "추진위원회": "2011-06-03",
+      "조합설립인가": "2013-02-07",
+      "건축심의": "2015-08-18",
+      "사업시행인가": "2017-06-09",
+      "관리처분인가": "2024-05-07",
+      "이주": "2024-11-01"
+    },
+    "first_year": 2010,
+    "years_stalled": 16,
+    "source": "xlsx"
+  },
+  "la0383": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0384": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {
+      "구역지정": "2010-06-03",
+      "추진위원회": "2010-07-14",
+      "조합설립인가": "2011-11-14",
+      "건축심의": "2017-08-01",
+      "사업시행인가": "2018-09-19",
+      "관리처분인가": "2021-12-29",
+      "착공": "2025-10-30"
+    },
+    "first_year": 2010,
+    "years_stalled": 16,
+    "source": "xlsx"
+  },
+  "la0386": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0389": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0390": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0391": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0392": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0395": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0397": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0398": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0399": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0400": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0401": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0402": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0405": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0407": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0408": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0409": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0410": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0411": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0413": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-04-03",
+      "조합설립인가": "2025-10-02"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0414": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-04-03",
+      "조합설립인가": "2025-06-05"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0415": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0416": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0417": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0418": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0421": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {
+      "구역지정": "2009-09-11",
+      "추진위원회": "2008-06-20",
+      "조합설립인가": "2013-03-28",
+      "건축심의": "2024-04-09",
+      "사업시행인가": "2017-11-30",
+      "관리처분인가": "2019-10-23",
+      "착공": "2025-04-04"
+    },
+    "first_year": 2008,
+    "years_stalled": 18,
+    "source": "xlsx"
+  },
+  "la0426": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0427": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2012-07-26",
+      "추진위원회": "2014-07-28",
+      "조합설립인가": "2015-12-01",
+      "건축심의": "2020-06-23",
+      "사업시행인가": "2021-03-18",
+      "관리처분인가": "2022-08-16",
+      "이주": "2022-11-24"
+    },
+    "first_year": 2012,
+    "years_stalled": 14,
+    "source": "xlsx"
+  },
+  "la0428": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2008-09-11",
+      "추진위원회": "2009-01-15",
+      "조합설립인가": "2022-03-31"
+    },
+    "first_year": 2008,
+    "years_stalled": 18,
+    "source": "xlsx"
+  },
+  "la0429": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2024-12-05"
+    },
+    "first_year": 2024,
+    "years_stalled": 2,
+    "source": "xlsx"
+  },
+  "la0431": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2024-05-30"
+    },
+    "first_year": 2024,
+    "years_stalled": 2,
+    "source": "xlsx"
+  },
+  "la0432": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2010-03-04",
+      "추진위원회": "2004-07-20",
+      "조합설립인가": "2021-03-16",
+      "건축심의": "2022-07-22",
+      "사업시행인가": "2024-06-20"
+    },
+    "first_year": 2004,
+    "years_stalled": 22,
+    "source": "xlsx"
+  },
+  "la0436": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0438": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0440": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0441": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0443": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0444": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0445": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0446": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0447": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0448": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0450": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0451": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0452": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0456": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0461": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0462": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0464": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0465": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0469": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0475": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0478": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2008-02-05",
+      "추진위원회": "2008-03-17",
+      "조합설립인가": "2008-09-26",
+      "건축심의": "2023-07-11",
+      "사업시행인가": "2011-09-01"
+    },
+    "first_year": 2008,
+    "years_stalled": 18,
+    "source": "xlsx"
+  },
+  "la0482": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2008-02-05",
+      "추진위원회": "2008-02-29",
+      "조합설립인가": "2009-03-27",
+      "건축심의": "2020-11-10",
+      "사업시행인가": "2009-12-08"
+    },
+    "first_year": 2008,
+    "years_stalled": 18,
+    "source": "xlsx"
+  },
+  "la0483": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {
+      "구역지정": "2007-06-21",
+      "추진위원회": "2004-09-06",
+      "조합설립인가": "2008-03-25",
+      "건축심의": "2024-10-31",
+      "사업시행인가": "2010-12-28",
+      "관리처분인가": "2019-05-17",
+      "착공": "2025-10-24"
+    },
+    "first_year": 2004,
+    "years_stalled": 22,
+    "source": "xlsx"
+  },
+  "la0485": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2023-12-14",
+      "조합설립인가": "2024-03-13"
+    },
+    "first_year": 2023,
+    "years_stalled": 3,
+    "source": "xlsx"
+  },
+  "la0486": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {
+      "구역지정": "2006-02-23",
+      "추진위원회": "2006-09-01",
+      "조합설립인가": "2008-03-27",
+      "건축심의": "2021-11-01",
+      "사업시행인가": "2011-04-25",
+      "관리처분인가": "2020-02-01",
+      "착공": "2022-11-30"
+    },
+    "first_year": 2006,
+    "years_stalled": 20,
+    "source": "xlsx"
+  },
+  "la0487": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0489": {
+    "bucket": "조합설립인가",
+    "first_year": 2024,
+    "area_first_year": 2009,
+    "dates": {
+      "구역지정": "2024-12-19",
+      "조합설립인가": "2025-03-26"
+    },
+    "history": [
+      {
+        "event": "1차 정비구역 지정",
+        "year": 2009
+      },
+      {
+        "event": "구역 해제",
+        "year": 2017,
+        "note": "사업 정체로 해제"
+      },
+      {
+        "event": "재지정 (공공재개발)",
+        "year": 2024,
+        "date": "2024-12-19"
+      },
+      {
+        "event": "조합설립인가",
+        "year": 2025,
+        "date": "2025-03-26"
+      }
+    ],
+    "group": "진행중",
+    "years_stalled": 17
+  },
+  "la0490": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-04-17"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0491": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0492": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0498": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0499": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0500": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0502": {
+    "bucket": "이주",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0508": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0509": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0532": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0541": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0556": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0557": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0558": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0559": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0585": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2007-07-12",
+      "추진위원회": "2005-09-30",
+      "조합설립인가": "2008-04-21",
+      "건축심의": "2008-02-25",
+      "사업시행인가": "2009-12-17",
+      "관리처분인가": "2024-04-11",
+      "이주": "2024-08-29"
+    },
+    "first_year": 2005,
+    "years_stalled": 21,
+    "source": "xlsx"
+  },
+  "la0589": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2023-09-07",
+      "조합설립인가": "2024-10-18"
+    },
+    "first_year": 2023,
+    "years_stalled": 3,
+    "source": "xlsx"
+  },
+  "la0590": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0595": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0601": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2009-04-23",
+      "추진위원회": "2009-10-27",
+      "조합설립인가": "2017-07-18"
+    },
+    "first_year": 2009,
+    "years_stalled": 17,
+    "source": "xlsx"
+  },
+  "la0602": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2009-04-23",
+      "추진위원회": "2009-10-22",
+      "조합설립인가": "2016-07-25"
+    },
+    "first_year": 2009,
+    "years_stalled": 17,
+    "source": "xlsx"
+  },
+  "la0603": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2009-04-23",
+      "추진위원회": "2009-10-27",
+      "조합설립인가": "2020-03-06"
+    },
+    "first_year": 2009,
+    "years_stalled": 17,
+    "source": "xlsx"
+  },
+  "la0604": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2009-04-23",
+      "추진위원회": "2009-10-27",
+      "조합설립인가": "2019-02-27"
+    },
+    "first_year": 2009,
+    "years_stalled": 17,
+    "source": "xlsx"
+  },
+  "la0608": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {
+      "구역지정": "2007-09-27",
+      "추진위원회": "2006-07-30",
+      "조합설립인가": "2007-11-16",
+      "건축심의": "2015-08-01",
+      "사업시행인가": "2017-01-12",
+      "관리처분인가": "2018-07-06",
+      "착공": "2023-10-24"
+    },
+    "first_year": 2006,
+    "years_stalled": 20,
+    "source": "xlsx"
+  },
+  "la0614": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0618": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0622": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2011-11-24",
+      "추진위원회": "2014-02-26",
+      "조합설립인가": "2019-09-27",
+      "건축심의": "2021-05-11"
+    },
+    "first_year": 2011,
+    "years_stalled": 15,
+    "source": "xlsx"
+  },
+  "la0624": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0625": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2011-03-03",
+      "추진위원회": "2006-01-13",
+      "조합설립인가": "2012-05-16",
+      "건축심의": "2013-06-12",
+      "사업시행인가": "2014-02-28",
+      "관리처분인가": "2019-06-17",
+      "이주": "2022-08-18"
+    },
+    "first_year": 2006,
+    "years_stalled": 20,
+    "source": "xlsx"
+  },
+  "la0626": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2002-04-23",
+      "추진위원회": "2006-03-22",
+      "조합설립인가": "2008-03-17"
+    },
+    "first_year": 2002,
+    "years_stalled": 24,
+    "source": "xlsx"
+  },
+  "la0627": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0628": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {
+      "구역지정": "2010-06-10",
+      "추진위원회": "2005-10-21",
+      "조합설립인가": "2010-08-24",
+      "건축심의": "2017-11-07",
+      "사업시행인가": "2018-07-12",
+      "관리처분인가": "2020-02-06",
+      "착공": "2023-06-08"
+    },
+    "first_year": 2005,
+    "years_stalled": 21,
+    "source": "xlsx"
+  },
+  "la0631": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {
+      "구역지정": "2009-06-04",
+      "추진위원회": "2005-06-04",
+      "조합설립인가": "2010-07-19",
+      "건축심의": "2013-07-23",
+      "사업시행인가": "2016-07-14",
+      "관리처분인가": "2018-08-30",
+      "착공": "2023-08-01"
+    },
+    "first_year": 2005,
+    "years_stalled": 21,
+    "source": "xlsx"
+  },
+  "la0633": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-04-10"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0634": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0635": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0636": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0637": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0638": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0639": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0641": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0642": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2011-08-18",
+      "추진위원회": "2004-09-13",
+      "조합설립인가": "2014-05-09",
+      "건축심의": "2022-09-28",
+      "사업시행인가": "2024-09-05"
+    },
+    "first_year": 2004,
+    "years_stalled": 22,
+    "source": "xlsx"
+  },
+  "la0643": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0644": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0645": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0647": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {
+      "구역지정": "2008-04-03",
+      "추진위원회": "2006-08-08",
+      "조합설립인가": "2010-06-24",
+      "건축심의": "2014-03-11",
+      "사업시행인가": "2015-05-01",
+      "관리처분인가": "2020-07-08",
+      "착공": "2024-03-20"
+    },
+    "first_year": 2006,
+    "years_stalled": 20,
+    "source": "xlsx"
+  },
+  "la0648": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0649": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0651": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2008-04-03",
+      "추진위원회": "2008-04-23",
+      "조합설립인가": "2009-07-27",
+      "건축심의": "2024-07-02",
+      "사업시행인가": "2013-07-01",
+      "관리처분인가": "2017-07-27",
+      "이주": "2018-05-24"
+    },
+    "first_year": 2008,
+    "years_stalled": 18,
+    "source": "xlsx"
+  },
+  "la0652": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0653": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0654": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0655": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0658": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0659": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0660": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0661": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0662": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0663": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0664": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2008-04-03",
+      "추진위원회": "2010-07-09",
+      "조합설립인가": "2022-03-28"
+    },
+    "first_year": 2008,
+    "years_stalled": 18,
+    "source": "xlsx"
+  },
+  "la0665": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2008-04-03",
+      "추진위원회": "2008-05-30",
+      "조합설립인가": "2010-05-26",
+      "건축심의": "2023-11-28"
+    },
+    "first_year": 2008,
+    "years_stalled": 18,
+    "source": "xlsx"
+  },
+  "la0666": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2023-12-28",
+      "조합설립인가": "2024-01-10"
+    },
+    "first_year": 2023,
+    "years_stalled": 3,
+    "source": "xlsx"
+  },
+  "la0667": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0668": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2008-04-03",
+      "추진위원회": "2004-09-10"
+    },
+    "first_year": 2004,
+    "years_stalled": 22,
+    "source": "xlsx"
+  },
+  "la0670": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2010-04-08",
+      "추진위원회": "2010-06-14",
+      "조합설립인가": "2019-08-19"
+    },
+    "first_year": 2010,
+    "years_stalled": 16,
+    "source": "xlsx"
+  },
+  "la0671": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0672": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0673": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0674": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0675": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0678": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0679": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0681": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2012-08-02",
+      "추진위원회": "2014-06-24",
+      "조합설립인가": "2017-06-02",
+      "건축심의": "2020-03-24",
+      "사업시행인가": "2021-12-29",
+      "관리처분인가": "2024-01-25",
+      "이주": "2024-08-13"
+    },
+    "first_year": 2012,
+    "years_stalled": 14,
+    "source": "xlsx"
+  },
+  "la0682": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0684": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-05-29",
+      "추진위원회": "2025-12-10"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0685": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0686": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0688": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0689": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0690": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-08-21",
+      "추진위원회": "2025-11-28"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0691": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0692": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-05-01",
+      "추진위원회": "2025-11-17"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0695": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0696": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0697": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0706": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0707": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0708": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0712": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0713": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2012-07-26"
+    },
+    "first_year": 2012,
+    "years_stalled": 14,
+    "source": "xlsx"
+  },
+  "la0714": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2020-01-02",
+      "추진위원회": "2020-11-26",
+      "조합설립인가": "2022-05-25"
+    },
+    "first_year": 2020,
+    "years_stalled": 6,
+    "source": "xlsx"
+  },
+  "la0715": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2017-06-01",
+      "추진위원회": "2018-05-03",
+      "조합설립인가": "2020-06-22",
+      "건축심의": "2024-04-30"
+    },
+    "first_year": 2017,
+    "years_stalled": 9,
+    "source": "xlsx"
+  },
+  "la0716": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2012-07-26",
+      "추진위원회": "2014-04-17",
+      "조합설립인가": "2015-07-24",
+      "건축심의": "2019-02-26",
+      "사업시행인가": "2021-04-02",
+      "관리처분인가": "2024-01-30",
+      "이주": "2024-09-01"
+    },
+    "first_year": 2012,
+    "years_stalled": 14,
+    "source": "xlsx"
+  },
+  "la0717": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2024-09-12",
+      "추진위원회": "2025-04-22"
+    },
+    "first_year": 2024,
+    "years_stalled": 2,
+    "source": "xlsx"
+  },
+  "la0726": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0727": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0737": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0738": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0741": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0742": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0751": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0753": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-09-25"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0765": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0766": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0767": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0768": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0769": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0770": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0775": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0776": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0777": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0778": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0779": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-01-23",
+      "조합설립인가": "2025-06-05"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0780": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2024-03-28",
+      "조합설립인가": "2024-06-25"
+    },
+    "first_year": 2024,
+    "years_stalled": 2,
+    "source": "xlsx"
+  },
+  "la0791": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0792": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2023-09-07",
+      "조합설립인가": "2024-06-18"
+    },
+    "first_year": 2023,
+    "years_stalled": 3,
+    "source": "xlsx"
+  },
+  "la0800": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0807": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-04-10",
+      "추진위원회": "2025-12-10"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0808": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0810": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0811": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0813": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0814": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0815": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0816": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0828": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0829": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2018-06-28",
+      "추진위원회": "2019-05-27",
+      "조합설립인가": "2021-07-05",
+      "건축심의": "2024-02-07"
+    },
+    "first_year": 2018,
+    "years_stalled": 8,
+    "source": "xlsx"
+  },
+  "la0833": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2007-11-29",
+      "조합설립인가": "2025-05-01"
+    },
+    "first_year": 2007,
+    "years_stalled": 19,
+    "source": "xlsx"
+  },
+  "la0834": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2009-08-20",
+      "추진위원회": "2007-08-24",
+      "조합설립인가": "2020-03-04",
+      "건축심의": "2024-03-04",
+      "사업시행인가": "2025-09-12"
+    },
+    "first_year": 2007,
+    "years_stalled": 19,
+    "source": "xlsx"
+  },
+  "la0837": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0838": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0843": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "la0846": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0847": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0850": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0857": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0859": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0870": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0891": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0914": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0920": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2009-10-01",
+      "추진위원회": "2010-06-15",
+      "조합설립인가": "2012-08-22",
+      "건축심의": "2024-04-09"
+    },
+    "first_year": 2009,
+    "years_stalled": 17,
+    "source": "xlsx"
+  },
+  "la0922": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2009-10-01",
+      "추진위원회": "2010-09-29",
+      "조합설립인가": "2015-01-06",
+      "건축심의": "2024-05-28",
+      "사업시행인가": "2025-11-14"
+    },
+    "first_year": 2009,
+    "years_stalled": 17,
+    "source": "xlsx"
+  },
+  "la0923": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2009-10-01",
+      "추진위원회": "2010-06-28",
+      "조합설립인가": "2012-06-01",
+      "건축심의": "2020-08-11",
+      "사업시행인가": "2021-11-26",
+      "관리처분인가": "2025-07-25"
+    },
+    "first_year": 2009,
+    "years_stalled": 17,
+    "source": "xlsx"
+  },
+  "la0924": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0925": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0927": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0929": {
+    "bucket": "조합설립인가",
+    "first_year": 2022,
+    "area_first_year": 2022,
+    "dates": {
+      "대상지선정": "2022-10",
+      "조합설립인가": "2024-11"
+    },
+    "history": [
+      {
+        "event": "모아타운 대상지 선정",
+        "year": 2022
+      },
+      {
+        "event": "조합설립인가",
+        "year": 2024,
+        "date": "2024-11"
+      }
+    ],
+    "group": "진행중",
+    "years_stalled": 4
+  },
+  "la0943": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0944": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2022-07-14",
+      "추진위원회": "2005-08-12",
+      "조합설립인가": "2023-02-17"
+    },
+    "first_year": 2005,
+    "years_stalled": 21,
+    "source": "xlsx"
+  },
+  "la0959": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0960": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2009-10-01",
+      "추진위원회": "2010-08-01",
+      "조합설립인가": "2012-09-04",
+      "건축심의": "2017-10-24",
+      "사업시행인가": "2019-03-29",
+      "관리처분인가": "2023-06-23",
+      "이주": "2023-10-30"
+    },
+    "first_year": 2009,
+    "years_stalled": 17,
+    "source": "xlsx"
+  },
+  "la0966": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0967": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0968": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {
+      "구역지정": "2011-09-29",
+      "추진위원회": "2005-02-04",
+      "조합설립인가": "2015-10-30",
+      "건축심의": "2017-09-19",
+      "사업시행인가": "2019-01-31",
+      "관리처분인가": "2022-05-06",
+      "착공": "2025-11-28"
+    },
+    "first_year": 2005,
+    "years_stalled": 21,
+    "source": "xlsx"
+  },
+  "la0975": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {
+      "구역지정": "2009-05-07",
+      "추진위원회": "2005-04-27",
+      "조합설립인가": "2011-12-01",
+      "건축심의": "2019-06-19",
+      "사업시행인가": "2017-01-26",
+      "관리처분인가": "2019-05-23",
+      "착공": "2022-09-21"
+    },
+    "first_year": 2005,
+    "years_stalled": 21,
+    "source": "xlsx"
+  },
+  "la0976": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0977": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0978": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0982": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2008-12-18",
+      "추진위원회": "2005-02-05",
+      "조합설립인가": "2010-11-19",
+      "건축심의": "2019-12-24",
+      "사업시행인가": "2021-09-23",
+      "관리처분인가": "2024-11-28",
+      "이주": "2025-09-05"
+    },
+    "first_year": 2005,
+    "years_stalled": 21,
+    "source": "xlsx"
+  },
+  "la0984": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0985": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2024-10-17"
+    },
+    "first_year": 2024,
+    "years_stalled": 2,
+    "source": "xlsx"
+  },
+  "la0986": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2008-05-22",
+      "추진위원회": "2008-08-29",
+      "조합설립인가": "2009-05-27",
+      "건축심의": "2018-04-01",
+      "사업시행인가": "2018-07-20",
+      "관리처분인가": "2023-01-26",
+      "이주": "2023-10-20"
+    },
+    "first_year": 2008,
+    "years_stalled": 18,
+    "source": "xlsx"
+  },
+  "la0990": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0992": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0995": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-10-23"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la0996": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la0997": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-10-23",
+      "조합설립인가": "2025-12-18"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la1011": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1012": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1013": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1014": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-08-14",
+      "추진위원회": "2025-12-24"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la1015": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-08-14"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la1016": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1018": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2010-12-09",
+      "추진위원회": "2011-10-07",
+      "조합설립인가": "2012-03-20",
+      "건축심의": "2013-02-01",
+      "사업시행인가": "2013-06-13",
+      "관리처분인가": "2023-09-11",
+      "이주": "2024-06-01"
+    },
+    "first_year": 2010,
+    "years_stalled": 16,
+    "source": "xlsx"
+  },
+  "la1023": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1026": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2000-06-01",
+      "조합설립인가": "2003-07-07",
+      "사업시행인가": "2018-10-19",
+      "관리처분인가": "2022-02-26",
+      "이주": "2022-11-19"
+    },
+    "first_year": 2000,
+    "years_stalled": 26,
+    "source": "xlsx"
+  },
+  "la1027": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2024-12-19"
+    },
+    "first_year": 2024,
+    "years_stalled": 2,
+    "source": "xlsx"
+  },
+  "la1030": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2025-11-13"
+    },
+    "first_year": 2025,
+    "years_stalled": 1,
+    "source": "xlsx"
+  },
+  "la1036": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2023-06-22",
+      "조합설립인가": "2023-12-27"
+    },
+    "first_year": 2023,
+    "years_stalled": 3,
+    "source": "xlsx"
+  },
+  "la1037": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2007-05-25",
+      "추진위원회": "2004-12-30",
+      "조합설립인가": "2016-12-12",
+      "건축심의": "2017-12-19",
+      "사업시행인가": "2018-12-05",
+      "관리처분인가": "2024-05-31",
+      "이주": "2024-11-01"
+    },
+    "first_year": 2004,
+    "years_stalled": 22,
+    "source": "xlsx"
+  },
+  "la1038": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2010-11-04",
+      "추진위원회": "2005-01-24",
+      "조합설립인가": "2018-04-20",
+      "건축심의": "2020-11-18"
+    },
+    "first_year": 2005,
+    "years_stalled": 21,
+    "source": "xlsx"
+  },
+  "la1041": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1042": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1043": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1045": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1046": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1047": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1048": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1049": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1051": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1052": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1053": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {
+      "구역지정": "2024-01-11",
+      "추진위원회": "2024-04-12",
+      "조합설립인가": "2024-09-11"
+    },
+    "first_year": 2024,
+    "years_stalled": 2,
+    "source": "xlsx"
+  },
+  "la1054": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1055": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1056": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1058": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1059": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1060": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1061": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1062": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1064": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1065": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1066": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1067": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1068": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1069": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1070": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1071": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1072": {
+    "bucket": "추진위원회",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1074": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1075": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1076": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1078": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1081": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1082": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1083": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1089": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1091": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1092": {
+    "bucket": "관리처분인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1093": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1096": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1097": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1098": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1099": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1100": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1102": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1103": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1104": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1105": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "la1106": {
+    "bucket": "준공",
+    "group": "완료",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "jb01": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "jb02": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "jb03": {
+    "bucket": "구역지정",
+    "first_year": 2005,
+    "area_first_year": 2005,
+    "dates": {
+      "구역지정": "2005"
+    },
+    "history": [
+      {
+        "event": "정비구역 지정",
+        "year": 2005
+      }
+    ],
+    "group": "진행중",
+    "years_stalled": 21
+  },
+  "jb04": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "jb05": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "jb06": {
+    "bucket": "착공",
+    "group": "완료",
+    "dates": {
+      "구역지정": "2007-06-21",
+      "추진위원회": "2004-09-06",
+      "조합설립인가": "2008-03-25",
+      "건축심의": "2024-10-31",
+      "사업시행인가": "2010-12-28",
+      "관리처분인가": "2019-05-17",
+      "착공": "2025-10-24"
+    },
+    "first_year": 2004,
+    "years_stalled": 22,
+    "source": "xlsx"
+  },
+  "jb07": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "jb08": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "jb09": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "jb10": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "jb11": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "jb12": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "jb13": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "jb14": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "jb15": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "jb16": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "jb17": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "jb18": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "unknown"
+  },
+  "moa1177": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1179": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1188": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1218": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1229": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1236": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1308": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1328": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1344": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1349": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1350": {
+    "bucket": "추진준비",
+    "first_year": 2024,
+    "area_first_year": 2005,
+    "dates": {
+      "대상지선정": "2024-08",
+      "관리계획수립": "2025-06-19"
+    },
+    "history": [
+      {
+        "event": "주환개선 지정",
+        "year": 2005,
+        "note": "동일 area, 합의 실패로 20년 방치"
+      },
+      {
+        "event": "모아타운 신청",
+        "year": 2024
+      },
+      {
+        "event": "관리계획 고시",
+        "year": 2025,
+        "date": "2025-06-19"
+      }
+    ],
+    "group": "추진중",
+    "years_stalled": 21
+  },
+  "moa1353": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1368": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1377": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1382": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1384": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1392": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1410": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1430": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1467": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1503": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1516": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1530": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1532": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1540": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1555": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1559": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1564": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1592": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1611": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1614": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1618": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1651": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1653": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1660": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1671": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1688": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1690": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1696": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1706": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1722": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1726": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1733": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1738": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1752": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1761": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1785": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1804": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1814": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1851": {
+    "bucket": "조합설립인가",
+    "first_year": 2021,
+    "area_first_year": 2021,
+    "dates": {
+      "대상지선정": "2021-11",
+      "관리지역고시": "2023-12-14",
+      "조합설립인가": "2024"
+    },
+    "history": [
+      {
+        "event": "서초구 1호 모아타운 후보",
+        "year": 2021
+      },
+      {
+        "event": "관리지역 지정고시",
+        "year": 2023,
+        "date": "2023-12-14"
+      }
+    ],
+    "group": "진행중",
+    "years_stalled": 5
+  },
+  "moa1856": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1867": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1881": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1885": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1906": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1950": {
+    "bucket": "사업시행인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1952": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1965": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa1976": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2010": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2023": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2032": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2047": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2063": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2076": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2079": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2103": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2106": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2142": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2146": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2153": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2165": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2175": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2177": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2179": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2204": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2218": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2238": {
+    "bucket": "이주",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2241": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2254": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2259": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2260": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2270": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2282": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2289": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2323": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2341": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2346": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2356": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2386": {
+    "bucket": "조합설립인가",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2422": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2424": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2430": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2461": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2478": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2494": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2500": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2503": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2523": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2534": {
+    "bucket": "건축심의",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2537": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2548": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2558": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2601": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2602": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2608": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2617": {
+    "bucket": "구역지정",
+    "group": "진행중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa2911": {
+    "bucket": "추진준비",
+    "first_year": 2021,
+    "area_first_year": 2021,
+    "dates": {
+      "대상지선정": "2021-11"
+    },
+    "history": [
+      {
+        "event": "모아타운 후보 (977,978,980 통합)",
+        "year": 2021
+      },
+      {
+        "event": "977 분리 고시 / 978·980 미고시",
+        "year": 2023
+      }
+    ],
+    "group": "추진중",
+    "years_stalled": 5
+  },
+  "moa2942": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa4302": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa4303": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa4304": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa4305": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa4306": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa4307": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa4523": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa4524": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa4528": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa4557": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa4588": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa4589": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa4608": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa4614": {
+    "bucket": "대상지선정",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "moa4624": {
+    "bucket": "추진준비",
+    "group": "추진중",
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerA"
+  },
+  "mh01": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  },
+  "mh02": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  },
+  "mh03": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  },
+  "mh04": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  },
+  "mh05": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  },
+  "mh06": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  },
+  "mh07": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  },
+  "mh08": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  },
+  "mh09": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  },
+  "mh12": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  },
+  "mh20": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  },
+  "mh22": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  },
+  "mh23": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  },
+  "mh24": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  },
+  "mh25": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  },
+  "mh29": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  },
+  "mh30": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  },
+  "mh31": {
+    "bucket": null,
+    "group": null,
+    "dates": {},
+    "first_year": null,
+    "years_stalled": null,
+    "source": "layerB"
+  }
+}
